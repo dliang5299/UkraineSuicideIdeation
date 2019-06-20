@@ -1,0 +1,49 @@
+---
+title: "Data Wrangling"
+author: "Deric Liang"
+date: "6/19/2019"
+output: html_notebook
+---
+
+```{r}
+# load libraries
+library(tidyverse)
+library(haven)
+library(data.table)
+library(survey)
+```
+
+```{r}
+# read in main data
+cididata_raw <-
+  fread("ukrmain_RU_061419.csv")
+```
+
+```{r}
+# read in DSM data
+dsm_raw <-
+  read_spss("ukraine_dia.sav")
+```
+
+```{r}
+# subsetting data
+cididata <-
+  cididata_raw %>%
+  select(sampleid, AGE, SEX, pt1, io15, de13, io16, sc8, de20_1, fnu4, mr22, 
+         mr37, sc3, sc3a, de32_1, de32_2, de32_3, de32_4, de32_5, de32_6, de32_7, 
+         de32_8, de32_9, de32_98, de32_99, de33, de34, mr22, sn1, sn2, sn6, sn7, sc7, 
+         cc1tz, cc28a, cc28b, cc28c, cc28d, cc28e, cc28f, cc28g, cc20a, cc20b, 
+         cc20c, cc20d, cc26a, cc26b, cc26c, sd2, sd4, sd6, sd15, sd17, sd19, su8, 
+         secu, strata, weight2)
+```
+
+
+
+
+
+```{r}
+# # write out data
+# fwrite(cididata, file = "Sui_Data_061319.csv")
+# write_sav(spss, "Sui_Data_061319.sav")
+```
+

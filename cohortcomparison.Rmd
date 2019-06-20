@@ -1,0 +1,180 @@
+---
+title: "Age Cohort Comparisons"
+author: "Deric Liang"
+date: "6/19/2019"
+output: html_notebook
+---
+
+# Data Cleaning
+
+```{r}
+# create age cohorts
+cididata_pt2 <-
+  cididata %>%
+  filter(!is.na(de20_1))
+
+cididata_pt2 <-
+  cididata_pt2 %>%
+  # bromet cohorts
+  mutate(brom4_agecohort = cut(cididata_pt2$AGE, breaks = c(16, 24, 34, 49, Inf),
+                                        labels = c("Youngest", "Middle Young", "Middle Age", "Eldest")),
+         brom3_agecohort = cut(cididata_pt2$AGE, breaks = c(16, 37, 57, Inf),
+                                      labels = c("Youngest", "Middle", "Eldest"))) %>%
+  # alfonso cohorts
+  mutate(alfonso_cohort = cut(cididata_pt2$AGE, breaks = c(16, 37, 49, 64, Inf),
+                              labels = c("Youngest", "Middle Young", "Middle Age", "Eldest")))
+```
+
+```{r}
+# create broader "other religion" variable, clean up suicidality
+cididata_pt2 <-
+  cididata_pt2 %>%
+  # religion
+  mutate(de32_1 = ifelse(is.na(de32_1), 0, 1),
+         de32_2 = ifelse(is.na(de32_2), 0, 1),
+         de32_9 = ifelse(is.na(de32_9), 0, 1),
+         de32_98 = ifelse(is.na(de32_98), 0, 1),
+         de32_99 = ifelse(is.na(de32_99), 0, 1),
+         de32_other = ifelse(de32_3|de32_4|de32_5|de32_6|de32_7|de32_8 == 1, 1, 0),
+         de32_other = ifelse(is.na(de32_other), 0, 1),
+         de33 = ifelse(de33 == 8 | de33 == 9, 0, de33),
+         de34 = ifelse(de34 == 8 | de34 == 9, 0, de34)) %>%
+  # suicidality
+  mutate(ideate = ifelse(!is.na(sd2), sd2, sd15),
+         plan = ifelse(!is.na(sd4), sd4, sd17),
+         attempt = ifelse(!is.na(sd6), sd6, sd19),
+         plan = ifelse(is.na(plan), 5, plan),
+         attempt = ifelse(is.na(attempt), 5, attempt)) %>%
+  select(sampleid, AGE, brom3_agecohort, alfonso_cohort, SEX, pt1,
+         io15, de13, io16, sc8, de20_1, fnu4, mr22, 
+         mr37, sc3, sc3a, de34, mr22, sn1, sn2, sn6, sn7, sc7, 
+         cc1tz, cc28a, cc28b, cc28c, cc28d, cc28e, cc28f, cc28g, cc20a, cc20b, 
+         cc20c, cc20d, cc26a, cc26b, cc26c, ideate, plan, attempt, su8,
+         de32_1, de32_2, de32_9, de32_98, de32_99, de32_other, de33, de34,
+         secu, strata, weight2)
+```
+
+```{r}
+# Dataset with Part 2 weights on
+SuicidePart2 <-
+  svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, 
+            data = subset(cididata_pt2, cididata_pt2$weight2>0))
+options(survey.lonely.psu = "adjust")
+```
+
+# Frequency Tables
+
+## Sex
+
+```{r}
+svytable(~alfonso_cohort + SEX, design = SuicidePart2) %>% addmargins()
+svytable(~brom3_agecohort + SEX, design = SuicidePart2) %>% addmargins()
+```
+
+
+## Marriage 
+
+```{r}
+svytable(~alfonso_cohort + sc3, design = SuicidePart2) %>% addmargins()
+svytable(~brom3_agecohort + sc3, design = SuicidePart2) %>% addmargins()
+```
+
+
+## Military
+
+Sample sizes too small; cannot use.
+
+```{r}
+svytable(~alfonso_cohort + pt1, design = SuicidePart2) %>% addmargins() %>% round()
+svytable(~brom3_agecohort + pt1, design = SuicidePart2) %>% addmargins() %>% round()
+```
+
+## Suicidality
+
+```{r}
+# ideate
+svytable(~alfonso_cohort + ideate, design = SuicidePart2) %>%
+  addmargins()
+svytable(~brom3_agecohort + ideate, design = SuicidePart2) %>% 
+  addmargins()
+```
+
+```{r}
+# plan
+svytable(~alfonso_cohort + plan, design = SuicidePart2) %>%
+  addmargins()
+svytable(~brom3_agecohort + plan, design = SuicidePart2) %>% 
+  addmargins()
+```
+
+```{r}
+# attempt
+svytable(~alfonso_cohort + attempt, design = SuicidePart2) %>%
+  addmargins()
+svytable(~brom3_agecohort + attempt, design = SuicidePart2) %>% 
+  addmargins()
+```
+
+## Religion
+
+```{r}
+# orthodox counts by cohort
+svytable(~alfonso_cohort + de32_1, design = SuicidePart2)
+svytable(~brom3_agecohort + de32_1, design = SuicidePart2)
+```
+
+```{r}
+# uniate counts by cohort
+svytable(~alfonso_cohort + de32_2, design = SuicidePart2)
+svytable(~brom3_agecohort + de32_2, design = SuicidePart2)
+```
+
+```{r}
+# other religion counts by cohort
+svytable(~alfonso_cohort + de32_other, design = SuicidePart2)
+svytable(~brom3_agecohort + de32_other, design = SuicidePart2)
+```
+
+```{r}
+# service attendance counts
+svytable(~alfonso_cohort + de33, design = SuicidePart2)
+svytable(~brom3_agecohort + de33, design = SuicidePart2)
+```
+
+```{r}
+# religiosity counts
+svytable(~alfonso_cohort + de34, design = SuicidePart2)
+svytable(~brom3_agecohort + de34, design = SuicidePart2)
+```
+
+```{r}
+# does importance of religion correlate with service attendance?
+servicevsimp <-
+  svyglm(de33 ~ de34, design = SuicidePart2)
+summary(servicevsimp)
+```
+
+
+```{r}
+attemptnoplan <-
+  cididata_pt2 %>%
+  filter(attempt == 1 & plan == 5)
+svyattemptnoplan <-
+  svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, 
+            data = subset(attemptnoplan, attemptnoplan$weight2>0))
+options(survey.lonely.psu = "adjust")
+svytable(~alfonso_cohort, design = svyattemptnoplan) %>% round()
+svytable(~brom3_agecohort, design = svyattemptnoplan) %>% round()
+```
+
+```{r}
+cididata_pt2 %>%
+  filter(ideate & plan & attempt == 1) %>%
+  group_by(brom3_agecohort) %>%
+  summarize(N = n())
+
+cididata_pt2 %>%
+  filter(ideate & plan & attempt == 1) %>%
+  group_by(alfonso_cohort) %>%
+  summarize(N = n())
+```

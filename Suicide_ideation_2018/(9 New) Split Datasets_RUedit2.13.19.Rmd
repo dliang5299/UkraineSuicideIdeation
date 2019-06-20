@@ -1,0 +1,128 @@
+---
+title: "Split Cohorts"
+author: "Alfonso Martinez"
+date: "1/24/2019"
+output: html_document
+---
+
+Note: n(1) = 1684 for Oldest cohort, n(2) = 1733 for Middle cohort, and n(3) = 1194 for Youngest cohort, these correspond to the sample sizes in each cohort.
+
+In other words, BrometCohorts = 1 corresponds to the oldest cohort, Bromet Cohorts = 2 corresponds to the middle cohort, and BrometCohort = 3 corresponds to the youngest cohort. Note that we do not have the ages for n(unknown) = 114 participants.
+
+Here we are splitting up the Main Dataset "SuicideDataset" into three smaller datasets, called "Bromet_Cohort_Oldest_Dataset", "Bromet_Cohort_Middle_Dataset", and "Bromet_Cohort_Youngest_Dataset".
+
+The datsets contain the same variables but the only distinction is that each datset only contains members (participants) that belong to a particialr cohort. For instance, "Bromet_Cohort_Oldest_Dataset" only contains members (participants) who are in the oldest cohort, given by a value of 1 in the original "SuicideDataset" datset. The other two datasets are similar.
+
+```{r}
+Bromet_Cohort_Oldest_Dataset <- subset(SuicideDataset, SuicideDataset$BrometCohorts == 1)
+
+Bromet_Cohort_Middle_Dataset <- subset(SuicideDataset, SuicideDataset$BrometCohorts == 2)
+
+Bromet_Cohort_Youngest_Dataset <- subset(SuicideDataset, SuicideDataset$BrometCohorts == 3)
+```
+
+
+```{r}
+#Dataset with Part 1 weights on [Bromet_Cohort_Oldest_Dataset]
+SBCOD = svydesign(ids = ~SECU, strata = ~STRATA, weights = ~finalp1wt, nest = T, data = subset(Bromet_Cohort_Oldest_Dataset, Bromet_Cohort_Oldest_Dataset$finalp1wt>0))
+options(survey.lonely.psu = "adjust")
+```
+
+
+```{r}
+#Dataset with Part 1 weights on [Bromet_Cohort_Youngest_Dataset]
+SBCYD = svydesign(ids = ~SECU, strata = ~STRATA, weights = ~finalp1wt, nest = T, data = subset(Bromet_Cohort_Youngest_Dataset, Bromet_Cohort_Youngest_Dataset$finalp1wt>0))
+options(survey.lonely.psu = "adjust")
+```
+
+
+#Note: This model isn't running correctly
+#ModelTest: Univariate Logistic Regressions (Sex (SEX)) [Oldest Cohort Only]
+```{r}
+ModelOld = svyglm(IdeatedSuicide ~ SEX, design=SBCOD, family=quasibinomial("logit"))
+summary(ModelOld)
+print(round(exp(cbind(OR = coef(ModelOld), confint(ModelOld))),2))
+#changed this line of code in the same fashion as noted in Rmd file "Suicide Ideation Univariate..." -RU 1.27.19
+print(addmargins(round(svytable(~SEX+IdeatedSuicide, design=SBCOD))))
+
+#RU edits following this line 02.13.19:
+#first looking for interactions univariately (if there are any not included here that are of interest, please run them)
+m1 <- svyglm(IdeatedSuicide ~ SEX*MarriageStatus, design=SBCOD, family=quasibinomial("logit"))
+summary(m1)
+print(round(exp(cbind(OR = coef(m1), confint(m1))),2))
+
+m2 <- svyglm(IdeatedSuicide ~ SEX*Urbanicity, design=SBCOD, family=quasibinomial("logit"))
+summary(m2)
+print(round(exp(cbind(OR = coef(m2), confint(m2))),2))
+
+m3 <- svyglm(IdeatedSuicide ~ Urbanicity*Regions2, design=SBCOD, family=quasibinomial("logit"))
+summary(m3)
+print(round(exp(cbind(OR = coef(m3), confint(m3))),2))
+
+m4 <- svyglm(IdeatedSuicide ~ FINAN*EDLEVEL, design=SBCOD, family=quasibinomial("logit"))
+summary(m4)
+print(round(exp(cbind(OR = coef(m4), confint(m4))),2)) #looks like confidence intervals are getting outrageous for this interaction, sample size must be small
+
+m5 <- svyglm(IdeatedSuicide ~ FINAN*MarriageStatus, design=SBCOD, family=quasibinomial("logit"))
+summary(m5)
+print(round(exp(cbind(OR = coef(m5), confint(m5))),2))
+
+m6 <- svyglm(IdeatedSuicide ~ SEX*EDLEVEL, design=SBCOD, family=quasibinomial("logit"))
+summary(m6)
+print(round(exp(cbind(OR = coef(m6), confint(m6))),2)) #this interaction does seem to have some bearing on the analysis, and should be considered - double-check the sample size for any interactions you are interested in using
+
+#secondly looking at full model including all explanatory variables of interest
+m7 <- svyglm(IdeatedSuicide ~ SEX + EDLEVEL + Urbanicity + Regions2 + FINAN + MarriageStatus, design=SBCOD, family=quasibinomial("logit"))
+summary(m7)
+print(round(exp(cbind(OR = coef(m7), confint(m7))),2))
+
+#thirdly looking at full model including any pertinent interactions and all explanatory variables of interest
+m8 <- svyglm(IdeatedSuicide ~ SEX*EDLEVEL + Urbanicity + Regions2 + FINAN + MarriageStatus, design=SBCOD, family=quasibinomial("logit"))
+summary(m8)
+print(round(exp(cbind(OR = coef(m8), confint(m8))),2)) #interaction of sex*edlevel loses significance after adjusting for other demographic variables
+```
+
+#Note: This model isn't running correctly
+#ModelYoung: Univariate Logistic Regressions (Sex (SEX)) [Youngest Cohort Only]
+```{r}
+ModelYoung = svyglm(IdeatedSuicide ~ SEX, design=SBCYD, family=quasibinomial("logit"))
+summary(ModelYoung)
+print(round(exp(cbind(OR = coef(ModelYoung), confint(ModelYoung))),2))
+print(addmargins(round(svytable(~SEX+IdeatedSuicide, design=SBCYD))))
+
+#RU edits following this line 02.13.19:
+#first looking for interactions univariately (if there are any not included here that are of interest, please run them)
+m1 <- svyglm(IdeatedSuicide ~ SEX*MarriageStatus, design=SBCYD, family=quasibinomial("logit"))
+summary(m1)
+print(round(exp(cbind(OR = coef(m1), confint(m1))),2))
+
+m2 <- svyglm(IdeatedSuicide ~ SEX*Urbanicity, design=SBCYD, family=quasibinomial("logit"))
+summary(m2)
+print(round(exp(cbind(OR = coef(m2), confint(m2))),2))
+
+m3 <- svyglm(IdeatedSuicide ~ Urbanicity*Regions2, design=SBCYD, family=quasibinomial("logit"))
+summary(m3)
+print(round(exp(cbind(OR = coef(m3), confint(m3))),2)) #borderline sig interaction
+
+m4 <- svyglm(IdeatedSuicide ~ FINAN*EDLEVEL, design=SBCYD, family=quasibinomial("logit"))
+summary(m4)
+print(round(exp(cbind(OR = coef(m4), confint(m4))),2)) 
+
+m5 <- svyglm(IdeatedSuicide ~ FINAN*MarriageStatus, design=SBCYD, family=quasibinomial("logit"))
+summary(m5)
+print(round(exp(cbind(OR = coef(m5), confint(m5))),2))
+
+m6 <- svyglm(IdeatedSuicide ~ SEX*EDLEVEL, design=SBCYD, family=quasibinomial("logit"))
+summary(m6)
+print(round(exp(cbind(OR = coef(m6), confint(m6))),2))
+
+#secondly looking at full model including all explanatory variables of interest
+m7 <- svyglm(IdeatedSuicide ~ SEX + EDLEVEL + Urbanicity + Regions2 + FINAN + MarriageStatus, design=SBCYD, family=quasibinomial("logit"))
+summary(m7)
+print(round(exp(cbind(OR = coef(m7), confint(m7))),2))
+
+#thirdly looking at full model including any pertinent interactions and all explanatory variables of interest
+m8 <- svyglm(IdeatedSuicide ~ Urbanicity*Regions2 + SEX + EDLEVEL + FINAN + MarriageStatus, design=SBCYD, family=quasibinomial("logit"))
+summary(m8)
+print(round(exp(cbind(OR = coef(m8), confint(m8))),2)) #a lot more going on here for the younger cohort
+```

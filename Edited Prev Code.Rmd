@@ -1,0 +1,93 @@
+---
+title: "Edited Prelims"
+author: "Deric Liang"
+date: "6/13/2019"
+output: html_document
+---
+
+```{r}
+library(data.table)
+require(haven)
+require(survey)
+require(knitr)
+SuicideDataset <- 
+  fread("Suicide_ideation_2018/suicide_012719_AM.csv")
+```
+
+
+#Changing all demographic variables from integers to factors (categorical).
+```{r}
+SuicideDataset$SEX = as.factor(SuicideDataset$SEX)
+SuicideDataset$IdeatedSuicide = as.factor(SuicideDataset$IdeatedSuicide)
+SuicideDataset$BrometCohorts = as.factor(SuicideDataset$BrometCohorts)
+SuicideDataset$FINAN = as.factor(SuicideDataset$FINAN)
+SuicideDataset$Urbanicity = as.factor(SuicideDataset$Urbanicity)
+SuicideDataset$EDLEVEL = as.factor(SuicideDataset$EDLEVEL)
+SuicideDataset$Regions2 = as.factor(SuicideDataset$Regions2)
+SuicideDataset$MarriageStatus = as.factor(SuicideDataset$MarriageStatus)
+
+# Checking to make sure demographic variables were changed to factors
+class(SuicideDataset$SEX)
+class(SuicideDataset$IdeatedSuicide)
+class(SuicideDataset$BrometCohorts)
+class(SuicideDataset$FINAN)
+class(SuicideDataset$Urbanicity)
+class(SuicideDataset$EDLEVEL)
+class(SuicideDataset$Regions2)
+class(SuicideDataset$MarriageStatus)
+```
+
+
+#Changing all DSM variables from integers to factors (categorical).
+```{r}
+SuicideDataset$DSM_AGO = as.factor(SuicideDataset$DSM_AGO)
+SuicideDataset$DSM_ALA = as.factor(SuicideDataset$DSM_ALA)
+SuicideDataset$DSM_DYS = as.factor(SuicideDataset$DSM_DYS)
+SuicideDataset$DSM_GAD = as.factor(SuicideDataset$DSM_GAD)
+SuicideDataset$DSM_IED = as.factor(SuicideDataset$DSM_IED)
+SuicideDataset$DSM_MDE = as.factor(SuicideDataset$DSM_MDE)
+SuicideDataset$DSM_PDS = as.factor(SuicideDataset$DSM_PDS)
+SuicideDataset$DSM_SO = as.factor(SuicideDataset$DSM_SO)
+
+# Checking to make sure DSM variables were changed to factors
+class(SuicideDataset$DSM_AGO)
+class(SuicideDataset$DSM_ALA)
+class(SuicideDataset$DSM_DYS)
+class(SuicideDataset$DSM_GAD)
+class(SuicideDataset$DSM_IED)
+class(SuicideDataset$DSM_MDE)
+class(SuicideDataset$DSM_PDS)
+class(SuicideDataset$DSM_SO)
+```
+
+
+###Done converting demographics from integers to categorical variables
+--------------------------------------------------------------------------------------------
+### Defining Part 1 Weights (for SuicideDataset)
+```{r}
+#Dataset with Part 1 weights on
+SuicidePart1 = svydesign(ids = ~SECU, strata = ~STRATA, weights = ~finalp1wt, nest = T, data = subset(SuicideDataset, SuicideDataset$finalp1wt>0))
+options(survey.lonely.psu = "adjust")
+```
+
+### Frequency Check
+```{r}
+# Frequencies of BrometCohorts where 1 = Oldest, 2 = Middle, and 3 = Youngest
+table(SuicideDataset$BrometCohorts)
+# Note: n(1) = 1684 for Oldest cohort, n(2) = 1733 for Middle cohort, and n(3) = 1194 for Youngest cohort, these correspond to the sample sizes in each cohort.
+
+# Frequencies of IdeatedSuicide where 0 = Did not Ideate and 1 = Ideated
+table(SuicideDataset$IdeatedSuicide)
+# Note: n = 389 ideated in total sample population of N = 4725
+```
+
+
+
+
+
+
+```{R}
+str(SuicideDataset)
+```
+
+

@@ -1,0 +1,78 @@
+---
+title: "(1) Suicide Ideation Univariate Demographics Logistic Regressions (Not Split by Cohort)"
+author: "Alfonso Martinez"
+date: "1/24/2019"
+output:
+  html_document: default
+---
+
+#Update (1/20/19)
+I re-ran these analysis and got the same results as I did the last time I ran the analysis.
+
+#Note, none of the analysis ran in this file are split by cohort, they are ran across all participants!
+
+#Model 1A: Univariate Logistic Regressions (Sex (SEX))
+```{r}
+Model1 = svyglm(IdeatedSuicide~ SEX, design=SuicidePart1, family=quasibinomial("logit"))
+summary(Model1)
+#exp(coef(Model1))
+#exp(confint(Model1))
+print(round(exp(cbind(OR = coef(Model1), confint(Model1))),2))
+#I changed the next line of code a little bit because I think this information will be part of the 
+#prevlance rate tables (which are weighted) you'll present before you start in on the analysis. You'll want to change
+#the rest of prevalence rate coding lines to match. -RU update 1.27.19
+print(addmargins(round(svytable(~SEX+IdeatedSuicide, design=SuicidePart1))))
+```
+
+#Model 1B: Univariate Logistic Regressions (Region (Regions2)
+```{r}
+Model1 = svyglm(IdeatedSuicide~ Regions2, design=SuicidePart1, family=quasibinomial("logit"))
+summary(Model1)
+#exp(coef(Model1))
+#exp(confint(Model1))
+print(round(exp(cbind(OR = coef(Model1), confint(Model1))),2))
+print(addmargins(round(svytable(~Regions2, design=SuicidePart1))))
+```
+
+#Model 1C: Univariate Logistic Regressions (Urbanicity (Urbanicity))
+```{r}
+Model1 = svyglm(IdeatedSuicide~ Urbanicity, design=SuicidePart1, family=quasibinomial("logit"))
+summary(Model1)
+#exp(coef(Model1))
+#exp(confint(Model1))
+print(round(exp(cbind(OR = coef(Model1), confint(Model1))),2))
+print(addmargins(round(svytable(~Urbanicity, design=SuicidePart1))))
+```
+
+#Model 1D: Univariate Logistic Regressions (Education (EDLEVEL))
+```{r}
+Model1 = svyglm(IdeatedSuicide~ EDLEVEL, design=SuicidePart1, family=quasibinomial("logit"))
+summary(Model1)
+#exp(coef(Model1))
+#exp(confint(Model1))
+print(round(exp(cbind(OR = coef(Model1), confint(Model1))),2))
+print(addmargins(round(svytable(~EDLEVEL, design=SuicidePart1))))
+```
+
+#Model 1E: Univariate Logistic Regressions (Financial Status (FINAN))
+```{r}
+Model1 = svyglm(IdeatedSuicide~ FINAN, design=SuicidePart1, family=quasibinomial("logit"))
+summary(Model1)
+#exp(coef(Model1))
+#exp(confint(Model1))
+print(round(exp(cbind(OR = coef(Model1), confint(Model1))),2))
+print(addmargins(round(svytable(~FINAN, design=SuicidePart1))))
+```
+
+#Model 1F: Univariate Logistic Regressions (Marriage Status (MarriageStatus))
+```{r}
+Model1 = svyglm(IdeatedSuicide~ MarriageStatus, design=SuicidePart1, family=quasibinomial("logit"))
+summary(Model1) 
+#exp(coef(Model1))
+#exp(confint(Model1))
+print(round(exp(cbind(OR = coef(Model1), confint(Model1))),2))
+print(addmargins(round(svytable(~MarriageStatus, design=SuicidePart1))))
+```
+
+
+
