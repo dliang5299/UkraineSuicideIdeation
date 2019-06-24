@@ -236,40 +236,72 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Age Cohort Comparisons</h1>
 <h4 class="author"><em>Deric Liang</em></h4>
-<h4 class="date"><em>6/19/2019</em></h4>
+<h4 class="date"><em>6/24/2019</em></h4>
 
 </div>
 
 
 <!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyByZWFkIGluIG1haW4gZGF0YVxuY2lkaWRhdGFfcmF3IDwtXG4gIGZyZWFkKFwidWtybWFpbl9SVV8wNjE0MTkuY3N2XCIpXG5gYGAifQ== -->
+<pre class="r"><code># read in main data
+cididata_raw &lt;-
+  fread(&quot;ukrmain_RU_061419.csv&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzdWJzZXR0aW5nIGRhdGFcbmNpZGlkYXRhIDwtXG4gIGNpZGlkYXRhX3JhdyAlPiVcbiAgbXV0YXRlKGFueCA9IGlmZWxzZShEU01fQUdPID09IDF8RFNNX1NPID09IDF8RFNNX0dBRCA9PSAxfERTTV9QRFMgPT0gMSwgMSwgMCksXG4gICAgICAgICBpZWQgPSBpZmVsc2UoRFNNX0lFREggPT0gMSwgMSwgMCksXG4gICAgICAgICBhZmYgPSBpZmVsc2UoRFNNX01ERSA9PSAxfERTTV9EWVMgPT0gMSwgMSwgMCksXG4gICAgICAgICBhbGMgPSBpZmVsc2UoRFNNX0FMQSA9PSAxfERTTV9BTEQgPT0gMSwgMSwgMCksXG4gICAgICAgICBhbnkgPSBpZmVsc2UoYW54ID09IDF8aWVkID09IDF8YWZmID09IDF8YWxjID09IDEsIDEsIDApKSAlPiVcbiAgc2VsZWN0KHNhbXBsZWlkLCBBR0UsIFNFWCwgaW8xNiwgZGUyMCwgZm51MSwgZm51NCwgXG4gICAgICAgICBkZTMyXzEsIGRlMzJfMiwgZGUzMl8zLCBkZTMyXzQsIGRlMzJfNSwgZGUzMl82LCBkZTMyXzcsIGRlMzJfOCwgZGUzMl85LCBcbiAgICAgICAgIGRlMzJfOTgsIGRlMzJfOTksIGRlMzQsIGRlNDAsIHNjMywgc2MzYSwgbXIxNiwgbXIxOCwgbXIyMiwgXG4gICAgICAgICBzbjEsIHNuMiwgc242LCBzbjcsIGNjMXR6LCBjYzIsIGNuNiwgY242YSwgY242YixcbiAgICAgICAgIHNkMiwgc2Q0LCBzZDYsIHNkMTUsIHNkMTcsIHNkMTksIGNoNjcsIGNoOTcsIHNjNywgc3U4LCBjaDUyLCBjaDgyLCBwdDEsXG4gICAgICAgICBhbngsIGllZCwgYWZmLCBhbGMsIGFueSwgc2VjdSwgc3RyYXRhLCB3ZWlnaHQyKVxuYGBgIn0= -->
+<pre class="r"><code># subsetting data
+cididata &lt;-
+  cididata_raw %&gt;%
+  mutate(anx = ifelse(DSM_AGO == 1|DSM_SO == 1|DSM_GAD == 1|DSM_PDS == 1, 1, 0),
+         ied = ifelse(DSM_IEDH == 1, 1, 0),
+         aff = ifelse(DSM_MDE == 1|DSM_DYS == 1, 1, 0),
+         alc = ifelse(DSM_ALA == 1|DSM_ALD == 1, 1, 0),
+         any = ifelse(anx == 1|ied == 1|aff == 1|alc == 1, 1, 0)) %&gt;%
+  select(sampleid, AGE, SEX, io16, de20, fnu1, fnu4, 
+         de32_1, de32_2, de32_3, de32_4, de32_5, de32_6, de32_7, de32_8, de32_9, 
+         de32_98, de32_99, de34, de40, sc3, sc3a, mr16, mr18, mr22, 
+         sn1, sn2, sn6, sn7, cc1tz, cc2, cn6, cn6a, cn6b,
+         sd2, sd4, sd6, sd15, sd17, sd19, ch67, ch97, sc7, su8, ch52, ch82, pt1,
+         anx, ied, aff, alc, any, secu, strata, weight2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <div id="data-cleaning" class="section level1">
 <h1>Data Cleaning</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBjcmVhdGUgYWdlIGNvaG9ydHNcbmNpZGlkYXRhX3B0MiA8LVxuICBjaWRpZGF0YSAlPiVcbiAgZmlsdGVyKCFpcy5uYShkZTIwXzEpKVxuY2lkaWRhdGFfcHQyIDwtXG4gIGNpZGlkYXRhX3B0MiAlPiVcbiAgIyBicm9tZXQgY29ob3J0c1xuICBtdXRhdGUoYnJvbTRfYWdlY29ob3J0ID0gY3V0KGNpZGlkYXRhX3B0MiRBR0UsIGJyZWFrcyA9IGMoMTYsIDI0LCAzNCwgNDksIEluZiksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWxzID0gYyhcIllvdW5nZXN0XCIsIFwiTWlkZGxlIFlvdW5nXCIsIFwiTWlkZGxlIEFnZVwiLCBcIkVsZGVzdFwiKSksXG4gICAgICAgICBicm9tM19hZ2Vjb2hvcnQgPSBjdXQoY2lkaWRhdGFfcHQyJEFHRSwgYnJlYWtzID0gYygxNiwgMzcsIDU3LCBJbmYpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbHMgPSBjKFwiWW91bmdlc3RcIiwgXCJNaWRkbGVcIiwgXCJFbGRlc3RcIikpKSAlPiVcbiAgIyBhbGZvbnNvIGNvaG9ydHNcbiAgbXV0YXRlKGFsZm9uc29fY29ob3J0ID0gY3V0KGNpZGlkYXRhX3B0MiRBR0UsIGJyZWFrcyA9IGMoMTYsIDM3LCA0OSwgNjQsIEluZiksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbHMgPSBjKFwiWW91bmdlc3RcIiwgXCJNaWRkbGUgWW91bmdcIiwgXCJNaWRkbGUgQWdlXCIsIFwiRWxkZXN0XCIpKSlcbmBgYCJ9 -->
-<pre class="r"><code># create age cohorts
-cididata_pt2 &lt;-
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzdWJzZXQgdG8gcGFydCAyIGRhdGFcbmNpZGlkYXRhX3B0MnJhdyA8LVxuICBjaWRpZGF0YSAlPiVcbiAgZmlsdGVyKCFpcy5uYShkZTIwKSlcbiMgY3JlYXRlIGFnZSBjb2hvcnRzXG5jaWRpZGF0YV9wdDJyYXcgPC1cbiAgY2lkaWRhdGFfcHQycmF3ICU+JVxuICAjIGJyb21ldCBjb2hvcnRzXG4gIG11dGF0ZShicm9tNF9hZ2Vjb2hvcnQgPSBjdXQoY2lkaWRhdGFfcHQycmF3JEFHRSwgYnJlYWtzID0gYygxNiwgMjQsIDM0LCA0OSwgSW5mKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbHMgPSBjKFwiWW91bmdlc3RcIiwgXCJNaWRkbGUgWW91bmdcIiwgXCJNaWRkbGUgQWdlXCIsIFwiRWxkZXN0XCIpKSxcbiAgICAgICAgIGJyb20zX2FnZWNvaG9ydCA9IGN1dChjaWRpZGF0YV9wdDJyYXckQUdFLCBicmVha3MgPSBjKDE2LCAzNywgNTcsIEluZiksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVscyA9IGMoXCJZb3VuZ2VzdFwiLCBcIk1pZGRsZVwiLCBcIkVsZGVzdFwiKSkpICU+JVxuICAjIGFsZm9uc28gY29ob3J0c1xuICBtdXRhdGUoYWxmb25zb19jb2hvcnQgPSBjdXQoY2lkaWRhdGFfcHQycmF3JEFHRSwgYnJlYWtzID0gYygxNiwgMzcsIDQ5LCA2NCwgSW5mKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVscyA9IGMoXCJZb3VuZ2VzdFwiLCBcIk1pZGRsZSBZb3VuZ1wiLCBcIk1pZGRsZSBBZ2VcIiwgXCJFbGRlc3RcIikpKVxuYGBgIn0= -->
+<pre class="r"><code># subset to part 2 data
+cididata_pt2raw &lt;-
   cididata %&gt;%
-  filter(!is.na(de20_1))
-cididata_pt2 &lt;-
-  cididata_pt2 %&gt;%
+  filter(!is.na(de20))
+# create age cohorts
+cididata_pt2raw &lt;-
+  cididata_pt2raw %&gt;%
   # bromet cohorts
-  mutate(brom4_agecohort = cut(cididata_pt2$AGE, breaks = c(16, 24, 34, 49, Inf),
+  mutate(brom4_agecohort = cut(cididata_pt2raw$AGE, breaks = c(16, 24, 34, 49, Inf),
                                         labels = c(&quot;Youngest&quot;, &quot;Middle Young&quot;, &quot;Middle Age&quot;, &quot;Eldest&quot;)),
-         brom3_agecohort = cut(cididata_pt2$AGE, breaks = c(16, 37, 57, Inf),
+         brom3_agecohort = cut(cididata_pt2raw$AGE, breaks = c(16, 37, 57, Inf),
                                       labels = c(&quot;Youngest&quot;, &quot;Middle&quot;, &quot;Eldest&quot;))) %&gt;%
   # alfonso cohorts
-  mutate(alfonso_cohort = cut(cididata_pt2$AGE, breaks = c(16, 37, 49, 64, Inf),
+  mutate(alfonso_cohort = cut(cididata_pt2raw$AGE, breaks = c(16, 37, 49, 64, Inf),
                               labels = c(&quot;Youngest&quot;, &quot;Middle Young&quot;, &quot;Middle Age&quot;, &quot;Eldest&quot;)))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBjcmVhdGUgYnJvYWRlciBcIm90aGVyIHJlbGlnaW9uXCIgdmFyaWFibGUsIGNsZWFuIHVwIHN1aWNpZGFsaXR5XG5jaWRpZGF0YV9wdDIgPC1cbiAgY2lkaWRhdGFfcHQyICU+JVxuICAjIHJlbGlnaW9uXG4gIG11dGF0ZShkZTMyXzEgPSBpZmVsc2UoaXMubmEoZGUzMl8xKSwgMCwgMSksXG4gICAgICAgICBkZTMyXzIgPSBpZmVsc2UoaXMubmEoZGUzMl8yKSwgMCwgMSksXG4gICAgICAgICBkZTMyXzkgPSBpZmVsc2UoaXMubmEoZGUzMl85KSwgMCwgMSksXG4gICAgICAgICBkZTMyXzk4ID0gaWZlbHNlKGlzLm5hKGRlMzJfOTgpLCAwLCAxKSxcbiAgICAgICAgIGRlMzJfOTkgPSBpZmVsc2UoaXMubmEoZGUzMl85OSksIDAsIDEpLFxuICAgICAgICAgZGUzMl9vdGhlciA9IGlmZWxzZShkZTMyXzN8ZGUzMl80fGRlMzJfNXxkZTMyXzZ8ZGUzMl83fGRlMzJfOCA9PSAxLCAxLCAwKSxcbiAgICAgICAgIGRlMzJfb3RoZXIgPSBpZmVsc2UoaXMubmEoZGUzMl9vdGhlciksIDAsIDEpLFxuICAgICAgICAgZGUzMyA9IGlmZWxzZShkZTMzID09IDggfCBkZTMzID09IDksIDAsIGRlMzMpLFxuICAgICAgICAgZGUzNCA9IGlmZWxzZShkZTM0ID09IDggfCBkZTM0ID09IDksIDAsIGRlMzQpKSAlPiVcbiAgIyBzdWljaWRhbGl0eVxuICBtdXRhdGUoaWRlYXRlID0gaWZlbHNlKCFpcy5uYShzZDIpLCBzZDIsIHNkMTUpLFxuICAgICAgICAgcGxhbiA9IGlmZWxzZSghaXMubmEoc2Q0KSwgc2Q0LCBzZDE3KSxcbiAgICAgICAgIGF0dGVtcHQgPSBpZmVsc2UoIWlzLm5hKHNkNiksIHNkNiwgc2QxOSksXG4gICAgICAgICBwbGFuID0gaWZlbHNlKGlzLm5hKHBsYW4pLCA1LCBwbGFuKSxcbiAgICAgICAgIGF0dGVtcHQgPSBpZmVsc2UoaXMubmEoYXR0ZW1wdCksIDUsIGF0dGVtcHQpKSAlPiVcbiAgc2VsZWN0KHNhbXBsZWlkLCBBR0UsIGJyb20zX2FnZWNvaG9ydCwgYWxmb25zb19jb2hvcnQsIFNFWCwgcHQxLFxuICAgICAgICAgaW8xNSwgZGUxMywgaW8xNiwgc2M4LCBkZTIwXzEsIGZudTQsIG1yMjIsIFxuICAgICAgICAgbXIzNywgc2MzLCBzYzNhLCBkZTM0LCBtcjIyLCBzbjEsIHNuMiwgc242LCBzbjcsIHNjNywgXG4gICAgICAgICBjYzF0eiwgY2MyOGEsIGNjMjhiLCBjYzI4YywgY2MyOGQsIGNjMjhlLCBjYzI4ZiwgY2MyOGcsIGNjMjBhLCBjYzIwYiwgXG4gICAgICAgICBjYzIwYywgY2MyMGQsIGNjMjZhLCBjYzI2YiwgY2MyNmMsIGlkZWF0ZSwgcGxhbiwgYXR0ZW1wdCwgc3U4LFxuICAgICAgICAgZGUzMl8xLCBkZTMyXzIsIGRlMzJfOSwgZGUzMl85OCwgZGUzMl85OSwgZGUzMl9vdGhlciwgZGUzMywgZGUzNCxcbiAgICAgICAgIHNlY3UsIHN0cmF0YSwgd2VpZ2h0MilcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBjcmVhdGUgYnJvYWRlciBcIm90aGVyIHJlbGlnaW9uXCIgdmFyaWFibGUsIGNsZWFuIHVwIHN1aWNpZGFsaXR5XG5jaWRpZGF0YV9wdDIgPC1cbiAgY2lkaWRhdGFfcHQycmF3ICU+JVxuICAjIHJlbGlnaW9uXG4gIG11dGF0ZShkZTMyXzEgPSBpZmVsc2UoaXMubmEoZGUzMl8xKSwgMCwgMSksXG4gICAgICAgICBkZTMyXzIgPSBpZmVsc2UoaXMubmEoZGUzMl8yKSwgMCwgMSksXG4gICAgICAgICBkZTMyXzkgPSBpZmVsc2UoaXMubmEoZGUzMl85KSwgMCwgMSksXG4gICAgICAgICBkZTMyXzk4ID0gaWZlbHNlKGlzLm5hKGRlMzJfOTgpLCAwLCAxKSxcbiAgICAgICAgIGRlMzJfOTkgPSBpZmVsc2UoaXMubmEoZGUzMl85OSksIDAsIDEpLFxuICAgICAgICAgZGUzMl9vdGhlciA9IGlmZWxzZShkZTMyXzN8ZGUzMl80fGRlMzJfNXxkZTMyXzZ8ZGUzMl83fGRlMzJfOCA9PSAxLCAxLCAwKSxcbiAgICAgICAgIGRlMzJfb3RoZXIgPSBpZmVsc2UoaXMubmEoZGUzMl9vdGhlciksIDAsIDEpLFxuICAgICAgICAgZGUzNCA9IGlmZWxzZShkZTM0ID09IDggfCBkZTM0ID09IDksIDAsIGRlMzQpKSAlPiVcbiAgIyBzdWljaWRhbGl0eVxuICBtdXRhdGUoaWRlYXRlID0gaWZlbHNlKCFpcy5uYShzZDIpLCBzZDIsIHNkMTUpLFxuICAgICAgICAgcGxhbiA9IGlmZWxzZSghaXMubmEoc2Q0KSwgc2Q0LCBzZDE3KSxcbiAgICAgICAgIGF0dGVtcHQgPSBpZmVsc2UoIWlzLm5hKHNkNiksIHNkNiwgc2QxOSksXG4gICAgICAgICBwbGFuID0gaWZlbHNlKGlzLm5hKHBsYW4pLCA1LCBwbGFuKSxcbiAgICAgICAgIGF0dGVtcHQgPSBpZmVsc2UoaXMubmEoYXR0ZW1wdCksIDUsIGF0dGVtcHQpKSAlPiVcbiAgc2VsZWN0KHNhbXBsZWlkLCBicm9tNF9hZ2Vjb2hvcnQsIGJyb20zX2FnZWNvaG9ydCwgYWxmb25zb19jb2hvcnQsIFNFWCwgaW8xNiwgXG4gICAgICAgICBkZTIwLCBmbnUxLCBmbnU0LCBkZTMyXzEsIGRlMzJfMiwgZGUzMl9vdGhlciwgXG4gICAgICAgICBkZTMyXzk4LCBkZTMyXzk5LCBkZTM0LCBkZTQwLCBzYzMsIHNjM2EsIG1yMTYsIG1yMTgsIG1yMjIsIFxuICAgICAgICAgc24xLCBzbjIsIHNuNiwgc243LCBjYzF0eiwgY2MyLCBjbjYsIGNuNmEsIGNuNmIsXG4gICAgICAgICBpZGVhdGUsIHBsYW4sIGF0dGVtcHQsIGNoNjcsIGNoOTcsIHNjNywgc3U4LCBjaDUyLCBjaDgyLCBwdDEsXG4gICAgICAgICBhbngsIGFsYywgYWZmLCBpZWQsIGFueSwgc2VjdSwgc3RyYXRhLCB3ZWlnaHQyKVxuYGBgIn0= -->
 <pre class="r"><code># create broader &quot;other religion&quot; variable, clean up suicidality
 cididata_pt2 &lt;-
-  cididata_pt2 %&gt;%
+  cididata_pt2raw %&gt;%
   # religion
   mutate(de32_1 = ifelse(is.na(de32_1), 0, 1),
          de32_2 = ifelse(is.na(de32_2), 0, 1),
@@ -278,7 +310,6 @@ cididata_pt2 &lt;-
          de32_99 = ifelse(is.na(de32_99), 0, 1),
          de32_other = ifelse(de32_3|de32_4|de32_5|de32_6|de32_7|de32_8 == 1, 1, 0),
          de32_other = ifelse(is.na(de32_other), 0, 1),
-         de33 = ifelse(de33 == 8 | de33 == 9, 0, de33),
          de34 = ifelse(de34 == 8 | de34 == 9, 0, de34)) %&gt;%
   # suicidality
   mutate(ideate = ifelse(!is.na(sd2), sd2, sd15),
@@ -286,13 +317,12 @@ cididata_pt2 &lt;-
          attempt = ifelse(!is.na(sd6), sd6, sd19),
          plan = ifelse(is.na(plan), 5, plan),
          attempt = ifelse(is.na(attempt), 5, attempt)) %&gt;%
-  select(sampleid, AGE, brom3_agecohort, alfonso_cohort, SEX, pt1,
-         io15, de13, io16, sc8, de20_1, fnu4, mr22, 
-         mr37, sc3, sc3a, de34, mr22, sn1, sn2, sn6, sn7, sc7, 
-         cc1tz, cc28a, cc28b, cc28c, cc28d, cc28e, cc28f, cc28g, cc20a, cc20b, 
-         cc20c, cc20d, cc26a, cc26b, cc26c, ideate, plan, attempt, su8,
-         de32_1, de32_2, de32_9, de32_98, de32_99, de32_other, de33, de34,
-         secu, strata, weight2)</code></pre>
+  select(sampleid, brom4_agecohort, brom3_agecohort, alfonso_cohort, SEX, io16, 
+         de20, fnu1, fnu4, de32_1, de32_2, de32_other, 
+         de32_98, de32_99, de34, de40, sc3, sc3a, mr16, mr18, mr22, 
+         sn1, sn2, sn6, sn7, cc1tz, cc2, cn6, cn6a, cn6b,
+         ideate, plan, attempt, ch67, ch97, sc7, su8, ch52, ch82, pt1,
+         anx, alc, aff, ied, any, secu, strata, weight2)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -314,29 +344,34 @@ options(survey.lonely.psu = &quot;adjust&quot;)</code></pre>
 <h2>Sex</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgU0VYLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBhZGRtYXJnaW5zKClcblxuYGBgIn0= -->
-<pre class="r"><code>svytable(~alfonso_cohort + SEX, design = SuicidePart2) %&gt;% addmargins()
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMjIDAgPSBmZW1hbGVcbiMjIyAxID0gbWFsZVxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgU0VYLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
+<pre class="r"><code>### 0 = female
+### 1 = male
+svytable(~alfonso_cohort + SEX, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBTRVhcbmFsZm9uc29fY29ob3J0ICAgICAgICAgMCAgICAgICAgIDEgICAgICAgU3VtXG4gIFlvdW5nZXN0ICAgICAgMzEzLjM2MjYgIDMwMS44NzE3ICA2MTUuMjM0M1xuICBNaWRkbGUgWW91bmcgIDIwNS41NjgxICAxOTguNDU2NiAgNDA0LjAyNDdcbiAgTWlkZGxlIEFnZSAgICAyMDIuNTEwOSAgMTUxLjkzMzggIDM1NC40NDQ2XG4gIEVsZGVzdCAgICAgICAgMjI1LjA1NDYgIDEyMS4yNDI0ICAzNDYuMjk3MFxuICBTdW0gICAgICAgICAgIDk0Ni40OTYxICA3NzMuNTA0NSAxNzIwLjAwMDZcbiJ9 -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBTRVhcbmFsZm9uc29fY29ob3J0ICAgIDAgICAgMSAgU3VtXG4gIFlvdW5nZXN0ICAgICAgMzEzICAzMDIgIDYxNVxuICBNaWRkbGUgWW91bmcgIDIwNiAgMTk4ICA0MDRcbiAgTWlkZGxlIEFnZSAgICAyMDMgIDE1MiAgMzU0XG4gIEVsZGVzdCAgICAgICAgMjI1ICAxMjEgIDM0NlxuICBTdW0gICAgICAgICAgIDk0NiAgNzc0IDE3MjBcbiJ9 -->
 <pre><code>              SEX
-alfonso_cohort         0         1       Sum
-  Youngest      313.3626  301.8717  615.2343
-  Middle Young  205.5681  198.4566  404.0247
-  Middle Age    202.5109  151.9338  354.4446
-  Eldest        225.0546  121.2424  346.2970
-  Sum           946.4961  773.5045 1720.0006</code></pre>
+alfonso_cohort    0    1  Sum
+  Youngest      313  302  615
+  Middle Young  206  198  404
+  Middle Age    203  152  354
+  Eldest        225  121  346
+  Sum           946  774 1720</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIFNFWCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgYWRkbWFyZ2lucygpXG5gYGAifQ== -->
-<pre class="r"><code>svytable(~brom3_agecohort + SEX, design = SuicidePart2) %&gt;% addmargins()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIFNFWCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~brom3_agecohort + SEX, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgU0VYXG5icm9tM19hZ2Vjb2hvcnQgICAgICAgICAwICAgICAgICAgMSAgICAgICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgMzEzLjM2MjYgIDMwMS44NzE3ICA2MTUuMjM0M1xuICAgICAgIE1pZGRsZSAgICAzMTcuMjkwNCAgMjg3Ljk1OTkgIDYwNS4yNTAyXG4gICAgICAgRWxkZXN0ICAgIDMxNS44NDMyICAxODMuNjczMCAgNDk5LjUxNjFcbiAgICAgICBTdW0gICAgICAgOTQ2LjQ5NjEgIDc3My41MDQ1IDE3MjAuMDAwNlxuIn0= -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgU0VYXG5icm9tM19hZ2Vjb2hvcnQgICAgMCAgICAxICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgMzEzICAzMDIgIDYxNVxuICAgICAgIE1pZGRsZSAgICAzMTcgIDI4OCAgNjA1XG4gICAgICAgRWxkZXN0ICAgIDMxNiAgMTg0ICA1MDBcbiAgICAgICBTdW0gICAgICAgOTQ2ICA3NzQgMTcyMFxuIn0= -->
 <pre><code>               SEX
-brom3_agecohort         0         1       Sum
-       Youngest  313.3626  301.8717  615.2343
-       Middle    317.2904  287.9599  605.2502
-       Eldest    315.8432  183.6730  499.5161
-       Sum       946.4961  773.5045 1720.0006</code></pre>
+brom3_agecohort    0    1  Sum
+       Youngest  313  302  615
+       Middle    317  288  605
+       Eldest    316  184  500
+       Sum       946  774 1720</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -345,28 +380,714 @@ brom3_agecohort         0         1       Sum
 <h2>Marriage</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgc2MzLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBhZGRtYXJnaW5zKClcbmBgYCJ9 -->
-<pre class="r"><code>svytable(~alfonso_cohort + sc3, design = SuicidePart2) %&gt;% addmargins()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhcmUgeW91IGN1cnJlbnRseSBtYXJyaWVkP1xuIyMjIDcgPSBsaXZpbmcgd2l0aCBzb21lb25lXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBzYzMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code># are you currently married?
+### 7 = living with someone
+svytable(~alfonso_cohort + sc3, design = SuicidePart2) %&gt;%
+  addmargins() %&gt;%
+  round()</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBzYzNcbmFsZm9uc29fY29ob3J0ICAgICAgICAgIDEgICAgICAgICAgNSAgICAgICAgICA3ICAgICAgICBTdW1cbiAgWW91bmdlc3QgICAgICAzMzguMTM0MjYgIDI2Ni4yNzU5MiAgIDEwLjgyNDEwICA2MTUuMjM0MjhcbiAgTWlkZGxlIFlvdW5nICAyOTEuNzgzNTYgIDEwMi45NDQwNyAgICA5LjI5NzA1ICA0MDQuMDI0NjhcbiAgTWlkZGxlIEFnZSAgICAyMzUuNzIxOTAgIDExNS4zNjUxNyAgICAzLjM1NzU3ICAzNTQuNDQ0NjRcbiAgRWxkZXN0ICAgICAgICAxNjIuOTY1NDAgIDE4My4zMzE2MiAgICAwLjAwMDAwICAzNDYuMjk3MDJcbiAgU3VtICAgICAgICAgIDEwMjguNjA1MTIgIDY2Ny45MTY3OCAgIDIzLjQ3ODcyIDE3MjAuMDAwNjJcbiJ9 -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBzYzNcbmFsZm9uc29fY29ob3J0ICAgIDEgICAgNSAgICA3ICBTdW1cbiAgWW91bmdlc3QgICAgICAzMzggIDI2NiAgIDExICA2MTVcbiAgTWlkZGxlIFlvdW5nICAyOTIgIDEwMyAgICA5ICA0MDRcbiAgTWlkZGxlIEFnZSAgICAyMzYgIDExNSAgICAzICAzNTRcbiAgRWxkZXN0ICAgICAgICAxNjMgIDE4MyAgICAwICAzNDZcbiAgU3VtICAgICAgICAgIDEwMjkgIDY2OCAgIDIzIDE3MjBcbiJ9 -->
 <pre><code>              sc3
-alfonso_cohort          1          5          7        Sum
-  Youngest      338.13426  266.27592   10.82410  615.23428
-  Middle Young  291.78356  102.94407    9.29705  404.02468
-  Middle Age    235.72190  115.36517    3.35757  354.44464
-  Eldest        162.96540  183.33162    0.00000  346.29702
-  Sum          1028.60512  667.91678   23.47872 1720.00062</code></pre>
+alfonso_cohort    1    5    7  Sum
+  Youngest      338  266   11  615
+  Middle Young  292  103    9  404
+  Middle Age    236  115    3  354
+  Eldest        163  183    0  346
+  Sum          1029  668   23 1720</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNjMywgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgYWRkbWFyZ2lucygpXG5gYGAifQ== -->
-<pre class="r"><code>svytable(~brom3_agecohort + sc3, design = SuicidePart2) %&gt;% addmargins()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNjMywgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~brom3_agecohort + sc3, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgc2MzXG5icm9tM19hZ2Vjb2hvcnQgICAgICAgICAgMSAgICAgICAgICA1ICAgICAgICAgIDcgICAgICAgIFN1bVxuICAgICAgIFlvdW5nZXN0ICAzMzguMTM0MjYgIDI2Ni4yNzU5MiAgIDEwLjgyNDEwICA2MTUuMjM0MjhcbiAgICAgICBNaWRkbGUgICAgNDMzLjEyMzg4ICAxNjEuOTE1MTYgICAxMC4yMTExOSAgNjA1LjI1MDIzXG4gICAgICAgRWxkZXN0ICAgIDI1Ny4zNDY5OCAgMjM5LjcyNTcwICAgIDIuNDQzNDMgIDQ5OS41MTYxMVxuICAgICAgIFN1bSAgICAgIDEwMjguNjA1MTIgIDY2Ny45MTY3OCAgIDIzLjQ3ODcyIDE3MjAuMDAwNjJcbiJ9 -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgc2MzXG5icm9tM19hZ2Vjb2hvcnQgICAgMSAgICA1ICAgIDcgIFN1bVxuICAgICAgIFlvdW5nZXN0ICAzMzggIDI2NiAgIDExICA2MTVcbiAgICAgICBNaWRkbGUgICAgNDMzICAxNjIgICAxMCAgNjA1XG4gICAgICAgRWxkZXN0ICAgIDI1NyAgMjQwICAgIDIgIDUwMFxuICAgICAgIFN1bSAgICAgIDEwMjkgIDY2OCAgIDIzIDE3MjBcbiJ9 -->
 <pre><code>               sc3
-brom3_agecohort          1          5          7        Sum
-       Youngest  338.13426  266.27592   10.82410  615.23428
-       Middle    433.12388  161.91516   10.21119  605.25023
-       Eldest    257.34698  239.72570    2.44343  499.51611
-       Sum      1028.60512  667.91678   23.47872 1720.00062</code></pre>
+brom3_agecohort    1    5    7  Sum
+       Youngest  338  266   11  615
+       Middle    433  162   10  605
+       Eldest    257  240    2  500
+       Sum      1029  668   23 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="cancer" class="section level2">
+<h2>Cancer</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBwcmVzZW5jZSBvZiBjYW5jZXJcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNjMXR6LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
+<pre class="r"><code># presence of cancer
+svytable(~alfonso_cohort + cc1tz, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBjYzF0elxuYWxmb25zb19jb2hvcnQgICAgMSAgICA1ICAgIDggICAgOSAgU3VtXG4gIFlvdW5nZXN0ICAgICAgICAwICA2MTIgICAgMiAgICAxICA2MTVcbiAgTWlkZGxlIFlvdW5nICAgIDMgIDM5OSAgICAyICAgIDAgIDQwNFxuICBNaWRkbGUgQWdlICAgICAxMCAgMzQzICAgIDEgICAgMCAgMzU0XG4gIEVsZGVzdCAgICAgICAgICA3ICAzMzkgICAgMCAgICAwICAzNDZcbiAgU3VtICAgICAgICAgICAgMjEgMTY5MyAgICA1ICAgIDEgMTcyMFxuIn0= -->
+<pre><code>              cc1tz
+alfonso_cohort    1    5    8    9  Sum
+  Youngest        0  612    2    1  615
+  Middle Young    3  399    2    0  404
+  Middle Age     10  343    1    0  354
+  Eldest          7  339    0    0  346
+  Sum            21 1693    5    1 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNjMXR6LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
+<pre class="r"><code>svytable(~brom3_agecohort + cc1tz, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgY2MxdHpcbmJyb20zX2FnZWNvaG9ydCAgICAxICAgIDUgICAgOCAgICA5ICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgICAwICA2MTIgICAgMiAgICAxICA2MTVcbiAgICAgICBNaWRkbGUgICAgIDEwICA1OTQgICAgMiAgICAwICA2MDVcbiAgICAgICBFbGRlc3QgICAgIDExICA0ODcgICAgMSAgICAwICA1MDBcbiAgICAgICBTdW0gICAgICAgIDIxIDE2OTMgICAgNSAgICAxIDE3MjBcbiJ9 -->
+<pre><code>               cc1tz
+brom3_agecohort    1    5    8    9  Sum
+       Youngest    0  612    2    1  615
+       Middle     10  594    2    0  605
+       Eldest     11  487    1    0  500
+       Sum        21 1693    5    1 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB0cmVhdG1lbnQgZm9yIGNhbmNlclxuIyMjIDEgPSB0cmVhdG1lbnRcbiMjIyAyID0gcmVtaXNzaW9uXG4jIyMgMyA9IGN1cmVkXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBjYzIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code># treatment for cancer
+### 1 = treatment
+### 2 = remission
+### 3 = cured
+svytable(~alfonso_cohort + cc2, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBjYzJcbmFsZm9uc29fY29ob3J0ICAxICAyICAzICA4IFN1bVxuICBZb3VuZ2VzdCAgICAgIDAgIDAgIDAgIDAgICAwXG4gIE1pZGRsZSBZb3VuZyAgMCAgMCAgMiAgMCAgIDNcbiAgTWlkZGxlIEFnZSAgICA1ICA0ICAxICAwICAxMFxuICBFbGRlc3QgICAgICAgIDEgIDEgIDMgIDIgICA3XG4gIFN1bSAgICAgICAgICAgNiAgNiAgNyAgMiAgMjFcbiJ9 -->
+<pre><code>              cc2
+alfonso_cohort  1  2  3  8 Sum
+  Youngest      0  0  0  0   0
+  Middle Young  0  0  2  0   3
+  Middle Age    5  4  1  0  10
+  Eldest        1  1  3  2   7
+  Sum           6  6  7  2  21</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNjMiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
+<pre class="r"><code>svytable(~brom3_agecohort + cc2, design = SuicidePart2) %&gt;%
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgY2MyXG5icm9tM19hZ2Vjb2hvcnQgIDEgIDIgIDMgIDggU3VtXG4gICAgICAgWW91bmdlc3QgIDAgIDAgIDAgIDAgICAwXG4gICAgICAgTWlkZGxlICAgIDUgIDEgIDMgIDAgIDEwXG4gICAgICAgRWxkZXN0ICAgIDEgIDQgIDMgIDIgIDExXG4gICAgICAgU3VtICAgICAgIDYgIDYgIDcgIDIgIDIxXG4ifQ== -->
+<pre><code>               cc2
+brom3_agecohort  1  2  3  8 Sum
+       Youngest  0  0  0  0   0
+       Middle    5  1  3  0  10
+       Eldest    1  4  3  2  11
+       Sum       6  6  7  2  21</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="socio-economic-status" class="section level2">
+<h2>Socio-economic status</h2>
+<p>No tables for DE20 (years of schooling) or FNU1 (total monthly income); both are not continuous variables and frequency tables inherently don’t make sense for them.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBmaW5hbmNpYWwgbGV2ZWxcbiMjIyAxID0gbm90IGVub3VnaCBmb3IgZm9vZFxuIyMjIDIgPSBkaWZmY3VsdCB0byBidXkgY2xvdGhlcy9zaG9lc1xuIyMjIDMgPSBub3QgZW5vdWdoIGZvciBkdXJhYmxlc1xuIyMjIDQgPSBjYW4gYWZmb3JkIHNvbWUgZXhwZW5zaXZlIHRoaW5nc1xuIyMjIDUgPSBjYW4gYWZmb3JkIGFueXRoaW5nXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBmbnU0LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code># financial level
+### 1 = not enough for food
+### 2 = diffcult to buy clothes/shoes
+### 3 = not enough for durables
+### 4 = can afford some expensive things
+### 5 = can afford anything
+svytable(~alfonso_cohort + fnu4, design = SuicidePart2) %&gt;%
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBmbnU0XG5hbGZvbnNvX2NvaG9ydCAgICAxICAgIDIgICAgMyAgICA0ICAgIDUgICAgOCAgICA5ICBTdW1cbiAgWW91bmdlc3QgICAgICAxMzIgIDMxMSAgMTE2ICAgNDcgICAgMSAgICAxICAgIDggIDYxNVxuICBNaWRkbGUgWW91bmcgIDEyNCAgMTkzICAgNjkgICAxNiAgICAwICAgIDAgICAgMiAgNDA0XG4gIE1pZGRsZSBBZ2UgICAgMTQ2ICAxNjcgICAzNSAgICA0ICAgIDIgICAgMCAgICAwICAzNTRcbiAgRWxkZXN0ICAgICAgICAxNjMgIDE2NCAgIDE2ICAgIDAgICAgMCAgICAxICAgIDEgIDM0NlxuICBTdW0gICAgICAgICAgIDU2NSAgODM1ICAyMzYgICA2NyAgICA0ICAgIDIgICAxMSAxNzIwXG4ifQ== -->
+<pre><code>              fnu4
+alfonso_cohort    1    2    3    4    5    8    9  Sum
+  Youngest      132  311  116   47    1    1    8  615
+  Middle Young  124  193   69   16    0    0    2  404
+  Middle Age    146  167   35    4    2    0    0  354
+  Eldest        163  164   16    0    0    1    1  346
+  Sum           565  835  236   67    4    2   11 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGZudTQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code>svytable(~brom3_agecohort + fnu4, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgZm51NFxuYnJvbTNfYWdlY29ob3J0ICAgIDEgICAgMiAgICAzICAgIDQgICAgNSAgICA4ICAgIDkgIFN1bVxuICAgICAgIFlvdW5nZXN0ICAxMzIgIDMxMSAgMTE2ICAgNDcgICAgMSAgICAxICAgIDggIDYxNVxuICAgICAgIE1pZGRsZSAgICAxOTAgIDI5OCAgIDk1ICAgMTggICAgMyAgICAwICAgIDIgIDYwNVxuICAgICAgIEVsZGVzdCAgICAyNDMgIDIyNiAgIDI2ICAgIDMgICAgMCAgICAxICAgIDEgIDUwMFxuICAgICAgIFN1bSAgICAgICA1NjUgIDgzNSAgMjM2ICAgNjcgICAgNCAgICAyICAgMTEgMTcyMFxuIn0= -->
+<pre><code>               fnu4
+brom3_agecohort    1    2    3    4    5    8    9  Sum
+       Youngest  132  311  116   47    1    1    8  615
+       Middle    190  298   95   18    3    0    2  605
+       Eldest    243  226   26    3    0    1    1  500
+       Sum       565  835  236   67    4    2   11 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="urbanicity" class="section level2">
+<h2>Urbanicity</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMjIDEgPSBydXJhbFxuIyMjIDIgPSB0b3duc2hpcFxuIyMjIDMgPSBjaXR5IHVwIHRvIDIwMCwwMDAgaW5oYWJpdGFudHNcbiMjIyA0ID0gY2l0eSBiZXR3ZWVuIDIwMCwwMDAgYW5kIDUwMCwwMDAgaW5oYWJpdGFudHNcbiMjIyA1ID0gY2l0eSB3aXRoIG1vcmUgdGhhbiA1MDAsMDAwIGluaGFiaXRhbnRzXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBpbzE2LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
+<pre class="r"><code>### 1 = rural
+### 2 = township
+### 3 = city up to 200,000 inhabitants
+### 4 = city between 200,000 and 500,000 inhabitants
+### 5 = city with more than 500,000 inhabitants
+svytable(~alfonso_cohort + io16, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBpbzE2XG5hbGZvbnNvX2NvaG9ydCAgICAxICAgIDIgICAgMyAgICA0ICAgIDUgIFN1bVxuICBZb3VuZ2VzdCAgICAgIDE3NiAgIDg5ICAxMjUgICA3OCAgMTQ3ICA2MTVcbiAgTWlkZGxlIFlvdW5nICAxMjQgICA1MiAgMTAzICAgMzMgICA5MSAgNDA0XG4gIE1pZGRsZSBBZ2UgICAgMTIwICAgMzQgICA3MiAgIDU0ICAgNzQgIDM1NFxuICBFbGRlc3QgICAgICAgIDEzNCAgIDI1ICAgNzcgICA0MiAgIDY5ICAzNDZcbiAgU3VtICAgICAgICAgICA1NTMgIDIwMCAgMzc3ICAyMDggIDM4MSAxNzIwXG4ifQ== -->
+<pre><code>              io16
+alfonso_cohort    1    2    3    4    5  Sum
+  Youngest      176   89  125   78  147  615
+  Middle Young  124   52  103   33   91  404
+  Middle Age    120   34   72   54   74  354
+  Eldest        134   25   77   42   69  346
+  Sum           553  200  377  208  381 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCAraW8xNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~brom3_agecohort +io16, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgaW8xNlxuYnJvbTNfYWdlY29ob3J0ICAgIDEgICAgMiAgICAzICAgIDQgICAgNSAgU3VtXG4gICAgICAgWW91bmdlc3QgIDE3NiAgIDg5ICAxMjUgICA3OCAgMTQ3ICA2MTVcbiAgICAgICBNaWRkbGUgICAgMTgyICAgNzQgIDE0NiAgIDY1ICAxMzggIDYwNVxuICAgICAgIEVsZGVzdCAgICAxOTUgICAzOCAgMTA2ICAgNjUgICA5NiAgNTAwXG4gICAgICAgU3VtICAgICAgIDU1MyAgMjAwICAzNzcgIDIwOCAgMzgxIDE3MjBcbiJ9 -->
+<pre><code>               io16
+brom3_agecohort    1    2    3    4    5  Sum
+       Youngest  176   89  125   78  147  615
+       Middle    182   74  146   65  138  605
+       Eldest    195   38  106   65   96  500
+       Sum       553  200  377  208  381 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="proximity-to-chernobyl" class="section level2">
+<h2>Proximity to Chernobyl</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZGU0MCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~alfonso_cohort + de40, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBkZTQwXG5hbGZvbnNvX2NvaG9ydCAgICAxICAgIDUgICAgOCAgU3VtXG4gIFlvdW5nZXN0ICAgICAgIDYwICA1NTUgICAgMCAgNjE1XG4gIE1pZGRsZSBZb3VuZyAgIDMzICAzNjkgICAgMiAgNDA0XG4gIE1pZGRsZSBBZ2UgICAgIDMzICAzMjEgICAgMCAgMzU0XG4gIEVsZGVzdCAgICAgICAgIDI2ICAzMTkgICAgMSAgMzQ2XG4gIFN1bSAgICAgICAgICAgMTUyIDE1NjQgICAgMyAxNzIwXG4ifQ== -->
+<pre><code>              de40
+alfonso_cohort    1    5    8  Sum
+  Youngest       60  555    0  615
+  Middle Young   33  369    2  404
+  Middle Age     33  321    0  354
+  Eldest         26  319    1  346
+  Sum           152 1564    3 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlNDAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code>svytable(~brom3_agecohort + de40, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgZGU0MFxuYnJvbTNfYWdlY29ob3J0ICAgIDEgICAgNSAgICA4ICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgIDYwICA1NTUgICAgMCAgNjE1XG4gICAgICAgTWlkZGxlICAgICA1NSAgNTQ5ICAgIDIgIDYwNVxuICAgICAgIEVsZGVzdCAgICAgMzggIDQ2MSAgICAxICA1MDBcbiAgICAgICBTdW0gICAgICAgMTUyIDE1NjQgICAgMyAxNzIwXG4ifQ== -->
+<pre><code>               de40
+brom3_agecohort    1    5    8  Sum
+       Youngest   60  555    0  615
+       Middle     55  549    2  605
+       Eldest     38  461    1  500
+       Sum       152 1564    3 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="parental-alcohodrug-use" class="section level2">
+<h2>Parental Alcoho/Drug Use</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBtb3RoZXIgYWxjL2RydWcgcHJvYmxlbVxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY2g1MiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code># mother alc/drug problem
+svytable(~alfonso_cohort + ch52, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBjaDUyXG5hbGZvbnNvX2NvaG9ydCAgICAxICAgIDUgICAgOCAgU3VtXG4gIFlvdW5nZXN0ICAgICAgIDEyICA1OTYgICAgMSAgNjEwXG4gIE1pZGRsZSBZb3VuZyAgICA1ICAzOTUgICAgNCAgNDA0XG4gIE1pZGRsZSBBZ2UgICAgICAxICAzNDYgICAgMSAgMzQ4XG4gIEVsZGVzdCAgICAgICAgICAyICAzMzUgICAgMSAgMzM4XG4gIFN1bSAgICAgICAgICAgIDIwIDE2NzIgICAgNyAxNjk5XG4ifQ== -->
+<pre><code>              ch52
+alfonso_cohort    1    5    8  Sum
+  Youngest       12  596    1  610
+  Middle Young    5  395    4  404
+  Middle Age      1  346    1  348
+  Eldest          2  335    1  338
+  Sum            20 1672    7 1699</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNoNTIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code>svytable(~brom3_agecohort + ch52, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgY2g1MlxuYnJvbTNfYWdlY29ob3J0ICAgIDEgICAgNSAgICA4ICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgIDEyICA1OTYgICAgMSAgNjEwXG4gICAgICAgTWlkZGxlICAgICAgNiAgNTkyICAgIDUgIDYwMlxuICAgICAgIEVsZGVzdCAgICAgIDIgIDQ4NCAgICAxICA0ODdcbiAgICAgICBTdW0gICAgICAgIDIwIDE2NzIgICAgNyAxNjk5XG4ifQ== -->
+<pre><code>               ch52
+brom3_agecohort    1    5    8  Sum
+       Youngest   12  596    1  610
+       Middle      6  592    5  602
+       Eldest      2  484    1  487
+       Sum        20 1672    7 1699</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBmYXRoZXIgYWxjL2RydWcgcHJvYmxlbVxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY2g4MiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code># father alc/drug problem
+svytable(~alfonso_cohort + ch82, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBjaDgyXG5hbGZvbnNvX2NvaG9ydCAgICAxICAgIDUgICAgOCAgICA5ICBTdW1cbiAgWW91bmdlc3QgICAgICAxMTkgIDQyNSAgIDE0ICAgIDEgIDU1OVxuICBNaWRkbGUgWW91bmcgICA4MiAgMjcwICAgMTMgICAgMSAgMzY2XG4gIE1pZGRsZSBBZ2UgICAgIDMxICAyMzggICAgNCAgICAwICAyNzJcbiAgRWxkZXN0ICAgICAgICAgMjEgIDIzNyAgICAyICAgIDAgIDI2MFxuICBTdW0gICAgICAgICAgIDI1MiAxMTY5ICAgMzMgICAgMiAxNDU3XG4ifQ== -->
+<pre><code>              ch82
+alfonso_cohort    1    5    8    9  Sum
+  Youngest      119  425   14    1  559
+  Middle Young   82  270   13    1  366
+  Middle Age     31  238    4    0  272
+  Eldest         21  237    2    0  260
+  Sum           252 1169   33    2 1457</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNoODIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~brom3_agecohort + ch82, design = SuicidePart2) %&gt;%
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgY2g4MlxuYnJvbTNfYWdlY29ob3J0ICAgIDEgICAgNSAgICA4ICAgIDkgIFN1bVxuICAgICAgIFlvdW5nZXN0ICAxMTkgIDQyNSAgIDE0ICAgIDEgIDU1OVxuICAgICAgIE1pZGRsZSAgICAxMDEgIDQxOCAgIDE0ICAgIDEgIDUzNFxuICAgICAgIEVsZGVzdCAgICAgMzIgIDMyNiAgICA2ICAgIDAgIDM2NFxuICAgICAgIFN1bSAgICAgICAyNTIgMTE2OSAgIDMzICAgIDIgMTQ1N1xuIn0= -->
+<pre><code>               ch82
+brom3_agecohort    1    5    8    9  Sum
+       Youngest  119  425   14    1  559
+       Middle    101  418   14    1  534
+       Eldest     32  326    6    0  364
+       Sum       252 1169   33    2 1457</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="parental-suicidality" class="section level2">
+<h2>Parental Suicidality</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBtb3RoZXIgc3VpY2lkYWxpdHlcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNoNjcsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code># mother suicidality
+svytable(~alfonso_cohort + ch67, design = SuicidePart2) %&gt;%
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBjaDY3XG5hbGZvbnNvX2NvaG9ydCAgICAxICAgIDUgICAgOCAgU3VtXG4gIFlvdW5nZXN0ICAgICAgICAzICA2MDAgICAgNyAgNjEwXG4gIE1pZGRsZSBZb3VuZyAgICAzICAzOTcgICAgNCAgNDA0XG4gIE1pZGRsZSBBZ2UgICAgICA3ICAzMzYgICAgNSAgMzQ4XG4gIEVsZGVzdCAgICAgICAgICAxICAzMzAgICAgNiAgMzM4XG4gIFN1bSAgICAgICAgICAgIDEzIDE2NjQgICAyMyAxNjk5XG4ifQ== -->
+<pre><code>              ch67
+alfonso_cohort    1    5    8  Sum
+  Youngest        3  600    7  610
+  Middle Young    3  397    4  404
+  Middle Age      7  336    5  348
+  Eldest          1  330    6  338
+  Sum            13 1664   23 1699</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNoNjcsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code>svytable(~brom3_agecohort + ch67, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgY2g2N1xuYnJvbTNfYWdlY29ob3J0ICAgIDEgICAgNSAgICA4ICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgICAzICA2MDAgICAgNyAgNjEwXG4gICAgICAgTWlkZGxlICAgICAgNiAgNTg4ICAgIDggIDYwMlxuICAgICAgIEVsZGVzdCAgICAgIDUgIDQ3NSAgICA3ICA0ODdcbiAgICAgICBTdW0gICAgICAgIDEzIDE2NjQgICAyMyAxNjk5XG4ifQ== -->
+<pre><code>               ch67
+brom3_agecohort    1    5    8  Sum
+       Youngest    3  600    7  610
+       Middle      6  588    8  602
+       Eldest      5  475    7  487
+       Sum        13 1664   23 1699</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBmYXRoZXIgc3VpY2lkYWxpdHlcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNoOTcsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code># father suicidality
+svytable(~alfonso_cohort + ch97, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBjaDk3XG5hbGZvbnNvX2NvaG9ydCAgICAxICAgIDUgICAgOCAgICA5ICBTdW1cbiAgWW91bmdlc3QgICAgICAgIDIgIDU1MyAgICA0ICAgIDAgIDU1OVxuICBNaWRkbGUgWW91bmcgICAgNyAgMzU3ICAgIDIgICAgMCAgMzY2XG4gIE1pZGRsZSBBZ2UgICAgICAxICAyNjYgICAgNCAgICAyICAyNzJcbiAgRWxkZXN0ICAgICAgICAgIDAgIDI0OSAgIDExICAgIDAgIDI2MFxuICBTdW0gICAgICAgICAgICAgOSAxNDI1ICAgMjEgICAgMiAxNDU3XG4ifQ== -->
+<pre><code>              ch97
+alfonso_cohort    1    5    8    9  Sum
+  Youngest        2  553    4    0  559
+  Middle Young    7  357    2    0  366
+  Middle Age      1  266    4    2  272
+  Eldest          0  249   11    0  260
+  Sum             9 1425   21    2 1457</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNoOTcsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code>svytable(~brom3_agecohort + ch97, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgY2g5N1xuYnJvbTNfYWdlY29ob3J0ICAgIDEgICAgNSAgICA4ICAgIDkgIFN1bVxuICAgICAgIFlvdW5nZXN0ICAgIDIgIDU1MyAgICA0ICAgIDAgIDU1OVxuICAgICAgIE1pZGRsZSAgICAgIDcgIDUyMCAgICA1ICAgIDIgIDUzNFxuICAgICAgIEVsZGVzdCAgICAgIDAgIDM1MSAgIDEzICAgIDAgIDM2NFxuICAgICAgIFN1bSAgICAgICAgIDkgMTQyNSAgIDIxICAgIDIgMTQ1N1xuIn0= -->
+<pre><code>               ch97
+brom3_agecohort    1    5    8    9  Sum
+       Youngest    2  553    4    0  559
+       Middle      7  520    5    2  534
+       Eldest      0  351   13    0  364
+       Sum         9 1425   21    2 1457</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="abortions" class="section level2">
+<h2>Abortions</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBoYWQgYW4gYWJvcnRpb25cbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code># had an abortion
+svytable(~alfonso_cohort + cn6, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBjbjZcbmFsZm9uc29fY29ob3J0ICAgMSAgIDUgICA5IFN1bVxuICBZb3VuZ2VzdCAgICAgMTE5IDEyMSAgIDAgMjQwXG4gIE1pZGRsZSBZb3VuZyAxMjggIDczICAgMCAyMDFcbiAgTWlkZGxlIEFnZSAgIDEzMiAgNTggICAxIDE5MVxuICBFbGRlc3QgICAgICAgIDk5IDExMyAgIDEgMjEzXG4gIFN1bSAgICAgICAgICA0NzcgMzY1ICAgMiA4NDRcbiJ9 -->
+<pre><code>              cn6
+alfonso_cohort   1   5   9 Sum
+  Youngest     119 121   0 240
+  Middle Young 128  73   0 201
+  Middle Age   132  58   1 191
+  Eldest        99 113   1 213
+  Sum          477 365   2 844</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~brom3_agecohort + cn6, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgY242XG5icm9tM19hZ2Vjb2hvcnQgICAxICAgNSAgIDkgU3VtXG4gICAgICAgWW91bmdlc3QgMTE5IDEyMSAgIDAgMjQwXG4gICAgICAgTWlkZGxlICAgMjAyIDEwNSAgIDEgMzA4XG4gICAgICAgRWxkZXN0ICAgMTU2IDEzOSAgIDEgMjk2XG4gICAgICAgU3VtICAgICAgNDc3IDM2NSAgIDIgODQ0XG4ifQ== -->
+<pre><code>               cn6
+brom3_agecohort   1   5   9 Sum
+       Youngest 119 121   0 240
+       Middle   202 105   1 308
+       Eldest   156 139   1 296
+       Sum      477 365   2 844</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBudW1iZXIgb2YgYWJvcnRpb25zXG4jIyMgY29udGludW91cyB2YXJpYWJsZSBzbyBmcmVxdWVuY3kgdGFibGUgbGVzcyBpbnR1aXRpdmU7IGp1c3Qgd2FudGVkIHRvIGtub3dcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNuNmEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code># number of abortions
+### continuous variable so frequency table less intuitive; just wanted to know
+svytable(~alfonso_cohort + cn6a, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBjbjZhXG5hbGZvbnNvX2NvaG9ydCAgIDEgICAyICAgMyAgIDQgICA1ICAgNiAgIDcgICA4ICAgOSAgMTAgIDExICAxMiAgMTMgIDE0ICAxNSAgMTYgIDE3ICAxOCAgMjMgIDI1ICAyOSAgMzAgIDk4ICA5OSBTdW1cbiAgWW91bmdlc3QgICAgICA1NyAgMzggICA3ICAgOCAgIDIgICAxICAgMyAgIDAgICAwICAgMCAgIDAgICAwICAgMCAgIDAgICAwICAgMCAgIDAgICAwICAgMCAgIDAgICAwICAgMCAgIDEgICAwIDExOVxuICBNaWRkbGUgWW91bmcgIDM0ICA0OCAgMTggICA2ICAgOCAgIDIgICA0ICAgNCAgIDAgICAxICAgMCAgIDAgICAwICAgMCAgIDAgICAwICAgMCAgIDEgICAwICAgMCAgIDAgICAwICAgMCAgIDEgMTI4XG4gIE1pZGRsZSBBZ2UgICAgMzEgIDM2ICAxMSAgMTcgIDEzICAgNiAgIDUgICAxICAgMiAgIDQgICAwICAgMCAgIDEgICAwICAgMCAgIDAgICAxICAgMCAgIDAgICAwICAgMCAgIDAgICAzICAgMSAxMzJcbiAgRWxkZXN0ICAgICAgICAyNCAgMjggIDIxICAgNSAgIDYgICAyICAgNSAgIDIgICAyICAgMiAgIDAgICAwICAgMCAgIDAgICAwICAgMCAgIDEgICAwICAgMCAgIDAgICAwICAgMCAgIDAgICAxIDEwMFxuICBTdW0gICAgICAgICAgMTQ2IDE1MCAgNTcgIDM3ICAzMCAgMTAgIDE2ICAgNyAgIDUgICA3ICAgMCAgIDAgICAxICAgMCAgIDAgICAwICAgMiAgIDEgICAwICAgMCAgIDAgICAwICAgNCAgIDQgNDc5XG4ifQ== -->
+<pre><code>              cn6a
+alfonso_cohort   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  23  25  29  30  98  99 Sum
+  Youngest      57  38   7   8   2   1   3   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   1   0 119
+  Middle Young  34  48  18   6   8   2   4   4   0   1   0   0   0   0   0   0   0   1   0   0   0   0   0   1 128
+  Middle Age    31  36  11  17  13   6   5   1   2   4   0   0   1   0   0   0   1   0   0   0   0   0   3   1 132
+  Eldest        24  28  21   5   6   2   5   2   2   2   0   0   0   0   0   0   1   0   0   0   0   0   0   1 100
+  Sum          146 150  57  37  30  10  16   7   5   7   0   0   1   0   0   0   2   1   0   0   0   0   4   4 479</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNuNmEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~brom3_agecohort + cn6a, design = SuicidePart2) %&gt;%
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgY242YVxuYnJvbTNfYWdlY29ob3J0ICAgMSAgIDIgICAzICAgNCAgIDUgICA2ICAgNyAgIDggICA5ICAxMCAgMTEgIDEyICAxMyAgMTQgIDE1ICAxNiAgMTcgIDE4ICAyMyAgMjUgIDI5ICAzMCAgOTggIDk5IFN1bVxuICAgICAgIFlvdW5nZXN0ICA1NyAgMzggICA3ICAgOCAgIDIgICAxICAgMyAgIDAgICAwICAgMCAgIDAgICAwICAgMCAgIDAgICAwICAgMCAgIDAgICAwICAgMCAgIDAgICAwICAgMCAgIDEgICAwIDExOVxuICAgICAgIE1pZGRsZSAgICA1NiAgNzEgIDI0ICAxMyAgMTUgICA0ICAgNSAgIDUgICAyICAgMSAgIDAgICAwICAgMSAgIDAgICAwICAgMCAgIDAgICAxICAgMCAgIDAgICAwICAgMCAgIDMgICAyIDIwM1xuICAgICAgIEVsZGVzdCAgICAzMyAgNDEgIDI2ICAxNiAgMTMgICA1ICAgNyAgIDIgICAyICAgNSAgIDAgICAwICAgMSAgIDAgICAwICAgMCAgIDIgICAwICAgMCAgIDAgICAwICAgMCAgIDAgICAyIDE1N1xuICAgICAgIFN1bSAgICAgIDE0NiAxNTAgIDU3ICAzNyAgMzAgIDEwICAxNiAgIDcgICA1ICAgNyAgIDAgICAwICAgMSAgIDAgICAwICAgMCAgIDIgICAxICAgMCAgIDAgICAwICAgMCAgIDQgICA0IDQ3OVxuIn0= -->
+<pre><code>               cn6a
+brom3_agecohort   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  23  25  29  30  98  99 Sum
+       Youngest  57  38   7   8   2   1   3   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   1   0 119
+       Middle    56  71  24  13  15   4   5   5   2   1   0   0   1   0   0   0   0   1   0   0   0   0   3   2 203
+       Eldest    33  41  26  16  13   5   7   2   2   5   0   0   1   0   0   0   2   0   0   0   0   0   0   2 157
+       Sum      146 150  57  37  30  10  16   7   5   7   0   0   1   0   0   0   2   1   0   0   0   0   4   4 479</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="social-network" class="section level2">
+<h2>Social Network</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhYmlsaXR5IHRvIHJlbHkgb24gZnJpZW5kcy9mYW1pbHlcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code># ability to rely on friends/family
+svytable(~alfonso_cohort + sn6, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBzbjZcbmFsZm9uc29fY29ob3J0ICAgIDEgICAgMiAgICAzICAgIDQgICAgOCAgICA5ICBTdW1cbiAgWW91bmdlc3QgICAgICAzNTYgIDEzOSAgIDc3ICAgMzIgICAxMCAgICAwICA2MTVcbiAgTWlkZGxlIFlvdW5nICAyMzggIDEwMyAgIDM1ICAgMjIgICAgNSAgICAwICA0MDRcbiAgTWlkZGxlIEFnZSAgICAxNjUgICA4MSAgIDY3ICAgMzcgICAgNSAgICAwICAzNTRcbiAgRWxkZXN0ICAgICAgICAxNzUgICA2NCAgIDUzICAgNDIgICAgOSAgICAyICAzNDRcbiAgU3VtICAgICAgICAgICA5MzUgIDM4OCAgMjMyICAxMzIgICAyOSAgICAyIDE3MTdcbiJ9 -->
+<pre><code>              sn6
+alfonso_cohort    1    2    3    4    8    9  Sum
+  Youngest      356  139   77   32   10    0  615
+  Middle Young  238  103   35   22    5    0  404
+  Middle Age    165   81   67   37    5    0  354
+  Eldest        175   64   53   42    9    2  344
+  Sum           935  388  232  132   29    2 1717</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~brom3_agecohort + sn6, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgc242XG5icm9tM19hZ2Vjb2hvcnQgICAgMSAgICAyICAgIDMgICAgNCAgICA4ICAgIDkgIFN1bVxuICAgICAgIFlvdW5nZXN0ICAzNTYgIDEzOSAgIDc3ICAgMzIgICAxMCAgICAwICA2MTVcbiAgICAgICBNaWRkbGUgICAgMzMyICAxNTMgICA3NiAgIDM2ICAgIDggICAgMCAgNjA1XG4gICAgICAgRWxkZXN0ICAgIDI0NyAgIDk1ICAgNzkgICA2NCAgIDExICAgIDIgIDQ5N1xuICAgICAgIFN1bSAgICAgICA5MzUgIDM4OCAgMjMyICAxMzIgICAyOSAgICAyIDE3MTdcbiJ9 -->
+<pre><code>               sn6
+brom3_agecohort    1    2    3    4    8    9  Sum
+       Youngest  356  139   77   32   10    0  615
+       Middle    332  153   76   36    8    0  605
+       Eldest    247   95   79   64   11    2  497
+       Sum       935  388  232  132   29    2 1717</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhYmlsaXR5IHRvIG9wZW4gdXBcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code># ability to open up
+svytable(~alfonso_cohort + sn6, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBzbjZcbmFsZm9uc29fY29ob3J0ICAgIDEgICAgMiAgICAzICAgIDQgICAgOCAgICA5ICBTdW1cbiAgWW91bmdlc3QgICAgICAzNTYgIDEzOSAgIDc3ICAgMzIgICAxMCAgICAwICA2MTVcbiAgTWlkZGxlIFlvdW5nICAyMzggIDEwMyAgIDM1ICAgMjIgICAgNSAgICAwICA0MDRcbiAgTWlkZGxlIEFnZSAgICAxNjUgICA4MSAgIDY3ICAgMzcgICAgNSAgICAwICAzNTRcbiAgRWxkZXN0ICAgICAgICAxNzUgICA2NCAgIDUzICAgNDIgICAgOSAgICAyICAzNDRcbiAgU3VtICAgICAgICAgICA5MzUgIDM4OCAgMjMyICAxMzIgICAyOSAgICAyIDE3MTdcbiJ9 -->
+<pre><code>              sn6
+alfonso_cohort    1    2    3    4    8    9  Sum
+  Youngest      356  139   77   32   10    0  615
+  Middle Young  238  103   35   22    5    0  404
+  Middle Age    165   81   67   37    5    0  354
+  Eldest        175   64   53   42    9    2  344
+  Sum           935  388  232  132   29    2 1717</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~brom3_agecohort + sn6, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgc242XG5icm9tM19hZ2Vjb2hvcnQgICAgMSAgICAyICAgIDMgICAgNCAgICA4ICAgIDkgIFN1bVxuICAgICAgIFlvdW5nZXN0ICAzNTYgIDEzOSAgIDc3ICAgMzIgICAxMCAgICAwICA2MTVcbiAgICAgICBNaWRkbGUgICAgMzMyICAxNTMgICA3NiAgIDM2ICAgIDggICAgMCAgNjA1XG4gICAgICAgRWxkZXN0ICAgIDI0NyAgIDk1ICAgNzkgICA2NCAgIDExICAgIDIgIDQ5N1xuICAgICAgIFN1bSAgICAgICA5MzUgIDM4OCAgMjMyICAxMzIgICAyOSAgICAyIDE3MTdcbiJ9 -->
+<pre><code>               sn6
+brom3_agecohort    1    2    3    4    8    9  Sum
+       Youngest  356  139   77   32   10    0  615
+       Middle    332  153   76   36    8    0  605
+       Eldest    247   95   79   64   11    2  497
+       Sum       935  388  232  132   29    2 1717</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBjb250YWN0IHdpdGggZmFtaWx5XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBzbjEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code># contact with family
+svytable(~alfonso_cohort + sn1, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBzbjFcbmFsZm9uc29fY29ob3J0ICAgIDEgICAgMiAgICAzICAgIDQgICAgNSAgICA2ICAgIDcgICAgOCAgICA5ICBTdW1cbiAgWW91bmdlc3QgICAgICAyMTEgICA1OCAgMTIyICAgOTkgICA4OCAgIDEwICAgMjcgICAgMSAgICAwICA2MTVcbiAgTWlkZGxlIFlvdW5nICAxNDIgICA0NiAgIDY4ICAgNzEgICA1OSAgICAyICAgMTUgICAgMCAgICAwICA0MDRcbiAgTWlkZGxlIEFnZSAgICAxMTQgICA0MiAgIDc1ICAgNTYgICA0OSAgIDEwICAgIDcgICAgMSAgICAwICAzNTRcbiAgRWxkZXN0ICAgICAgICAxMTYgICAyMyAgIDUyICAgNzUgICA1OSAgIDE2ICAgIDIgICAgMyAgICAxICAzNDZcbiAgU3VtICAgICAgICAgICA1ODMgIDE3MCAgMzE3ICAzMDEgIDI1NSAgIDM4ICAgNTAgICAgNSAgICAxIDE3MjBcbiJ9 -->
+<pre><code>              sn1
+alfonso_cohort    1    2    3    4    5    6    7    8    9  Sum
+  Youngest      211   58  122   99   88   10   27    1    0  615
+  Middle Young  142   46   68   71   59    2   15    0    0  404
+  Middle Age    114   42   75   56   49   10    7    1    0  354
+  Eldest        116   23   52   75   59   16    2    3    1  346
+  Sum           583  170  317  301  255   38   50    5    1 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNuMSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
+<pre class="r"><code>svytable(~brom3_agecohort + sn1, design = SuicidePart2) %&gt;%
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgc24xXG5icm9tM19hZ2Vjb2hvcnQgICAgMSAgICAyICAgIDMgICAgNCAgICA1ICAgIDYgICAgNyAgICA4ICAgIDkgIFN1bVxuICAgICAgIFlvdW5nZXN0ICAyMTEgICA1OCAgMTIyICAgOTkgICA4OCAgIDEwICAgMjcgICAgMSAgICAwICA2MTVcbiAgICAgICBNaWRkbGUgICAgMjAyICAgNzEgIDEwNCAgMTA3ICAgOTEgICAgOSAgIDIxICAgIDEgICAgMCAgNjA1XG4gICAgICAgRWxkZXN0ICAgIDE2OSAgIDQxICAgOTEgICA5NSAgIDc2ICAgMjAgICAgMyAgICAzICAgIDEgIDUwMFxuICAgICAgIFN1bSAgICAgICA1ODMgIDE3MCAgMzE3ICAzMDEgIDI1NSAgIDM4ICAgNTAgICAgNSAgICAxIDE3MjBcbiJ9 -->
+<pre><code>               sn1
+brom3_agecohort    1    2    3    4    5    6    7    8    9  Sum
+       Youngest  211   58  122   99   88   10   27    1    0  615
+       Middle    202   71  104  107   91    9   21    1    0  605
+       Eldest    169   41   91   95   76   20    3    3    1  500
+       Sum       583  170  317  301  255   38   50    5    1 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBjb250YWN0IHdpdGggZnJpZW5kc1xuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgc24yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
+<pre class="r"><code># contact with friends
+svytable(~alfonso_cohort + sn2, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBzbjJcbmFsZm9uc29fY29ob3J0ICAgIDEgICAgMiAgICAzICAgIDQgICAgNSAgICA2ICAgIDcgICAgOCAgU3VtXG4gIFlvdW5nZXN0ICAgICAgMzA0ICAgOTkgIDEwMCAgIDcwICAgMzEgICAgMCAgIDExICAgIDAgIDYxNVxuICBNaWRkbGUgWW91bmcgIDE3NiAgIDU1ICAgNzYgICA1MyAgIDI5ICAgIDEgICAxNCAgICAwICA0MDRcbiAgTWlkZGxlIEFnZSAgICAxMjkgICA0NCAgIDYzICAgNTMgICA0NSAgICAyICAgMTcgICAgMSAgMzU0XG4gIEVsZGVzdCAgICAgICAgMTE3ICAgNDQgICA0OCAgIDQ0ICAgNTUgICAgMyAgIDMyICAgIDQgIDM0NlxuICBTdW0gICAgICAgICAgIDcyNiAgMjQyICAyODcgIDIyMSAgMTYwICAgIDUgICA3NCAgICA2IDE3MjBcbiJ9 -->
+<pre><code>              sn2
+alfonso_cohort    1    2    3    4    5    6    7    8  Sum
+  Youngest      304   99  100   70   31    0   11    0  615
+  Middle Young  176   55   76   53   29    1   14    0  404
+  Middle Age    129   44   63   53   45    2   17    1  354
+  Eldest        117   44   48   44   55    3   32    4  346
+  Sum           726  242  287  221  160    5   74    6 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNuMiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~brom3_agecohort + sn2, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgc24yXG5icm9tM19hZ2Vjb2hvcnQgICAgMSAgICAyICAgIDMgICAgNCAgICA1ICAgIDYgICAgNyAgICA4ICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgMzA0ICAgOTkgIDEwMCAgIDcwICAgMzEgICAgMCAgIDExICAgIDAgIDYxNVxuICAgICAgIE1pZGRsZSAgICAyNDYgICA4MiAgMTEzICAgOTEgICA1MCAgICAzICAgMjAgICAgMCAgNjA1XG4gICAgICAgRWxkZXN0ICAgIDE3NiAgIDYxICAgNzQgICA1OSAgIDc5ICAgIDMgICA0MiAgICA1ICA1MDBcbiAgICAgICBTdW0gICAgICAgNzI2ICAyNDIgIDI4NyAgMjIxICAxNjAgICAgNSAgIDc0ICAgIDYgMTcyMFxuIn0= -->
+<pre><code>               sn2
+brom3_agecohort    1    2    3    4    5    6    7    8  Sum
+       Youngest  304   99  100   70   31    0   11    0  615
+       Middle    246   82  113   91   50    3   20    0  605
+       Eldest    176   61   74   59   79    3   42    5  500
+       Sum       726  242  287  221  160    5   74    6 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="mental-disorders" class="section level2">
+<h2>Mental Disorders</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhZmZlY3RpdmVcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGFmZiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code># affective
+svytable(~alfonso_cohort + aff, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBhZmZcbmFsZm9uc29fY29ob3J0ICAgIDAgICAgMSAgU3VtXG4gIFlvdW5nZXN0ICAgICAgNTQ4ICAgNjggIDYxNVxuICBNaWRkbGUgWW91bmcgIDM0NiAgIDU4ICA0MDRcbiAgTWlkZGxlIEFnZSAgICAyNzMgICA4MiAgMzU0XG4gIEVsZGVzdCAgICAgICAgMjU0ICAgOTIgIDM0NlxuICBTdW0gICAgICAgICAgMTQyMSAgMjk5IDE3MjBcbiJ9 -->
+<pre><code>              aff
+alfonso_cohort    0    1  Sum
+  Youngest      548   68  615
+  Middle Young  346   58  404
+  Middle Age    273   82  354
+  Eldest        254   92  346
+  Sum          1421  299 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGFmZiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code>svytable(~brom3_agecohort + aff, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;% 
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgYWZmXG5icm9tM19hZ2Vjb2hvcnQgICAgMCAgICAxICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgNTQ4ICAgNjggIDYxNVxuICAgICAgIE1pZGRsZSAgICA1MDIgIDEwMyAgNjA1XG4gICAgICAgRWxkZXN0ICAgIDM3MSAgMTI5ICA1MDBcbiAgICAgICBTdW0gICAgICAxNDIxICAyOTkgMTcyMFxuIn0= -->
+<pre><code>               aff
+brom3_agecohort    0    1  Sum
+       Youngest  548   68  615
+       Middle    502  103  605
+       Eldest    371  129  500
+       Sum      1421  299 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhbGNvaG9sXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBhbGMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lIFxuICByb3VuZCgpXG5gYGAifQ== -->
+<pre class="r"><code># alcohol
+svytable(~alfonso_cohort + alc, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;% 
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBhbGNcbmFsZm9uc29fY29ob3J0ICAgIDAgICAgMSAgU3VtXG4gIFlvdW5nZXN0ICAgICAgNDk5ICAxMTYgIDYxNVxuICBNaWRkbGUgWW91bmcgIDMyOSAgIDc1ICA0MDRcbiAgTWlkZGxlIEFnZSAgICAzMTEgICA0NCAgMzU0XG4gIEVsZGVzdCAgICAgICAgMzMwICAgMTYgIDM0NlxuICBTdW0gICAgICAgICAgMTQ2OSAgMjUxIDE3MjBcbiJ9 -->
+<pre><code>              alc
+alfonso_cohort    0    1  Sum
+  Youngest      499  116  615
+  Middle Young  329   75  404
+  Middle Age    311   44  354
+  Eldest        330   16  346
+  Sum          1469  251 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGFsYywgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code>svytable(~brom3_agecohort + alc, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;% 
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgYWxjXG5icm9tM19hZ2Vjb2hvcnQgICAgMCAgICAxICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgNDk5ICAxMTYgIDYxNVxuICAgICAgIE1pZGRsZSAgICA1MDEgIDEwNCAgNjA1XG4gICAgICAgRWxkZXN0ICAgIDQ2OSAgIDMxICA1MDBcbiAgICAgICBTdW0gICAgICAxNDY5ICAyNTEgMTcyMFxuIn0= -->
+<pre><code>               alc
+brom3_agecohort    0    1  Sum
+       Youngest  499  116  615
+       Middle    501  104  605
+       Eldest    469   31  500
+       Sum      1469  251 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpZWRcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGllZCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code># ied
+svytable(~alfonso_cohort + ied, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;% 
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBpZWRcbmFsZm9uc29fY29ob3J0ICAgIDAgICAgMSAgU3VtXG4gIFlvdW5nZXN0ICAgICAgNTc5ICAgMzYgIDYxNVxuICBNaWRkbGUgWW91bmcgIDM4MiAgIDIyICA0MDRcbiAgTWlkZGxlIEFnZSAgICAzNDMgICAxMSAgMzU0XG4gIEVsZGVzdCAgICAgICAgMzQwICAgIDYgIDM0NlxuICBTdW0gICAgICAgICAgMTY0NCAgIDc2IDE3MjBcbiJ9 -->
+<pre><code>              ied
+alfonso_cohort    0    1  Sum
+  Youngest      579   36  615
+  Middle Young  382   22  404
+  Middle Age    343   11  354
+  Eldest        340    6  346
+  Sum          1644   76 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGllZCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code>svytable(~brom3_agecohort + ied, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;% 
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgaWVkXG5icm9tM19hZ2Vjb2hvcnQgICAgMCAgICAxICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgNTc5ICAgMzYgIDYxNVxuICAgICAgIE1pZGRsZSAgICA1NzcgICAyOCAgNjA1XG4gICAgICAgRWxkZXN0ICAgIDQ4OCAgIDExICA1MDBcbiAgICAgICBTdW0gICAgICAxNjQ0ICAgNzYgMTcyMFxuIn0= -->
+<pre><code>               ied
+brom3_agecohort    0    1  Sum
+       Youngest  579   36  615
+       Middle    577   28  605
+       Eldest    488   11  500
+       Sum      1644   76 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhbnhpZXR5XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBhZmYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lIFxuICByb3VuZCgpXG5gYGAifQ== -->
+<pre class="r"><code># anxiety
+svytable(~alfonso_cohort + aff, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;% 
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBhZmZcbmFsZm9uc29fY29ob3J0ICAgIDAgICAgMSAgU3VtXG4gIFlvdW5nZXN0ICAgICAgNTQ4ICAgNjggIDYxNVxuICBNaWRkbGUgWW91bmcgIDM0NiAgIDU4ICA0MDRcbiAgTWlkZGxlIEFnZSAgICAyNzMgICA4MiAgMzU0XG4gIEVsZGVzdCAgICAgICAgMjU0ICAgOTIgIDM0NlxuICBTdW0gICAgICAgICAgMTQyMSAgMjk5IDE3MjBcbiJ9 -->
+<pre><code>              aff
+alfonso_cohort    0    1  Sum
+  Youngest      548   68  615
+  Middle Young  346   58  404
+  Middle Age    273   82  354
+  Eldest        254   92  346
+  Sum          1421  299 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGFmZiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgYWRkbWFyZ2lucygpICU+JSBcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~brom3_agecohort + aff, design = SuicidePart2) %&gt;%
+  addmargins() %&gt;% 
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgYWZmXG5icm9tM19hZ2Vjb2hvcnQgICAgMCAgICAxICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgNTQ4ICAgNjggIDYxNVxuICAgICAgIE1pZGRsZSAgICA1MDIgIDEwMyAgNjA1XG4gICAgICAgRWxkZXN0ICAgIDM3MSAgMTI5ICA1MDBcbiAgICAgICBTdW0gICAgICAxNDIxICAyOTkgMTcyMFxuIn0= -->
+<pre><code>               aff
+brom3_agecohort    0    1  Sum
+       Youngest  548   68  615
+       Middle    502  103  605
+       Eldest    371  129  500
+       Sum      1421  299 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhbnlcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGFueSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code># any
+svytable(~alfonso_cohort + any, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;% 
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBhbnlcbmFsZm9uc29fY29ob3J0ICAgIDAgICAgMSAgU3VtXG4gIFlvdW5nZXN0ICAgICAgNDA5ICAyMDYgIDYxNVxuICBNaWRkbGUgWW91bmcgIDI2NiAgMTM4ICA0MDRcbiAgTWlkZGxlIEFnZSAgICAyMjMgIDEzMSAgMzU0XG4gIEVsZGVzdCAgICAgICAgMjI5ICAxMTcgIDM0NlxuICBTdW0gICAgICAgICAgMTEyOCAgNTkyIDE3MjBcbiJ9 -->
+<pre><code>              any
+alfonso_cohort    0    1  Sum
+  Youngest      409  206  615
+  Middle Young  266  138  404
+  Middle Age    223  131  354
+  Eldest        229  117  346
+  Sum          1128  592 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGFueSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code>svytable(~brom3_agecohort + any, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;% 
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgYW55XG5icm9tM19hZ2Vjb2hvcnQgICAgMCAgICAxICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgNDA5ICAyMDYgIDYxNVxuICAgICAgIE1pZGRsZSAgICAzOTEgIDIxNSAgNjA1XG4gICAgICAgRWxkZXN0ICAgIDMyOCAgMTcyICA1MDBcbiAgICAgICBTdW0gICAgICAxMTI4ICA1OTIgMTcyMFxuIn0= -->
+<pre><code>               any
+brom3_agecohort    0    1  Sum
+       Youngest  409  206  615
+       Middle    391  215  605
+       Eldest    328  172  500
+       Sum      1128  592 1720</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -376,8 +1097,10 @@ brom3_agecohort          1          5          7        Sum
 <p>Sample sizes too small; cannot use.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgcHQxLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBhZGRtYXJnaW5zKCkgJT4lIHJvdW5kKClcbmBgYCJ9 -->
-<pre class="r"><code>svytable(~alfonso_cohort + pt1, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgcHQxLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JSBcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~alfonso_cohort + pt1, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;% 
+  round()</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBwdDFcbmFsZm9uc29fY29ob3J0ICAgIDEgICAgNSAgU3VtXG4gIFlvdW5nZXN0ICAgICAgIDE0ICA2MDEgIDYxNVxuICBNaWRkbGUgWW91bmcgICAgOCAgMzk2ICA0MDRcbiAgTWlkZGxlIEFnZSAgICAgIDggIDM0NiAgMzU0XG4gIEVsZGVzdCAgICAgICAgIDQ2ICAzMDAgIDM0NlxuICBTdW0gICAgICAgICAgICA3NyAxNjQzIDE3MjBcbiJ9 -->
 <pre><code>              pt1
@@ -388,8 +1111,10 @@ alfonso_cohort    1    5  Sum
   Eldest         46  300  346
   Sum            77 1643 1720</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHB0MSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgYWRkbWFyZ2lucygpICU+JSByb3VuZCgpXG5gYGAifQ== -->
-<pre class="r"><code>svytable(~brom3_agecohort + pt1, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHB0MSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code>svytable(~brom3_agecohort + pt1, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;% 
+  round()</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgcHQxXG5icm9tM19hZ2Vjb2hvcnQgICAgMSAgICA1ICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgIDE0ICA2MDEgIDYxNVxuICAgICAgIE1pZGRsZSAgICAgMTYgIDU4OSAgNjA1XG4gICAgICAgRWxkZXN0ICAgICA0NyAgNDUzICA1MDBcbiAgICAgICBTdW0gICAgICAgIDc3IDE2NDMgMTcyMFxuIn0= -->
 <pre><code>               pt1
@@ -406,61 +1131,65 @@ brom3_agecohort    1    5  Sum
 <h2>Suicidality</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpZGVhdGVcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGlkZWF0ZSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgYWRkbWFyZ2lucygpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpZGVhdGVcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGlkZWF0ZSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
 <pre class="r"><code># ideate
-svytable(~alfonso_cohort + ideate, design = SuicidePart2) %&gt;%
-  addmargins()</code></pre>
+svytable(~alfonso_cohort + ideate, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBpZGVhdGVcbmFsZm9uc29fY29ob3J0ICAgICAgICAgIDEgICAgICAgICAgNSAgICAgICAgICA4ICAgICAgICAgIDkgICAgICAgIFN1bVxuICBZb3VuZ2VzdCAgICAgICA2My45Mjk0NiAgNTUxLjAxMzgzICAgIDAuMjkwOTkgICAgMC4wMDAwMCAgNjE1LjIzNDI4XG4gIE1pZGRsZSBZb3VuZyAgIDM4LjA1ODE4ICAzNjMuNjcxMTEgICAgMi4yOTUzOSAgICAwLjAwMDAwICA0MDQuMDI0NjhcbiAgTWlkZGxlIEFnZSAgICAgMjcuMDA5NjQgIDMyNy4wNjI5OSAgICAwLjAwMDAwICAgIDAuMzcyMDEgIDM1NC40NDQ2NFxuICBFbGRlc3QgICAgICAgICAyOC4xMDkzMCAgMzE3LjE4NTg3ICAgIDAuMDAwMDAgICAgMS4wMDE4NSAgMzQ2LjI5NzAyXG4gIFN1bSAgICAgICAgICAgMTU3LjEwNjU4IDE1NTguOTMzODAgICAgMi41ODYzOCAgICAxLjM3Mzg2IDE3MjAuMDAwNjJcbiJ9 -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBpZGVhdGVcbmFsZm9uc29fY29ob3J0ICAgIDEgICAgNSAgICA4ICAgIDkgIFN1bVxuICBZb3VuZ2VzdCAgICAgICA2NCAgNTUxICAgIDAgICAgMCAgNjE1XG4gIE1pZGRsZSBZb3VuZyAgIDM4ICAzNjQgICAgMiAgICAwICA0MDRcbiAgTWlkZGxlIEFnZSAgICAgMjcgIDMyNyAgICAwICAgIDAgIDM1NFxuICBFbGRlc3QgICAgICAgICAyOCAgMzE3ICAgIDAgICAgMSAgMzQ2XG4gIFN1bSAgICAgICAgICAgMTU3IDE1NTkgICAgMyAgICAxIDE3MjBcbiJ9 -->
 <pre><code>              ideate
-alfonso_cohort          1          5          8          9        Sum
-  Youngest       63.92946  551.01383    0.29099    0.00000  615.23428
-  Middle Young   38.05818  363.67111    2.29539    0.00000  404.02468
-  Middle Age     27.00964  327.06299    0.00000    0.37201  354.44464
-  Eldest         28.10930  317.18587    0.00000    1.00185  346.29702
-  Sum           157.10658 1558.93380    2.58638    1.37386 1720.00062</code></pre>
+alfonso_cohort    1    5    8    9  Sum
+  Youngest       64  551    0    0  615
+  Middle Young   38  364    2    0  404
+  Middle Age     27  327    0    0  354
+  Eldest         28  317    0    1  346
+  Sum           157 1559    3    1 1720</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGlkZWF0ZSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGlkZWF0ZSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
 <pre class="r"><code>svytable(~brom3_agecohort + ideate, design = SuicidePart2) %&gt;% 
-  addmargins()</code></pre>
+  addmargins() %&gt;%
+  round()</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgaWRlYXRlXG5icm9tM19hZ2Vjb2hvcnQgICAgICAgICAgMSAgICAgICAgICA1ICAgICAgICAgIDggICAgICAgICAgOSAgICAgICAgU3VtXG4gICAgICAgWW91bmdlc3QgICA2My45Mjk0NiAgNTUxLjAxMzgzICAgIDAuMjkwOTkgICAgMC4wMDAwMCAgNjE1LjIzNDI4XG4gICAgICAgTWlkZGxlICAgICA1Mi41NTY5OSAgNTUwLjAyNTg0ICAgIDIuMjk1MzkgICAgMC4zNzIwMSAgNjA1LjI1MDIzXG4gICAgICAgRWxkZXN0ICAgICA0MC42MjAxMyAgNDU3Ljg5NDEzICAgIDAuMDAwMDAgICAgMS4wMDE4NSAgNDk5LjUxNjExXG4gICAgICAgU3VtICAgICAgIDE1Ny4xMDY1OCAxNTU4LjkzMzgwICAgIDIuNTg2MzggICAgMS4zNzM4NiAxNzIwLjAwMDYyXG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgaWRlYXRlXG5icm9tM19hZ2Vjb2hvcnQgICAgMSAgICA1ICAgIDggICAgOSAgU3VtXG4gICAgICAgWW91bmdlc3QgICA2NCAgNTUxICAgIDAgICAgMCAgNjE1XG4gICAgICAgTWlkZGxlICAgICA1MyAgNTUwICAgIDIgICAgMCAgNjA1XG4gICAgICAgRWxkZXN0ICAgICA0MSAgNDU4ICAgIDAgICAgMSAgNTAwXG4gICAgICAgU3VtICAgICAgIDE1NyAxNTU5ICAgIDMgICAgMSAxNzIwXG4ifQ== -->
 <pre><code>               ideate
-brom3_agecohort          1          5          8          9        Sum
-       Youngest   63.92946  551.01383    0.29099    0.00000  615.23428
-       Middle     52.55699  550.02584    2.29539    0.37201  605.25023
-       Eldest     40.62013  457.89413    0.00000    1.00185  499.51611
-       Sum       157.10658 1558.93380    2.58638    1.37386 1720.00062</code></pre>
+brom3_agecohort    1    5    8    9  Sum
+       Youngest   64  551    0    0  615
+       Middle     53  550    2    0  605
+       Eldest     41  458    0    1  500
+       Sum       157 1559    3    1 1720</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBwbGFuXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBwbGFuLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKClcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBwbGFuXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBwbGFuLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
 <pre class="r"><code># plan
 svytable(~alfonso_cohort + plan, design = SuicidePart2) %&gt;%
-  addmargins()</code></pre>
+  addmargins() %&gt;%
+  round()</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBwbGFuXG5hbGZvbnNvX2NvaG9ydCAgICAgICAgICAxICAgICAgICAgIDUgICAgICAgICAgOCAgICAgICAgU3VtXG4gIFlvdW5nZXN0ICAgICAgIDIyLjE1NDQ5ICA1OTMuMDc5NzkgICAgMC4wMDAwMCAgNjE1LjIzNDI4XG4gIE1pZGRsZSBZb3VuZyAgICA4LjQ3ODcyICAzOTUuNTQ1OTYgICAgMC4wMDAwMCAgNDA0LjAyNDY4XG4gIE1pZGRsZSBBZ2UgICAgIDEwLjg4OTg1ICAzNDMuNTU0NzkgICAgMC4wMDAwMCAgMzU0LjQ0NDY0XG4gIEVsZGVzdCAgICAgICAgIDEwLjcwNTY2ICAzMzUuMjA1NDQgICAgMC4zODU5MiAgMzQ2LjI5NzAyXG4gIFN1bSAgICAgICAgICAgIDUyLjIyODcyIDE2NjcuMzg1OTggICAgMC4zODU5MiAxNzIwLjAwMDYyXG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBwbGFuXG5hbGZvbnNvX2NvaG9ydCAgICAxICAgIDUgICAgOCAgU3VtXG4gIFlvdW5nZXN0ICAgICAgIDIyICA1OTMgICAgMCAgNjE1XG4gIE1pZGRsZSBZb3VuZyAgICA4ICAzOTYgICAgMCAgNDA0XG4gIE1pZGRsZSBBZ2UgICAgIDExICAzNDQgICAgMCAgMzU0XG4gIEVsZGVzdCAgICAgICAgIDExICAzMzUgICAgMCAgMzQ2XG4gIFN1bSAgICAgICAgICAgIDUyIDE2NjcgICAgMCAxNzIwXG4ifQ== -->
 <pre><code>              plan
-alfonso_cohort          1          5          8        Sum
-  Youngest       22.15449  593.07979    0.00000  615.23428
-  Middle Young    8.47872  395.54596    0.00000  404.02468
-  Middle Age     10.88985  343.55479    0.00000  354.44464
-  Eldest         10.70566  335.20544    0.38592  346.29702
-  Sum            52.22872 1667.38598    0.38592 1720.00062</code></pre>
+alfonso_cohort    1    5    8  Sum
+  Youngest       22  593    0  615
+  Middle Young    8  396    0  404
+  Middle Age     11  344    0  354
+  Eldest         11  335    0  346
+  Sum            52 1667    0 1720</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHBsYW4sIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKClcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHBsYW4sIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
 <pre class="r"><code>svytable(~brom3_agecohort + plan, design = SuicidePart2) %&gt;% 
-  addmargins()</code></pre>
+  addmargins() %&gt;%
+  round()</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgcGxhblxuYnJvbTNfYWdlY29ob3J0ICAgICAgICAgIDEgICAgICAgICAgNSAgICAgICAgICA4ICAgICAgICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgIDIyLjE1NDQ5ICA1OTMuMDc5NzkgICAgMC4wMDAwMCAgNjE1LjIzNDI4XG4gICAgICAgTWlkZGxlICAgICAxMy42Mjk4MCAgNTkxLjYyMDQzICAgIDAuMDAwMDAgIDYwNS4yNTAyM1xuICAgICAgIEVsZGVzdCAgICAgMTYuNDQ0NDMgIDQ4Mi42ODU3NiAgICAwLjM4NTkyICA0OTkuNTE2MTFcbiAgICAgICBTdW0gICAgICAgIDUyLjIyODcyIDE2NjcuMzg1OTggICAgMC4zODU5MiAxNzIwLjAwMDYyXG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgcGxhblxuYnJvbTNfYWdlY29ob3J0ICAgIDEgICAgNSAgICA4ICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgIDIyICA1OTMgICAgMCAgNjE1XG4gICAgICAgTWlkZGxlICAgICAxNCAgNTkyICAgIDAgIDYwNVxuICAgICAgIEVsZGVzdCAgICAgMTYgIDQ4MyAgICAwICA1MDBcbiAgICAgICBTdW0gICAgICAgIDUyIDE2NjcgICAgMCAxNzIwXG4ifQ== -->
 <pre><code>               plan
-brom3_agecohort          1          5          8        Sum
-       Youngest   22.15449  593.07979    0.00000  615.23428
-       Middle     13.62980  591.62043    0.00000  605.25023
-       Eldest     16.44443  482.68576    0.38592  499.51611
-       Sum        52.22872 1667.38598    0.38592 1720.00062</code></pre>
+brom3_agecohort    1    5    8  Sum
+       Youngest   22  593    0  615
+       Middle     14  592    0  605
+       Eldest     16  483    0  500
+       Sum        52 1667    0 1720</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -494,223 +1223,175 @@ brom3_agecohort          1          5          8        Sum
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-</div>
-<div id="religion" class="section level2">
-<h2>Religion</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBvcnRob2RveCBjb3VudHMgYnkgY29ob3J0XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMyXzEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MilcbmBgYCJ9 -->
-<pre class="r"><code># orthodox counts by cohort
-svytable(~alfonso_cohort + de32_1, design = SuicidePart2)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBkZTMyXzFcbmFsZm9uc29fY29ob3J0ICAgICAgICAwICAgICAgICAxXG4gIFlvdW5nZXN0ICAgICAyMzkuOTAwMyAzNzUuMzM0MFxuICBNaWRkbGUgWW91bmcgMTUxLjk0MDEgMjUyLjA4NDZcbiAgTWlkZGxlIEFnZSAgIDE0Ny4zNTAyIDIwNy4wOTQ0XG4gIEVsZGVzdCAgICAgICAxMzMuMjUxMCAyMTMuMDQ2MFxuIn0= -->
-<pre><code>              de32_1
-alfonso_cohort        0        1
-  Youngest     239.9003 375.3340
-  Middle Young 151.9401 252.0846
-  Middle Age   147.3502 207.0944
-  Eldest       133.2510 213.0460</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzJfMSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKVxuYGBgIn0= -->
-<pre class="r"><code>svytable(~brom3_agecohort + de32_1, design = SuicidePart2)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgZGUzMl8xXG5icm9tM19hZ2Vjb2hvcnQgICAgICAgIDAgICAgICAgIDFcbiAgICAgICBZb3VuZ2VzdCAyMzkuOTAwMyAzNzUuMzM0MFxuICAgICAgIE1pZGRsZSAgIDI1My41MTgxIDM1MS43MzIyXG4gICAgICAgRWxkZXN0ICAgMTc5LjAyMzMgMzIwLjQ5MjhcbiJ9 -->
-<pre><code>               de32_1
-brom3_agecohort        0        1
-       Youngest 239.9003 375.3340
-       Middle   253.5181 351.7322
-       Eldest   179.0233 320.4928</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBjaWRpZGF0YV9wdDIgJT4lXG4jICAgZ3JvdXBfYnkoYWxmb25zb19jb2hvcnQpICU+JVxuIyAgIGZpbHRlcihkZTMyXzEgPT0gMSkgJT4lXG4jICAgc3VtbWFyaXplKE4gPSBuKCkpXG4jIGNpZGlkYXRhX3B0MiAlPiVcbiMgICBncm91cF9ieShicm9tM19hZ2Vjb2hvcnQpICU+JVxuIyAgIGZpbHRlcihkZTMyXzEgPT0gMSkgJT4lXG4jICAgc3VtbWFyaXplKE4gPSBuKCkpXG5gYGAifQ== -->
-<pre class="r"><code># cididata_pt2 %&gt;%
-#   group_by(alfonso_cohort) %&gt;%
-#   filter(de32_1 == 1) %&gt;%
-#   summarize(N = n())
-# cididata_pt2 %&gt;%
-#   group_by(brom3_agecohort) %&gt;%
-#   filter(de32_1 == 1) %&gt;%
-#   summarize(N = n())</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bmlhdGUgY291bnRzIGJ5IGNvaG9ydFxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZGUzMl8yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpXG5gYGAifQ== -->
-<pre class="r"><code># uniate counts by cohort
-svytable(~alfonso_cohort + de32_2, design = SuicidePart2)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBkZTMyXzJcbmFsZm9uc29fY29ob3J0ICAgICAgICAgMCAgICAgICAgIDFcbiAgWW91bmdlc3QgICAgIDU3Ni4wNjE5OCAgMzkuMTcyMzBcbiAgTWlkZGxlIFlvdW5nIDM4NS40MjI2NSAgMTguNjAyMDNcbiAgTWlkZGxlIEFnZSAgIDMzOS41MTg0OSAgMTQuOTI2MTVcbiAgRWxkZXN0ICAgICAgIDMwNy4wNzA2MiAgMzkuMjI2NDBcbiJ9 -->
-<pre><code>              de32_2
-alfonso_cohort         0         1
-  Youngest     576.06198  39.17230
-  Middle Young 385.42265  18.60203
-  Middle Age   339.51849  14.92615
-  Eldest       307.07062  39.22640</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzJfMiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKVxuYGBgIn0= -->
-<pre class="r"><code>svytable(~brom3_agecohort + de32_2, design = SuicidePart2)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgZGUzMl8yXG5icm9tM19hZ2Vjb2hvcnQgICAgICAgICAwICAgICAgICAgMVxuICAgICAgIFlvdW5nZXN0IDU3Ni4wNjE5OCAgMzkuMTcyMzBcbiAgICAgICBNaWRkbGUgICA1NzguMDgzOTggIDI3LjE2NjI1XG4gICAgICAgRWxkZXN0ICAgNDUzLjkyNzc4ICA0NS41ODgzM1xuIn0= -->
-<pre><code>               de32_2
-brom3_agecohort         0         1
-       Youngest 576.06198  39.17230
-       Middle   578.08398  27.16625
-       Eldest   453.92778  45.58833</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBjaWRpZGF0YV9wdDIgJT4lXG4jICAgZ3JvdXBfYnkoYWxmb25zb19jb2hvcnQpICU+JVxuIyAgIGZpbHRlcihkZTMyXzIgPT0gMSkgJT4lXG4jICAgc3VtbWFyaXplKE4gPSBuKCkpXG4jIGNpZGlkYXRhX3B0MiAlPiVcbiMgICBncm91cF9ieShicm9tM19hZ2Vjb2hvcnQpICU+JVxuIyAgIGZpbHRlcihkZTMyXzIgPT0gMSkgJT4lXG4jICAgc3VtbWFyaXplKE4gPSBuKCkpXG5gYGAifQ== -->
-<pre class="r"><code># cididata_pt2 %&gt;%
-#   group_by(alfonso_cohort) %&gt;%
-#   filter(de32_2 == 1) %&gt;%
-#   summarize(N = n())
-# cididata_pt2 %&gt;%
-#   group_by(brom3_agecohort) %&gt;%
-#   filter(de32_2 == 1) %&gt;%
-#   summarize(N = n())</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBvdGhlciByZWxpZ2lvbiBjb3VudHMgYnkgY29ob3J0XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMyX290aGVyLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpXG5gYGAifQ== -->
-<pre class="r"><code># other religion counts by cohort
-svytable(~alfonso_cohort + de32_other, design = SuicidePart2)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBkZTMyX290aGVyXG5hbGZvbnNvX2NvaG9ydCAgICAgICAgIDAgICAgICAgICAxXG4gIFlvdW5nZXN0ICAgICA1MTYuODczMjYgIDk4LjM2MTAyXG4gIE1pZGRsZSBZb3VuZyAzMzUuNTgxNTMgIDY4LjQ0MzE1XG4gIE1pZGRsZSBBZ2UgICAyNzguNDMwMDkgIDc2LjAxNDU1XG4gIEVsZGVzdCAgICAgICAzMDYuNzgxNTAgIDM5LjUxNTUyXG4ifQ== -->
-<pre><code>              de32_other
-alfonso_cohort         0         1
-  Youngest     516.87326  98.36102
-  Middle Young 335.58153  68.44315
-  Middle Age   278.43009  76.01455
-  Eldest       306.78150  39.51552</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzJfb3RoZXIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MilcbmBgYCJ9 -->
-<pre class="r"><code>svytable(~brom3_agecohort + de32_other, design = SuicidePart2)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgZGUzMl9vdGhlclxuYnJvbTNfYWdlY29ob3J0ICAgICAgICAgMCAgICAgICAgIDFcbiAgICAgICBZb3VuZ2VzdCA1MTYuODczMjYgIDk4LjM2MTAyXG4gICAgICAgTWlkZGxlICAgNDg0LjAwMjA4IDEyMS4yNDgxNVxuICAgICAgIEVsZGVzdCAgIDQzNi43OTEwNCAgNjIuNzI1MDdcbiJ9 -->
-<pre><code>               de32_other
-brom3_agecohort         0         1
-       Youngest 516.87326  98.36102
-       Middle   484.00208 121.24815
-       Eldest   436.79104  62.72507</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBjaWRpZGF0YV9wdDIgJT4lXG4jICAgZ3JvdXBfYnkoYWxmb25zb19jb2hvcnQpICU+JVxuIyAgIGZpbHRlcihkZTMyX290aGVyID09IDEpICU+JVxuIyAgIHN1bW1hcml6ZShOID0gbigpKVxuIyBjaWRpZGF0YV9wdDIgJT4lXG4jICAgZ3JvdXBfYnkoYnJvbTNfYWdlY29ob3J0KSAlPiVcbiMgICBmaWx0ZXIoZGUzMl9vdGhlciA9PSAxKSAlPiVcbiMgICBzdW1tYXJpemUoTiA9IG4oKSlcbmBgYCJ9 -->
-<pre class="r"><code># cididata_pt2 %&gt;%
-#   group_by(alfonso_cohort) %&gt;%
-#   filter(de32_other == 1) %&gt;%
-#   summarize(N = n())
-# cididata_pt2 %&gt;%
-#   group_by(brom3_agecohort) %&gt;%
-#   filter(de32_other == 1) %&gt;%
-#   summarize(N = n())</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzZXJ2aWNlIGF0dGVuZGFuY2UgY291bnRzXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMzLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpXG5gYGAifQ== -->
-<pre class="r"><code># service attendance counts
-svytable(~alfonso_cohort + de33, design = SuicidePart2)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBkZTMzXG5hbGZvbnNvX2NvaG9ydCAgICAgICAgIDAgICAgICAgICAxICAgICAgICAgMiAgICAgICAgIDMgICAgICAgICA0ICAgICAgICAgNVxuICBZb3VuZ2VzdCAgICAgICA0LjE4MDYyICAgNi4wODUwNSAgNDMuMjMxNjUgIDQ1LjQwNTQzIDM1NC43MzMxNyAxNjEuNTk4MzZcbiAgTWlkZGxlIFlvdW5nICAgNi4zNTg1NSAgIDAuODY5MDYgIDE5LjI1NTU1ICAyMi41ODMzMCAyMzUuMjkzNzkgMTE5LjY2NDQzXG4gIE1pZGRsZSBBZ2UgICAgIDcuNzkwNDUgICAxLjAyOTU4ICAyNi41MDY2MiAgMzEuMzE1MDQgMTY2LjE5NDgxIDEyMS42MDgxNFxuICBFbGRlc3QgICAgICAgICAwLjYwNzQyICAxNi4zMTQwNyAgMjkuNDA1NDkgIDYxLjk2MjkyIDEyNC4xNjczOCAxMTMuODM5NzRcbiJ9 -->
-<pre><code>              de33
-alfonso_cohort         0         1         2         3         4         5
-  Youngest       4.18062   6.08505  43.23165  45.40543 354.73317 161.59836
-  Middle Young   6.35855   0.86906  19.25555  22.58330 235.29379 119.66443
-  Middle Age     7.79045   1.02958  26.50662  31.31504 166.19481 121.60814
-  Eldest         0.60742  16.31407  29.40549  61.96292 124.16738 113.83974</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MilcbmBgYCJ9 -->
-<pre class="r"><code>svytable(~brom3_agecohort + de33, design = SuicidePart2)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgZGUzM1xuYnJvbTNfYWdlY29ob3J0ICAgICAgICAgMCAgICAgICAgIDEgICAgICAgICAyICAgICAgICAgMyAgICAgICAgIDQgICAgICAgICA1XG4gICAgICAgWW91bmdlc3QgICA0LjE4MDYyICAgNi4wODUwNSAgNDMuMjMxNjUgIDQ1LjQwNTQzIDM1NC43MzMxNyAxNjEuNTk4MzZcbiAgICAgICBNaWRkbGUgICAgMTQuMTQ5MDAgICAxLjcyMDk3ICAzMS41NzcwMSAgNDEuMTQ5NTYgMzI1LjUwODUyIDE5MS4xNDUxN1xuICAgICAgIEVsZGVzdCAgICAgMC42MDc0MiAgMTYuNDkxNzQgIDQzLjU5MDY1ICA3NC43MTE3MCAyMDAuMTQ3NDYgMTYzLjk2NzE0XG4ifQ== -->
-<pre><code>               de33
-brom3_agecohort         0         1         2         3         4         5
-       Youngest   4.18062   6.08505  43.23165  45.40543 354.73317 161.59836
-       Middle    14.14900   1.72097  31.57701  41.14956 325.50852 191.14517
-       Eldest     0.60742  16.49174  43.59065  74.71170 200.14746 163.96714</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyByZWxpZ2lvc2l0eSBjb3VudHNcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGRlMzQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MilcbmBgYCJ9 -->
-<pre class="r"><code># religiosity counts
-svytable(~alfonso_cohort + de34, design = SuicidePart2)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBkZTM0XG5hbGZvbnNvX2NvaG9ydCAgICAgICAgIDAgICAgICAgICAxICAgICAgICAgMiAgICAgICAgIDMgICAgICAgICA0XG4gIFlvdW5nZXN0ICAgICAgMjMuMjc2MzYgMTE0LjY1MTUxIDIyNi4xNzEzMyAxMTkuNTkxNDMgMTMxLjU0MzY1XG4gIE1pZGRsZSBZb3VuZyAgMTMuMzMwNjUgIDkxLjc5NTg0IDEzMS40NDkzMCAgNTcuNTQ0NDcgMTA5LjkwNDQyXG4gIE1pZGRsZSBBZ2UgICAgMTQuNTA4OTEgIDYyLjU0MDI1IDEzNC45NjE5MyAgNjYuMDg3MzIgIDc2LjM0NjIzXG4gIEVsZGVzdCAgICAgICAgIDMuMzYzNTAgMTIwLjU2NDA2IDExNC4zNzQ2MiAgNDQuNTgxOTYgIDYzLjQxMjg4XG4ifQ== -->
-<pre><code>              de34
-alfonso_cohort         0         1         2         3         4
-  Youngest      23.27636 114.65151 226.17133 119.59143 131.54365
-  Middle Young  13.33065  91.79584 131.44930  57.54447 109.90442
-  Middle Age    14.50891  62.54025 134.96193  66.08732  76.34623
-  Eldest         3.36350 120.56406 114.37462  44.58196  63.41288</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MilcbmBgYCJ9 -->
-<pre class="r"><code>svytable(~brom3_agecohort + de34, design = SuicidePart2)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgZGUzNFxuYnJvbTNfYWdlY29ob3J0ICAgICAgICAgMCAgICAgICAgIDEgICAgICAgICAyICAgICAgICAgMyAgICAgICAgIDRcbiAgICAgICBZb3VuZ2VzdCAgMjMuMjc2MzYgMTE0LjY1MTUxIDIyNi4xNzEzMyAxMTkuNTkxNDMgMTMxLjU0MzY1XG4gICAgICAgTWlkZGxlICAgIDIxLjg0OTA1IDEyMS41Mzc0NyAyMDcuMjgyMzQgIDk0Ljk3NDg5IDE1OS42MDY0OFxuICAgICAgIEVsZGVzdCAgICAgOS4zNTQwMSAxNTMuMzYyNjggMTczLjUwMzUxICA3My4yMzg4NiAgOTAuMDU3MDVcbiJ9 -->
-<pre><code>               de34
-brom3_agecohort         0         1         2         3         4
-       Youngest  23.27636 114.65151 226.17133 119.59143 131.54365
-       Middle    21.84905 121.53747 207.28234  94.97489 159.60648
-       Eldest     9.35401 153.36268 173.50351  73.23886  90.05705</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VydmljZXZzaW1wIDwtXG4gIHN2eWdsbShkZTMzIH4gZGUzNCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKVxuc3VtbWFyeShzZXJ2aWNldnNpbXApXG5gYGAifQ== -->
-<pre class="r"><code>servicevsimp &lt;-
-  svyglm(de33 ~ de34, design = SuicidePart2)
-summary(servicevsimp)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBkZTMzIH4gZGUzNCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKVxuXG5TdXJ2ZXkgZGVzaWduOlxuc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIFxuICAgIG5lc3QgPSBULCBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDIgPiBcbiAgICAgICAgMCkpXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgdCB2YWx1ZSBQcig+fHR8KSAgICBcbihJbnRlcmNlcHQpICAyLjk5NjIzICAgIDAuMDg5MjUgICAzMy41NyAgPCAyZS0xNiAqKipcbmRlMzQgICAgICAgICAwLjQyNTAwICAgIDAuMDM0MTcgICAxMi40NCA4Ljc3ZS0xNSAqKipcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIGdhdXNzaWFuIGZhbWlseSB0YWtlbiB0byBiZSAwLjczNzM3NTQpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiAyXG4ifQ== -->
-<pre><code>
-Call:
-svyglm(formula = de33 ~ de34, design = SuicidePart2)
-
-Survey design:
-svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
-    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
-        0))
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  2.99623    0.08925   33.57  &lt; 2e-16 ***
-de34         0.42500    0.03417   12.44 8.77e-15 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-(Dispersion parameter for gaussian family taken to be 0.7373754)
-
-Number of Fisher Scoring iterations: 2</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXR0ZW1wdG5vcGxhbiA8LVxuICBjaWRpZGF0YV9wdDIgJT4lXG4gIGZpbHRlcihhdHRlbXB0ID09IDEgJiBwbGFuID09IDUpXG5zdnlhdHRlbXB0bm9wbGFuIDwtXG4gIHN2eWRlc2lnbihpZHMgPSB+c2VjdSwgc3RyYXRhID0gfnN0cmF0YSwgd2VpZ2h0cyA9IH53ZWlnaHQyLCBuZXN0ID0gVCwgXG4gICAgICAgICAgICBkYXRhID0gc3Vic2V0KGF0dGVtcHRub3BsYW4sIGF0dGVtcHRub3BsYW4kd2VpZ2h0Mj4wKSlcbm9wdGlvbnMoc3VydmV5LmxvbmVseS5wc3UgPSBcImFkanVzdFwiKVxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0LCBkZXNpZ24gPSBzdnlhdHRlbXB0bm9wbGFuKSAlPiUgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCwgZGVzaWduID0gc3Z5YXR0ZW1wdG5vcGxhbikgJT4lIHJvdW5kKClcbmBgYCJ9 -->
-<pre class="r"><code>attemptnoplan &lt;-
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhdHRlbXB0IHdpdGhvdXQgcGxhbm5pbmdcbmF0dGVtcHRub3BsYW4gPC1cbiAgY2lkaWRhdGFfcHQyICU+JVxuICBmaWx0ZXIoYXR0ZW1wdCA9PSAxICYgcGxhbiA9PSA1KVxuc3Z5YXR0ZW1wdG5vcGxhbiA8LVxuICBzdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgbmVzdCA9IFQsIFxuICAgICAgICAgICAgZGF0YSA9IHN1YnNldChhdHRlbXB0bm9wbGFuLCBhdHRlbXB0bm9wbGFuJHdlaWdodDI+MCkpXG5vcHRpb25zKHN1cnZleS5sb25lbHkucHN1ID0gXCJhZGp1c3RcIilcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCwgZGVzaWduID0gc3Z5YXR0ZW1wdG5vcGxhbikgJT4lIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code># attempt without planning
+attemptnoplan &lt;-
   cididata_pt2 %&gt;%
   filter(attempt == 1 &amp; plan == 5)
 svyattemptnoplan &lt;-
   svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, 
             data = subset(attemptnoplan, attemptnoplan$weight2&gt;0))
 options(survey.lonely.psu = &quot;adjust&quot;)
-svytable(~alfonso_cohort, design = svyattemptnoplan) %&gt;% round()
-svytable(~brom3_agecohort, design = svyattemptnoplan) %&gt;% round()</code></pre>
+svytable(~alfonso_cohort, design = svyattemptnoplan) %&gt;% round()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiYWxmb25zb19jb2hvcnRcbiAgICBZb3VuZ2VzdCBNaWRkbGUgWW91bmcgICBNaWRkbGUgQWdlICAgICAgIEVsZGVzdCBcbiAgICAgICAgICAgOSAgICAgICAgICAgIDIgICAgICAgICAgICAxICAgICAgICAgICAgMSBcbiJ9 -->
+<pre><code>alfonso_cohort
+    Youngest Middle Young   Middle Age       Eldest 
+           9            2            1            1 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCwgZGVzaWduID0gc3Z5YXR0ZW1wdG5vcGxhbikgJT4lIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code>svytable(~brom3_agecohort, design = svyattemptnoplan) %&gt;% round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiYnJvbTNfYWdlY29ob3J0XG5Zb3VuZ2VzdCAgIE1pZGRsZSAgIEVsZGVzdCBcbiAgICAgICA5ICAgICAgICAzICAgICAgICAxIFxuIn0= -->
+<pre><code>brom3_agecohort
+Youngest   Middle   Eldest 
+       9        3        1 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="religion" class="section level2">
+<h2>Religion</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBvcnRob2RveCBjb3VudHMgYnkgY29ob3J0XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMyXzEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code># orthodox counts by cohort
+svytable(~alfonso_cohort + de32_1, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBkZTMyXzFcbmFsZm9uc29fY29ob3J0ICAgIDAgICAgMSAgU3VtXG4gIFlvdW5nZXN0ICAgICAgMjQwICAzNzUgIDYxNVxuICBNaWRkbGUgWW91bmcgIDE1MiAgMjUyICA0MDRcbiAgTWlkZGxlIEFnZSAgICAxNDcgIDIwNyAgMzU0XG4gIEVsZGVzdCAgICAgICAgMTMzICAyMTMgIDM0NlxuICBTdW0gICAgICAgICAgIDY3MiAxMDQ4IDE3MjBcbiJ9 -->
+<pre><code>              de32_1
+alfonso_cohort    0    1  Sum
+  Youngest      240  375  615
+  Middle Young  152  252  404
+  Middle Age    147  207  354
+  Eldest        133  213  346
+  Sum           672 1048 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzJfMSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~brom3_agecohort + de32_1, design = SuicidePart2) %&gt;% 
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgZGUzMl8xXG5icm9tM19hZ2Vjb2hvcnQgICAgMCAgICAxICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgMjQwICAzNzUgIDYxNVxuICAgICAgIE1pZGRsZSAgICAyNTQgIDM1MiAgNjA1XG4gICAgICAgRWxkZXN0ICAgIDE3OSAgMzIwICA1MDBcbiAgICAgICBTdW0gICAgICAgNjcyIDEwNDggMTcyMFxuIn0= -->
+<pre><code>               de32_1
+brom3_agecohort    0    1  Sum
+       Youngest  240  375  615
+       Middle    254  352  605
+       Eldest    179  320  500
+       Sum       672 1048 1720</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2lkaWRhdGFfcHQyICU+JVxuICBmaWx0ZXIoaWRlYXRlICYgcGxhbiAmIGF0dGVtcHQgPT0gMSkgJT4lXG4gIGdyb3VwX2J5KGJyb20zX2FnZWNvaG9ydCkgJT4lXG4gIHN1bW1hcml6ZShOID0gbigpKVxuYGBgIn0= -->
-<pre class="r"><code>cididata_pt2 %&gt;%
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bmlhdGUgY291bnRzIGJ5IGNvaG9ydFxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZGUzMl8yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code># uniate counts by cohort
+svytable(~alfonso_cohort + de32_2, design = SuicidePart2) %&gt;%
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBkZTMyXzJcbmFsZm9uc29fY29ob3J0ICAgIDAgICAgMSAgU3VtXG4gIFlvdW5nZXN0ICAgICAgNTc2ICAgMzkgIDYxNVxuICBNaWRkbGUgWW91bmcgIDM4NSAgIDE5ICA0MDRcbiAgTWlkZGxlIEFnZSAgICAzNDAgICAxNSAgMzU0XG4gIEVsZGVzdCAgICAgICAgMzA3ICAgMzkgIDM0NlxuICBTdW0gICAgICAgICAgMTYwOCAgMTEyIDE3MjBcbiJ9 -->
+<pre><code>              de32_2
+alfonso_cohort    0    1  Sum
+  Youngest      576   39  615
+  Middle Young  385   19  404
+  Middle Age    340   15  354
+  Eldest        307   39  346
+  Sum          1608  112 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzJfMiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
+<pre class="r"><code>svytable(~brom3_agecohort + de32_2, design = SuicidePart2) %&gt;%
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgZGUzMl8yXG5icm9tM19hZ2Vjb2hvcnQgICAgMCAgICAxICBTdW1cbiAgICAgICBZb3VuZ2VzdCAgNTc2ICAgMzkgIDYxNVxuICAgICAgIE1pZGRsZSAgICA1NzggICAyNyAgNjA1XG4gICAgICAgRWxkZXN0ICAgIDQ1NCAgIDQ2ICA1MDBcbiAgICAgICBTdW0gICAgICAxNjA4ICAxMTIgMTcyMFxuIn0= -->
+<pre><code>               de32_2
+brom3_agecohort    0    1  Sum
+       Youngest  576   39  615
+       Middle    578   27  605
+       Eldest    454   46  500
+       Sum      1608  112 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBvdGhlciByZWxpZ2lvbiBjb3VudHMgYnkgY29ob3J0XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMyX290aGVyLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
+<pre class="r"><code># other religion counts by cohort
+svytable(~alfonso_cohort + de32_other, design = SuicidePart2) %&gt;%
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBkZTMyX290aGVyXG5hbGZvbnNvX2NvaG9ydCAgICAwICAgIDEgIFN1bVxuICBZb3VuZ2VzdCAgICAgIDUxNyAgIDk4ICA2MTVcbiAgTWlkZGxlIFlvdW5nICAzMzYgICA2OCAgNDA0XG4gIE1pZGRsZSBBZ2UgICAgMjc4ICAgNzYgIDM1NFxuICBFbGRlc3QgICAgICAgIDMwNyAgIDQwICAzNDZcbiAgU3VtICAgICAgICAgIDE0MzggIDI4MiAxNzIwXG4ifQ== -->
+<pre><code>              de32_other
+alfonso_cohort    0    1  Sum
+  Youngest      517   98  615
+  Middle Young  336   68  404
+  Middle Age    278   76  354
+  Eldest        307   40  346
+  Sum          1438  282 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzJfb3RoZXIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~brom3_agecohort + de32_other, design = SuicidePart2) %&gt;%
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgZGUzMl9vdGhlclxuYnJvbTNfYWdlY29ob3J0ICAgIDAgICAgMSAgU3VtXG4gICAgICAgWW91bmdlc3QgIDUxNyAgIDk4ICA2MTVcbiAgICAgICBNaWRkbGUgICAgNDg0ICAxMjEgIDYwNVxuICAgICAgIEVsZGVzdCAgICA0MzcgICA2MyAgNTAwXG4gICAgICAgU3VtICAgICAgMTQzOCAgMjgyIDE3MjBcbiJ9 -->
+<pre><code>               de32_other
+brom3_agecohort    0    1  Sum
+       Youngest  517   98  615
+       Middle    484  121  605
+       Eldest    437   63  500
+       Sum      1438  282 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyByZWxpZ2lvc2l0eSBjb3VudHNcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGRlMzQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code># religiosity counts
+svytable(~alfonso_cohort + de34, design = SuicidePart2) %&gt;%
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBkZTM0XG5hbGZvbnNvX2NvaG9ydCAgICAwICAgIDEgICAgMiAgICAzICAgIDQgIFN1bVxuICBZb3VuZ2VzdCAgICAgICAyMyAgMTE1ICAyMjYgIDEyMCAgMTMyICA2MTVcbiAgTWlkZGxlIFlvdW5nICAgMTMgICA5MiAgMTMxICAgNTggIDExMCAgNDA0XG4gIE1pZGRsZSBBZ2UgICAgIDE1ICAgNjMgIDEzNSAgIDY2ICAgNzYgIDM1NFxuICBFbGRlc3QgICAgICAgICAgMyAgMTIxICAxMTQgICA0NSAgIDYzICAzNDZcbiAgU3VtICAgICAgICAgICAgNTQgIDM5MCAgNjA3ICAyODggIDM4MSAxNzIwXG4ifQ== -->
+<pre><code>              de34
+alfonso_cohort    0    1    2    3    4  Sum
+  Youngest       23  115  226  120  132  615
+  Middle Young   13   92  131   58  110  404
+  Middle Age     15   63  135   66   76  354
+  Eldest          3  121  114   45   63  346
+  Sum            54  390  607  288  381 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
+<pre class="r"><code>svytable(~brom3_agecohort + de34, design = SuicidePart2) %&gt;%
+  addmargins() %&gt;%
+  round()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgZGUzNFxuYnJvbTNfYWdlY29ob3J0ICAgIDAgICAgMSAgICAyICAgIDMgICAgNCAgU3VtXG4gICAgICAgWW91bmdlc3QgICAyMyAgMTE1ICAyMjYgIDEyMCAgMTMyICA2MTVcbiAgICAgICBNaWRkbGUgICAgIDIyICAxMjIgIDIwNyAgIDk1ICAxNjAgIDYwNVxuICAgICAgIEVsZGVzdCAgICAgIDkgIDE1MyAgMTc0ICAgNzMgICA5MCAgNTAwXG4gICAgICAgU3VtICAgICAgICA1NCAgMzkwICA2MDcgIDI4OCAgMzgxIDE3MjBcbiJ9 -->
+<pre><code>               de34
+brom3_agecohort    0    1    2    3    4  Sum
+       Youngest   23  115  226  120  132  615
+       Middle     22  122  207   95  160  605
+       Eldest      9  153  174   73   90  500
+       Sum        54  390  607  288  381 1720</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpZGVhdGUsIHBsYW4sIGFuZCBhdHRlbXB0IGJ5IGNvaG9ydFxuY2lkaWRhdGFfcHQyICU+JVxuICBmaWx0ZXIoaWRlYXRlICYgcGxhbiAmIGF0dGVtcHQgPT0gMSkgJT4lXG4gIGdyb3VwX2J5KGJyb20zX2FnZWNvaG9ydCkgJT4lXG4gIHN1bW1hcml6ZShOID0gbigpKVxuYGBgIn0= -->
+<pre class="r"><code># ideate, plan, and attempt by cohort
+cididata_pt2 %&gt;%
   filter(ideate &amp; plan &amp; attempt == 1) %&gt;%
   group_by(brom3_agecohort) %&gt;%
   summarize(N = n())</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6M30sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVF5MDdETUJEYzJERzBrYUNWRUg5QkkxRitBWTV3NEZST3lFM2NOS3ByVjQ0REhQbHhHdFpPdGxKeVdIdWZzN1B6L3J4Wlo1c01BQmh3a1FEajZLWU1ud1JTbUlmL0I0RGZ4UWJnTi9qeldJeHg4RWZOVjFwOUtkMmd0NHpWUGp2N3NLMnBWT09wNjdVdVM2MG9ldEZscUkyUlJLRmxRMEFYK0owc3ZIWG9uZEdJekFQYVBkcGlDbUhrVVJFRUc1S0xyYlBIcDA5WnFjTHVyU05LeWR0a2VPN3NkMDRBWVJQN3hhZnJ1cisra1hjVGJsa3B2Y3gzRGtkNmZpTzRhM3Z5dFRVSXhvS1dZaktjdUVsaTJacXd2RndWKzlZY1ZvL3JzR0VRSGdaR3lYQS8rYXpmbVJJelFhb3BVOVdHNUJaYWJwVWVnbHU4TWg2Wm4xeHRTSXdNczAzdXJaZlVseFZXVTZZWC8vd1BDT3BUQmpvQ0FBQT0ifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6M30sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVF5MDdETUJEYzJERzBrYUNWRUg5QmM2QVNYd0JIT0hBcUorUW1iaHJWdFN2SEFZNzhPQTFySjFzcE9heTl6OW5aZVgvZVBHYWJEQUFZY0pFQTQraW1ESjhFVXBpSC93ZUEzOFVHNERmNDgxaU1jZkJIelZkYWZTbmRvTGVNMVQ0Nys3Q3RxVlRqcWV1MUxrdXRLSHJSWmFpTmtVU2haVU5BRi9pZExMeDE2SjNSaU13RDJqM2FZZ3BoNUZFUkJCdVNpNjJ6eC9XbnJGUmg5OVlScGVSdE1qeDM5anNuZ0xDSi9lTFRkZDFmMzhpN0NiZXNsRjdtTzRjalBiOFIzTFU5K2RvYUJHTkJTekVaVHR3a3NXeE5XRjZ1aW4xckRxdjFVOWd3Q0E4RG8yUzRuM3pXNzB5Sm1TRFZsS2xxUTNJTExiZEtEOEV0WGhtUHpFK3VOaVJHaHRrbTk5Wkw2c3NLcXluVGkzLytCd3hkTFNFNkFnQUEifQ== -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["brom3_agecohort"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["N"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Youngest","2":"44"},{"1":"Middle","2":"21"},{"1":"Eldest","2":"15"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[3]},"pages":{}}}
@@ -723,7 +1404,7 @@ svytable(~brom3_agecohort, design = svyattemptnoplan) %&gt;% round()</code></pre
   group_by(alfonso_cohort) %&gt;%
   summarize(N = n())</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6NH0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVJ5MDdETUJEYzJBbFFDMUFsZm9BUG9KSG9IeURCRVE2Y3lna1p4MGtqakYwNURuRGt3MUdEWDR1VUhPenNqbmRtZHlmUDk3c3QyekVBSUVDckFnajFZVW44VlVBSnEvRDlCcUJYc1FEb1JYaU5qekVIbXZJWjRVVEpUNmtHSDYzamEwTFBYc3lvT3ptNG5KOC85azJqNUhXRU04WXlkdGRKMUhwUVRlRE1PMVJDOFFFYi9MZHR1WERHK3Vqb0R3NTZrK053MkZKRzh3K0pNaVNEbDF5MVJnL21WWmk5c1RodDhiVGdycXo1cXBFZnhNbVB2NlpwK2syRmRGcU14eHJ1ZU4xYVQwa2p6dVJPemNIMXZxM1hDVlpYQzNKaEY4QjYxS0Y1c3hIN1ViOXZicmRwdmZoZklFOVVaQXN3SnFsbmlaTlZhSnpVWGEvUjhVcnhONm5RREw5bFhMSSsyRjZqR2N5alErMk00MWpIaEZHSUpQK1BmemtjMjBWWkFnQUEifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6NH0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVJ1MDdFTUJEYzJBbHdGcUNUK0FFK2dFc0JFajBTbEZCUUhSVXlqcE9MTVBiSmNZQ1NEMGNYL0Zxa3BMQ3pPOTZaM1owODMyK3YyWllCQUFGYUZVQ29EMHZpcndKS1dJWHZOd0M5aUFWQXo4SnJmSXc1MEpUUENFZEtma28xK0dnZFh4TjY4bUpHM2NuQjVmejBzVzhhSlM4am5ER1dzYnRPb3RhRGFnSm4zcUVTaWcvWTRMOXR5NFV6MWtjSGYzRFFxeHlIdzVZeW1uOUlsQ0VaUE9lcU5Yb3dyOExzak1WcGk2Y0ZkMlhOVjQzOElFNSsvRFZOMDI4cXBOTmlQTlp3eCt2V2Vrb2FjU1ozYlBhdTkyMjlUckM2V3BBTHV3RFdvdzdObTQzWWpmcDljM09iMW92L0JmSkVSYllBWTVKNmxqaFpoY1pKM2ZVYUhhOFVmNU1LemZCYnhpWHJ2ZTAxbXNFOE90VE9PSTUxVEJpRlNQTC84QWM5cTZWaVdRSUFBQT09In0= -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["alfonso_cohort"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["N"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Youngest","2":"44"},{"1":"Middle Young","2":"13"},{"1":"Middle Age","2":"13"},{"1":"Eldest","2":"10"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[4]},"pages":{}}}
@@ -734,7 +1415,7 @@ svytable(~brom3_agecohort, design = svyattemptnoplan) %&gt;% round()</code></pre
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkFnZSBDb2hvcnQgQ29tcGFyaXNvbnMiDQphdXRob3I6ICJEZXJpYyBMaWFuZyINCmRhdGU6ICI2LzE5LzIwMTkiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIERhdGEgQ2xlYW5pbmcNCg0KYGBge3J9DQojIGNyZWF0ZSBhZ2UgY29ob3J0cw0KY2lkaWRhdGFfcHQyIDwtDQogIGNpZGlkYXRhICU+JQ0KICBmaWx0ZXIoIWlzLm5hKGRlMjBfMSkpDQoNCmNpZGlkYXRhX3B0MiA8LQ0KICBjaWRpZGF0YV9wdDIgJT4lDQogICMgYnJvbWV0IGNvaG9ydHMNCiAgbXV0YXRlKGJyb200X2FnZWNvaG9ydCA9IGN1dChjaWRpZGF0YV9wdDIkQUdFLCBicmVha3MgPSBjKDE2LCAyNCwgMzQsIDQ5LCBJbmYpLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVscyA9IGMoIllvdW5nZXN0IiwgIk1pZGRsZSBZb3VuZyIsICJNaWRkbGUgQWdlIiwgIkVsZGVzdCIpKSwNCiAgICAgICAgIGJyb20zX2FnZWNvaG9ydCA9IGN1dChjaWRpZGF0YV9wdDIkQUdFLCBicmVha3MgPSBjKDE2LCAzNywgNTcsIEluZiksDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVscyA9IGMoIllvdW5nZXN0IiwgIk1pZGRsZSIsICJFbGRlc3QiKSkpICU+JQ0KICAjIGFsZm9uc28gY29ob3J0cw0KICBtdXRhdGUoYWxmb25zb19jb2hvcnQgPSBjdXQoY2lkaWRhdGFfcHQyJEFHRSwgYnJlYWtzID0gYygxNiwgMzcsIDQ5LCA2NCwgSW5mKSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVscyA9IGMoIllvdW5nZXN0IiwgIk1pZGRsZSBZb3VuZyIsICJNaWRkbGUgQWdlIiwgIkVsZGVzdCIpKSkNCmBgYA0KDQpgYGB7cn0NCiMgY3JlYXRlIGJyb2FkZXIgIm90aGVyIHJlbGlnaW9uIiB2YXJpYWJsZSwgY2xlYW4gdXAgc3VpY2lkYWxpdHkNCmNpZGlkYXRhX3B0MiA8LQ0KICBjaWRpZGF0YV9wdDIgJT4lDQogICMgcmVsaWdpb24NCiAgbXV0YXRlKGRlMzJfMSA9IGlmZWxzZShpcy5uYShkZTMyXzEpLCAwLCAxKSwNCiAgICAgICAgIGRlMzJfMiA9IGlmZWxzZShpcy5uYShkZTMyXzIpLCAwLCAxKSwNCiAgICAgICAgIGRlMzJfOSA9IGlmZWxzZShpcy5uYShkZTMyXzkpLCAwLCAxKSwNCiAgICAgICAgIGRlMzJfOTggPSBpZmVsc2UoaXMubmEoZGUzMl85OCksIDAsIDEpLA0KICAgICAgICAgZGUzMl85OSA9IGlmZWxzZShpcy5uYShkZTMyXzk5KSwgMCwgMSksDQogICAgICAgICBkZTMyX290aGVyID0gaWZlbHNlKGRlMzJfM3xkZTMyXzR8ZGUzMl81fGRlMzJfNnxkZTMyXzd8ZGUzMl84ID09IDEsIDEsIDApLA0KICAgICAgICAgZGUzMl9vdGhlciA9IGlmZWxzZShpcy5uYShkZTMyX290aGVyKSwgMCwgMSksDQogICAgICAgICBkZTMzID0gaWZlbHNlKGRlMzMgPT0gOCB8IGRlMzMgPT0gOSwgMCwgZGUzMyksDQogICAgICAgICBkZTM0ID0gaWZlbHNlKGRlMzQgPT0gOCB8IGRlMzQgPT0gOSwgMCwgZGUzNCkpICU+JQ0KICAjIHN1aWNpZGFsaXR5DQogIG11dGF0ZShpZGVhdGUgPSBpZmVsc2UoIWlzLm5hKHNkMiksIHNkMiwgc2QxNSksDQogICAgICAgICBwbGFuID0gaWZlbHNlKCFpcy5uYShzZDQpLCBzZDQsIHNkMTcpLA0KICAgICAgICAgYXR0ZW1wdCA9IGlmZWxzZSghaXMubmEoc2Q2KSwgc2Q2LCBzZDE5KSwNCiAgICAgICAgIHBsYW4gPSBpZmVsc2UoaXMubmEocGxhbiksIDUsIHBsYW4pLA0KICAgICAgICAgYXR0ZW1wdCA9IGlmZWxzZShpcy5uYShhdHRlbXB0KSwgNSwgYXR0ZW1wdCkpICU+JQ0KICBzZWxlY3Qoc2FtcGxlaWQsIEFHRSwgYnJvbTNfYWdlY29ob3J0LCBhbGZvbnNvX2NvaG9ydCwgU0VYLCBwdDEsDQogICAgICAgICBpbzE1LCBkZTEzLCBpbzE2LCBzYzgsIGRlMjBfMSwgZm51NCwgbXIyMiwgDQogICAgICAgICBtcjM3LCBzYzMsIHNjM2EsIGRlMzQsIG1yMjIsIHNuMSwgc24yLCBzbjYsIHNuNywgc2M3LCANCiAgICAgICAgIGNjMXR6LCBjYzI4YSwgY2MyOGIsIGNjMjhjLCBjYzI4ZCwgY2MyOGUsIGNjMjhmLCBjYzI4ZywgY2MyMGEsIGNjMjBiLCANCiAgICAgICAgIGNjMjBjLCBjYzIwZCwgY2MyNmEsIGNjMjZiLCBjYzI2YywgaWRlYXRlLCBwbGFuLCBhdHRlbXB0LCBzdTgsDQogICAgICAgICBkZTMyXzEsIGRlMzJfMiwgZGUzMl85LCBkZTMyXzk4LCBkZTMyXzk5LCBkZTMyX290aGVyLCBkZTMzLCBkZTM0LA0KICAgICAgICAgc2VjdSwgc3RyYXRhLCB3ZWlnaHQyKQ0KYGBgDQoNCmBgYHtyfQ0KIyBEYXRhc2V0IHdpdGggUGFydCAyIHdlaWdodHMgb24NClN1aWNpZGVQYXJ0MiA8LQ0KICBzdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgbmVzdCA9IFQsIA0KICAgICAgICAgICAgZGF0YSA9IHN1YnNldChjaWRpZGF0YV9wdDIsIGNpZGlkYXRhX3B0MiR3ZWlnaHQyPjApKQ0Kb3B0aW9ucyhzdXJ2ZXkubG9uZWx5LnBzdSA9ICJhZGp1c3QiKQ0KYGBgDQoNCiMgRnJlcXVlbmN5IFRhYmxlcw0KDQojIyBTZXgNCg0KYGBge3J9DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBTRVgsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIGFkZG1hcmdpbnMoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIFNFWCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgYWRkbWFyZ2lucygpDQpgYGANCg0KDQojIyBNYXJyaWFnZSANCg0KYGBge3J9DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBzYzMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIGFkZG1hcmdpbnMoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNjMywgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgYWRkbWFyZ2lucygpDQpgYGANCg0KDQojIyBNaWxpdGFyeQ0KDQpTYW1wbGUgc2l6ZXMgdG9vIHNtYWxsOyBjYW5ub3QgdXNlLg0KDQpgYGB7cn0NCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIHB0MSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgYWRkbWFyZ2lucygpICU+JSByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgcHQxLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBhZGRtYXJnaW5zKCkgJT4lIHJvdW5kKCkNCmBgYA0KDQojIyBTdWljaWRhbGl0eQ0KDQpgYGB7cn0NCiMgaWRlYXRlDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBpZGVhdGUsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGlkZWF0ZSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBwbGFuDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBwbGFuLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBwbGFuLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpDQpgYGANCg0KYGBge3J9DQojIGF0dGVtcHQNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGF0dGVtcHQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGF0dGVtcHQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkNCmBgYA0KDQojIyBSZWxpZ2lvbg0KDQpgYGB7cn0NCiMgb3J0aG9kb3ggY291bnRzIGJ5IGNvaG9ydA0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZGUzMl8xLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgZGUzMl8xLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpDQpgYGANCg0KYGBge3J9DQojIHVuaWF0ZSBjb3VudHMgYnkgY29ob3J0DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMyXzIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBkZTMyXzIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikNCmBgYA0KDQpgYGB7cn0NCiMgb3RoZXIgcmVsaWdpb24gY291bnRzIGJ5IGNvaG9ydA0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZGUzMl9vdGhlciwgZGVzaWduID0gU3VpY2lkZVBhcnQyKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzJfb3RoZXIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikNCmBgYA0KDQpgYGB7cn0NCiMgc2VydmljZSBhdHRlbmRhbmNlIGNvdW50cw0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZGUzMywgZGVzaWduID0gU3VpY2lkZVBhcnQyKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikNCmBgYA0KDQpgYGB7cn0NCiMgcmVsaWdpb3NpdHkgY291bnRzDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTM0LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgZGUzNCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKQ0KYGBgDQoNCmBgYHtyfQ0KIyBkb2VzIGltcG9ydGFuY2Ugb2YgcmVsaWdpb24gY29ycmVsYXRlIHdpdGggc2VydmljZSBhdHRlbmRhbmNlPw0Kc2VydmljZXZzaW1wIDwtDQogIHN2eWdsbShkZTMzIH4gZGUzNCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKQ0Kc3VtbWFyeShzZXJ2aWNldnNpbXApDQpgYGANCg0KDQpgYGB7cn0NCmF0dGVtcHRub3BsYW4gPC0NCiAgY2lkaWRhdGFfcHQyICU+JQ0KICBmaWx0ZXIoYXR0ZW1wdCA9PSAxICYgcGxhbiA9PSA1KQ0Kc3Z5YXR0ZW1wdG5vcGxhbiA8LQ0KICBzdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgbmVzdCA9IFQsIA0KICAgICAgICAgICAgZGF0YSA9IHN1YnNldChhdHRlbXB0bm9wbGFuLCBhdHRlbXB0bm9wbGFuJHdlaWdodDI+MCkpDQpvcHRpb25zKHN1cnZleS5sb25lbHkucHN1ID0gImFkanVzdCIpDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQsIGRlc2lnbiA9IHN2eWF0dGVtcHRub3BsYW4pICU+JSByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0LCBkZXNpZ24gPSBzdnlhdHRlbXB0bm9wbGFuKSAlPiUgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KY2lkaWRhdGFfcHQyICU+JQ0KICBmaWx0ZXIoaWRlYXRlICYgcGxhbiAmIGF0dGVtcHQgPT0gMSkgJT4lDQogIGdyb3VwX2J5KGJyb20zX2FnZWNvaG9ydCkgJT4lDQogIHN1bW1hcml6ZShOID0gbigpKQ0KDQpjaWRpZGF0YV9wdDIgJT4lDQogIGZpbHRlcihpZGVhdGUgJiBwbGFuICYgYXR0ZW1wdCA9PSAxKSAlPiUNCiAgZ3JvdXBfYnkoYWxmb25zb19jb2hvcnQpICU+JQ0KICBzdW1tYXJpemUoTiA9IG4oKSkNCmBgYA==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkFnZSBDb2hvcnQgQ29tcGFyaXNvbnMiDQphdXRob3I6ICJEZXJpYyBMaWFuZyINCmRhdGU6ICI2LzI0LzIwMTkiDQpvdXRwdXQ6DQogIHBkZl9kb2N1bWVudDogZGVmYXVsdA0KICBodG1sX25vdGVib29rOiBkZWZhdWx0DQotLS0NCg0KYGBge3IgcmVzdWx0cyA9ICJoaWRlIiwgaW5jbHVkZSA9IEZBTFNFfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQpsaWJyYXJ5KGRhdGEudGFibGUpDQpsaWJyYXJ5KHN1cnZleSkNCmBgYA0KDQpgYGB7cn0NCiMgcmVhZCBpbiBtYWluIGRhdGENCmNpZGlkYXRhX3JhdyA8LQ0KICBmcmVhZCgidWtybWFpbl9SVV8wNjE0MTkuY3N2IikNCmBgYA0KDQpgYGB7cn0NCiMgc3Vic2V0dGluZyBkYXRhDQpjaWRpZGF0YSA8LQ0KICBjaWRpZGF0YV9yYXcgJT4lDQogIG11dGF0ZShhbnggPSBpZmVsc2UoRFNNX0FHTyA9PSAxfERTTV9TTyA9PSAxfERTTV9HQUQgPT0gMXxEU01fUERTID09IDEsIDEsIDApLA0KICAgICAgICAgaWVkID0gaWZlbHNlKERTTV9JRURIID09IDEsIDEsIDApLA0KICAgICAgICAgYWZmID0gaWZlbHNlKERTTV9NREUgPT0gMXxEU01fRFlTID09IDEsIDEsIDApLA0KICAgICAgICAgYWxjID0gaWZlbHNlKERTTV9BTEEgPT0gMXxEU01fQUxEID09IDEsIDEsIDApLA0KICAgICAgICAgYW55ID0gaWZlbHNlKGFueCA9PSAxfGllZCA9PSAxfGFmZiA9PSAxfGFsYyA9PSAxLCAxLCAwKSkgJT4lDQogIHNlbGVjdChzYW1wbGVpZCwgQUdFLCBTRVgsIGlvMTYsIGRlMjAsIGZudTEsIGZudTQsIA0KICAgICAgICAgZGUzMl8xLCBkZTMyXzIsIGRlMzJfMywgZGUzMl80LCBkZTMyXzUsIGRlMzJfNiwgZGUzMl83LCBkZTMyXzgsIGRlMzJfOSwgDQogICAgICAgICBkZTMyXzk4LCBkZTMyXzk5LCBkZTM0LCBkZTQwLCBzYzMsIHNjM2EsIG1yMTYsIG1yMTgsIG1yMjIsIA0KICAgICAgICAgc24xLCBzbjIsIHNuNiwgc243LCBjYzF0eiwgY2MyLCBjbjYsIGNuNmEsIGNuNmIsDQogICAgICAgICBzZDIsIHNkNCwgc2Q2LCBzZDE1LCBzZDE3LCBzZDE5LCBjaDY3LCBjaDk3LCBzYzcsIHN1OCwgY2g1MiwgY2g4MiwgcHQxLA0KICAgICAgICAgYW54LCBpZWQsIGFmZiwgYWxjLCBhbnksIHNlY3UsIHN0cmF0YSwgd2VpZ2h0MikNCmBgYA0KDQojIERhdGEgQ2xlYW5pbmcNCg0KYGBge3J9DQojIHN1YnNldCB0byBwYXJ0IDIgZGF0YQ0KY2lkaWRhdGFfcHQycmF3IDwtDQogIGNpZGlkYXRhICU+JQ0KICBmaWx0ZXIoIWlzLm5hKGRlMjApKQ0KDQojIGNyZWF0ZSBhZ2UgY29ob3J0cw0KY2lkaWRhdGFfcHQycmF3IDwtDQogIGNpZGlkYXRhX3B0MnJhdyAlPiUNCiAgIyBicm9tZXQgY29ob3J0cw0KICBtdXRhdGUoYnJvbTRfYWdlY29ob3J0ID0gY3V0KGNpZGlkYXRhX3B0MnJhdyRBR0UsIGJyZWFrcyA9IGMoMTYsIDI0LCAzNCwgNDksIEluZiksDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWxzID0gYygiWW91bmdlc3QiLCAiTWlkZGxlIFlvdW5nIiwgIk1pZGRsZSBBZ2UiLCAiRWxkZXN0IikpLA0KICAgICAgICAgYnJvbTNfYWdlY29ob3J0ID0gY3V0KGNpZGlkYXRhX3B0MnJhdyRBR0UsIGJyZWFrcyA9IGMoMTYsIDM3LCA1NywgSW5mKSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWxzID0gYygiWW91bmdlc3QiLCAiTWlkZGxlIiwgIkVsZGVzdCIpKSkgJT4lDQogICMgYWxmb25zbyBjb2hvcnRzDQogIG11dGF0ZShhbGZvbnNvX2NvaG9ydCA9IGN1dChjaWRpZGF0YV9wdDJyYXckQUdFLCBicmVha3MgPSBjKDE2LCAzNywgNDksIDY0LCBJbmYpLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWxzID0gYygiWW91bmdlc3QiLCAiTWlkZGxlIFlvdW5nIiwgIk1pZGRsZSBBZ2UiLCAiRWxkZXN0IikpKQ0KYGBgDQoNCmBgYHtyfQ0KIyBjcmVhdGUgYnJvYWRlciAib3RoZXIgcmVsaWdpb24iIHZhcmlhYmxlLCBjbGVhbiB1cCBzdWljaWRhbGl0eQ0KY2lkaWRhdGFfcHQyIDwtDQogIGNpZGlkYXRhX3B0MnJhdyAlPiUNCiAgIyByZWxpZ2lvbg0KICBtdXRhdGUoZGUzMl8xID0gaWZlbHNlKGlzLm5hKGRlMzJfMSksIDAsIDEpLA0KICAgICAgICAgZGUzMl8yID0gaWZlbHNlKGlzLm5hKGRlMzJfMiksIDAsIDEpLA0KICAgICAgICAgZGUzMl85ID0gaWZlbHNlKGlzLm5hKGRlMzJfOSksIDAsIDEpLA0KICAgICAgICAgZGUzMl85OCA9IGlmZWxzZShpcy5uYShkZTMyXzk4KSwgMCwgMSksDQogICAgICAgICBkZTMyXzk5ID0gaWZlbHNlKGlzLm5hKGRlMzJfOTkpLCAwLCAxKSwNCiAgICAgICAgIGRlMzJfb3RoZXIgPSBpZmVsc2UoZGUzMl8zfGRlMzJfNHxkZTMyXzV8ZGUzMl82fGRlMzJfN3xkZTMyXzggPT0gMSwgMSwgMCksDQogICAgICAgICBkZTMyX290aGVyID0gaWZlbHNlKGlzLm5hKGRlMzJfb3RoZXIpLCAwLCAxKSwNCiAgICAgICAgIGRlMzQgPSBpZmVsc2UoZGUzNCA9PSA4IHwgZGUzNCA9PSA5LCAwLCBkZTM0KSkgJT4lDQogICMgc3VpY2lkYWxpdHkNCiAgbXV0YXRlKGlkZWF0ZSA9IGlmZWxzZSghaXMubmEoc2QyKSwgc2QyLCBzZDE1KSwNCiAgICAgICAgIHBsYW4gPSBpZmVsc2UoIWlzLm5hKHNkNCksIHNkNCwgc2QxNyksDQogICAgICAgICBhdHRlbXB0ID0gaWZlbHNlKCFpcy5uYShzZDYpLCBzZDYsIHNkMTkpLA0KICAgICAgICAgcGxhbiA9IGlmZWxzZShpcy5uYShwbGFuKSwgNSwgcGxhbiksDQogICAgICAgICBhdHRlbXB0ID0gaWZlbHNlKGlzLm5hKGF0dGVtcHQpLCA1LCBhdHRlbXB0KSkgJT4lDQogIHNlbGVjdChzYW1wbGVpZCwgYnJvbTRfYWdlY29ob3J0LCBicm9tM19hZ2Vjb2hvcnQsIGFsZm9uc29fY29ob3J0LCBTRVgsIGlvMTYsIA0KICAgICAgICAgZGUyMCwgZm51MSwgZm51NCwgZGUzMl8xLCBkZTMyXzIsIGRlMzJfb3RoZXIsIA0KICAgICAgICAgZGUzMl85OCwgZGUzMl85OSwgZGUzNCwgZGU0MCwgc2MzLCBzYzNhLCBtcjE2LCBtcjE4LCBtcjIyLCANCiAgICAgICAgIHNuMSwgc24yLCBzbjYsIHNuNywgY2MxdHosIGNjMiwgY242LCBjbjZhLCBjbjZiLA0KICAgICAgICAgaWRlYXRlLCBwbGFuLCBhdHRlbXB0LCBjaDY3LCBjaDk3LCBzYzcsIHN1OCwgY2g1MiwgY2g4MiwgcHQxLA0KICAgICAgICAgYW54LCBhbGMsIGFmZiwgaWVkLCBhbnksIHNlY3UsIHN0cmF0YSwgd2VpZ2h0MikNCmBgYA0KDQpgYGB7cn0NCiMgRGF0YXNldCB3aXRoIFBhcnQgMiB3ZWlnaHRzIG9uDQpTdWljaWRlUGFydDIgPC0NCiAgc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIG5lc3QgPSBULCANCiAgICAgICAgICAgIGRhdGEgPSBzdWJzZXQoY2lkaWRhdGFfcHQyLCBjaWRpZGF0YV9wdDIkd2VpZ2h0Mj4wKSkNCm9wdGlvbnMoc3VydmV5LmxvbmVseS5wc3UgPSAiYWRqdXN0IikNCmBgYA0KDQojIEZyZXF1ZW5jeSBUYWJsZXMNCg0KIyMgU2V4DQoNCmBgYHtyfQ0KIyMjIDAgPSBmZW1hbGUNCiMjIyAxID0gbWFsZQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgU0VYLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgU0VYLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KDQojIyBNYXJyaWFnZSANCg0KYGBge3J9DQojIGFyZSB5b3UgY3VycmVudGx5IG1hcnJpZWQ/DQojIyMgNyA9IGxpdmluZyB3aXRoIHNvbWVvbmUNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIHNjMywgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgc2MzLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KIyMgQ2FuY2VyDQoNCmBgYHtyfQ0KIyBwcmVzZW5jZSBvZiBjYW5jZXINCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNjMXR6LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgY2MxdHosIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgdHJlYXRtZW50IGZvciBjYW5jZXINCiMjIyAxID0gdHJlYXRtZW50DQojIyMgMiA9IHJlbWlzc2lvbg0KIyMjIDMgPSBjdXJlZA0KDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBjYzIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBjYzIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCiMjIFNvY2lvLWVjb25vbWljIHN0YXR1cw0KDQpObyB0YWJsZXMgZm9yIERFMjAgKHllYXJzIG9mIHNjaG9vbGluZykgb3IgRk5VMSAodG90YWwgbW9udGhseSBpbmNvbWUpOyBib3RoIGFyZSBub3QgY29udGludW91cyB2YXJpYWJsZXMgYW5kIGZyZXF1ZW5jeSB0YWJsZXMgaW5oZXJlbnRseSBkb24ndCBtYWtlIHNlbnNlIGZvciB0aGVtLg0KDQpgYGB7cn0NCiMgZmluYW5jaWFsIGxldmVsDQojIyMgMSA9IG5vdCBlbm91Z2ggZm9yIGZvb2QNCiMjIyAyID0gZGlmZmN1bHQgdG8gYnV5IGNsb3RoZXMvc2hvZXMNCiMjIyAzID0gbm90IGVub3VnaCBmb3IgZHVyYWJsZXMNCiMjIyA0ID0gY2FuIGFmZm9yZCBzb21lIGV4cGVuc2l2ZSB0aGluZ3MNCiMjIyA1ID0gY2FuIGFmZm9yZCBhbnl0aGluZw0KDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBmbnU0LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBmbnU0LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KIyMgVXJiYW5pY2l0eQ0KDQpgYGB7cn0NCiMjIyAxID0gcnVyYWwNCiMjIyAyID0gdG93bnNoaXANCiMjIyAzID0gY2l0eSB1cCB0byAyMDAsMDAwIGluaGFiaXRhbnRzDQojIyMgNCA9IGNpdHkgYmV0d2VlbiAyMDAsMDAwIGFuZCA1MDAsMDAwIGluaGFiaXRhbnRzDQojIyMgNSA9IGNpdHkgd2l0aCBtb3JlIHRoYW4gNTAwLDAwMCBpbmhhYml0YW50cw0KDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBpbzE2LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICtpbzE2LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KIyMgUHJveGltaXR5IHRvIENoZXJub2J5bA0KDQpgYGB7cn0NCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGRlNDAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBkZTQwLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KIyMgUGFyZW50YWwgQWxjb2hvL0RydWcgVXNlDQoNCmBgYHtyfQ0KIyBtb3RoZXIgYWxjL2RydWcgcHJvYmxlbQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY2g1MiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNoNTIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgZmF0aGVyIGFsYy9kcnVnIHByb2JsZW0NCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNoODIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBjaDgyLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQojIyBQYXJlbnRhbCBTdWljaWRhbGl0eQ0KDQpgYGB7cn0NCiMgbW90aGVyIHN1aWNpZGFsaXR5DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBjaDY3LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBjaDY3LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIGZhdGhlciBzdWljaWRhbGl0eQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY2g5NywgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNoOTcsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQojIyBBYm9ydGlvbnMNCg0KYGBge3J9DQojIGhhZCBhbiBhYm9ydGlvbg0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY242LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgY242LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIG51bWJlciBvZiBhYm9ydGlvbnMNCiMjIyBjb250aW51b3VzIHZhcmlhYmxlIHNvIGZyZXF1ZW5jeSB0YWJsZSBsZXNzIGludHVpdGl2ZTsganVzdCB3YW50ZWQgdG8ga25vdw0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY242YSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNuNmEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCiMjIFNvY2lhbCBOZXR3b3JrDQoNCmBgYHtyfQ0KIyBhYmlsaXR5IHRvIHJlbHkgb24gZnJpZW5kcy9mYW1pbHkNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBhYmlsaXR5IHRvIG9wZW4gdXANCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBjb250YWN0IHdpdGggZmFtaWx5DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBzbjEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBzbjEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBjb250YWN0IHdpdGggZnJpZW5kcw0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgc24yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgc24yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KIyMgTWVudGFsIERpc29yZGVycw0KDQpgYGB7cn0NCiMgYWZmZWN0aXZlDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBhZmYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBhZmYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lIA0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIGFsY29ob2wNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGFsYywgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUgDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBhbGMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lIA0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIGllZA0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgaWVkLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JSANCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGllZCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUgDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgYW54aWV0eQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgYWZmLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JSANCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGFmZiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JSANCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBhbnkNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGFueSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUgDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBhbnksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lIA0KICByb3VuZCgpDQpgYGANCg0KIyMgTWlsaXRhcnkNCg0KU2FtcGxlIHNpemVzIHRvbyBzbWFsbDsgY2Fubm90IHVzZS4NCg0KYGBge3J9DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBwdDEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lIA0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgcHQxLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JSANCiAgcm91bmQoKQ0KYGBgDQoNCiMjIFN1aWNpZGFsaXR5DQoNCmBgYHtyfQ0KIyBpZGVhdGUNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGlkZWF0ZSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGlkZWF0ZSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBwbGFuDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBwbGFuLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBwbGFuLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIGF0dGVtcHQNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGF0dGVtcHQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGF0dGVtcHQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkNCmBgYA0KDQpgYGB7cn0NCiMgYXR0ZW1wdCB3aXRob3V0IHBsYW5uaW5nDQphdHRlbXB0bm9wbGFuIDwtDQogIGNpZGlkYXRhX3B0MiAlPiUNCiAgZmlsdGVyKGF0dGVtcHQgPT0gMSAmIHBsYW4gPT0gNSkNCnN2eWF0dGVtcHRub3BsYW4gPC0NCiAgc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIG5lc3QgPSBULCANCiAgICAgICAgICAgIGRhdGEgPSBzdWJzZXQoYXR0ZW1wdG5vcGxhbiwgYXR0ZW1wdG5vcGxhbiR3ZWlnaHQyPjApKQ0Kb3B0aW9ucyhzdXJ2ZXkubG9uZWx5LnBzdSA9ICJhZGp1c3QiKQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0LCBkZXNpZ24gPSBzdnlhdHRlbXB0bm9wbGFuKSAlPiUgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCwgZGVzaWduID0gc3Z5YXR0ZW1wdG5vcGxhbikgJT4lIHJvdW5kKCkNCmBgYA0KDQojIyBSZWxpZ2lvbg0KDQpgYGB7cn0NCiMgb3J0aG9kb3ggY291bnRzIGJ5IGNvaG9ydA0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZGUzMl8xLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgZGUzMl8xLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIHVuaWF0ZSBjb3VudHMgYnkgY29ob3J0DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMyXzIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzJfMiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIG90aGVyIHJlbGlnaW9uIGNvdW50cyBieSBjb2hvcnQNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGRlMzJfb3RoZXIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzJfb3RoZXIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyByZWxpZ2lvc2l0eSBjb3VudHMNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGRlMzQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBpZGVhdGUsIHBsYW4sIGFuZCBhdHRlbXB0IGJ5IGNvaG9ydA0KY2lkaWRhdGFfcHQyICU+JQ0KICBmaWx0ZXIoaWRlYXRlICYgcGxhbiAmIGF0dGVtcHQgPT0gMSkgJT4lDQogIGdyb3VwX2J5KGJyb20zX2FnZWNvaG9ydCkgJT4lDQogIHN1bW1hcml6ZShOID0gbigpKQ0KDQpjaWRpZGF0YV9wdDIgJT4lDQogIGZpbHRlcihpZGVhdGUgJiBwbGFuICYgYXR0ZW1wdCA9PSAxKSAlPiUNCiAgZ3JvdXBfYnkoYWxmb25zb19jb2hvcnQpICU+JQ0KICBzdW1tYXJpemUoTiA9IG4oKSkNCmBgYA0K</div>
 
 
 

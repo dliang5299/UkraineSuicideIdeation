@@ -1,34 +1,66 @@
 ---
 title: "Age Cohort Comparisons"
 author: "Deric Liang"
-date: "6/19/2019"
-output: html_notebook
+date: "6/24/2019"
+output:
+  pdf_document: default
+  html_notebook: default
 ---
+
+```{r results = "hide", include = FALSE}
+library(tidyverse)
+library(data.table)
+library(survey)
+```
+
+```{r}
+# read in main data
+cididata_raw <-
+  fread("ukrmain_RU_061419.csv")
+```
+
+```{r}
+# subsetting data
+cididata <-
+  cididata_raw %>%
+  mutate(anx = ifelse(DSM_AGO == 1|DSM_SO == 1|DSM_GAD == 1|DSM_PDS == 1, 1, 0),
+         ied = ifelse(DSM_IEDH == 1, 1, 0),
+         aff = ifelse(DSM_MDE == 1|DSM_DYS == 1, 1, 0),
+         alc = ifelse(DSM_ALA == 1|DSM_ALD == 1, 1, 0),
+         any = ifelse(anx == 1|ied == 1|aff == 1|alc == 1, 1, 0)) %>%
+  select(sampleid, AGE, SEX, io16, de20, fnu1, fnu4, 
+         de32_1, de32_2, de32_3, de32_4, de32_5, de32_6, de32_7, de32_8, de32_9, 
+         de32_98, de32_99, de34, de40, sc3, sc3a, mr16, mr18, mr22, 
+         sn1, sn2, sn6, sn7, cc1tz, cc2, cn6, cn6a, cn6b,
+         sd2, sd4, sd6, sd15, sd17, sd19, ch67, ch97, sc7, su8, ch52, ch82, pt1,
+         anx, ied, aff, alc, any, secu, strata, weight2)
+```
 
 # Data Cleaning
 
 ```{r}
-# create age cohorts
-cididata_pt2 <-
+# subset to part 2 data
+cididata_pt2raw <-
   cididata %>%
-  filter(!is.na(de20_1))
+  filter(!is.na(de20))
 
-cididata_pt2 <-
-  cididata_pt2 %>%
+# create age cohorts
+cididata_pt2raw <-
+  cididata_pt2raw %>%
   # bromet cohorts
-  mutate(brom4_agecohort = cut(cididata_pt2$AGE, breaks = c(16, 24, 34, 49, Inf),
+  mutate(brom4_agecohort = cut(cididata_pt2raw$AGE, breaks = c(16, 24, 34, 49, Inf),
                                         labels = c("Youngest", "Middle Young", "Middle Age", "Eldest")),
-         brom3_agecohort = cut(cididata_pt2$AGE, breaks = c(16, 37, 57, Inf),
+         brom3_agecohort = cut(cididata_pt2raw$AGE, breaks = c(16, 37, 57, Inf),
                                       labels = c("Youngest", "Middle", "Eldest"))) %>%
   # alfonso cohorts
-  mutate(alfonso_cohort = cut(cididata_pt2$AGE, breaks = c(16, 37, 49, 64, Inf),
+  mutate(alfonso_cohort = cut(cididata_pt2raw$AGE, breaks = c(16, 37, 49, 64, Inf),
                               labels = c("Youngest", "Middle Young", "Middle Age", "Eldest")))
 ```
 
 ```{r}
 # create broader "other religion" variable, clean up suicidality
 cididata_pt2 <-
-  cididata_pt2 %>%
+  cididata_pt2raw %>%
   # religion
   mutate(de32_1 = ifelse(is.na(de32_1), 0, 1),
          de32_2 = ifelse(is.na(de32_2), 0, 1),
@@ -37,7 +69,6 @@ cididata_pt2 <-
          de32_99 = ifelse(is.na(de32_99), 0, 1),
          de32_other = ifelse(de32_3|de32_4|de32_5|de32_6|de32_7|de32_8 == 1, 1, 0),
          de32_other = ifelse(is.na(de32_other), 0, 1),
-         de33 = ifelse(de33 == 8 | de33 == 9, 0, de33),
          de34 = ifelse(de34 == 8 | de34 == 9, 0, de34)) %>%
   # suicidality
   mutate(ideate = ifelse(!is.na(sd2), sd2, sd15),
@@ -45,13 +76,12 @@ cididata_pt2 <-
          attempt = ifelse(!is.na(sd6), sd6, sd19),
          plan = ifelse(is.na(plan), 5, plan),
          attempt = ifelse(is.na(attempt), 5, attempt)) %>%
-  select(sampleid, AGE, brom3_agecohort, alfonso_cohort, SEX, pt1,
-         io15, de13, io16, sc8, de20_1, fnu4, mr22, 
-         mr37, sc3, sc3a, de34, mr22, sn1, sn2, sn6, sn7, sc7, 
-         cc1tz, cc28a, cc28b, cc28c, cc28d, cc28e, cc28f, cc28g, cc20a, cc20b, 
-         cc20c, cc20d, cc26a, cc26b, cc26c, ideate, plan, attempt, su8,
-         de32_1, de32_2, de32_9, de32_98, de32_99, de32_other, de33, de34,
-         secu, strata, weight2)
+  select(sampleid, brom4_agecohort, brom3_agecohort, alfonso_cohort, SEX, io16, 
+         de20, fnu1, fnu4, de32_1, de32_2, de32_other, 
+         de32_98, de32_99, de34, de40, sc3, sc3a, mr16, mr18, mr22, 
+         sn1, sn2, sn6, sn7, cc1tz, cc2, cn6, cn6a, cn6b,
+         ideate, plan, attempt, ch67, ch97, sc7, su8, ch52, ch82, pt1,
+         anx, alc, aff, ied, any, secu, strata, weight2)
 ```
 
 ```{r}
@@ -67,44 +97,298 @@ options(survey.lonely.psu = "adjust")
 ## Sex
 
 ```{r}
-svytable(~alfonso_cohort + SEX, design = SuicidePart2) %>% addmargins()
-svytable(~brom3_agecohort + SEX, design = SuicidePart2) %>% addmargins()
+### 0 = female
+### 1 = male
+svytable(~alfonso_cohort + SEX, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + SEX, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
 ```
 
 
 ## Marriage 
 
 ```{r}
-svytable(~alfonso_cohort + sc3, design = SuicidePart2) %>% addmargins()
-svytable(~brom3_agecohort + sc3, design = SuicidePart2) %>% addmargins()
+# are you currently married?
+### 7 = living with someone
+svytable(~alfonso_cohort + sc3, design = SuicidePart2) %>%
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + sc3, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
 ```
 
+## Cancer
+
+```{r}
+# presence of cancer
+svytable(~alfonso_cohort + cc1tz, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + cc1tz, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+```
+
+```{r}
+# treatment for cancer
+### 1 = treatment
+### 2 = remission
+### 3 = cured
+
+svytable(~alfonso_cohort + cc2, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + cc2, design = SuicidePart2) %>%
+  addmargins() %>%
+  round()
+```
+
+## Socio-economic status
+
+No tables for DE20 (years of schooling) or FNU1 (total monthly income); both are not continuous variables and frequency tables inherently don't make sense for them.
+
+```{r}
+# financial level
+### 1 = not enough for food
+### 2 = diffcult to buy clothes/shoes
+### 3 = not enough for durables
+### 4 = can afford some expensive things
+### 5 = can afford anything
+
+svytable(~alfonso_cohort + fnu4, design = SuicidePart2) %>%
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + fnu4, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+```
+
+## Urbanicity
+
+```{r}
+### 1 = rural
+### 2 = township
+### 3 = city up to 200,000 inhabitants
+### 4 = city between 200,000 and 500,000 inhabitants
+### 5 = city with more than 500,000 inhabitants
+
+svytable(~alfonso_cohort + io16, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort +io16, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+```
+
+## Proximity to Chernobyl
+
+```{r}
+svytable(~alfonso_cohort + de40, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + de40, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+```
+
+## Parental Alcoho/Drug Use
+
+```{r}
+# mother alc/drug problem
+svytable(~alfonso_cohort + ch52, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + ch52, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+```
+
+```{r}
+# father alc/drug problem
+svytable(~alfonso_cohort + ch82, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + ch82, design = SuicidePart2) %>%
+  addmargins() %>%
+  round()
+```
+
+## Parental Suicidality
+
+```{r}
+# mother suicidality
+svytable(~alfonso_cohort + ch67, design = SuicidePart2) %>%
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + ch67, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+```
+
+```{r}
+# father suicidality
+svytable(~alfonso_cohort + ch97, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + ch97, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+```
+
+## Abortions
+
+```{r}
+# had an abortion
+svytable(~alfonso_cohort + cn6, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + cn6, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+```
+
+```{r}
+# number of abortions
+### continuous variable so frequency table less intuitive; just wanted to know
+svytable(~alfonso_cohort + cn6a, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + cn6a, design = SuicidePart2) %>%
+  addmargins() %>%
+  round()
+```
+
+## Social Network
+
+```{r}
+# ability to rely on friends/family
+svytable(~alfonso_cohort + sn6, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + sn6, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+```
+
+```{r}
+# ability to open up
+svytable(~alfonso_cohort + sn6, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + sn6, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+```
+
+```{r}
+# contact with family
+svytable(~alfonso_cohort + sn1, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + sn1, design = SuicidePart2) %>%
+  addmargins() %>%
+  round()
+```
+
+```{r}
+# contact with friends
+svytable(~alfonso_cohort + sn2, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + sn2, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+```
+
+## Mental Disorders
+
+```{r}
+# affective
+svytable(~alfonso_cohort + aff, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + aff, design = SuicidePart2) %>% 
+  addmargins() %>% 
+  round()
+```
+
+```{r}
+# alcohol
+svytable(~alfonso_cohort + alc, design = SuicidePart2) %>% 
+  addmargins() %>% 
+  round()
+svytable(~brom3_agecohort + alc, design = SuicidePart2) %>% 
+  addmargins() %>% 
+  round()
+```
+
+```{r}
+# ied
+svytable(~alfonso_cohort + ied, design = SuicidePart2) %>% 
+  addmargins() %>% 
+  round()
+svytable(~brom3_agecohort + ied, design = SuicidePart2) %>% 
+  addmargins() %>% 
+  round()
+```
+
+```{r}
+# anxiety
+svytable(~alfonso_cohort + aff, design = SuicidePart2) %>% 
+  addmargins() %>% 
+  round()
+svytable(~brom3_agecohort + aff, design = SuicidePart2) %>%
+  addmargins() %>% 
+  round()
+```
+
+```{r}
+# any
+svytable(~alfonso_cohort + any, design = SuicidePart2) %>% 
+  addmargins() %>% 
+  round()
+svytable(~brom3_agecohort + any, design = SuicidePart2) %>% 
+  addmargins() %>% 
+  round()
+```
 
 ## Military
 
 Sample sizes too small; cannot use.
 
 ```{r}
-svytable(~alfonso_cohort + pt1, design = SuicidePart2) %>% addmargins() %>% round()
-svytable(~brom3_agecohort + pt1, design = SuicidePart2) %>% addmargins() %>% round()
+svytable(~alfonso_cohort + pt1, design = SuicidePart2) %>% 
+  addmargins() %>% 
+  round()
+svytable(~brom3_agecohort + pt1, design = SuicidePart2) %>% 
+  addmargins() %>% 
+  round()
 ```
 
 ## Suicidality
 
 ```{r}
 # ideate
-svytable(~alfonso_cohort + ideate, design = SuicidePart2) %>%
-  addmargins()
+svytable(~alfonso_cohort + ideate, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
 svytable(~brom3_agecohort + ideate, design = SuicidePart2) %>% 
-  addmargins()
+  addmargins() %>%
+  round()
 ```
 
 ```{r}
 # plan
 svytable(~alfonso_cohort + plan, design = SuicidePart2) %>%
-  addmargins()
+  addmargins() %>%
+  round()
 svytable(~brom3_agecohort + plan, design = SuicidePart2) %>% 
-  addmargins()
+  addmargins() %>%
+  round()
 ```
 
 ```{r}
@@ -115,47 +399,8 @@ svytable(~brom3_agecohort + attempt, design = SuicidePart2) %>%
   addmargins()
 ```
 
-## Religion
-
 ```{r}
-# orthodox counts by cohort
-svytable(~alfonso_cohort + de32_1, design = SuicidePart2)
-svytable(~brom3_agecohort + de32_1, design = SuicidePart2)
-```
-
-```{r}
-# uniate counts by cohort
-svytable(~alfonso_cohort + de32_2, design = SuicidePart2)
-svytable(~brom3_agecohort + de32_2, design = SuicidePart2)
-```
-
-```{r}
-# other religion counts by cohort
-svytable(~alfonso_cohort + de32_other, design = SuicidePart2)
-svytable(~brom3_agecohort + de32_other, design = SuicidePart2)
-```
-
-```{r}
-# service attendance counts
-svytable(~alfonso_cohort + de33, design = SuicidePart2)
-svytable(~brom3_agecohort + de33, design = SuicidePart2)
-```
-
-```{r}
-# religiosity counts
-svytable(~alfonso_cohort + de34, design = SuicidePart2)
-svytable(~brom3_agecohort + de34, design = SuicidePart2)
-```
-
-```{r}
-# does importance of religion correlate with service attendance?
-servicevsimp <-
-  svyglm(de33 ~ de34, design = SuicidePart2)
-summary(servicevsimp)
-```
-
-
-```{r}
+# attempt without planning
 attemptnoplan <-
   cididata_pt2 %>%
   filter(attempt == 1 & plan == 5)
@@ -167,7 +412,50 @@ svytable(~alfonso_cohort, design = svyattemptnoplan) %>% round()
 svytable(~brom3_agecohort, design = svyattemptnoplan) %>% round()
 ```
 
+## Religion
+
 ```{r}
+# orthodox counts by cohort
+svytable(~alfonso_cohort + de32_1, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + de32_1, design = SuicidePart2) %>% 
+  addmargins() %>%
+  round()
+```
+
+```{r}
+# uniate counts by cohort
+svytable(~alfonso_cohort + de32_2, design = SuicidePart2) %>%
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + de32_2, design = SuicidePart2) %>%
+  addmargins() %>%
+  round()
+```
+
+```{r}
+# other religion counts by cohort
+svytable(~alfonso_cohort + de32_other, design = SuicidePart2) %>%
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + de32_other, design = SuicidePart2) %>%
+  addmargins() %>%
+  round()
+```
+
+```{r}
+# religiosity counts
+svytable(~alfonso_cohort + de34, design = SuicidePart2) %>%
+  addmargins() %>%
+  round()
+svytable(~brom3_agecohort + de34, design = SuicidePart2) %>%
+  addmargins() %>%
+  round()
+```
+
+```{r}
+# ideate, plan, and attempt by cohort
 cididata_pt2 %>%
   filter(ideate & plan & attempt == 1) %>%
   group_by(brom3_agecohort) %>%
