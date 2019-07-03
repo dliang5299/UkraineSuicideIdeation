@@ -1772,9 +1772,11 @@ $(document).ready(function () {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jIGhlbGxvIHdvcmxkISEhIVxuYGBgIn0= -->
-<pre class="r"><code>
-# hello world!!!!</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuXG4jIGhlbGxvIHdvcmxkISEhIVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r</p>
+<div id="hello-world" class="section level1">
+<h1>hello world!!!!</h1>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1782,135 +1784,28 @@ $(document).ready(function () {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyByZWFkIGluIG1haW4gZGF0YVxuY2lkaWRhdGFfcmF3IDwtXG4gIGZyZWFkKFwidWtybWFpbl9SVV8wNjE0MTkuY3N2XCIpXG5gYGAifQ== -->
-<pre class="r"><code># read in main data
-cididata_raw &lt;-
-  fread(&quot;ukrmain_RU_061419.csv&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyByZWFkIGluIG1haW4gZGF0YVxuY2lkaWRhdGFfcmF3IDwtXG4gIGZyZWFkKFxcdWtybWFpbl9SVV8wNjE0MTkuY3N2XFwpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # read in main data cididata_raw &lt;- fread(_RU_061419.csv)</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+</div>
 <div id="data-cleaning" class="section level1">
 <h1>Data Cleaning</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzdWJzZXR0aW5nIGRhdGFcbmNpZGlkYXRhX3B0MiA8LVxuICBjaWRpZGF0YV9yYXcgJT4lXG4gICMgbWVudGFsIGNvbmRpdGlvbnNcbiAgbXV0YXRlKGFueCA9IGlmZWxzZShEU01fQUdPID09IDF8RFNNX1NPID09IDF8RFNNX0dBRCA9PSAxfERTTV9QRFMgPT0gMSwgMSwgMCksXG4gICAgICAgICBpZWQgPSBpZmVsc2UoRFNNX0lFREggPT0gMSwgMSwgMCksXG4gICAgICAgICBhZmYgPSBpZmVsc2UoRFNNX01ERSA9PSAxfERTTV9EWVMgPT0gMSwgMSwgMCksXG4gICAgICAgICBhbGMgPSBpZmVsc2UoRFNNX0FMQSA9PSAxfERTTV9BTEQgPT0gMSwgMSwgMCksXG4gICAgICAgICBhbnkgPSBpZmVsc2UoYW54ID09IDF8aWVkID09IDF8YWZmID09IDF8YWxjID09IDEsIDEsIDApKSAlPiVcbiAgIyBicm9tZXQgYWdlIGNvaG9ydHNcbiAgbXV0YXRlKGJyb200X2FnZWNvaG9ydCA9IGN1dChjaWRpZGF0YV9yYXckQUdFLCBicmVha3MgPSBjKDE2LCAyNCwgMzQsIDQ5LCBJbmYpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVscyA9IGMoXCJZb3VuZ2VzdFwiLCBcIk1pZGRsZSBZb3VuZ1wiLCBcIk1pZGRsZSBBZ2VcIiwgXCJFbGRlc3RcIikpLFxuICAgICAgICAgYnJvbTNfYWdlY29ob3J0ID0gY3V0KGNpZGlkYXRhX3JhdyRBR0UsIGJyZWFrcyA9IGMoMTYsIDM3LCA1NywgSW5mKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWxzID0gYyhcIllvdW5nZXN0XCIsIFwiTWlkZGxlXCIsIFwiRWxkZXN0XCIpKSkgJT4lXG4gICMgYWxmb25zbyBhZ2UgY29ob3J0c1xuICBtdXRhdGUoYWxmb25zb19jb2hvcnQgPSBjdXQoY2lkaWRhdGFfcmF3JEFHRSwgYnJlYWtzID0gYygxNiwgMzcsIDQ5LCA2NCwgSW5mKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVscyA9IGMoXCJZb3VuZ2VzdFwiLCBcIk1pZGRsZSBZb3VuZ1wiLCBcIk1pZGRsZSBBZ2VcIiwgXCJFbGRlc3RcIikpKSAlPiVcbiAgIyBzZWxlY3QgcGFydCAyIHJlc3BvbmRlbnRzXG4gIGZpbHRlcighaXMubmEoZGUyMCkpICU+JVxuICAjIHJlbGlnaW9uXG4gIG11dGF0ZShkZTMyXzEgPSBhcy5mYWN0b3IoaWZlbHNlKGlzLm5hKGRlMzJfMSksIDAsIDEpKSxcbiAgICAgICAgIGRlMzJfMiA9IGFzLmZhY3RvcihpZmVsc2UoaXMubmEoZGUzMl8yKSwgMCwgMSkpLFxuICAgICAgICAgZGUzMl85ID0gYXMuZmFjdG9yKGlmZWxzZShpcy5uYShkZTMyXzkpLCAwLCAxKSksXG4gICAgICAgICBkZTMyXzk4ID0gaWZlbHNlKGlzLm5hKGRlMzJfOTgpLCAwLCAxKSxcbiAgICAgICAgIGRlMzJfOTkgPSBpZmVsc2UoaXMubmEoZGUzMl85OSksIDAsIDEpLFxuICAgICAgICAgZGUzMl9vdGhlciA9IGlmZWxzZShkZTMyXzMgPT0gMXxkZTMyXzQgPT0gMXxkZTMyXzUgPT0gMXxkZTMyXzYgPT0gMXxkZTMyXzcgPT0gMXxkZTMyXzggPT0gMSwgMSwgMCksXG4gICAgICAgICBkZTMyX290aGVyID0gYXMuZmFjdG9yKGlmZWxzZShpcy5uYShkZTMyX290aGVyKSwgMCwgMSkpLFxuICAgICAgICAgZGUzNCA9IGFzLmZhY3RvcihpZmVsc2UoZGUzNCA9PSA4fGRlMzQgPT0gOSwgTkEsIGRlMzQpKSkgJT4lXG4gICMgc3VpY2lkYWxpdHlcbiAgbXV0YXRlKGlkZWF0ZSA9IGlmZWxzZSghaXMubmEoc2QyKSwgc2QyLCBzZDE1KSxcbiAgICAgICAgIHBsYW4gPSBpZmVsc2UoIWlzLm5hKHNkNCksIHNkNCwgc2QxNyksXG4gICAgICAgICBhdHRlbXB0ID0gaWZlbHNlKCFpcy5uYShzZDYpLCBzZDYsIHNkMTkpLFxuICAgICAgICAgcGxhbiA9IGlmZWxzZShpcy5uYShwbGFuKSwgNSwgcGxhbiksXG4gICAgICAgICBhdHRlbXB0ID0gaWZlbHNlKGlzLm5hKGF0dGVtcHQpLCA1LCBhdHRlbXB0KSxcbiAgICAgICAgIGlkZWF0ZSA9IGFzLmZhY3RvcihpZmVsc2UoaWRlYXRlID09IDEsIDEsIDApKSxcbiAgICAgICAgIHBsYW4gPSBhcy5mYWN0b3IoaWZlbHNlKHBsYW4gPT0gMSwgMSwgMCkpLFxuICAgICAgICAgYXR0ZW1wdCA9IGFzLmZhY3RvcihpZmVsc2UoYXR0ZW1wdCA9PSAxLCAxLCAwKSkpICU+JVxuICAjIG1hcnJpZWRcbiAgbXV0YXRlKG1hcnJpZWQgPSBhcy5mYWN0b3IoaWZlbHNlKHNjMyA9PSA4fHNjMyA9PSA5LCBOQSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2Uoc2MzID09IDEsIDEsIDApKSkpICU+JVxuICAjIGNoZXJub2J5bFxuICBtdXRhdGUobGl2ZV9jaGVybm9ieWwgPSBhcy5mYWN0b3IoaWZlbHNlKGRlNDAgPT0gMSwgMSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKHB0NmEgPT0gMSAmICFpcy5uYShwdDZhKSwgMSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKHB0NmIgPT0gMSAmICFpcy5uYShwdDZiKSwgMSwgMCkpKSkpICU+JVxuICAjIHNvY2lhbCBuZXR3b3JrXG4gIG11dGF0ZShTTjEgPSBkZXJpdmVkVmFyaWFibGUoYDBgID0gc24xID09IDYsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDFgID0gc24xID09IDUsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDJgID0gc24xID09IDQsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDNgID0gc24xID09IDMsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDRgID0gc24xID09IDIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDVgID0gc24xID09IDEsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDdgID0gc24xID09IDcsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDhgID0gc24xID09IDgsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDlgID0gc24xID09IDkpLFxuICAgICAgICAgU04yID0gZGVyaXZlZFZhcmlhYmxlKGAwYCA9IHNuMiA9PSA2LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAxYCA9IHNuMiA9PSA1LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAyYCA9IHNuMiA9PSA0LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAzYCA9IHNuMiA9PSAzLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA0YCA9IHNuMiA9PSAyLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA1YCA9IHNuMiA9PSAxLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA3YCA9IHNuMiA9PSA3LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA4YCA9IHNuMiA9PSA4LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA5YCA9IHNuMiA9PSA5KSxcbiAgICAgICAgIFNONiA9IGRlcml2ZWRWYXJpYWJsZShcIjFcIiA9IHNuNiA9PSA0LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiMlwiID0gc242ID09IDMsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCIzXCIgPSBzbjYgPT0gMixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIjRcIiA9IHNuNiA9PSAxLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiMi41XCIgPSBzbjYgPT0gOHxzbjYgPT0gOSksXG4gICAgICAgICBTTjcgPSBkZXJpdmVkVmFyaWFibGUoXCIxXCIgPSBzbjcgPT0gNCxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIjJcIiA9IHNuNyA9PSAzLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiM1wiID0gc243ID09IDIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCI0XCIgPSBzbjcgPT0gMSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIjIuNVwiID0gc243ID09IDh8c243ID09IDkpLFxuICAgICAgICAgU04xID0gYXMubnVtZXJpYyhpZmVsc2UoU04xID09IDd8U04xID09IDh8U04xID09IDksIE5BLCBTTjEpKSxcbiAgICAgICAgIFNOMiA9IGFzLm51bWVyaWMoaWZlbHNlKFNOMiA9PSA3fFNOMiA9PSA4fFNOMiA9PSA5LCBOQSwgU04yKSksXG4gICAgICAgICBTTjYgPSBhcy5udW1lcmljKFNONiksXG4gICAgICAgICBTTjcgPSBhcy5udW1lcmljKFNONykpICU+JVxuICAjIHJlY29kZVxuICBtdXRhdGUoY2MxdHogPSBhcy5mYWN0b3IoaWZlbHNlKGNjMXR6ID09IDh8Y2MxdHogPT0gOSwgTkEsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjYzF0eiA9PSAxLCAxLCAwKSkpLFxuICAgICAgICAgY2MyID0gYXMuZmFjdG9yKGlmZWxzZShjYzIgPT0gOHxjYzIgPT0gOSwgTkEsIGNjMikpLFxuICAgICAgICAgY242ID0gYXMuZmFjdG9yKGlmZWxzZShjbjYgPT0gOHxjbjYgPT0gOSwgTkEsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjbjYgPT0gMSwgMSwgMCkpKSxcbiAgICAgICAgIGNuNmEgPSBpZmVsc2UoY242YSA9PSA5OHxjbjZhID09IDk5LCBOQSwgY242YSksXG4gICAgICAgICBjaDY3ID0gYXMuZmFjdG9yKGlmZWxzZShjaDY3ID09IDh8Y2g2NyA9PSA5LCBOQSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKGNoNjcgPT0gMSwgMSwgMCkpKSxcbiAgICAgICAgIGNoOTcgPSBhcy5mYWN0b3IoaWZlbHNlKGNoOTcgPT0gOHxjaDk3ID09IDksIE5BLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UoY2g5NyA9PSAxLCAxLCAwKSkpLFxuICAgICAgICAgY2g1MiA9IGFzLmZhY3RvcihpZmVsc2UoY2g1MiA9PSA4fGNoNTIgPT0gOSwgTkEsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjaDUyID09IDEsIDEsIDApKSksXG4gICAgICAgICBjaDgyID0gYXMuZmFjdG9yKGlmZWxzZShjaDgyID09IDh8Y2g4MiA9PSA5LCBOQSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKGNoODIgPT0gMSwgMSwgMCkpKSxcbiAgICAgICAgIGZudTEgPSBpZmVsc2UoZm51MSA9PSA4fGZudTEgPT0gOSwgTkEsIGZudTEpLFxuICAgICAgICAgZm51NCA9IGFzLmZhY3RvcihpZmVsc2UoZm51NCA9PSA4fGZudTQgPT0gOSwgTkEsIGZudTQpKSxcbiAgICAgICAgIHB0MSA9IGFzLmZhY3RvcihpZmVsc2UocHQxID09IDh8cHQxID09IDksIE5BLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UocHQxID09IDEsIDEsIDApKSksXG4gICAgICAgICBTRVggPSBhcy5mYWN0b3IoU0VYKSxcbiAgICAgICAgIGVtcCA9IGFzLmZhY3RvcihlbXApLFxuICAgICAgICAgaW8xNiA9IGFzLmZhY3RvcihpbzE2KSkgJT4lXG4gICMgc2VsZWN0IHJlbGV2YW50IHZhcmlhYmxlXG4gIHNlbGVjdChzYW1wbGVpZCwgYnJvbTRfYWdlY29ob3J0LCBicm9tM19hZ2Vjb2hvcnQsIGFsZm9uc29fY29ob3J0LCBTRVgsIGlvMTYsIFxuICAgICAgICAgZGUyMCwgZm51MSwgZm51NCwgZGUzMl8xLCBkZTMyXzIsIGRlMzJfb3RoZXIsIGRlMzJfOSwgZW1wLCBlbXB3LCBlbXBzdCwgZW1waCwgXG4gICAgICAgICBlbXByLCBlbXBvdGgsZGUzNCwgcHQ2YSwgcHQ2YiwgZGU0MCwgbGl2ZV9jaGVybm9ieWwsIG1hcnJpZWQsIHNjMywgXG4gICAgICAgICBtcjE2LCBtcjE4LCBtcjIyLCBzbjEsIHNuMiwgc242LCBzbjcsIFNOMSwgU04yLCBTTjYsIFNONywgY2MxdHosIGNjMiwgXG4gICAgICAgICBjbjYsIGNuNmEsaWRlYXRlLCBwbGFuLCBhdHRlbXB0LCBjaDY3LCBjaDk3LCBjaDUyLCBjaDgyLCBwdDEsXG4gICAgICAgICBhbngsIGFsYywgYWZmLCBpZWQsIGFueSwgc2VjdSwgc3RyYXRhLCB3ZWlnaHQyKVxuYGBgIn0= -->
-<pre class="r"><code># subsetting data
-cididata_pt2 &lt;-
-  cididata_raw %&gt;%
-  # mental conditions
-  mutate(anx = ifelse(DSM_AGO == 1|DSM_SO == 1|DSM_GAD == 1|DSM_PDS == 1, 1, 0),
-         ied = ifelse(DSM_IEDH == 1, 1, 0),
-         aff = ifelse(DSM_MDE == 1|DSM_DYS == 1, 1, 0),
-         alc = ifelse(DSM_ALA == 1|DSM_ALD == 1, 1, 0),
-         any = ifelse(anx == 1|ied == 1|aff == 1|alc == 1, 1, 0)) %&gt;%
-  # bromet age cohorts
-  mutate(brom4_agecohort = cut(cididata_raw$AGE, breaks = c(16, 24, 34, 49, Inf),
-                                        labels = c(&quot;Youngest&quot;, &quot;Middle Young&quot;, &quot;Middle Age&quot;, &quot;Eldest&quot;)),
-         brom3_agecohort = cut(cididata_raw$AGE, breaks = c(16, 37, 57, Inf),
-                                      labels = c(&quot;Youngest&quot;, &quot;Middle&quot;, &quot;Eldest&quot;))) %&gt;%
-  # alfonso age cohorts
-  mutate(alfonso_cohort = cut(cididata_raw$AGE, breaks = c(16, 37, 49, 64, Inf),
-                              labels = c(&quot;Youngest&quot;, &quot;Middle Young&quot;, &quot;Middle Age&quot;, &quot;Eldest&quot;))) %&gt;%
-  # select part 2 respondents
-  filter(!is.na(de20)) %&gt;%
-  # religion
-  mutate(de32_1 = as.factor(ifelse(is.na(de32_1), 0, 1)),
-         de32_2 = as.factor(ifelse(is.na(de32_2), 0, 1)),
-         de32_9 = as.factor(ifelse(is.na(de32_9), 0, 1)),
-         de32_98 = ifelse(is.na(de32_98), 0, 1),
-         de32_99 = ifelse(is.na(de32_99), 0, 1),
-         de32_other = ifelse(de32_3 == 1|de32_4 == 1|de32_5 == 1|de32_6 == 1|de32_7 == 1|de32_8 == 1, 1, 0),
-         de32_other = as.factor(ifelse(is.na(de32_other), 0, 1)),
-         de34 = as.factor(ifelse(de34 == 8|de34 == 9, NA, de34))) %&gt;%
-  # suicidality
-  mutate(ideate = ifelse(!is.na(sd2), sd2, sd15),
-         plan = ifelse(!is.na(sd4), sd4, sd17),
-         attempt = ifelse(!is.na(sd6), sd6, sd19),
-         plan = ifelse(is.na(plan), 5, plan),
-         attempt = ifelse(is.na(attempt), 5, attempt),
-         ideate = as.factor(ifelse(ideate == 1, 1, 0)),
-         plan = as.factor(ifelse(plan == 1, 1, 0)),
-         attempt = as.factor(ifelse(attempt == 1, 1, 0))) %&gt;%
-  # married
-  mutate(married = as.factor(ifelse(sc3 == 8|sc3 == 9, NA, 
-                                    ifelse(sc3 == 1, 1, 0)))) %&gt;%
-  # chernobyl
-  mutate(live_chernobyl = as.factor(ifelse(de40 == 1, 1, 
-                                           ifelse(pt6a == 1 &amp; !is.na(pt6a), 1,
-                                                  ifelse(pt6b == 1 &amp; !is.na(pt6b), 1, 0))))) %&gt;%
-  # social network
-  mutate(SN1 = derivedVariable(`0` = sn1 == 6,
-                               `1` = sn1 == 5,
-                               `2` = sn1 == 4,
-                               `3` = sn1 == 3,
-                               `4` = sn1 == 2,
-                               `5` = sn1 == 1,
-                               `7` = sn1 == 7,
-                               `8` = sn1 == 8,
-                               `9` = sn1 == 9),
-         SN2 = derivedVariable(`0` = sn2 == 6,
-                               `1` = sn2 == 5,
-                               `2` = sn2 == 4,
-                               `3` = sn2 == 3,
-                               `4` = sn2 == 2,
-                               `5` = sn2 == 1,
-                               `7` = sn2 == 7,
-                               `8` = sn2 == 8,
-                               `9` = sn2 == 9),
-         SN6 = derivedVariable(&quot;1&quot; = sn6 == 4,
-                               &quot;2&quot; = sn6 == 3,
-                               &quot;3&quot; = sn6 == 2,
-                               &quot;4&quot; = sn6 == 1,
-                               &quot;2.5&quot; = sn6 == 8|sn6 == 9),
-         SN7 = derivedVariable(&quot;1&quot; = sn7 == 4,
-                               &quot;2&quot; = sn7 == 3,
-                               &quot;3&quot; = sn7 == 2,
-                               &quot;4&quot; = sn7 == 1,
-                               &quot;2.5&quot; = sn7 == 8|sn7 == 9),
-         SN1 = as.numeric(ifelse(SN1 == 7|SN1 == 8|SN1 == 9, NA, SN1)),
-         SN2 = as.numeric(ifelse(SN2 == 7|SN2 == 8|SN2 == 9, NA, SN2)),
-         SN6 = as.numeric(SN6),
-         SN7 = as.numeric(SN7)) %&gt;%
-  # recode
-  mutate(cc1tz = as.factor(ifelse(cc1tz == 8|cc1tz == 9, NA, 
-                                  ifelse(cc1tz == 1, 1, 0))),
-         cc2 = as.factor(ifelse(cc2 == 8|cc2 == 9, NA, cc2)),
-         cn6 = as.factor(ifelse(cn6 == 8|cn6 == 9, NA,
-                                ifelse(cn6 == 1, 1, 0))),
-         cn6a = ifelse(cn6a == 98|cn6a == 99, NA, cn6a),
-         ch67 = as.factor(ifelse(ch67 == 8|ch67 == 9, NA,
-                                ifelse(ch67 == 1, 1, 0))),
-         ch97 = as.factor(ifelse(ch97 == 8|ch97 == 9, NA,
-                                ifelse(ch97 == 1, 1, 0))),
-         ch52 = as.factor(ifelse(ch52 == 8|ch52 == 9, NA,
-                                ifelse(ch52 == 1, 1, 0))),
-         ch82 = as.factor(ifelse(ch82 == 8|ch82 == 9, NA,
-                                ifelse(ch82 == 1, 1, 0))),
-         fnu1 = ifelse(fnu1 == 8|fnu1 == 9, NA, fnu1),
-         fnu4 = as.factor(ifelse(fnu4 == 8|fnu4 == 9, NA, fnu4)),
-         pt1 = as.factor(ifelse(pt1 == 8|pt1 == 9, NA,
-                                ifelse(pt1 == 1, 1, 0))),
-         SEX = as.factor(SEX),
-         emp = as.factor(emp),
-         io16 = as.factor(io16)) %&gt;%
-  # select relevant variable
-  select(sampleid, brom4_agecohort, brom3_agecohort, alfonso_cohort, SEX, io16, 
-         de20, fnu1, fnu4, de32_1, de32_2, de32_other, de32_9, emp, empw, empst, emph, 
-         empr, empoth,de34, pt6a, pt6b, de40, live_chernobyl, married, sc3, 
-         mr16, mr18, mr22, sn1, sn2, sn6, sn7, SN1, SN2, SN6, SN7, cc1tz, cc2, 
-         cn6, cn6a,ideate, plan, attempt, ch67, ch97, ch52, ch82, pt1,
-         anx, alc, aff, ied, any, secu, strata, weight2)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBzdWJzZXR0aW5nIGRhdGFcbmNpZGlkYXRhX3B0MiA8LVxuICBjaWRpZGF0YV9yYXcgJT4lXG4gICMgbWVudGFsIGNvbmRpdGlvbnNcbiAgbXV0YXRlKGFueCA9IGlmZWxzZShEU01fQUdPID09IDF8RFNNX1NPID09IDF8RFNNX0dBRCA9PSAxfERTTV9QRFMgPT0gMSwgMSwgMCksXG4gICAgICAgICBpZWQgPSBpZmVsc2UoRFNNX0lFREggPT0gMSwgMSwgMCksXG4gICAgICAgICBhZmYgPSBpZmVsc2UoRFNNX01ERSA9PSAxfERTTV9EWVMgPT0gMSwgMSwgMCksXG4gICAgICAgICBhbGMgPSBpZmVsc2UoRFNNX0FMQSA9PSAxfERTTV9BTEQgPT0gMSwgMSwgMCksXG4gICAgICAgICBhbnkgPSBpZmVsc2UoYW54ID09IDF8aWVkID09IDF8YWZmID09IDF8YWxjID09IDEsIDEsIDApKSAlPiVcbiAgIyBicm9tZXQgYWdlIGNvaG9ydHNcbiAgbXV0YXRlKGJyb200X2FnZWNvaG9ydCA9IGN1dChjaWRpZGF0YV9yYXckQUdFLCBicmVha3MgPSBjKDE2LCAyNCwgMzQsIDQ5LCBJbmYpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVscyA9IGMoXFxZb3VuZ2VzdFxcLCBcXE1pZGRsZSBZb3VuZ1xcLCBcXE1pZGRsZSBBZ2VcXCwgXFxFbGRlc3RcXCkpLFxuICAgICAgICAgYnJvbTNfYWdlY29ob3J0ID0gY3V0KGNpZGlkYXRhX3JhdyRBR0UsIGJyZWFrcyA9IGMoMTYsIDM3LCA1NywgSW5mKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWxzID0gYyhcXFlvdW5nZXN0XFwsIFxcTWlkZGxlXFwsIFxcRWxkZXN0XFwpKSkgJT4lXG4gICMgYWxmb25zbyBhZ2UgY29ob3J0c1xuICBtdXRhdGUoYWxmb25zb19jb2hvcnQgPSBjdXQoY2lkaWRhdGFfcmF3JEFHRSwgYnJlYWtzID0gYygxNiwgMzcsIDQ5LCA2NCwgSW5mKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVscyA9IGMoXFxZb3VuZ2VzdFxcLCBcXE1pZGRsZSBZb3VuZ1xcLCBcXE1pZGRsZSBBZ2VcXCwgXFxFbGRlc3RcXCkpKSAlPiVcbiAgIyBzZWxlY3QgcGFydCAyIHJlc3BvbmRlbnRzXG4gIGZpbHRlcighaXMubmEoZGUyMCkpICU+JVxuICAjIHJlbGlnaW9uXG4gIG11dGF0ZShkZTMyXzEgPSBhcy5mYWN0b3IoaWZlbHNlKGlzLm5hKGRlMzJfMSksIDAsIDEpKSxcbiAgICAgICAgIGRlMzJfMiA9IGFzLmZhY3RvcihpZmVsc2UoaXMubmEoZGUzMl8yKSwgMCwgMSkpLFxuICAgICAgICAgZGUzMl85ID0gYXMuZmFjdG9yKGlmZWxzZShpcy5uYShkZTMyXzkpLCAwLCAxKSksXG4gICAgICAgICBkZTMyXzk4ID0gaWZlbHNlKGlzLm5hKGRlMzJfOTgpLCAwLCAxKSxcbiAgICAgICAgIGRlMzJfOTkgPSBpZmVsc2UoaXMubmEoZGUzMl85OSksIDAsIDEpLFxuICAgICAgICAgZGUzMl9vdGhlciA9IGlmZWxzZShkZTMyXzMgPT0gMXxkZTMyXzQgPT0gMXxkZTMyXzUgPT0gMXxkZTMyXzYgPT0gMXxkZTMyXzcgPT0gMXxkZTMyXzggPT0gMSwgMSwgMCksXG4gICAgICAgICBkZTMyX290aGVyID0gYXMuZmFjdG9yKGlmZWxzZShpcy5uYShkZTMyX290aGVyKSwgMCwgMSkpLFxuICAgICAgICAgZGUzNCA9IGFzLmZhY3RvcihpZmVsc2UoZGUzNCA9PSA4fGRlMzQgPT0gOSwgTkEsIGRlMzQpKSkgJT4lXG4gICMgc3VpY2lkYWxpdHlcbiAgbXV0YXRlKGlkZWF0ZSA9IGlmZWxzZSghaXMubmEoc2QyKSwgc2QyLCBzZDE1KSxcbiAgICAgICAgIHBsYW4gPSBpZmVsc2UoIWlzLm5hKHNkNCksIHNkNCwgc2QxNyksXG4gICAgICAgICBhdHRlbXB0ID0gaWZlbHNlKCFpcy5uYShzZDYpLCBzZDYsIHNkMTkpLFxuICAgICAgICAgcGxhbiA9IGlmZWxzZShpcy5uYShwbGFuKSwgNSwgcGxhbiksXG4gICAgICAgICBhdHRlbXB0ID0gaWZlbHNlKGlzLm5hKGF0dGVtcHQpLCA1LCBhdHRlbXB0KSxcbiAgICAgICAgIGlkZWF0ZSA9IGFzLmZhY3RvcihpZmVsc2UoaWRlYXRlID09IDEsIDEsIDApKSxcbiAgICAgICAgIHBsYW4gPSBhcy5mYWN0b3IoaWZlbHNlKHBsYW4gPT0gMSwgMSwgMCkpLFxuICAgICAgICAgYXR0ZW1wdCA9IGFzLmZhY3RvcihpZmVsc2UoYXR0ZW1wdCA9PSAxLCAxLCAwKSkpICU+JVxuICAjIG1hcnJpZWRcbiAgbXV0YXRlKG1hcnJpZWQgPSBhcy5mYWN0b3IoaWZlbHNlKHNjMyA9PSA4fHNjMyA9PSA5LCBOQSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2Uoc2MzID09IDEsIDEsIDApKSkpICU+JVxuICAjIGNoZXJub2J5bFxuICBtdXRhdGUobGl2ZV9jaGVybm9ieWwgPSBhcy5mYWN0b3IoaWZlbHNlKGRlNDAgPT0gMSwgMSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKHB0NmEgPT0gMSAmICFpcy5uYShwdDZhKSwgMSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKHB0NmIgPT0gMSAmICFpcy5uYShwdDZiKSwgMSwgMCkpKSkpICU+JVxuICAjIHNvY2lhbCBuZXR3b3JrXG4gIG11dGF0ZShTTjEgPSBkZXJpdmVkVmFyaWFibGUoYDBgID0gc24xID09IDYsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDFgID0gc24xID09IDUsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDJgID0gc24xID09IDQsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDNgID0gc24xID09IDMsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDRgID0gc24xID09IDIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDVgID0gc24xID09IDEsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDdgID0gc24xID09IDcsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDhgID0gc24xID09IDgsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDlgID0gc24xID09IDkpLFxuICAgICAgICAgU04yID0gZGVyaXZlZFZhcmlhYmxlKGAwYCA9IHNuMiA9PSA2LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAxYCA9IHNuMiA9PSA1LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAyYCA9IHNuMiA9PSA0LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAzYCA9IHNuMiA9PSAzLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA0YCA9IHNuMiA9PSAyLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA1YCA9IHNuMiA9PSAxLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA3YCA9IHNuMiA9PSA3LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA4YCA9IHNuMiA9PSA4LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA5YCA9IHNuMiA9PSA5KSxcbiAgICAgICAgIFNONiA9IGRlcml2ZWRWYXJpYWJsZShcXDFcXCA9IHNuNiA9PSA0LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxcMlxcID0gc242ID09IDMsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXFwzXFwgPSBzbjYgPT0gMixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcXDRcXCA9IHNuNiA9PSAxLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxcMi41XFwgPSBzbjYgPT0gOHxzbjYgPT0gOSksXG4gICAgICAgICBTTjcgPSBkZXJpdmVkVmFyaWFibGUoXFwxXFwgPSBzbjcgPT0gNCxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcXDJcXCA9IHNuNyA9PSAzLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxcM1xcID0gc243ID09IDIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXFw0XFwgPSBzbjcgPT0gMSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcXDIuNVxcID0gc243ID09IDh8c243ID09IDkpLFxuICAgICAgICAgU04xID0gYXMubnVtZXJpYyhpZmVsc2UoU04xID09IDd8U04xID09IDh8U04xID09IDksIE5BLCBTTjEpKSxcbiAgICAgICAgIFNOMiA9IGFzLm51bWVyaWMoaWZlbHNlKFNOMiA9PSA3fFNOMiA9PSA4fFNOMiA9PSA5LCBOQSwgU04yKSksXG4gICAgICAgICBTTjYgPSBhcy5udW1lcmljKFNONiksXG4gICAgICAgICBTTjcgPSBhcy5udW1lcmljKFNONykpICU+JVxuICAjIHJlY29kZVxuICBtdXRhdGUoY2MxdHogPSBhcy5mYWN0b3IoaWZlbHNlKGNjMXR6ID09IDh8Y2MxdHogPT0gOSwgTkEsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjYzF0eiA9PSAxLCAxLCAwKSkpLFxuICAgICAgICAgY2MyID0gYXMuZmFjdG9yKGlmZWxzZShjYzIgPT0gOHxjYzIgPT0gOSwgTkEsIGNjMikpLFxuICAgICAgICAgY242ID0gYXMuZmFjdG9yKGlmZWxzZShjbjYgPT0gOHxjbjYgPT0gOSwgTkEsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjbjYgPT0gMSwgMSwgMCkpKSxcbiAgICAgICAgIGNuNmEgPSBpZmVsc2UoY242YSA9PSA5OHxjbjZhID09IDk5LCBOQSwgY242YSksXG4gICAgICAgICBjaDY3ID0gYXMuZmFjdG9yKGlmZWxzZShjaDY3ID09IDh8Y2g2NyA9PSA5LCBOQSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKGNoNjcgPT0gMSwgMSwgMCkpKSxcbiAgICAgICAgIGNoOTcgPSBhcy5mYWN0b3IoaWZlbHNlKGNoOTcgPT0gOHxjaDk3ID09IDksIE5BLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UoY2g5NyA9PSAxLCAxLCAwKSkpLFxuICAgICAgICAgY2g1MiA9IGFzLmZhY3RvcihpZmVsc2UoY2g1MiA9PSA4fGNoNTIgPT0gOSwgTkEsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjaDUyID09IDEsIDEsIDApKSksXG4gICAgICAgICBjaDgyID0gYXMuZmFjdG9yKGlmZWxzZShjaDgyID09IDh8Y2g4MiA9PSA5LCBOQSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKGNoODIgPT0gMSwgMSwgMCkpKSxcbiAgICAgICAgIGZudTEgPSBpZmVsc2UoZm51MSA9PSA4fGZudTEgPT0gOSwgTkEsIGZudTEpLFxuICAgICAgICAgZm51NCA9IGFzLmZhY3RvcihpZmVsc2UoZm51NCA9PSA4fGZudTQgPT0gOSwgTkEsIGZudTQpKSxcbiAgICAgICAgIHB0MSA9IGFzLmZhY3RvcihpZmVsc2UocHQxID09IDh8cHQxID09IDksIE5BLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UocHQxID09IDEsIDEsIDApKSksXG4gICAgICAgICBTRVggPSBhcy5mYWN0b3IoU0VYKSxcbiAgICAgICAgIGVtcCA9IGFzLmZhY3RvcihlbXApLFxuICAgICAgICAgaW8xNiA9IGFzLmZhY3RvcihpbzE2KSkgJT4lXG4gICMgc2VsZWN0IHJlbGV2YW50IHZhcmlhYmxlXG4gIHNlbGVjdChzYW1wbGVpZCwgYnJvbTRfYWdlY29ob3J0LCBicm9tM19hZ2Vjb2hvcnQsIGFsZm9uc29fY29ob3J0LCBTRVgsIGlvMTYsIFxuICAgICAgICAgZGUyMCwgZm51MSwgZm51NCwgZGUzMl8xLCBkZTMyXzIsIGRlMzJfb3RoZXIsIGRlMzJfOSwgZW1wLCBlbXB3LCBlbXBzdCwgZW1waCwgXG4gICAgICAgICBlbXByLCBlbXBvdGgsZGUzNCwgcHQ2YSwgcHQ2YiwgZGU0MCwgbGl2ZV9jaGVybm9ieWwsIG1hcnJpZWQsIHNjMywgXG4gICAgICAgICBtcjE2LCBtcjE4LCBtcjIyLCBzbjEsIHNuMiwgc242LCBzbjcsIFNOMSwgU04yLCBTTjYsIFNONywgY2MxdHosIGNjMiwgXG4gICAgICAgICBjbjYsIGNuNmEsaWRlYXRlLCBwbGFuLCBhdHRlbXB0LCBjaDY3LCBjaDk3LCBjaDUyLCBjaDgyLCBwdDEsXG4gICAgICAgICBhbngsIGFsYywgYWZmLCBpZWQsIGFueSwgc2VjdSwgc3RyYXRhLCB3ZWlnaHQyKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # subsetting data cididata_pt2 &lt;- cididata_raw %&gt;% # mental conditions mutate(anx = ifelse(DSM_AGO == 1|DSM_SO == 1|DSM_GAD == 1|DSM_PDS == 1, 1, 0), ied = ifelse(DSM_IEDH == 1, 1, 0), aff = ifelse(DSM_MDE == 1|DSM_DYS == 1, 1, 0), alc = ifelse(DSM_ALA == 1|DSM_ALD == 1, 1, 0), any = ifelse(anx == 1|ied == 1|aff == 1|alc == 1, 1, 0)) %&gt;% # bromet age cohorts mutate(brom4_agecohort = cut(cididata_raw<span class="math inline">\(AGE, breaks = c(16, 24, 34, 49, Inf),  labels = c(\Youngest\, \Middle Young\, \Middle Age\, \Eldest\)),  brom3_agecohort = cut(cididata_raw\)</span>AGE, breaks = c(16, 37, 57, Inf), labels = c(, , ))) %&gt;% # alfonso age cohorts mutate(alfonso_cohort = cut(cididata_raw$AGE, breaks = c(16, 37, 49, 64, Inf), labels = c(, Young, Age, ))) %&gt;% # select part 2 respondents filter(!is.na(de20)) %&gt;% # religion mutate(de32_1 = as.factor(ifelse(is.na(de32_1), 0, 1)), de32_2 = as.factor(ifelse(is.na(de32_2), 0, 1)), de32_9 = as.factor(ifelse(is.na(de32_9), 0, 1)), de32_98 = ifelse(is.na(de32_98), 0, 1), de32_99 = ifelse(is.na(de32_99), 0, 1), de32_other = ifelse(de32_3 == 1|de32_4 == 1|de32_5 == 1|de32_6 == 1|de32_7 == 1|de32_8 == 1, 1, 0), de32_other = as.factor(ifelse(is.na(de32_other), 0, 1)), de34 = as.factor(ifelse(de34 == 8|de34 == 9, NA, de34))) %&gt;% # suicidality mutate(ideate = ifelse(!is.na(sd2), sd2, sd15), plan = ifelse(!is.na(sd4), sd4, sd17), attempt = ifelse(!is.na(sd6), sd6, sd19), plan = ifelse(is.na(plan), 5, plan), attempt = ifelse(is.na(attempt), 5, attempt), ideate = as.factor(ifelse(ideate == 1, 1, 0)), plan = as.factor(ifelse(plan == 1, 1, 0)), attempt = as.factor(ifelse(attempt == 1, 1, 0))) %&gt;% # married mutate(married = as.factor(ifelse(sc3 == 8|sc3 == 9, NA, ifelse(sc3 == 1, 1, 0)))) %&gt;% # chernobyl mutate(live_chernobyl = as.factor(ifelse(de40 == 1, 1, ifelse(pt6a == 1 &amp; !is.na(pt6a), 1, ifelse(pt6b == 1 &amp; !is.na(pt6b), 1, 0))))) %&gt;% # social network mutate(SN1 = derivedVariable(<code>0</code> = sn1 == 6, <code>1</code> = sn1 == 5, <code>2</code> = sn1 == 4, <code>3</code> = sn1 == 3, <code>4</code> = sn1 == 2, <code>5</code> = sn1 == 1, <code>7</code> = sn1 == 7, <code>8</code> = sn1 == 8, <code>9</code> = sn1 == 9), SN2 = derivedVariable(<code>0</code> = sn2 == 6, <code>1</code> = sn2 == 5, <code>2</code> = sn2 == 4, <code>3</code> = sn2 == 3, <code>4</code> = sn2 == 2, <code>5</code> = sn2 == 1, <code>7</code> = sn2 == 7, <code>8</code> = sn2 == 8, <code>9</code> = sn2 == 9), SN6 = derivedVariable(\1 = sn6 == 4, \2 = sn6 == 3, \3 = sn6 == 2, \4 = sn6 == 1, \2.5 = sn6 == 8|sn6 == 9), SN7 = derivedVariable(\1 = sn7 == 4, \2 = sn7 == 3, \3 = sn7 == 2, \4 = sn7 == 1, \2.5 = sn7 == 8|sn7 == 9), SN1 = as.numeric(ifelse(SN1 == 7|SN1 == 8|SN1 == 9, NA, SN1)), SN2 = as.numeric(ifelse(SN2 == 7|SN2 == 8|SN2 == 9, NA, SN2)), SN6 = as.numeric(SN6), SN7 = as.numeric(SN7)) %&gt;% # recode mutate(cc1tz = as.factor(ifelse(cc1tz == 8|cc1tz == 9, NA, ifelse(cc1tz == 1, 1, 0))), cc2 = as.factor(ifelse(cc2 == 8|cc2 == 9, NA, cc2)), cn6 = as.factor(ifelse(cn6 == 8|cn6 == 9, NA, ifelse(cn6 == 1, 1, 0))), cn6a = ifelse(cn6a == 98|cn6a == 99, NA, cn6a), ch67 = as.factor(ifelse(ch67 == 8|ch67 == 9, NA, ifelse(ch67 == 1, 1, 0))), ch97 = as.factor(ifelse(ch97 == 8|ch97 == 9, NA, ifelse(ch97 == 1, 1, 0))), ch52 = as.factor(ifelse(ch52 == 8|ch52 == 9, NA, ifelse(ch52 == 1, 1, 0))), ch82 = as.factor(ifelse(ch82 == 8|ch82 == 9, NA, ifelse(ch82 == 1, 1, 0))), fnu1 = ifelse(fnu1 == 8|fnu1 == 9, NA, fnu1), fnu4 = as.factor(ifelse(fnu4 == 8|fnu4 == 9, NA, fnu4)), pt1 = as.factor(ifelse(pt1 == 8|pt1 == 9, NA, ifelse(pt1 == 1, 1, 0))), SEX = as.factor(SEX), emp = as.factor(emp), io16 = as.factor(io16)) %&gt;% # select relevant variable select(sampleid, brom4_agecohort, brom3_agecohort, alfonso_cohort, SEX, io16, de20, fnu1, fnu4, de32_1, de32_2, de32_other, de32_9, emp, empw, empst, emph, empr, empoth,de34, pt6a, pt6b, de40, live_chernobyl, married, sc3, mr16, mr18, mr22, sn1, sn2, sn6, sn7, SN1, SN2, SN6, SN7, cc1tz, cc2, cn6, cn6a,ideate, plan, attempt, ch67, ch97, ch52, ch82, pt1, anx, alc, aff, ied, any, secu, strata, weight2)</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBEYXRhc2V0IHdpdGggUGFydCAyIHdlaWdodHMgb25cblN1aWNpZGVQYXJ0MiA8LVxuICBzdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgbmVzdCA9IFQsIFxuICAgICAgICAgICAgZGF0YSA9IHN1YnNldChjaWRpZGF0YV9wdDIsIGNpZGlkYXRhX3B0MiR3ZWlnaHQyPjApKVxub3B0aW9ucyhzdXJ2ZXkubG9uZWx5LnBzdSA9IFwiYWRqdXN0XCIpXG5gYGAifQ== -->
-<pre class="r"><code># Dataset with Part 2 weights on
-SuicidePart2 &lt;-
-  svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, 
-            data = subset(cididata_pt2, cididata_pt2$weight2&gt;0))
-options(survey.lonely.psu = &quot;adjust&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBEYXRhc2V0IHdpdGggUGFydCAyIHdlaWdodHMgb25cblN1aWNpZGVQYXJ0MiA8LVxuICBzdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgbmVzdCA9IFQsIFxuICAgICAgICAgICAgZGF0YSA9IHN1YnNldChjaWRpZGF0YV9wdDIsIGNpZGlkYXRhX3B0MiR3ZWlnaHQyPjApKVxub3B0aW9ucyhzdXJ2ZXkubG9uZWx5LnBzdSA9IFxcYWRqdXN0XFwpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # Dataset with Part 2 weights on SuicidePart2 &lt;- svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, data = subset(cididata_pt2, cididata_pt2$weight2&gt;0)) options(survey.lonely.psu = )</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1921,15 +1816,9 @@ options(survey.lonely.psu = &quot;adjust&quot;)</code></pre>
 <h2>Sex</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMjIDAgPSBmZW1hbGVcbiMjIyAxID0gbWFsZVxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgU0VYLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5zdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgU0VYLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
-<pre class="r"><code>### 0 = female
-### 1 = male
-svytable(~alfonso_cohort + SEX, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + SEX, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyMjIDAgPSBmZW1hbGVcbiMjIyAxID0gbWFsZVxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgU0VYLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5zdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgU0VYLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r ### 0 = female ### 1 = male svytable(~alfonso_cohort + SEX, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + SEX, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1938,28 +1827,17 @@ svytable(~brom3_agecohort + SEX, design = SuicidePart2) %&gt;%
 <h2>Marriage</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhcmUgeW91IGN1cnJlbnRseSBtYXJyaWVkP1xuIyMjIDcgPSBsaXZpbmcgd2l0aCBzb21lb25lXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBzYzMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNjMywgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
-<pre class="r"><code># are you currently married?
-### 7 = living with someone
-svytable(~alfonso_cohort + sc3, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + sc3, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBhcmUgeW91IGN1cnJlbnRseSBtYXJyaWVkP1xuIyMjIDcgPSBsaXZpbmcgd2l0aCBzb21lb25lXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBzYzMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNjMywgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # are you currently married? ### 7 = living with someone svytable(~alfonso_cohort + sc3, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + sc3, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBtYXJpdGFsIHN0YXR1cyB2YXJpYWJsZVxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgbWFycmllZCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5zdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgbWFycmllZCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
-<pre class="r"><code># marital status variable
-svytable(~alfonso_cohort + married, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + married, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBtYXJpdGFsIHN0YXR1cyB2YXJpYWJsZVxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgbWFycmllZCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5zdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgbWFycmllZCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # marital status variable svytable(~alfonso_cohort + married, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + married, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1968,31 +1846,18 @@ svytable(~brom3_agecohort + married, design = SuicidePart2) %&gt;%
 <h2>Cancer</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBwcmVzZW5jZSBvZiBjYW5jZXJcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNjMXR6LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5zdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgY2MxdHosIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
-<pre class="r"><code># presence of cancer
-svytable(~alfonso_cohort + cc1tz, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + cc1tz, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBwcmVzZW5jZSBvZiBjYW5jZXJcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNjMXR6LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5zdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgY2MxdHosIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # presence of cancer svytable(~alfonso_cohort + cc1tz, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + cc1tz, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB0cmVhdG1lbnQgZm9yIGNhbmNlclxuIyMjIDEgPSB0cmVhdG1lbnRcbiMjIyAyID0gcmVtaXNzaW9uXG4jIyMgMyA9IGN1cmVkXG5cbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNjMiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNjMiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
-<pre class="r"><code># treatment for cancer
-### 1 = treatment
-### 2 = remission
-### 3 = cured
-
-svytable(~alfonso_cohort + cc2, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + cc2, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyB0cmVhdG1lbnQgZm9yIGNhbmNlclxuIyMjIDEgPSB0cmVhdG1lbnRcbiMjIyAyID0gcmVtaXNzaW9uXG4jIyMgMyA9IGN1cmVkXG5cbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNjMiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNjMiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # treatment for cancer ### 1 = treatment ### 2 = remission ### 3 = cured</p>
+<p>svytable(~alfonso_cohort + cc2, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + cc2, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2003,39 +1868,19 @@ svytable(~brom3_agecohort + cc2, design = SuicidePart2) %&gt;%
 <p>No tables for DE20 (years of schooling) or FNU1 (total monthly income); both are continuous variables and frequency tables inherently don’t make sense for them.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBmaW5hbmNpYWwgbGV2ZWxcbiMjIyAxID0gbm90IGVub3VnaCBmb3IgZm9vZFxuIyMjIDIgPSBkaWZmY3VsdCB0byBidXkgY2xvdGhlcy9zaG9lc1xuIyMjIDMgPSBub3QgZW5vdWdoIGZvciBkdXJhYmxlc1xuIyMjIDQgPSBjYW4gYWZmb3JkIHNvbWUgZXhwZW5zaXZlIHRoaW5nc1xuIyMjIDUgPSBjYW4gYWZmb3JkIGFueXRoaW5nXG5cbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGZudTQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGZudTQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
-<pre class="r"><code># financial level
-### 1 = not enough for food
-### 2 = diffcult to buy clothes/shoes
-### 3 = not enough for durables
-### 4 = can afford some expensive things
-### 5 = can afford anything
-
-svytable(~alfonso_cohort + fnu4, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + fnu4, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBmaW5hbmNpYWwgbGV2ZWxcbiMjIyAxID0gbm90IGVub3VnaCBmb3IgZm9vZFxuIyMjIDIgPSBkaWZmY3VsdCB0byBidXkgY2xvdGhlcy9zaG9lc1xuIyMjIDMgPSBub3QgZW5vdWdoIGZvciBkdXJhYmxlc1xuIyMjIDQgPSBjYW4gYWZmb3JkIHNvbWUgZXhwZW5zaXZlIHRoaW5nc1xuIyMjIDUgPSBjYW4gYWZmb3JkIGFueXRoaW5nXG5cbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGZudTQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGZudTQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # financial level ### 1 = not enough for food ### 2 = diffcult to buy clothes/shoes ### 3 = not enough for durables ### 4 = can afford some expensive things ### 5 = can afford anything</p>
+<p>svytable(~alfonso_cohort + fnu4, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + fnu4, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBlbXBsb3ltZW50IHN0YXR1c1xuIyMjIDEgPSB3b3JraW5nXG4jIyMgMiA9IHN0dWRlbnRcbiMjIyAzID0gaG9tZW1ha2VyXG4jIyMgNCA9IHJldGlyZWRcbiMjIyA1ID0gb3RoZXJcblxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZW1wLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBlbXAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
-<pre class="r"><code># employment status
-### 1 = working
-### 2 = student
-### 3 = homemaker
-### 4 = retired
-### 5 = other
-
-svytable(~alfonso_cohort + emp, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + emp, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBlbXBsb3ltZW50IHN0YXR1c1xuIyMjIDEgPSB3b3JraW5nXG4jIyMgMiA9IHN0dWRlbnRcbiMjIyAzID0gaG9tZW1ha2VyXG4jIyMgNCA9IHJldGlyZWRcbiMjIyA1ID0gb3RoZXJcblxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZW1wLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBlbXAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # employment status ### 1 = working ### 2 = student ### 3 = homemaker ### 4 = retired ### 5 = other</p>
+<p>svytable(~alfonso_cohort + emp, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + emp, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2044,19 +1889,10 @@ svytable(~brom3_agecohort + emp, design = SuicidePart2) %&gt;%
 <h2>Urbanicity</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMjIDEgPSBydXJhbFxuIyMjIDIgPSB0b3duc2hpcFxuIyMjIDMgPSBjaXR5IHVwIHRvIDIwMCwwMDAgaW5oYWJpdGFudHNcbiMjIyA0ID0gY2l0eSBiZXR3ZWVuIDIwMCwwMDAgYW5kIDUwMCwwMDAgaW5oYWJpdGFudHNcbiMjIyA1ID0gY2l0eSB3aXRoIG1vcmUgdGhhbiA1MDAsMDAwIGluaGFiaXRhbnRzXG5cbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGlvMTYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgK2lvMTYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
-<pre class="r"><code>### 1 = rural
-### 2 = township
-### 3 = city up to 200,000 inhabitants
-### 4 = city between 200,000 and 500,000 inhabitants
-### 5 = city with more than 500,000 inhabitants
-
-svytable(~alfonso_cohort + io16, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort +io16, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyMjIDEgPSBydXJhbFxuIyMjIDIgPSB0b3duc2hpcFxuIyMjIDMgPSBjaXR5IHVwIHRvIDIwMCwwMDAgaW5oYWJpdGFudHNcbiMjIyA0ID0gY2l0eSBiZXR3ZWVuIDIwMCwwMDAgYW5kIDUwMCwwMDAgaW5oYWJpdGFudHNcbiMjIyA1ID0gY2l0eSB3aXRoIG1vcmUgdGhhbiA1MDAsMDAwIGluaGFiaXRhbnRzXG5cbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGlvMTYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgK2lvMTYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r ### 1 = rural ### 2 = township ### 3 = city up to 200,000 inhabitants ### 4 = city between 200,000 and 500,000 inhabitants ### 5 = city with more than 500,000 inhabitants</p>
+<p>svytable(~alfonso_cohort + io16, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort +io16, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2065,13 +1901,9 @@ svytable(~brom3_agecohort +io16, design = SuicidePart2) %&gt;%
 <h2>Proximity to Chernobyl</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgbGl2ZV9jaGVybm9ieWwsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBsaXZlX2NoZXJub2J5bCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
-<pre class="r"><code>svytable(~alfonso_cohort + live_chernobyl, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + live_chernobyl, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgbGl2ZV9jaGVybm9ieWwsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBsaXZlX2NoZXJub2J5bCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r svytable(~alfonso_cohort + live_chernobyl, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + live_chernobyl, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2080,27 +1912,17 @@ svytable(~brom3_agecohort + live_chernobyl, design = SuicidePart2) %&gt;%
 <h2>Parental Alcohol/Drug Use</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBtb3RoZXIgYWxjL2RydWcgcHJvYmxlbVxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY2g1MiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNoNTIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
-<pre class="r"><code># mother alc/drug problem
-svytable(~alfonso_cohort + ch52, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + ch52, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBtb3RoZXIgYWxjL2RydWcgcHJvYmxlbVxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY2g1MiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNoNTIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # mother alc/drug problem svytable(~alfonso_cohort + ch52, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + ch52, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBmYXRoZXIgYWxjL2RydWcgcHJvYmxlbVxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY2g4MiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNoODIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
-<pre class="r"><code># father alc/drug problem
-svytable(~alfonso_cohort + ch82, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + ch82, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBmYXRoZXIgYWxjL2RydWcgcHJvYmxlbVxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY2g4MiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNoODIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # father alc/drug problem svytable(~alfonso_cohort + ch82, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + ch82, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2109,27 +1931,17 @@ svytable(~brom3_agecohort + ch82, design = SuicidePart2) %&gt;%
 <h2>Parental Suicidality</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBtb3RoZXIgc3VpY2lkYWxpdHlcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNoNjcsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNoNjcsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
-<pre class="r"><code># mother suicidality
-svytable(~alfonso_cohort + ch67, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + ch67, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBtb3RoZXIgc3VpY2lkYWxpdHlcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNoNjcsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNoNjcsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # mother suicidality svytable(~alfonso_cohort + ch67, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + ch67, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBmYXRoZXIgc3VpY2lkYWxpdHlcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNoOTcsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBjaDk3LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
-<pre class="r"><code># father suicidality
-svytable(~alfonso_cohort + ch97, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + ch97, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBmYXRoZXIgc3VpY2lkYWxpdHlcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNoOTcsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBjaDk3LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # father suicidality svytable(~alfonso_cohort + ch97, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + ch97, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2138,28 +1950,17 @@ svytable(~brom3_agecohort + ch97, design = SuicidePart2) %&gt;%
 <h2>Abortions</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBoYWQgYW4gYWJvcnRpb25cbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
-<pre class="r"><code># had an abortion
-svytable(~alfonso_cohort + cn6, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + cn6, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBoYWQgYW4gYWJvcnRpb25cbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # had an abortion svytable(~alfonso_cohort + cn6, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + cn6, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBudW1iZXIgb2YgYWJvcnRpb25zXG4jIyMgY29udGludW91cyB2YXJpYWJsZSBzbyBmcmVxdWVuY3kgdGFibGUgbGVzcyBpbnR1aXRpdmU7IGp1c3Qgd2FudGVkIHRvIGtub3dcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNuNmEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBjbjZhLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
-<pre class="r"><code># number of abortions
-### continuous variable so frequency table less intuitive; just wanted to know
-svytable(~alfonso_cohort + cn6a, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + cn6a, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBudW1iZXIgb2YgYWJvcnRpb25zXG4jIyMgY29udGludW91cyB2YXJpYWJsZSBzbyBmcmVxdWVuY3kgdGFibGUgbGVzcyBpbnR1aXRpdmU7IGp1c3Qgd2FudGVkIHRvIGtub3dcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNuNmEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBjbjZhLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # number of abortions ### continuous variable so frequency table less intuitive; just wanted to know svytable(~alfonso_cohort + cn6a, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + cn6a, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2168,53 +1969,33 @@ svytable(~brom3_agecohort + cn6a, design = SuicidePart2) %&gt;%
 <h2>Social Network</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhYmlsaXR5IHRvIHJlbHkgb24gZnJpZW5kcy9mYW1pbHlcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
-<pre class="r"><code># ability to rely on friends/family
-svytable(~alfonso_cohort + sn6, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + sn6, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBhYmlsaXR5IHRvIHJlbHkgb24gZnJpZW5kcy9mYW1pbHlcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # ability to rely on friends/family svytable(~alfonso_cohort + sn6, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + sn6, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhYmlsaXR5IHRvIG9wZW4gdXBcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
-<pre class="r"><code># ability to open up
-svytable(~alfonso_cohort + sn6, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + sn6, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBhYmlsaXR5IHRvIG9wZW4gdXBcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # ability to open up svytable(~alfonso_cohort + sn6, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + sn6, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBjb250YWN0IHdpdGggZmFtaWx5XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBzbjEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBzbjEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
-<pre class="r"><code># contact with family
-svytable(~alfonso_cohort + sn1, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + sn1, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBjb250YWN0IHdpdGggZmFtaWx5XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBzbjEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBzbjEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # contact with family svytable(~alfonso_cohort + sn1, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + sn1, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBjb250YWN0IHdpdGggZnJpZW5kc1xuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgc24yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5zdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgc24yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
-<pre class="r"><code># contact with friends
-svytable(~alfonso_cohort + sn2, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + sn2, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBjb250YWN0IHdpdGggZnJpZW5kc1xuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgc24yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5zdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgc24yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # contact with friends svytable(~alfonso_cohort + sn2, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + sn2, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2223,66 +2004,41 @@ svytable(~brom3_agecohort + sn2, design = SuicidePart2) %&gt;%
 <h2>Mental Disorders</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhZmZlY3RpdmVcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGFmZiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGFmZiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbmBgYCJ9 -->
-<pre class="r"><code># affective
-svytable(~alfonso_cohort + aff, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + aff, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;% 
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBhZmZlY3RpdmVcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGFmZiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGFmZiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # affective svytable(~alfonso_cohort + aff, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + aff, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhbGNvaG9sXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBhbGMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lIFxuICByb3VuZCgpXG5zdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgYWxjLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JSBcbiAgcm91bmQoKVxuYGBgIn0= -->
-<pre class="r"><code># alcohol
-svytable(~alfonso_cohort + alc, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;% 
-  round()
-svytable(~brom3_agecohort + alc, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;% 
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBhbGNvaG9sXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBhbGMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lIFxuICByb3VuZCgpXG5zdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgYWxjLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JSBcbiAgcm91bmQoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # alcohol svytable(~alfonso_cohort + alc, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + alc, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpZWRcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGllZCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBpZWQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lIFxuICByb3VuZCgpXG5gYGAifQ== -->
-<pre class="r"><code># ied
-svytable(~alfonso_cohort + ied, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;% 
-  round()
-svytable(~brom3_agecohort + ied, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;% 
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBpZWRcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGllZCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBpZWQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lIFxuICByb3VuZCgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # ied svytable(~alfonso_cohort + ied, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + ied, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhbnhpZXR5XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBhZmYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lIFxuICByb3VuZCgpXG5zdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgYWZmLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lIFxuICByb3VuZCgpXG5gYGAifQ== -->
-<pre class="r"><code># anxiety
-svytable(~alfonso_cohort + aff, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;% 
-  round()
-svytable(~brom3_agecohort + aff, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;% 
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBhbnhpZXR5XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBhZmYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lIFxuICByb3VuZCgpXG5zdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgYWZmLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lIFxuICByb3VuZCgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # anxiety svytable(~alfonso_cohort + aff, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + aff, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhbnlcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGFueSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBhbnksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lIFxuICByb3VuZCgpXG5gYGAifQ== -->
-<pre class="r"><code># any
-svytable(~alfonso_cohort + any, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;% 
-  round()
-svytable(~brom3_agecohort + any, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;% 
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBhbnlcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGFueSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBhbnksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lIFxuICByb3VuZCgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # any svytable(~alfonso_cohort + any, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + any, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2292,13 +2048,9 @@ svytable(~brom3_agecohort + any, design = SuicidePart2) %&gt;%
 <p>Sample sizes too small; cannot use.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgcHQxLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JSBcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHB0MSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbmBgYCJ9 -->
-<pre class="r"><code>svytable(~alfonso_cohort + pt1, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;% 
-  round()
-svytable(~brom3_agecohort + pt1, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;% 
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgcHQxLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JSBcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHB0MSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiUgXG4gIHJvdW5kKClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r svytable(~alfonso_cohort + pt1, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + pt1, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2307,72 +2059,41 @@ svytable(~brom3_agecohort + pt1, design = SuicidePart2) %&gt;%
 <h2>Suicidality</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpZGVhdGVcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGlkZWF0ZSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGlkZWF0ZSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
-<pre class="r"><code># ideate
-svytable(~alfonso_cohort + ideate, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + ideate, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBpZGVhdGVcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGlkZWF0ZSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGlkZWF0ZSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # ideate svytable(~alfonso_cohort + ideate, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + ideate, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBwbGFuXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBwbGFuLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBwbGFuLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
-<pre class="r"><code># plan
-svytable(~alfonso_cohort + plan, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + plan, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBwbGFuXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBwbGFuLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBwbGFuLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # plan svytable(~alfonso_cohort + plan, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + plan, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhdHRlbXB0XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBhdHRlbXB0LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBhdHRlbXB0LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
-<pre class="r"><code># attempt
-svytable(~alfonso_cohort + attempt, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + attempt, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBhdHRlbXB0XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBhdHRlbXB0LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBhdHRlbXB0LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSBcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # attempt svytable(~alfonso_cohort + attempt, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + attempt, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhdHRlbXB0IHdpdGhvdXQgcGxhbm5pbmdcbmF0dGVtcHRub3BsYW4gPC1cbiAgY2lkaWRhdGFfcHQyICU+JVxuICBmaWx0ZXIoYXR0ZW1wdCA9PSAxICYgcGxhbiA9PSAwKVxuc3Z5YXR0ZW1wdG5vcGxhbiA8LVxuICBzdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgbmVzdCA9IFQsIFxuICAgICAgICAgICAgZGF0YSA9IHN1YnNldChhdHRlbXB0bm9wbGFuLCBhdHRlbXB0bm9wbGFuJHdlaWdodDI+MCkpXG5vcHRpb25zKHN1cnZleS5sb25lbHkucHN1ID0gXCJhZGp1c3RcIilcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCwgZGVzaWduID0gc3Z5YXR0ZW1wdG5vcGxhbikgJT4lIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQsIGRlc2lnbiA9IHN2eWF0dGVtcHRub3BsYW4pICU+JSByb3VuZCgpXG5gYGAifQ== -->
-<pre class="r"><code># attempt without planning
-attemptnoplan &lt;-
-  cididata_pt2 %&gt;%
-  filter(attempt == 1 &amp; plan == 0)
-svyattemptnoplan &lt;-
-  svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, 
-            data = subset(attemptnoplan, attemptnoplan$weight2&gt;0))
-options(survey.lonely.psu = &quot;adjust&quot;)
-svytable(~alfonso_cohort, design = svyattemptnoplan) %&gt;% round()
-svytable(~brom3_agecohort, design = svyattemptnoplan) %&gt;% round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBhdHRlbXB0IHdpdGhvdXQgcGxhbm5pbmdcbmF0dGVtcHRub3BsYW4gPC1cbiAgY2lkaWRhdGFfcHQyICU+JVxuICBmaWx0ZXIoYXR0ZW1wdCA9PSAxICYgcGxhbiA9PSAwKVxuc3Z5YXR0ZW1wdG5vcGxhbiA8LVxuICBzdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgbmVzdCA9IFQsIFxuICAgICAgICAgICAgZGF0YSA9IHN1YnNldChhdHRlbXB0bm9wbGFuLCBhdHRlbXB0bm9wbGFuJHdlaWdodDI+MCkpXG5vcHRpb25zKHN1cnZleS5sb25lbHkucHN1ID0gXFxhZGp1c3RcXClcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCwgZGVzaWduID0gc3Z5YXR0ZW1wdG5vcGxhbikgJT4lIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQsIGRlc2lnbiA9IHN2eWF0dGVtcHRub3BsYW4pICU+JSByb3VuZCgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # attempt without planning attemptnoplan &lt;- cididata_pt2 %&gt;% filter(attempt == 1 &amp; plan == 0) svyattemptnoplan &lt;- svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, data = subset(attemptnoplan, attemptnoplan$weight2&gt;0)) options(survey.lonely.psu = ) svytable(~alfonso_cohort, design = svyattemptnoplan) %&gt;% round() svytable(~brom3_agecohort, design = svyattemptnoplan) %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpZGVhdGUsIHBsYW4sIGFuZCBhdHRlbXB0IGJ5IGNvaG9ydFxuYWxsMyA8LVxuICBjaWRpZGF0YV9wdDIgJT4lXG4gIGZpbHRlcihpZGVhdGUgPT0gMSAmIHBsYW4gPT0gMSAmIGF0dGVtcHQgPT0gMSlcbnN2eWFsbDMgPC1cbiAgc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIG5lc3QgPSBULCBcbiAgICAgICAgICAgIGRhdGEgPSBzdWJzZXQoYWxsMywgYWxsMyR3ZWlnaHQyPjApKVxub3B0aW9ucyhzdXJ2ZXkubG9uZWx5LnBzdSA9IFwiYWRqdXN0XCIpXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQsIGRlc2lnbiA9IHN2eWFsbDMpICU+JSByb3VuZCgpXG5zdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0LCBkZXNpZ24gPSBzdnlhbGwzKSAlPiUgcm91bmQoKVxuYGBgIn0= -->
-<pre class="r"><code># ideate, plan, and attempt by cohort
-all3 &lt;-
-  cididata_pt2 %&gt;%
-  filter(ideate == 1 &amp; plan == 1 &amp; attempt == 1)
-svyall3 &lt;-
-  svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, 
-            data = subset(all3, all3$weight2&gt;0))
-options(survey.lonely.psu = &quot;adjust&quot;)
-svytable(~alfonso_cohort, design = svyall3) %&gt;% round()
-svytable(~brom3_agecohort, design = svyall3) %&gt;% round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBpZGVhdGUsIHBsYW4sIGFuZCBhdHRlbXB0IGJ5IGNvaG9ydFxuYWxsMyA8LVxuICBjaWRpZGF0YV9wdDIgJT4lXG4gIGZpbHRlcihpZGVhdGUgPT0gMSAmIHBsYW4gPT0gMSAmIGF0dGVtcHQgPT0gMSlcbnN2eWFsbDMgPC1cbiAgc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIG5lc3QgPSBULCBcbiAgICAgICAgICAgIGRhdGEgPSBzdWJzZXQoYWxsMywgYWxsMyR3ZWlnaHQyPjApKVxub3B0aW9ucyhzdXJ2ZXkubG9uZWx5LnBzdSA9IFxcYWRqdXN0XFwpXG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQsIGRlc2lnbiA9IHN2eWFsbDMpICU+JSByb3VuZCgpXG5zdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0LCBkZXNpZ24gPSBzdnlhbGwzKSAlPiUgcm91bmQoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # ideate, plan, and attempt by cohort all3 &lt;- cididata_pt2 %&gt;% filter(ideate == 1 &amp; plan == 1 &amp; attempt == 1) svyall3 &lt;- svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, data = subset(all3, all3$weight2&gt;0)) options(survey.lonely.psu = ) svytable(~alfonso_cohort, design = svyall3) %&gt;% round() svytable(~brom3_agecohort, design = svyall3) %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2381,66 +2102,41 @@ svytable(~brom3_agecohort, design = svyall3) %&gt;% round()</code></pre>
 <h2>Religion</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBvcnRob2RveCBjb3VudHMgYnkgY29ob3J0XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMyXzEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBkZTMyXzEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
-<pre class="r"><code># orthodox counts by cohort
-svytable(~alfonso_cohort + de32_1, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + de32_1, design = SuicidePart2) %&gt;% 
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBvcnRob2RveCBjb3VudHMgYnkgY29ob3J0XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMyXzEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBkZTMyXzEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIFxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # orthodox counts by cohort svytable(~alfonso_cohort + de32_1, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + de32_1, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bmlhdGUgY291bnRzIGJ5IGNvaG9ydFxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZGUzMl8yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBkZTMyXzIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
-<pre class="r"><code># uniate counts by cohort
-svytable(~alfonso_cohort + de32_2, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + de32_2, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyB1bmlhdGUgY291bnRzIGJ5IGNvaG9ydFxuc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZGUzMl8yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBkZTMyXzIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # uniate counts by cohort svytable(~alfonso_cohort + de32_2, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + de32_2, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBvdGhlciByZWxpZ2lvbiBjb3VudHMgYnkgY29ob3J0XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMyX290aGVyLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBkZTMyX290aGVyLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYCJ9 -->
-<pre class="r"><code># other religion counts by cohort
-svytable(~alfonso_cohort + de32_other, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + de32_other, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBvdGhlciByZWxpZ2lvbiBjb3VudHMgYnkgY29ob3J0XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMyX290aGVyLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBkZTMyX290aGVyLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBhZGRtYXJnaW5zKCkgJT4lXG4gIHJvdW5kKClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # other religion counts by cohort svytable(~alfonso_cohort + de32_other, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + de32_other, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBubyByZWxpZ2lvbiBjb3VudHMgYnkgY29ob3J0XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMyXzksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzJfOSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGAifQ== -->
-<pre class="r"><code># no religion counts by cohort
-svytable(~alfonso_cohort + de32_9, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + de32_9, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBubyByZWxpZ2lvbiBjb3VudHMgYnkgY29ob3J0XG5zdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMyXzksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzJfOSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgYWRkbWFyZ2lucygpICU+JVxuICByb3VuZCgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # no religion counts by cohort svytable(~alfonso_cohort + de32_9, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + de32_9, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyByZWxpZ2lvc2l0eSBjb3VudHNcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGRlMzQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgIn0= -->
-<pre class="r"><code># religiosity counts
-svytable(~alfonso_cohort + de34, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()
-svytable(~brom3_agecohort + de34, design = SuicidePart2) %&gt;%
-  addmargins() %&gt;%
-  round()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyByZWxpZ2lvc2l0eSBjb3VudHNcbnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGRlMzQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIGFkZG1hcmdpbnMoKSAlPiVcbiAgcm91bmQoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # religiosity counts svytable(~alfonso_cohort + de34, design = SuicidePart2) %&gt;% addmargins() %&gt;% round() svytable(~brom3_agecohort + de34, design = SuicidePart2) %&gt;% addmargins() %&gt;% round()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2452,27 +2148,17 @@ svytable(~brom3_agecohort + de34, design = SuicidePart2) %&gt;%
 <h2>Cohort</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBCcm9tZXQgY29ob3J0XG5zdnlnbG0oaWRlYXRlfmJyb20zX2FnZWNvaG9ydCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmJyb20zX2FnZWNvaG9ydCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShhdHRlbXB0fmJyb20zX2FnZWNvaG9ydCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbmBgYCJ9 -->
-<pre class="r"><code># Bromet cohort
-svyglm(ideate~brom3_agecohort, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~brom3_agecohort, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~brom3_agecohort, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBCcm9tZXQgY29ob3J0XG5zdnlnbG0oaWRlYXRlfmJyb20zX2FnZWNvaG9ydCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmJyb20zX2FnZWNvaG9ydCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShhdHRlbXB0fmJyb20zX2FnZWNvaG9ydCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # Bromet cohort svyglm(ideate~brom3_agecohort, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~brom3_agecohort, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~brom3_agecohort, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBBbGZvbnNvIGNvaG9ydFxuc3Z5Z2xtKGlkZWF0ZX5hbGZvbnNvX2NvaG9ydCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmFsZm9uc29fY29ob3J0LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+YWxmb25zb19jb2hvcnQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGAifQ== -->
-<pre class="r"><code># Alfonso cohort
-svyglm(ideate~alfonso_cohort, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~alfonso_cohort, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~alfonso_cohort, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBBbGZvbnNvIGNvaG9ydFxuc3Z5Z2xtKGlkZWF0ZX5hbGZvbnNvX2NvaG9ydCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmFsZm9uc29fY29ob3J0LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+YWxmb25zb19jb2hvcnQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # Alfonso cohort svyglm(ideate~alfonso_cohort, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~alfonso_cohort, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~alfonso_cohort, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2481,13 +2167,9 @@ svyglm(attempt~alfonso_cohort, family = quasibinomial(&quot;logit&quot;), design
 <h2>Sex</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5Z2xtKGlkZWF0ZX5TRVgsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0ocGxhbn5TRVgsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5TRVgsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGAifQ== -->
-<pre class="r"><code>svyglm(ideate~SEX, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~SEX, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~SEX, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3Z5Z2xtKGlkZWF0ZX5TRVgsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0ocGxhbn5TRVgsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5TRVgsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r svyglm(ideate~SEX, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~SEX, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~SEX, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2496,66 +2178,41 @@ svyglm(attempt~SEX, family = quasibinomial(&quot;logit&quot;), design = SuicideP
 <h2>Religion</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPcnRob2RveFxuc3Z5Z2xtKGlkZWF0ZX5kZTMyXzEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0ocGxhbn5kZTMyXzEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5kZTMyXzEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGAifQ== -->
-<pre class="r"><code># Orthodox
-svyglm(ideate~de32_1, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~de32_1, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~de32_1, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBPcnRob2RveFxuc3Z5Z2xtKGlkZWF0ZX5kZTMyXzEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0ocGxhbn5kZTMyXzEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5kZTMyXzEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # Orthodox svyglm(ideate~de32_1, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~de32_1, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~de32_1, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBVbmlhdGVcbnN2eWdsbShpZGVhdGV+ZGUzMl8yLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+ZGUzMl8yLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+ZGUzMl8yLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgIn0= -->
-<pre class="r"><code># Uniate
-svyglm(ideate~de32_2, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~de32_2, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~de32_2, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBVbmlhdGVcbnN2eWdsbShpZGVhdGV+ZGUzMl8yLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+ZGUzMl8yLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+ZGUzMl8yLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # Uniate svyglm(ideate~de32_2, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~de32_2, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~de32_2, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPdGhlclxuc3Z5Z2xtKGlkZWF0ZX5kZTMyX290aGVyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+ZGUzMl9vdGhlciwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShhdHRlbXB0fmRlMzJfb3RoZXIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGAifQ== -->
-<pre class="r"><code># Other
-svyglm(ideate~de32_other, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~de32_other, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~de32_other, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBPdGhlclxuc3Z5Z2xtKGlkZWF0ZX5kZTMyX290aGVyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+ZGUzMl9vdGhlciwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShhdHRlbXB0fmRlMzJfb3RoZXIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # Other svyglm(ideate~de32_other, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~de32_other, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~de32_other, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBOb25lXG5zdnlnbG0oaWRlYXRlfmRlMzJfOSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmRlMzJfOSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShhdHRlbXB0fmRlMzJfOSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbmBgYCJ9 -->
-<pre class="r"><code># None
-svyglm(ideate~de32_9, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~de32_9, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~de32_9, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBOb25lXG5zdnlnbG0oaWRlYXRlfmRlMzJfOSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmRlMzJfOSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShhdHRlbXB0fmRlMzJfOSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # None svyglm(ideate~de32_9, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~de32_9, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~de32_9, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpbXBvcnRhbmNlIG9mIHJlbGlnaW9uXG5zdnlnbG0oaWRlYXRlfmRlMzQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0ocGxhbn5kZTM0LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+ZGUzNCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbmBgYCJ9 -->
-<pre class="r"><code># importance of religion
-svyglm(ideate~de34, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~de34, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~de34, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBpbXBvcnRhbmNlIG9mIHJlbGlnaW9uXG5zdnlnbG0oaWRlYXRlfmRlMzQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0ocGxhbn5kZTM0LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+ZGUzNCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # importance of religion svyglm(ideate~de34, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~de34, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~de34, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2564,13 +2221,9 @@ svyglm(attempt~de34, family = quasibinomial(&quot;logit&quot;), design = Suicide
 <h2>Marital Status</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5Z2xtKGlkZWF0ZX5tYXJyaWVkLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+bWFycmllZCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShhdHRlbXB0fm1hcnJpZWQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGAifQ== -->
-<pre class="r"><code>svyglm(ideate~married, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~married, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~married, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3Z5Z2xtKGlkZWF0ZX5tYXJyaWVkLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+bWFycmllZCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShhdHRlbXB0fm1hcnJpZWQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r svyglm(ideate~married, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~married, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~married, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2579,14 +2232,9 @@ svyglm(attempt~married, family = quasibinomial(&quot;logit&quot;), design = Suic
 <h2>Cancer</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDYW5jZXIgcHJlc2VudFxuc3Z5Z2xtKGlkZWF0ZX5jYzF0eiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmNjMXR6LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+Y2MxdHosIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGAifQ== -->
-<pre class="r"><code># Cancer present
-svyglm(ideate~cc1tz, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~cc1tz, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~cc1tz, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBDYW5jZXIgcHJlc2VudFxuc3Z5Z2xtKGlkZWF0ZX5jYzF0eiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmNjMXR6LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+Y2MxdHosIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # Cancer present svyglm(ideate~cc1tz, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~cc1tz, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~cc1tz, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2595,53 +2243,33 @@ svyglm(attempt~cc1tz, family = quasibinomial(&quot;logit&quot;), design = Suicid
 <h2>Socio-economic Status</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBZZWFycyBvZiBFZHVjYXRpb25cbnN2eWdsbShpZGVhdGV+ZGUyMCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmRlMjAsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5kZTIwLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgIn0= -->
-<pre class="r"><code># Years of Education
-svyglm(ideate~de20, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~de20, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~de20, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBZZWFycyBvZiBFZHVjYXRpb25cbnN2eWdsbShpZGVhdGV+ZGUyMCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmRlMjAsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5kZTIwLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # Years of Education svyglm(ideate~de20, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~de20, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~de20, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBtb250aGx5IEhIIGluY29tZVxuc3Z5Z2xtKGlkZWF0ZX5mbnUxLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+Zm51MSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShhdHRlbXB0fmZudTEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGAifQ== -->
-<pre class="r"><code># monthly HH income
-svyglm(ideate~fnu1, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~fnu1, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~fnu1, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBtb250aGx5IEhIIGluY29tZVxuc3Z5Z2xtKGlkZWF0ZX5mbnUxLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+Zm51MSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShhdHRlbXB0fmZudTEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # monthly HH income svyglm(ideate~fnu1, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~fnu1, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~fnu1, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBmaW5hbmNpYWwgc3RhdHVzXG5zdnlnbG0oaWRlYXRlfmZudTQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0ocGxhbn5mbnU0LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+Zm51NCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbmBgYCJ9 -->
-<pre class="r"><code># financial status
-svyglm(ideate~fnu4, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~fnu4, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~fnu4, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBmaW5hbmNpYWwgc3RhdHVzXG5zdnlnbG0oaWRlYXRlfmZudTQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0ocGxhbn5mbnU0LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+Zm51NCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # financial status svyglm(ideate~fnu4, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~fnu4, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~fnu4, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBlbXBsb3ltZW50IHN0YXR1c1xuc3Z5Z2xtKGlkZWF0ZX5lbXAsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0ocGxhbn5lbXAsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5lbXAsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGAifQ== -->
-<pre class="r"><code># employment status
-svyglm(ideate~emp, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~emp, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~emp, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBlbXBsb3ltZW50IHN0YXR1c1xuc3Z5Z2xtKGlkZWF0ZX5lbXAsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0ocGxhbn5lbXAsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5lbXAsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # employment status svyglm(ideate~emp, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~emp, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~emp, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2651,13 +2279,9 @@ svyglm(attempt~emp, family = quasibinomial(&quot;logit&quot;), design = SuicideP
 <h1>Urbanicity</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5Z2xtKGlkZWF0ZX5pbzE2LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+aW8xNiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShhdHRlbXB0fmlvMTYsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGAifQ== -->
-<pre class="r"><code>svyglm(ideate~io16, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~io16, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~io16, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3Z5Z2xtKGlkZWF0ZX5pbzE2LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+aW8xNiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShhdHRlbXB0fmlvMTYsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r svyglm(ideate~io16, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~io16, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~io16, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2666,13 +2290,9 @@ svyglm(attempt~io16, family = quasibinomial(&quot;logit&quot;), design = Suicide
 <h1>Proximity to Chernobyl</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3Z5Z2xtKGlkZWF0ZX5saXZlX2NoZXJub2J5bCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmxpdmVfY2hlcm5vYnlsLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+bGl2ZV9jaGVybm9ieWwsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGAifQ== -->
-<pre class="r"><code>svyglm(ideate~live_chernobyl, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~live_chernobyl, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~live_chernobyl, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3Z5Z2xtKGlkZWF0ZX5saXZlX2NoZXJub2J5bCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmxpdmVfY2hlcm5vYnlsLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+bGl2ZV9jaGVybm9ieWwsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r svyglm(ideate~live_chernobyl, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~live_chernobyl, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~live_chernobyl, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2681,27 +2301,17 @@ svyglm(attempt~live_chernobyl, family = quasibinomial(&quot;logit&quot;), design
 <h1>Parental Substance Use</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBtb3RoZXJcbnN2eWdsbShpZGVhdGV+Y2g1MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmNoNTIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5jaDUyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgIn0= -->
-<pre class="r"><code># mother
-svyglm(ideate~ch52, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~ch52, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~ch52, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBtb3RoZXJcbnN2eWdsbShpZGVhdGV+Y2g1MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmNoNTIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5jaDUyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # mother svyglm(ideate~ch52, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~ch52, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~ch52, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBmYXRoZXJcbnN2eWdsbShpZGVhdGV+Y2g4MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmNoODIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5jaDgyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgIn0= -->
-<pre class="r"><code># father
-svyglm(ideate~ch82, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~ch82, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~ch82, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBmYXRoZXJcbnN2eWdsbShpZGVhdGV+Y2g4MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmNoODIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5jaDgyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # father svyglm(ideate~ch82, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~ch82, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~ch82, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2710,27 +2320,17 @@ svyglm(attempt~ch82, family = quasibinomial(&quot;logit&quot;), design = Suicide
 <h1>Parental Suicidality</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBtb3RoZXJcbnN2eWdsbShpZGVhdGV+Y2g2NywgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmNoNjcsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5jaDY3LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgIn0= -->
-<pre class="r"><code># mother
-svyglm(ideate~ch67, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~ch67, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~ch67, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBtb3RoZXJcbnN2eWdsbShpZGVhdGV+Y2g2NywgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmNoNjcsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5jaDY3LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # mother svyglm(ideate~ch67, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~ch67, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~ch67, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBmYXRoZXJcbnN2eWdsbShpZGVhdGV+Y2g5NywgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmNoOTcsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5jaDk3LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgIn0= -->
-<pre class="r"><code># father
-svyglm(ideate~ch97, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~ch97, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~ch97, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBmYXRoZXJcbnN2eWdsbShpZGVhdGV+Y2g5NywgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmNoOTcsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0oYXR0ZW1wdH5jaDk3LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # father svyglm(ideate~ch97, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~ch97, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~ch97, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2739,27 +2339,17 @@ svyglm(attempt~ch97, family = quasibinomial(&quot;logit&quot;), design = Suicide
 <h1>Abortions</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBoYXZlIHlvdSBldmVyIGhhZCBhbiBhYm9ydGlvbj9cbnN2eWdsbShpZGVhdGV+Y242LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+Y242LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+Y242LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgIn0= -->
-<pre class="r"><code># have you ever had an abortion?
-svyglm(ideate~cn6, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~cn6, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~cn6, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBoYXZlIHlvdSBldmVyIGhhZCBhbiBhYm9ydGlvbj9cbnN2eWdsbShpZGVhdGV+Y242LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+Y242LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+Y242LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # have you ever had an abortion? svyglm(ideate~cn6, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~cn6, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~cn6, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBudW1iZXIgb2YgYWJvcnRpb25zXG5zdnlnbG0oaWRlYXRlfmNuNmEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0ocGxhbn5jbjZhLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+Y242YSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbmBgYCJ9 -->
-<pre class="r"><code># number of abortions
-svyglm(ideate~cn6a, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~cn6a, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~cn6a, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBudW1iZXIgb2YgYWJvcnRpb25zXG5zdnlnbG0oaWRlYXRlfmNuNmEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXFxsb2dpdFxcKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiVcbiAgc3VtbWFyeSgpXG5zdnlnbG0ocGxhbn5jbjZhLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+Y242YSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # number of abortions svyglm(ideate~cn6a, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~cn6a, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~cn6a, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2771,73 +2361,48 @@ svyglm(attempt~cn6a, family = quasibinomial(&quot;logit&quot;), design = Suicide
 <h1>Mental Disorders</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhbnhpZXR5XG5zdnlnbG0oaWRlYXRlfmFueCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmFueCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShhdHRlbXB0fmFueCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbmBgYCJ9 -->
-<pre class="r"><code># anxiety
-svyglm(ideate~anx, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~anx, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~anx, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBhbnhpZXR5XG5zdnlnbG0oaWRlYXRlfmFueCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShwbGFufmFueCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbnN2eWdsbShhdHRlbXB0fmFueCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcXGxvZ2l0XFwpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JVxuICBzdW1tYXJ5KClcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # anxiety svyglm(ideate~anx, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~anx, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~anx, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhZmZlY3RpdmVcbnN2eWdsbShpZGVhdGV+YWZmLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+YWZmLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+YWZmLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgIn0= -->
-<pre class="r"><code># affective
-svyglm(ideate~aff, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~aff, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~aff, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBhZmZlY3RpdmVcbnN2eWdsbShpZGVhdGV+YWZmLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+YWZmLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+YWZmLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # affective svyglm(ideate~aff, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~aff, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~aff, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhbGNcbnN2eWdsbShpZGVhdGV+YWxjLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+YWxjLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+YWxjLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgIn0= -->
-<pre class="r"><code># alc
-svyglm(ideate~alc, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~alc, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~alc, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBhbGNcbnN2eWdsbShpZGVhdGV+YWxjLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+YWxjLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+YWxjLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # alc svyglm(ideate~alc, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~alc, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~alc, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpZWRcbnN2eWdsbShpZGVhdGV+aWVkLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+aWVkLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+aWVkLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgIn0= -->
-<pre class="r"><code># ied
-svyglm(ideate~ied, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~ied, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~ied, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBpZWRcbnN2eWdsbShpZGVhdGV+aWVkLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+aWVkLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+aWVkLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # ied svyglm(ideate~ied, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~ied, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~ied, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBhbnlcbnN2eWdsbShpZGVhdGV+YW55LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+YW55LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+YW55LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgIn0= -->
-<pre class="r"><code># any
-svyglm(ideate~any, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(plan~any, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()
-svyglm(attempt~any, family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
-  summary()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBhbnlcbnN2eWdsbShpZGVhdGV+YW55LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKHBsYW5+YW55LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuc3Z5Z2xtKGF0dGVtcHR+YW55LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFxcbG9naXRcXCksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lXG4gIHN1bW1hcnkoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # any svyglm(ideate~any, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(plan~any, family = quasibinomial(), design = SuicidePart2) %&gt;% summary() svyglm(attempt~any, family = quasibinomial(), design = SuicidePart2) %&gt;% summary()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkFnZSBDb2hvcnQgQ29tcGFyaXNvbnMiDQphdXRob3I6ICJEZXJpYyBMaWFuZyINCmRhdGU6ICI2LzI0LzIwMTkiDQpvdXRwdXQ6DQogIHBkZl9kb2N1bWVudDogZGVmYXVsdA0KICBodG1sX25vdGVib29rOiBkZWZhdWx0DQotLS0NCg0KYGBge3J9DQoNCiMgaGVsbG8gd29ybGQhISEhDQpgYGANCg0KDQoNCmBgYHtyIHJlc3VsdHMgPSAiaGlkZSIsIGluY2x1ZGUgPSBGQUxTRX0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShkYXRhLnRhYmxlKQ0KbGlicmFyeShzdXJ2ZXkpDQpsaWJyYXJ5KG1vc2FpYykNCmxpYnJhcnkobGVhcHMpDQpgYGANCg0KYGBge3J9DQojIHJlYWQgaW4gbWFpbiBkYXRhDQpjaWRpZGF0YV9yYXcgPC0NCiAgZnJlYWQoInVrcm1haW5fUlVfMDYxNDE5LmNzdiIpDQpgYGANCg0KIyBEYXRhIENsZWFuaW5nDQoNCmBgYHtyfQ0KIyBzdWJzZXR0aW5nIGRhdGENCmNpZGlkYXRhX3B0MiA8LQ0KICBjaWRpZGF0YV9yYXcgJT4lDQogICMgbWVudGFsIGNvbmRpdGlvbnMNCiAgbXV0YXRlKGFueCA9IGlmZWxzZShEU01fQUdPID09IDF8RFNNX1NPID09IDF8RFNNX0dBRCA9PSAxfERTTV9QRFMgPT0gMSwgMSwgMCksDQogICAgICAgICBpZWQgPSBpZmVsc2UoRFNNX0lFREggPT0gMSwgMSwgMCksDQogICAgICAgICBhZmYgPSBpZmVsc2UoRFNNX01ERSA9PSAxfERTTV9EWVMgPT0gMSwgMSwgMCksDQogICAgICAgICBhbGMgPSBpZmVsc2UoRFNNX0FMQSA9PSAxfERTTV9BTEQgPT0gMSwgMSwgMCksDQogICAgICAgICBhbnkgPSBpZmVsc2UoYW54ID09IDF8aWVkID09IDF8YWZmID09IDF8YWxjID09IDEsIDEsIDApKSAlPiUNCiAgIyBicm9tZXQgYWdlIGNvaG9ydHMNCiAgbXV0YXRlKGJyb200X2FnZWNvaG9ydCA9IGN1dChjaWRpZGF0YV9yYXckQUdFLCBicmVha3MgPSBjKDE2LCAyNCwgMzQsIDQ5LCBJbmYpLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVscyA9IGMoIllvdW5nZXN0IiwgIk1pZGRsZSBZb3VuZyIsICJNaWRkbGUgQWdlIiwgIkVsZGVzdCIpKSwNCiAgICAgICAgIGJyb20zX2FnZWNvaG9ydCA9IGN1dChjaWRpZGF0YV9yYXckQUdFLCBicmVha3MgPSBjKDE2LCAzNywgNTcsIEluZiksDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVscyA9IGMoIllvdW5nZXN0IiwgIk1pZGRsZSIsICJFbGRlc3QiKSkpICU+JQ0KICAjIGFsZm9uc28gYWdlIGNvaG9ydHMNCiAgbXV0YXRlKGFsZm9uc29fY29ob3J0ID0gY3V0KGNpZGlkYXRhX3JhdyRBR0UsIGJyZWFrcyA9IGMoMTYsIDM3LCA0OSwgNjQsIEluZiksDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbHMgPSBjKCJZb3VuZ2VzdCIsICJNaWRkbGUgWW91bmciLCAiTWlkZGxlIEFnZSIsICJFbGRlc3QiKSkpICU+JQ0KICAjIHNlbGVjdCBwYXJ0IDIgcmVzcG9uZGVudHMNCiAgZmlsdGVyKCFpcy5uYShkZTIwKSkgJT4lDQogICMgcmVsaWdpb24NCiAgbXV0YXRlKGRlMzJfMSA9IGFzLmZhY3RvcihpZmVsc2UoaXMubmEoZGUzMl8xKSwgMCwgMSkpLA0KICAgICAgICAgZGUzMl8yID0gYXMuZmFjdG9yKGlmZWxzZShpcy5uYShkZTMyXzIpLCAwLCAxKSksDQogICAgICAgICBkZTMyXzkgPSBhcy5mYWN0b3IoaWZlbHNlKGlzLm5hKGRlMzJfOSksIDAsIDEpKSwNCiAgICAgICAgIGRlMzJfOTggPSBpZmVsc2UoaXMubmEoZGUzMl85OCksIDAsIDEpLA0KICAgICAgICAgZGUzMl85OSA9IGlmZWxzZShpcy5uYShkZTMyXzk5KSwgMCwgMSksDQogICAgICAgICBkZTMyX290aGVyID0gaWZlbHNlKGRlMzJfMyA9PSAxfGRlMzJfNCA9PSAxfGRlMzJfNSA9PSAxfGRlMzJfNiA9PSAxfGRlMzJfNyA9PSAxfGRlMzJfOCA9PSAxLCAxLCAwKSwNCiAgICAgICAgIGRlMzJfb3RoZXIgPSBhcy5mYWN0b3IoaWZlbHNlKGlzLm5hKGRlMzJfb3RoZXIpLCAwLCAxKSksDQogICAgICAgICBkZTM0ID0gYXMuZmFjdG9yKGlmZWxzZShkZTM0ID09IDh8ZGUzNCA9PSA5LCBOQSwgZGUzNCkpKSAlPiUNCiAgIyBzdWljaWRhbGl0eQ0KICBtdXRhdGUoaWRlYXRlID0gaWZlbHNlKCFpcy5uYShzZDIpLCBzZDIsIHNkMTUpLA0KICAgICAgICAgcGxhbiA9IGlmZWxzZSghaXMubmEoc2Q0KSwgc2Q0LCBzZDE3KSwNCiAgICAgICAgIGF0dGVtcHQgPSBpZmVsc2UoIWlzLm5hKHNkNiksIHNkNiwgc2QxOSksDQogICAgICAgICBwbGFuID0gaWZlbHNlKGlzLm5hKHBsYW4pLCA1LCBwbGFuKSwNCiAgICAgICAgIGF0dGVtcHQgPSBpZmVsc2UoaXMubmEoYXR0ZW1wdCksIDUsIGF0dGVtcHQpLA0KICAgICAgICAgaWRlYXRlID0gYXMuZmFjdG9yKGlmZWxzZShpZGVhdGUgPT0gMSwgMSwgMCkpLA0KICAgICAgICAgcGxhbiA9IGFzLmZhY3RvcihpZmVsc2UocGxhbiA9PSAxLCAxLCAwKSksDQogICAgICAgICBhdHRlbXB0ID0gYXMuZmFjdG9yKGlmZWxzZShhdHRlbXB0ID09IDEsIDEsIDApKSkgJT4lDQogICMgbWFycmllZA0KICBtdXRhdGUobWFycmllZCA9IGFzLmZhY3RvcihpZmVsc2Uoc2MzID09IDh8c2MzID09IDksIE5BLCANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShzYzMgPT0gMSwgMSwgMCkpKSkgJT4lDQogICMgY2hlcm5vYnlsDQogIG11dGF0ZShsaXZlX2NoZXJub2J5bCA9IGFzLmZhY3RvcihpZmVsc2UoZGU0MCA9PSAxLCAxLCANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UocHQ2YSA9PSAxICYgIWlzLm5hKHB0NmEpLCAxLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UocHQ2YiA9PSAxICYgIWlzLm5hKHB0NmIpLCAxLCAwKSkpKSkgJT4lDQogICMgc29jaWFsIG5ldHdvcmsNCiAgbXV0YXRlKFNOMSA9IGRlcml2ZWRWYXJpYWJsZShgMGAgPSBzbjEgPT0gNiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgMWAgPSBzbjEgPT0gNSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgMmAgPSBzbjEgPT0gNCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgM2AgPSBzbjEgPT0gMywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgNGAgPSBzbjEgPT0gMiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgNWAgPSBzbjEgPT0gMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgN2AgPSBzbjEgPT0gNywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgOGAgPSBzbjEgPT0gOCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgOWAgPSBzbjEgPT0gOSksDQogICAgICAgICBTTjIgPSBkZXJpdmVkVmFyaWFibGUoYDBgID0gc24yID09IDYsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDFgID0gc24yID09IDUsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDJgID0gc24yID09IDQsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDNgID0gc24yID09IDMsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDRgID0gc24yID09IDIsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDVgID0gc24yID09IDEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDdgID0gc24yID09IDcsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDhgID0gc24yID09IDgsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDlgID0gc24yID09IDkpLA0KICAgICAgICAgU042ID0gZGVyaXZlZFZhcmlhYmxlKCIxIiA9IHNuNiA9PSA0LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICIyIiA9IHNuNiA9PSAzLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICIzIiA9IHNuNiA9PSAyLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICI0IiA9IHNuNiA9PSAxLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICIyLjUiID0gc242ID09IDh8c242ID09IDkpLA0KICAgICAgICAgU043ID0gZGVyaXZlZFZhcmlhYmxlKCIxIiA9IHNuNyA9PSA0LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICIyIiA9IHNuNyA9PSAzLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICIzIiA9IHNuNyA9PSAyLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICI0IiA9IHNuNyA9PSAxLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICIyLjUiID0gc243ID09IDh8c243ID09IDkpLA0KICAgICAgICAgU04xID0gYXMubnVtZXJpYyhpZmVsc2UoU04xID09IDd8U04xID09IDh8U04xID09IDksIE5BLCBTTjEpKSwNCiAgICAgICAgIFNOMiA9IGFzLm51bWVyaWMoaWZlbHNlKFNOMiA9PSA3fFNOMiA9PSA4fFNOMiA9PSA5LCBOQSwgU04yKSksDQogICAgICAgICBTTjYgPSBhcy5udW1lcmljKFNONiksDQogICAgICAgICBTTjcgPSBhcy5udW1lcmljKFNONykpICU+JQ0KICAjIHJlY29kZQ0KICBtdXRhdGUoY2MxdHogPSBhcy5mYWN0b3IoaWZlbHNlKGNjMXR6ID09IDh8Y2MxdHogPT0gOSwgTkEsIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjYzF0eiA9PSAxLCAxLCAwKSkpLA0KICAgICAgICAgY2MyID0gYXMuZmFjdG9yKGlmZWxzZShjYzIgPT0gOHxjYzIgPT0gOSwgTkEsIGNjMikpLA0KICAgICAgICAgY242ID0gYXMuZmFjdG9yKGlmZWxzZShjbjYgPT0gOHxjbjYgPT0gOSwgTkEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjbjYgPT0gMSwgMSwgMCkpKSwNCiAgICAgICAgIGNuNmEgPSBpZmVsc2UoY242YSA9PSA5OHxjbjZhID09IDk5LCBOQSwgY242YSksDQogICAgICAgICBjaDY3ID0gYXMuZmFjdG9yKGlmZWxzZShjaDY3ID09IDh8Y2g2NyA9PSA5LCBOQSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKGNoNjcgPT0gMSwgMSwgMCkpKSwNCiAgICAgICAgIGNoOTcgPSBhcy5mYWN0b3IoaWZlbHNlKGNoOTcgPT0gOHxjaDk3ID09IDksIE5BLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UoY2g5NyA9PSAxLCAxLCAwKSkpLA0KICAgICAgICAgY2g1MiA9IGFzLmZhY3RvcihpZmVsc2UoY2g1MiA9PSA4fGNoNTIgPT0gOSwgTkEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjaDUyID09IDEsIDEsIDApKSksDQogICAgICAgICBjaDgyID0gYXMuZmFjdG9yKGlmZWxzZShjaDgyID09IDh8Y2g4MiA9PSA5LCBOQSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKGNoODIgPT0gMSwgMSwgMCkpKSwNCiAgICAgICAgIGZudTEgPSBpZmVsc2UoZm51MSA9PSA4fGZudTEgPT0gOSwgTkEsIGZudTEpLA0KICAgICAgICAgZm51NCA9IGFzLmZhY3RvcihpZmVsc2UoZm51NCA9PSA4fGZudTQgPT0gOSwgTkEsIGZudTQpKSwNCiAgICAgICAgIHB0MSA9IGFzLmZhY3RvcihpZmVsc2UocHQxID09IDh8cHQxID09IDksIE5BLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UocHQxID09IDEsIDEsIDApKSksDQogICAgICAgICBTRVggPSBhcy5mYWN0b3IoU0VYKSwNCiAgICAgICAgIGVtcCA9IGFzLmZhY3RvcihlbXApLA0KICAgICAgICAgaW8xNiA9IGFzLmZhY3RvcihpbzE2KSkgJT4lDQogICMgc2VsZWN0IHJlbGV2YW50IHZhcmlhYmxlDQogIHNlbGVjdChzYW1wbGVpZCwgYnJvbTRfYWdlY29ob3J0LCBicm9tM19hZ2Vjb2hvcnQsIGFsZm9uc29fY29ob3J0LCBTRVgsIGlvMTYsIA0KICAgICAgICAgZGUyMCwgZm51MSwgZm51NCwgZGUzMl8xLCBkZTMyXzIsIGRlMzJfb3RoZXIsIGRlMzJfOSwgZW1wLCBlbXB3LCBlbXBzdCwgZW1waCwgDQogICAgICAgICBlbXByLCBlbXBvdGgsZGUzNCwgcHQ2YSwgcHQ2YiwgZGU0MCwgbGl2ZV9jaGVybm9ieWwsIG1hcnJpZWQsIHNjMywgDQogICAgICAgICBtcjE2LCBtcjE4LCBtcjIyLCBzbjEsIHNuMiwgc242LCBzbjcsIFNOMSwgU04yLCBTTjYsIFNONywgY2MxdHosIGNjMiwgDQogICAgICAgICBjbjYsIGNuNmEsaWRlYXRlLCBwbGFuLCBhdHRlbXB0LCBjaDY3LCBjaDk3LCBjaDUyLCBjaDgyLCBwdDEsDQogICAgICAgICBhbngsIGFsYywgYWZmLCBpZWQsIGFueSwgc2VjdSwgc3RyYXRhLCB3ZWlnaHQyKQ0KYGBgDQoNCmBgYHtyfQ0KIyBEYXRhc2V0IHdpdGggUGFydCAyIHdlaWdodHMgb24NClN1aWNpZGVQYXJ0MiA8LQ0KICBzdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgbmVzdCA9IFQsIA0KICAgICAgICAgICAgZGF0YSA9IHN1YnNldChjaWRpZGF0YV9wdDIsIGNpZGlkYXRhX3B0MiR3ZWlnaHQyPjApKQ0Kb3B0aW9ucyhzdXJ2ZXkubG9uZWx5LnBzdSA9ICJhZGp1c3QiKQ0KYGBgDQoNCiMgRnJlcXVlbmN5IFRhYmxlcw0KDQojIyBTZXgNCg0KYGBge3J9DQojIyMgMCA9IGZlbWFsZQ0KIyMjIDEgPSBtYWxlDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBTRVgsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBTRVgsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQoNCiMjIE1hcnJpYWdlIA0KDQpgYGB7cn0NCiMgYXJlIHlvdSBjdXJyZW50bHkgbWFycmllZD8NCiMjIyA3ID0gbGl2aW5nIHdpdGggc29tZW9uZQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgc2MzLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBzYzMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgbWFyaXRhbCBzdGF0dXMgdmFyaWFibGUNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIG1hcnJpZWQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIG1hcnJpZWQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQojIyBDYW5jZXINCg0KYGBge3J9DQojIHByZXNlbmNlIG9mIGNhbmNlcg0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY2MxdHosIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBjYzF0eiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyB0cmVhdG1lbnQgZm9yIGNhbmNlcg0KIyMjIDEgPSB0cmVhdG1lbnQNCiMjIyAyID0gcmVtaXNzaW9uDQojIyMgMyA9IGN1cmVkDQoNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNjMiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNjMiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANClNhbXBsZSBzaXplcyBpbnN1ZmZpY2llbnQuDQoNCiMjIFNvY2lvLWVjb25vbWljIHN0YXR1cw0KDQpObyB0YWJsZXMgZm9yIERFMjAgKHllYXJzIG9mIHNjaG9vbGluZykgb3IgRk5VMSAodG90YWwgbW9udGhseSBpbmNvbWUpOyBib3RoIGFyZSBjb250aW51b3VzIHZhcmlhYmxlcyBhbmQgZnJlcXVlbmN5IHRhYmxlcyBpbmhlcmVudGx5IGRvbid0IG1ha2Ugc2Vuc2UgZm9yIHRoZW0uDQoNCmBgYHtyfQ0KIyBmaW5hbmNpYWwgbGV2ZWwNCiMjIyAxID0gbm90IGVub3VnaCBmb3IgZm9vZA0KIyMjIDIgPSBkaWZmY3VsdCB0byBidXkgY2xvdGhlcy9zaG9lcw0KIyMjIDMgPSBub3QgZW5vdWdoIGZvciBkdXJhYmxlcw0KIyMjIDQgPSBjYW4gYWZmb3JkIHNvbWUgZXhwZW5zaXZlIHRoaW5ncw0KIyMjIDUgPSBjYW4gYWZmb3JkIGFueXRoaW5nDQoNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGZudTQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGZudTQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgZW1wbG95bWVudCBzdGF0dXMNCiMjIyAxID0gd29ya2luZw0KIyMjIDIgPSBzdHVkZW50DQojIyMgMyA9IGhvbWVtYWtlcg0KIyMjIDQgPSByZXRpcmVkDQojIyMgNSA9IG90aGVyDQoNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGVtcCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgZW1wLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KDQoNCiMjIFVyYmFuaWNpdHkNCg0KYGBge3J9DQojIyMgMSA9IHJ1cmFsDQojIyMgMiA9IHRvd25zaGlwDQojIyMgMyA9IGNpdHkgdXAgdG8gMjAwLDAwMCBpbmhhYml0YW50cw0KIyMjIDQgPSBjaXR5IGJldHdlZW4gMjAwLDAwMCBhbmQgNTAwLDAwMCBpbmhhYml0YW50cw0KIyMjIDUgPSBjaXR5IHdpdGggbW9yZSB0aGFuIDUwMCwwMDAgaW5oYWJpdGFudHMNCg0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgaW8xNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCAraW8xNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCiMjIFByb3hpbWl0eSB0byBDaGVybm9ieWwNCg0KYGBge3J9DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBsaXZlX2NoZXJub2J5bCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGxpdmVfY2hlcm5vYnlsLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KIyMgUGFyZW50YWwgQWxjb2hvbC9EcnVnIFVzZQ0KDQpgYGB7cn0NCiMgbW90aGVyIGFsYy9kcnVnIHByb2JsZW0NCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNoNTIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBjaDUyLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIGZhdGhlciBhbGMvZHJ1ZyBwcm9ibGVtDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBjaDgyLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgY2g4MiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KIyMgUGFyZW50YWwgU3VpY2lkYWxpdHkNCg0KYGBge3J9DQojIG1vdGhlciBzdWljaWRhbGl0eQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY2g2NywgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgY2g2NywgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBmYXRoZXIgc3VpY2lkYWxpdHkNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNoOTcsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBjaDk3LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KIyMgQWJvcnRpb25zDQoNCmBgYHtyfQ0KIyBoYWQgYW4gYWJvcnRpb24NCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBudW1iZXIgb2YgYWJvcnRpb25zDQojIyMgY29udGludW91cyB2YXJpYWJsZSBzbyBmcmVxdWVuY3kgdGFibGUgbGVzcyBpbnR1aXRpdmU7IGp1c3Qgd2FudGVkIHRvIGtub3cNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNuNmEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBjbjZhLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQojIyBTb2NpYWwgTmV0d29yaw0KDQpgYGB7cn0NCiMgYWJpbGl0eSB0byByZWx5IG9uIGZyaWVuZHMvZmFtaWx5DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBzbjYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBzbjYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgYWJpbGl0eSB0byBvcGVuIHVwDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBzbjYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBzbjYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgY29udGFjdCB3aXRoIGZhbWlseQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgc24xLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgc24xLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgY29udGFjdCB3aXRoIGZyaWVuZHMNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIHNuMiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNuMiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCiMjIE1lbnRhbCBEaXNvcmRlcnMNCg0KYGBge3J9DQojIGFmZmVjdGl2ZQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgYWZmLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgYWZmLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JSANCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBhbGNvaG9sDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBhbGMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lIA0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgYWxjLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JSANCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBpZWQNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGllZCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUgDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBpZWQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lIA0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIGFueGlldHkNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGFmZiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUgDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBhZmYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUgDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgYW55DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBhbnksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lIA0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgYW55LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JSANCiAgcm91bmQoKQ0KYGBgDQoNCiMjIE1pbGl0YXJ5DQoNClNhbXBsZSBzaXplcyB0b28gc21hbGw7IGNhbm5vdCB1c2UuDQoNCmBgYHtyfQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgcHQxLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JSANCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHB0MSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUgDQogIHJvdW5kKCkNCmBgYA0KDQojIyBTdWljaWRhbGl0eQ0KDQpgYGB7cn0NCiMgaWRlYXRlDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBpZGVhdGUsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBpZGVhdGUsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgcGxhbg0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgcGxhbiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgcGxhbiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBhdHRlbXB0DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBhdHRlbXB0LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBhdHRlbXB0LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIGF0dGVtcHQgd2l0aG91dCBwbGFubmluZw0KYXR0ZW1wdG5vcGxhbiA8LQ0KICBjaWRpZGF0YV9wdDIgJT4lDQogIGZpbHRlcihhdHRlbXB0ID09IDEgJiBwbGFuID09IDApDQpzdnlhdHRlbXB0bm9wbGFuIDwtDQogIHN2eWRlc2lnbihpZHMgPSB+c2VjdSwgc3RyYXRhID0gfnN0cmF0YSwgd2VpZ2h0cyA9IH53ZWlnaHQyLCBuZXN0ID0gVCwgDQogICAgICAgICAgICBkYXRhID0gc3Vic2V0KGF0dGVtcHRub3BsYW4sIGF0dGVtcHRub3BsYW4kd2VpZ2h0Mj4wKSkNCm9wdGlvbnMoc3VydmV5LmxvbmVseS5wc3UgPSAiYWRqdXN0IikNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCwgZGVzaWduID0gc3Z5YXR0ZW1wdG5vcGxhbikgJT4lIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQsIGRlc2lnbiA9IHN2eWF0dGVtcHRub3BsYW4pICU+JSByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIGlkZWF0ZSwgcGxhbiwgYW5kIGF0dGVtcHQgYnkgY29ob3J0DQphbGwzIDwtDQogIGNpZGlkYXRhX3B0MiAlPiUNCiAgZmlsdGVyKGlkZWF0ZSA9PSAxICYgcGxhbiA9PSAxICYgYXR0ZW1wdCA9PSAxKQ0Kc3Z5YWxsMyA8LQ0KICBzdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgbmVzdCA9IFQsIA0KICAgICAgICAgICAgZGF0YSA9IHN1YnNldChhbGwzLCBhbGwzJHdlaWdodDI+MCkpDQpvcHRpb25zKHN1cnZleS5sb25lbHkucHN1ID0gImFkanVzdCIpDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQsIGRlc2lnbiA9IHN2eWFsbDMpICU+JSByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0LCBkZXNpZ24gPSBzdnlhbGwzKSAlPiUgcm91bmQoKQ0KYGBgDQoNCiMjIFJlbGlnaW9uDQoNCmBgYHtyfQ0KIyBvcnRob2RveCBjb3VudHMgYnkgY29ob3J0DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMyXzEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBkZTMyXzEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgdW5pYXRlIGNvdW50cyBieSBjb2hvcnQNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGRlMzJfMiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgZGUzMl8yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgb3RoZXIgcmVsaWdpb24gY291bnRzIGJ5IGNvaG9ydA0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZGUzMl9vdGhlciwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgZGUzMl9vdGhlciwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIG5vIHJlbGlnaW9uIGNvdW50cyBieSBjb2hvcnQNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGRlMzJfOSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgZGUzMl85LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQoNCmBgYHtyfQ0KIyByZWxpZ2lvc2l0eSBjb3VudHMNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGRlMzQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCiMgVW5pdmFyaWF0ZSBNb2RlbHMNCg0KIyMgQ29ob3J0DQoNCmBgYHtyfQ0KIyBCcm9tZXQgY29ob3J0DQpzdnlnbG0oaWRlYXRlfmJyb20zX2FnZWNvaG9ydCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0ocGxhbn5icm9tM19hZ2Vjb2hvcnQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+YnJvbTNfYWdlY29ob3J0LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpgYGB7cn0NCiMgQWxmb25zbyBjb2hvcnQNCnN2eWdsbShpZGVhdGV+YWxmb25zb19jb2hvcnQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+YWxmb25zb19jb2hvcnQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+YWxmb25zb19jb2hvcnQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCiMjIFNleA0KDQpgYGB7cn0NCnN2eWdsbShpZGVhdGV+U0VYLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFuflNFWCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5TRVgsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCiMjIFJlbGlnaW9uDQoNCmBgYHtyfQ0KIyBPcnRob2RveA0Kc3Z5Z2xtKGlkZWF0ZX5kZTMyXzEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+ZGUzMl8xLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmRlMzJfMSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KYGBge3J9DQojIFVuaWF0ZQ0Kc3Z5Z2xtKGlkZWF0ZX5kZTMyXzIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+ZGUzMl8yLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmRlMzJfMiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KYGBge3J9DQojIE90aGVyDQpzdnlnbG0oaWRlYXRlfmRlMzJfb3RoZXIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+ZGUzMl9vdGhlciwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5kZTMyX290aGVyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpgYGB7cn0NCiMgTm9uZQ0Kc3Z5Z2xtKGlkZWF0ZX5kZTMyXzksIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+ZGUzMl85LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmRlMzJfOSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KDQpgYGB7cn0NCiMgaW1wb3J0YW5jZSBvZiByZWxpZ2lvbg0Kc3Z5Z2xtKGlkZWF0ZX5kZTM0LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmRlMzQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+ZGUzNCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KIyMgTWFyaXRhbCBTdGF0dXMNCg0KYGBge3J9DQpzdnlnbG0oaWRlYXRlfm1hcnJpZWQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+bWFycmllZCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5tYXJyaWVkLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQojIyBDYW5jZXINCg0KYGBge3J9DQojIENhbmNlciBwcmVzZW50DQpzdnlnbG0oaWRlYXRlfmNjMXR6LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmNjMXR6LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmNjMXR6LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQojIyBTb2Npby1lY29ub21pYyBTdGF0dXMNCg0KYGBge3J9DQojIFllYXJzIG9mIEVkdWNhdGlvbg0Kc3Z5Z2xtKGlkZWF0ZX5kZTIwLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmRlMjAsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+ZGUyMCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KYGBge3J9DQojIG1vbnRobHkgSEggaW5jb21lDQpzdnlnbG0oaWRlYXRlfmZudTEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+Zm51MSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5mbnUxLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpgYGB7cn0NCiMgZmluYW5jaWFsIHN0YXR1cw0Kc3Z5Z2xtKGlkZWF0ZX5mbnU0LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmZudTQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+Zm51NCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KYGBge3J9DQojIGVtcGxveW1lbnQgc3RhdHVzDQpzdnlnbG0oaWRlYXRlfmVtcCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0ocGxhbn5lbXAsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+ZW1wLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQojIFVyYmFuaWNpdHkNCg0KYGBge3J9DQpzdnlnbG0oaWRlYXRlfmlvMTYsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+aW8xNiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5pbzE2LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQojIFByb3hpbWl0eSB0byBDaGVybm9ieWwNCg0KYGBge3J9DQpzdnlnbG0oaWRlYXRlfmxpdmVfY2hlcm5vYnlsLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmxpdmVfY2hlcm5vYnlsLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmxpdmVfY2hlcm5vYnlsLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQojIFBhcmVudGFsIFN1YnN0YW5jZSBVc2UNCg0KYGBge3J9DQojIG1vdGhlcg0Kc3Z5Z2xtKGlkZWF0ZX5jaDUyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmNoNTIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+Y2g1MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KYGBge3J9DQojIGZhdGhlcg0Kc3Z5Z2xtKGlkZWF0ZX5jaDgyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmNoODIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+Y2g4MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KIyBQYXJlbnRhbCBTdWljaWRhbGl0eQ0KDQpgYGB7cn0NCiMgbW90aGVyDQpzdnlnbG0oaWRlYXRlfmNoNjcsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+Y2g2NywgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5jaDY3LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpgYGB7cn0NCiMgZmF0aGVyDQpzdnlnbG0oaWRlYXRlfmNoOTcsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+Y2g5NywgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5jaDk3LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQojIEFib3J0aW9ucw0KDQpgYGB7cn0NCiMgaGF2ZSB5b3UgZXZlciBoYWQgYW4gYWJvcnRpb24/DQpzdnlnbG0oaWRlYXRlfmNuNiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0ocGxhbn5jbjYsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+Y242LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpgYGB7cn0NCiMgbnVtYmVyIG9mIGFib3J0aW9ucw0Kc3Z5Z2xtKGlkZWF0ZX5jbjZhLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmNuNmEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+Y242YSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KIyBTb2NpYWwgTmV0d29yaw0KDQojIE1lbnRhbCBEaXNvcmRlcnMNCg0KYGBge3J9DQojIGFueGlldHkNCnN2eWdsbShpZGVhdGV+YW54LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmFueCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5hbngsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBhZmZlY3RpdmUNCnN2eWdsbShpZGVhdGV+YWZmLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmFmZiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5hZmYsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBhbGMNCnN2eWdsbShpZGVhdGV+YWxjLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmFsYywgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5hbGMsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBpZWQNCnN2eWdsbShpZGVhdGV+aWVkLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmllZCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5pZWQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBhbnkNCnN2eWdsbShpZGVhdGV+YW55LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmFueSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5hbnksIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCg0KDQoNCg0KDQoNCg0KDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkFnZSBDb2hvcnQgQ29tcGFyaXNvbnMiDQphdXRob3I6ICJEZXJpYyBMaWFuZyINCmRhdGU6ICI2LzI0LzIwMTkiDQpvdXRwdXQ6DQogIHBkZl9kb2N1bWVudDogZGVmYXVsdA0KICBodG1sX25vdGVib29rOiBkZWZhdWx0DQotLS0NCg0KYGBge3J9DQojIHNpYW5uZSdzIGFkZGl0aW9uIDEgKyAxID0gMg0KIyBoZWxsbyB3b3JsZCEhISENCmBgYA0KDQoNCg0KYGBge3IgcmVzdWx0cyA9ICJoaWRlIiwgaW5jbHVkZSA9IEZBTFNFfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQpsaWJyYXJ5KGRhdGEudGFibGUpDQpsaWJyYXJ5KHN1cnZleSkNCmxpYnJhcnkobW9zYWljKQ0KbGlicmFyeShsZWFwcykNCmBgYA0KDQpgYGB7cn0NCiMgcmVhZCBpbiBtYWluIGRhdGENCmNpZGlkYXRhX3JhdyA8LQ0KICBmcmVhZCgidWtybWFpbl9SVV8wNjE0MTkuY3N2IikNCmBgYA0KDQojIERhdGEgQ2xlYW5pbmcNCg0KYGBge3J9DQojIHN1YnNldHRpbmcgZGF0YQ0KY2lkaWRhdGFfcHQyIDwtDQogIGNpZGlkYXRhX3JhdyAlPiUNCiAgIyBtZW50YWwgY29uZGl0aW9ucw0KICBtdXRhdGUoYW54ID0gaWZlbHNlKERTTV9BR08gPT0gMXxEU01fU08gPT0gMXxEU01fR0FEID09IDF8RFNNX1BEUyA9PSAxLCAxLCAwKSwNCiAgICAgICAgIGllZCA9IGlmZWxzZShEU01fSUVESCA9PSAxLCAxLCAwKSwNCiAgICAgICAgIGFmZiA9IGlmZWxzZShEU01fTURFID09IDF8RFNNX0RZUyA9PSAxLCAxLCAwKSwNCiAgICAgICAgIGFsYyA9IGlmZWxzZShEU01fQUxBID09IDF8RFNNX0FMRCA9PSAxLCAxLCAwKSwNCiAgICAgICAgIGFueSA9IGlmZWxzZShhbnggPT0gMXxpZWQgPT0gMXxhZmYgPT0gMXxhbGMgPT0gMSwgMSwgMCkpICU+JQ0KICAjIGJyb21ldCBhZ2UgY29ob3J0cw0KICBtdXRhdGUoYnJvbTRfYWdlY29ob3J0ID0gY3V0KGNpZGlkYXRhX3JhdyRBR0UsIGJyZWFrcyA9IGMoMTYsIDI0LCAzNCwgNDksIEluZiksDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWxzID0gYygiWW91bmdlc3QiLCAiTWlkZGxlIFlvdW5nIiwgIk1pZGRsZSBBZ2UiLCAiRWxkZXN0IikpLA0KICAgICAgICAgYnJvbTNfYWdlY29ob3J0ID0gY3V0KGNpZGlkYXRhX3JhdyRBR0UsIGJyZWFrcyA9IGMoMTYsIDM3LCA1NywgSW5mKSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWxzID0gYygiWW91bmdlc3QiLCAiTWlkZGxlIiwgIkVsZGVzdCIpKSkgJT4lDQogICMgYWxmb25zbyBhZ2UgY29ob3J0cw0KICBtdXRhdGUoYWxmb25zb19jb2hvcnQgPSBjdXQoY2lkaWRhdGFfcmF3JEFHRSwgYnJlYWtzID0gYygxNiwgMzcsIDQ5LCA2NCwgSW5mKSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVscyA9IGMoIllvdW5nZXN0IiwgIk1pZGRsZSBZb3VuZyIsICJNaWRkbGUgQWdlIiwgIkVsZGVzdCIpKSkgJT4lDQogICMgc2VsZWN0IHBhcnQgMiByZXNwb25kZW50cw0KICBmaWx0ZXIoIWlzLm5hKGRlMjApKSAlPiUNCiAgIyByZWxpZ2lvbg0KICBtdXRhdGUoZGUzMl8xID0gYXMuZmFjdG9yKGlmZWxzZShpcy5uYShkZTMyXzEpLCAwLCAxKSksDQogICAgICAgICBkZTMyXzIgPSBhcy5mYWN0b3IoaWZlbHNlKGlzLm5hKGRlMzJfMiksIDAsIDEpKSwNCiAgICAgICAgIGRlMzJfOSA9IGFzLmZhY3RvcihpZmVsc2UoaXMubmEoZGUzMl85KSwgMCwgMSkpLA0KICAgICAgICAgZGUzMl85OCA9IGlmZWxzZShpcy5uYShkZTMyXzk4KSwgMCwgMSksDQogICAgICAgICBkZTMyXzk5ID0gaWZlbHNlKGlzLm5hKGRlMzJfOTkpLCAwLCAxKSwNCiAgICAgICAgIGRlMzJfb3RoZXIgPSBpZmVsc2UoZGUzMl8zID09IDF8ZGUzMl80ID09IDF8ZGUzMl81ID09IDF8ZGUzMl82ID09IDF8ZGUzMl83ID09IDF8ZGUzMl84ID09IDEsIDEsIDApLA0KICAgICAgICAgZGUzMl9vdGhlciA9IGFzLmZhY3RvcihpZmVsc2UoaXMubmEoZGUzMl9vdGhlciksIDAsIDEpKSwNCiAgICAgICAgIGRlMzQgPSBhcy5mYWN0b3IoaWZlbHNlKGRlMzQgPT0gOHxkZTM0ID09IDksIE5BLCBkZTM0KSkpICU+JQ0KICAjIHN1aWNpZGFsaXR5DQogIG11dGF0ZShpZGVhdGUgPSBpZmVsc2UoIWlzLm5hKHNkMiksIHNkMiwgc2QxNSksDQogICAgICAgICBwbGFuID0gaWZlbHNlKCFpcy5uYShzZDQpLCBzZDQsIHNkMTcpLA0KICAgICAgICAgYXR0ZW1wdCA9IGlmZWxzZSghaXMubmEoc2Q2KSwgc2Q2LCBzZDE5KSwNCiAgICAgICAgIHBsYW4gPSBpZmVsc2UoaXMubmEocGxhbiksIDUsIHBsYW4pLA0KICAgICAgICAgYXR0ZW1wdCA9IGlmZWxzZShpcy5uYShhdHRlbXB0KSwgNSwgYXR0ZW1wdCksDQogICAgICAgICBpZGVhdGUgPSBhcy5mYWN0b3IoaWZlbHNlKGlkZWF0ZSA9PSAxLCAxLCAwKSksDQogICAgICAgICBwbGFuID0gYXMuZmFjdG9yKGlmZWxzZShwbGFuID09IDEsIDEsIDApKSwNCiAgICAgICAgIGF0dGVtcHQgPSBhcy5mYWN0b3IoaWZlbHNlKGF0dGVtcHQgPT0gMSwgMSwgMCkpKSAlPiUNCiAgIyBtYXJyaWVkDQogIG11dGF0ZShtYXJyaWVkID0gYXMuZmFjdG9yKGlmZWxzZShzYzMgPT0gOHxzYzMgPT0gOSwgTkEsIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKHNjMyA9PSAxLCAxLCAwKSkpKSAlPiUNCiAgIyBjaGVybm9ieWwNCiAgbXV0YXRlKGxpdmVfY2hlcm5vYnlsID0gYXMuZmFjdG9yKGlmZWxzZShkZTQwID09IDEsIDEsIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShwdDZhID09IDEgJiAhaXMubmEocHQ2YSksIDEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShwdDZiID09IDEgJiAhaXMubmEocHQ2YiksIDEsIDApKSkpKSAlPiUNCiAgIyBzb2NpYWwgbmV0d29yaw0KICBtdXRhdGUoU04xID0gZGVyaXZlZFZhcmlhYmxlKGAwYCA9IHNuMSA9PSA2LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAxYCA9IHNuMSA9PSA1LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAyYCA9IHNuMSA9PSA0LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAzYCA9IHNuMSA9PSAzLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA0YCA9IHNuMSA9PSAyLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA1YCA9IHNuMSA9PSAxLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA3YCA9IHNuMSA9PSA3LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA4YCA9IHNuMSA9PSA4LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA5YCA9IHNuMSA9PSA5KSwNCiAgICAgICAgIFNOMiA9IGRlcml2ZWRWYXJpYWJsZShgMGAgPSBzbjIgPT0gNiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgMWAgPSBzbjIgPT0gNSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgMmAgPSBzbjIgPT0gNCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgM2AgPSBzbjIgPT0gMywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgNGAgPSBzbjIgPT0gMiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgNWAgPSBzbjIgPT0gMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgN2AgPSBzbjIgPT0gNywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgOGAgPSBzbjIgPT0gOCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgOWAgPSBzbjIgPT0gOSksDQogICAgICAgICBTTjYgPSBkZXJpdmVkVmFyaWFibGUoIjEiID0gc242ID09IDQsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIjIiID0gc242ID09IDMsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIjMiID0gc242ID09IDIsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIjQiID0gc242ID09IDEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIjIuNSIgPSBzbjYgPT0gOHxzbjYgPT0gOSksDQogICAgICAgICBTTjcgPSBkZXJpdmVkVmFyaWFibGUoIjEiID0gc243ID09IDQsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIjIiID0gc243ID09IDMsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIjMiID0gc243ID09IDIsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIjQiID0gc243ID09IDEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIjIuNSIgPSBzbjcgPT0gOHxzbjcgPT0gOSksDQogICAgICAgICBTTjEgPSBhcy5udW1lcmljKGlmZWxzZShTTjEgPT0gN3xTTjEgPT0gOHxTTjEgPT0gOSwgTkEsIFNOMSkpLA0KICAgICAgICAgU04yID0gYXMubnVtZXJpYyhpZmVsc2UoU04yID09IDd8U04yID09IDh8U04yID09IDksIE5BLCBTTjIpKSwNCiAgICAgICAgIFNONiA9IGFzLm51bWVyaWMoU042KSwNCiAgICAgICAgIFNONyA9IGFzLm51bWVyaWMoU043KSkgJT4lDQogICMgcmVjb2RlDQogIG11dGF0ZShjYzF0eiA9IGFzLmZhY3RvcihpZmVsc2UoY2MxdHogPT0gOHxjYzF0eiA9PSA5LCBOQSwgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKGNjMXR6ID09IDEsIDEsIDApKSksDQogICAgICAgICBjYzIgPSBhcy5mYWN0b3IoaWZlbHNlKGNjMiA9PSA4fGNjMiA9PSA5LCBOQSwgY2MyKSksDQogICAgICAgICBjbjYgPSBhcy5mYWN0b3IoaWZlbHNlKGNuNiA9PSA4fGNuNiA9PSA5LCBOQSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKGNuNiA9PSAxLCAxLCAwKSkpLA0KICAgICAgICAgY242YSA9IGlmZWxzZShjbjZhID09IDk4fGNuNmEgPT0gOTksIE5BLCBjbjZhKSwNCiAgICAgICAgIGNoNjcgPSBhcy5mYWN0b3IoaWZlbHNlKGNoNjcgPT0gOHxjaDY3ID09IDksIE5BLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UoY2g2NyA9PSAxLCAxLCAwKSkpLA0KICAgICAgICAgY2g5NyA9IGFzLmZhY3RvcihpZmVsc2UoY2g5NyA9PSA4fGNoOTcgPT0gOSwgTkEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjaDk3ID09IDEsIDEsIDApKSksDQogICAgICAgICBjaDUyID0gYXMuZmFjdG9yKGlmZWxzZShjaDUyID09IDh8Y2g1MiA9PSA5LCBOQSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKGNoNTIgPT0gMSwgMSwgMCkpKSwNCiAgICAgICAgIGNoODIgPSBhcy5mYWN0b3IoaWZlbHNlKGNoODIgPT0gOHxjaDgyID09IDksIE5BLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UoY2g4MiA9PSAxLCAxLCAwKSkpLA0KICAgICAgICAgZm51MSA9IGlmZWxzZShmbnUxID09IDh8Zm51MSA9PSA5LCBOQSwgZm51MSksDQogICAgICAgICBmbnU0ID0gYXMuZmFjdG9yKGlmZWxzZShmbnU0ID09IDh8Zm51NCA9PSA5LCBOQSwgZm51NCkpLA0KICAgICAgICAgcHQxID0gYXMuZmFjdG9yKGlmZWxzZShwdDEgPT0gOHxwdDEgPT0gOSwgTkEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShwdDEgPT0gMSwgMSwgMCkpKSwNCiAgICAgICAgIFNFWCA9IGFzLmZhY3RvcihTRVgpLA0KICAgICAgICAgZW1wID0gYXMuZmFjdG9yKGVtcCksDQogICAgICAgICBpbzE2ID0gYXMuZmFjdG9yKGlvMTYpKSAlPiUNCiAgIyBzZWxlY3QgcmVsZXZhbnQgdmFyaWFibGUNCiAgc2VsZWN0KHNhbXBsZWlkLCBicm9tNF9hZ2Vjb2hvcnQsIGJyb20zX2FnZWNvaG9ydCwgYWxmb25zb19jb2hvcnQsIFNFWCwgaW8xNiwgDQogICAgICAgICBkZTIwLCBmbnUxLCBmbnU0LCBkZTMyXzEsIGRlMzJfMiwgZGUzMl9vdGhlciwgZGUzMl85LCBlbXAsIGVtcHcsIGVtcHN0LCBlbXBoLCANCiAgICAgICAgIGVtcHIsIGVtcG90aCxkZTM0LCBwdDZhLCBwdDZiLCBkZTQwLCBsaXZlX2NoZXJub2J5bCwgbWFycmllZCwgc2MzLCANCiAgICAgICAgIG1yMTYsIG1yMTgsIG1yMjIsIHNuMSwgc24yLCBzbjYsIHNuNywgU04xLCBTTjIsIFNONiwgU043LCBjYzF0eiwgY2MyLCANCiAgICAgICAgIGNuNiwgY242YSxpZGVhdGUsIHBsYW4sIGF0dGVtcHQsIGNoNjcsIGNoOTcsIGNoNTIsIGNoODIsIHB0MSwNCiAgICAgICAgIGFueCwgYWxjLCBhZmYsIGllZCwgYW55LCBzZWN1LCBzdHJhdGEsIHdlaWdodDIpDQpgYGANCg0KYGBge3J9DQojIERhdGFzZXQgd2l0aCBQYXJ0IDIgd2VpZ2h0cyBvbg0KU3VpY2lkZVBhcnQyIDwtDQogIHN2eWRlc2lnbihpZHMgPSB+c2VjdSwgc3RyYXRhID0gfnN0cmF0YSwgd2VpZ2h0cyA9IH53ZWlnaHQyLCBuZXN0ID0gVCwgDQogICAgICAgICAgICBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDI+MCkpDQpvcHRpb25zKHN1cnZleS5sb25lbHkucHN1ID0gImFkanVzdCIpDQpgYGANCg0KIyBGcmVxdWVuY3kgVGFibGVzDQoNCiMjIFNleA0KDQpgYGB7cn0NCiMjIyAwID0gZmVtYWxlDQojIyMgMSA9IG1hbGUNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIFNFWCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIFNFWCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCg0KIyMgTWFycmlhZ2UgDQoNCmBgYHtyfQ0KIyBhcmUgeW91IGN1cnJlbnRseSBtYXJyaWVkPw0KIyMjIDcgPSBsaXZpbmcgd2l0aCBzb21lb25lDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBzYzMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNjMywgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBtYXJpdGFsIHN0YXR1cyB2YXJpYWJsZQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgbWFycmllZCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgbWFycmllZCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCiMjIENhbmNlcg0KDQpgYGB7cn0NCiMgcHJlc2VuY2Ugb2YgY2FuY2VyDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBjYzF0eiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNjMXR6LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIHRyZWF0bWVudCBmb3IgY2FuY2VyDQojIyMgMSA9IHRyZWF0bWVudA0KIyMjIDIgPSByZW1pc3Npb24NCiMjIyAzID0gY3VyZWQNCg0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY2MyLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgY2MyLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KU2FtcGxlIHNpemVzIGluc3VmZmljaWVudC4NCg0KIyMgU29jaW8tZWNvbm9taWMgc3RhdHVzDQoNCk5vIHRhYmxlcyBmb3IgREUyMCAoeWVhcnMgb2Ygc2Nob29saW5nKSBvciBGTlUxICh0b3RhbCBtb250aGx5IGluY29tZSk7IGJvdGggYXJlIGNvbnRpbnVvdXMgdmFyaWFibGVzIGFuZCBmcmVxdWVuY3kgdGFibGVzIGluaGVyZW50bHkgZG9uJ3QgbWFrZSBzZW5zZSBmb3IgdGhlbS4NCg0KYGBge3J9DQojIGZpbmFuY2lhbCBsZXZlbA0KIyMjIDEgPSBub3QgZW5vdWdoIGZvciBmb29kDQojIyMgMiA9IGRpZmZjdWx0IHRvIGJ1eSBjbG90aGVzL3Nob2VzDQojIyMgMyA9IG5vdCBlbm91Z2ggZm9yIGR1cmFibGVzDQojIyMgNCA9IGNhbiBhZmZvcmQgc29tZSBleHBlbnNpdmUgdGhpbmdzDQojIyMgNSA9IGNhbiBhZmZvcmQgYW55dGhpbmcNCg0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZm51NCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgZm51NCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBlbXBsb3ltZW50IHN0YXR1cw0KIyMjIDEgPSB3b3JraW5nDQojIyMgMiA9IHN0dWRlbnQNCiMjIyAzID0gaG9tZW1ha2VyDQojIyMgNCA9IHJldGlyZWQNCiMjIyA1ID0gb3RoZXINCg0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZW1wLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBlbXAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQoNCg0KIyMgVXJiYW5pY2l0eQ0KDQpgYGB7cn0NCiMjIyAxID0gcnVyYWwNCiMjIyAyID0gdG93bnNoaXANCiMjIyAzID0gY2l0eSB1cCB0byAyMDAsMDAwIGluaGFiaXRhbnRzDQojIyMgNCA9IGNpdHkgYmV0d2VlbiAyMDAsMDAwIGFuZCA1MDAsMDAwIGluaGFiaXRhbnRzDQojIyMgNSA9IGNpdHkgd2l0aCBtb3JlIHRoYW4gNTAwLDAwMCBpbmhhYml0YW50cw0KDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBpbzE2LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICtpbzE2LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KIyMgUHJveGltaXR5IHRvIENoZXJub2J5bA0KDQpgYGB7cn0NCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGxpdmVfY2hlcm5vYnlsLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgbGl2ZV9jaGVybm9ieWwsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQojIyBQYXJlbnRhbCBBbGNvaG9sL0RydWcgVXNlDQoNCmBgYHtyfQ0KIyBtb3RoZXIgYWxjL2RydWcgcHJvYmxlbQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY2g1MiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNoNTIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgZmF0aGVyIGFsYy9kcnVnIHByb2JsZW0NCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGNoODIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBjaDgyLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQojIyBQYXJlbnRhbCBTdWljaWRhbGl0eQ0KDQpgYGB7cn0NCiMgbW90aGVyIHN1aWNpZGFsaXR5DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBjaDY3LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBjaDY3LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIGZhdGhlciBzdWljaWRhbGl0eQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY2g5NywgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNoOTcsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQojIyBBYm9ydGlvbnMNCg0KYGBge3J9DQojIGhhZCBhbiBhYm9ydGlvbg0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY242LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgY242LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIG51bWJlciBvZiBhYm9ydGlvbnMNCiMjIyBjb250aW51b3VzIHZhcmlhYmxlIHNvIGZyZXF1ZW5jeSB0YWJsZSBsZXNzIGludHVpdGl2ZTsganVzdCB3YW50ZWQgdG8ga25vdw0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgY242YSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGNuNmEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCiMjIFNvY2lhbCBOZXR3b3JrDQoNCmBgYHtyfQ0KIyBhYmlsaXR5IHRvIHJlbHkgb24gZnJpZW5kcy9mYW1pbHkNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBhYmlsaXR5IHRvIG9wZW4gdXANCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIHNuNiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBjb250YWN0IHdpdGggZmFtaWx5DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBzbjEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBzbjEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBjb250YWN0IHdpdGggZnJpZW5kcw0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgc24yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgc24yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KIyMgTWVudGFsIERpc29yZGVycw0KDQpgYGB7cn0NCiMgYWZmZWN0aXZlDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBhZmYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBhZmYsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lIA0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIGFsY29ob2wNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGFsYywgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUgDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBhbGMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lIA0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIGllZA0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgaWVkLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JSANCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGllZCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUgDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgYW54aWV0eQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgYWZmLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JSANCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGFmZiwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JSANCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBhbnkNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGFueSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUgDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBhbnksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lIA0KICByb3VuZCgpDQpgYGANCg0KIyMgTWlsaXRhcnkNCg0KU2FtcGxlIHNpemVzIHRvbyBzbWFsbDsgY2Fubm90IHVzZS4NCg0KYGBge3J9DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBwdDEsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lIA0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgcHQxLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JSANCiAgcm91bmQoKQ0KYGBgDQoNCiMjIFN1aWNpZGFsaXR5DQoNCmBgYHtyfQ0KIyBpZGVhdGUNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGlkZWF0ZSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGlkZWF0ZSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBwbGFuDQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBwbGFuLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBwbGFuLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JSANCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KYGBge3J9DQojIGF0dGVtcHQNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGF0dGVtcHQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGF0dGVtcHQsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lIA0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgYXR0ZW1wdCB3aXRob3V0IHBsYW5uaW5nDQphdHRlbXB0bm9wbGFuIDwtDQogIGNpZGlkYXRhX3B0MiAlPiUNCiAgZmlsdGVyKGF0dGVtcHQgPT0gMSAmIHBsYW4gPT0gMCkNCnN2eWF0dGVtcHRub3BsYW4gPC0NCiAgc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIG5lc3QgPSBULCANCiAgICAgICAgICAgIGRhdGEgPSBzdWJzZXQoYXR0ZW1wdG5vcGxhbiwgYXR0ZW1wdG5vcGxhbiR3ZWlnaHQyPjApKQ0Kb3B0aW9ucyhzdXJ2ZXkubG9uZWx5LnBzdSA9ICJhZGp1c3QiKQ0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0LCBkZXNpZ24gPSBzdnlhdHRlbXB0bm9wbGFuKSAlPiUgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCwgZGVzaWduID0gc3Z5YXR0ZW1wdG5vcGxhbikgJT4lIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgaWRlYXRlLCBwbGFuLCBhbmQgYXR0ZW1wdCBieSBjb2hvcnQNCmFsbDMgPC0NCiAgY2lkaWRhdGFfcHQyICU+JQ0KICBmaWx0ZXIoaWRlYXRlID09IDEgJiBwbGFuID09IDEgJiBhdHRlbXB0ID09IDEpDQpzdnlhbGwzIDwtDQogIHN2eWRlc2lnbihpZHMgPSB+c2VjdSwgc3RyYXRhID0gfnN0cmF0YSwgd2VpZ2h0cyA9IH53ZWlnaHQyLCBuZXN0ID0gVCwgDQogICAgICAgICAgICBkYXRhID0gc3Vic2V0KGFsbDMsIGFsbDMkd2VpZ2h0Mj4wKSkNCm9wdGlvbnMoc3VydmV5LmxvbmVseS5wc3UgPSAiYWRqdXN0IikNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCwgZGVzaWduID0gc3Z5YWxsMykgJT4lIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQsIGRlc2lnbiA9IHN2eWFsbDMpICU+JSByb3VuZCgpDQpgYGANCg0KIyMgUmVsaWdpb24NCg0KYGBge3J9DQojIG9ydGhvZG94IGNvdW50cyBieSBjb2hvcnQNCnN2eXRhYmxlKH5hbGZvbnNvX2NvaG9ydCArIGRlMzJfMSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0Kc3Z5dGFibGUofmJyb20zX2FnZWNvaG9ydCArIGRlMzJfMSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUgDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyB1bmlhdGUgY291bnRzIGJ5IGNvaG9ydA0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZGUzMl8yLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBkZTMyXzIsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBvdGhlciByZWxpZ2lvbiBjb3VudHMgYnkgY29ob3J0DQpzdnl0YWJsZSh+YWxmb25zb19jb2hvcnQgKyBkZTMyX290aGVyLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBkZTMyX290aGVyLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCmBgYA0KDQpgYGB7cn0NCiMgbm8gcmVsaWdpb24gY291bnRzIGJ5IGNvaG9ydA0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZGUzMl85LCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBhZGRtYXJnaW5zKCkgJT4lDQogIHJvdW5kKCkNCnN2eXRhYmxlKH5icm9tM19hZ2Vjb2hvcnQgKyBkZTMyXzksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIGFkZG1hcmdpbnMoKSAlPiUNCiAgcm91bmQoKQ0KYGBgDQoNCg0KYGBge3J9DQojIHJlbGlnaW9zaXR5IGNvdW50cw0Kc3Z5dGFibGUofmFsZm9uc29fY29ob3J0ICsgZGUzNCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpzdnl0YWJsZSh+YnJvbTNfYWdlY29ob3J0ICsgZGUzNCwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgYWRkbWFyZ2lucygpICU+JQ0KICByb3VuZCgpDQpgYGANCg0KIyBVbml2YXJpYXRlIE1vZGVscw0KDQojIyBDb2hvcnQNCg0KYGBge3J9DQojIEJyb21ldCBjb2hvcnQNCnN2eWdsbShpZGVhdGV+YnJvbTNfYWdlY29ob3J0LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmJyb20zX2FnZWNvaG9ydCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5icm9tM19hZ2Vjb2hvcnQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBBbGZvbnNvIGNvaG9ydA0Kc3Z5Z2xtKGlkZWF0ZX5hbGZvbnNvX2NvaG9ydCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0ocGxhbn5hbGZvbnNvX2NvaG9ydCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5hbGZvbnNvX2NvaG9ydCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KIyMgU2V4DQoNCmBgYHtyfQ0Kc3Z5Z2xtKGlkZWF0ZX5TRVgsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+U0VYLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0flNFWCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KIyMgUmVsaWdpb24NCg0KYGBge3J9DQojIE9ydGhvZG94DQpzdnlnbG0oaWRlYXRlfmRlMzJfMSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0ocGxhbn5kZTMyXzEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+ZGUzMl8xLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpgYGB7cn0NCiMgVW5pYXRlDQpzdnlnbG0oaWRlYXRlfmRlMzJfMiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0ocGxhbn5kZTMyXzIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+ZGUzMl8yLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpgYGB7cn0NCiMgT3RoZXINCnN2eWdsbShpZGVhdGV+ZGUzMl9vdGhlciwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0ocGxhbn5kZTMyX290aGVyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmRlMzJfb3RoZXIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBOb25lDQpzdnlnbG0oaWRlYXRlfmRlMzJfOSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0ocGxhbn5kZTMyXzksIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+ZGUzMl85LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQoNCmBgYHtyfQ0KIyBpbXBvcnRhbmNlIG9mIHJlbGlnaW9uDQpzdnlnbG0oaWRlYXRlfmRlMzQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+ZGUzNCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5kZTM0LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQojIyBNYXJpdGFsIFN0YXR1cw0KDQpgYGB7cn0NCnN2eWdsbShpZGVhdGV+bWFycmllZCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0ocGxhbn5tYXJyaWVkLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fm1hcnJpZWQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCiMjIENhbmNlcg0KDQpgYGB7cn0NCiMgQ2FuY2VyIHByZXNlbnQNCnN2eWdsbShpZGVhdGV+Y2MxdHosIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+Y2MxdHosIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+Y2MxdHosIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCiMjIFNvY2lvLWVjb25vbWljIFN0YXR1cw0KDQpgYGB7cn0NCiMgWWVhcnMgb2YgRWR1Y2F0aW9uDQpzdnlnbG0oaWRlYXRlfmRlMjAsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+ZGUyMCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5kZTIwLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpgYGB7cn0NCiMgbW9udGhseSBISCBpbmNvbWUNCnN2eWdsbShpZGVhdGV+Zm51MSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0ocGxhbn5mbnUxLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmZudTEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBmaW5hbmNpYWwgc3RhdHVzDQpzdnlnbG0oaWRlYXRlfmZudTQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+Zm51NCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5mbnU0LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpgYGB7cn0NCiMgZW1wbG95bWVudCBzdGF0dXMNCnN2eWdsbShpZGVhdGV+ZW1wLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmVtcCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5lbXAsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCiMgVXJiYW5pY2l0eQ0KDQpgYGB7cn0NCnN2eWdsbShpZGVhdGV+aW8xNiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0ocGxhbn5pbzE2LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmlvMTYsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCiMgUHJveGltaXR5IHRvIENoZXJub2J5bA0KDQpgYGB7cn0NCnN2eWdsbShpZGVhdGV+bGl2ZV9jaGVybm9ieWwsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+bGl2ZV9jaGVybm9ieWwsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKGF0dGVtcHR+bGl2ZV9jaGVybm9ieWwsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCiMgUGFyZW50YWwgU3Vic3RhbmNlIFVzZQ0KDQpgYGB7cn0NCiMgbW90aGVyDQpzdnlnbG0oaWRlYXRlfmNoNTIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+Y2g1MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5jaDUyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpgYGB7cn0NCiMgZmF0aGVyDQpzdnlnbG0oaWRlYXRlfmNoODIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+Y2g4MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5jaDgyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQojIFBhcmVudGFsIFN1aWNpZGFsaXR5DQoNCmBgYHtyfQ0KIyBtb3RoZXINCnN2eWdsbShpZGVhdGV+Y2g2NywgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0ocGxhbn5jaDY3LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmNoNjcsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBmYXRoZXINCnN2eWdsbShpZGVhdGV+Y2g5NywgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0ocGxhbn5jaDk3LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmNoOTcsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCiMgQWJvcnRpb25zDQoNCmBgYHtyfQ0KIyBoYXZlIHlvdSBldmVyIGhhZCBhbiBhYm9ydGlvbj8NCnN2eWdsbShpZGVhdGV+Y242LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShwbGFufmNuNiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5jbjYsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCmBgYHtyfQ0KIyBudW1iZXIgb2YgYWJvcnRpb25zDQpzdnlnbG0oaWRlYXRlfmNuNmEsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+Y242YSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpzdnlnbG0oYXR0ZW1wdH5jbjZhLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQojIFNvY2lhbCBOZXR3b3JrDQoNCiMgTWVudGFsIERpc29yZGVycw0KDQpgYGB7cn0NCiMgYW54aWV0eQ0Kc3Z5Z2xtKGlkZWF0ZX5hbngsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+YW54LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmFueCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KYGBge3J9DQojIGFmZmVjdGl2ZQ0Kc3Z5Z2xtKGlkZWF0ZX5hZmYsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+YWZmLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmFmZiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KYGBge3J9DQojIGFsYw0Kc3Z5Z2xtKGlkZWF0ZX5hbGMsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+YWxjLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmFsYywgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KYGBge3J9DQojIGllZA0Kc3Z5Z2xtKGlkZWF0ZX5pZWQsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+aWVkLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmllZCwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KYGBge3J9DQojIGFueQ0Kc3Z5Z2xtKGlkZWF0ZX5hbnksIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0Kc3Z5Z2xtKHBsYW5+YW55LCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCnN2eWdsbShhdHRlbXB0fmFueSwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KDQoNCg0KDQoNCg0KDQoNCg==</div>
 
 
 
