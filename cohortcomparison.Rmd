@@ -102,6 +102,18 @@ cididata_pt2 <-
          SN2 = as.numeric(ifelse(SN2 == 7|SN2 == 8|SN2 == 9, NA, SN2)),
          SN6 = as.numeric(SN6),
          SN7 = as.numeric(SN7)) %>%
+  # financial status variable
+  mutate(fnu4 = ifelse(fnu4 == 8|fnu4 == 9, NA, fnu4),
+         financial_status = derivedFactor("very_inadequate" = fnu4 == 1,
+                                          "inadequate" = fnu4 == 2|fnu4 == 3,
+                                          "adequate" = fnu4 == 4|fnu4 == 5)) %>%
+  # chronic conditions
+  mutate(any_cc = ifelse(cc1a == 1|cc1b == 1|cc1c == 1|cc1d == 1|cc1e == 1|
+                           cc1f == 1|cc1g == 1|cc1h == 1|cc1i == 1|cc1j == 1|
+                           cc1k == 1|cc1l == 1|cc1m == 1|cc1n == 1|cc1o == 1|
+                           cc1p == 1|cc1q == 1|cc1r == 1|cc1s == 1|cc1t == 1|
+                           cc1u == 1|cc1v == 1|cc1w == 1|cc1x == 1|cc1y == 1|
+                           cc1tz == 1, 1, 0)) %>%
   # recode
   mutate(cc1tz = as.factor(ifelse(cc1tz == 8|cc1tz == 9, NA, 
                                   ifelse(cc1tz == 1, 1, 0))),
@@ -126,11 +138,11 @@ cididata_pt2 <-
          io16 = as.factor(io16)) %>%
   # select relevant variable
   select(sampleid, brom4_agecohort, brom3_agecohort, alfonso_cohort, SEX, io16, 
-         de20, fnu1, fnu4, de32_1, de32_2, de32_other, de32_9, emp, empw, empst, emph, 
-         empr, empoth,de34, pt6a, pt6b, de40, live_chernobyl, married, sc3, 
-         mr16, mr18, mr22, sn1, sn2, sn6, sn7, SN1, SN2, SN6, SN7, cc1tz, cc2, 
-         cn6, cn6a,ideate, plan, attempt, ch67, ch97, ch52, ch82, pt1,
-         anx, alc, aff, ied, any, secu, strata, weight2)
+         de20, fnu1, fnu4, financial_status, de32_1, de32_2, de32_other, de32_9, 
+         emp, empw, empst, emph, empr, empoth, any_cc, de34, pt6a, pt6b, de40, 
+         live_chernobyl, married, sc3, mr16, mr18, mr22, sn1, sn2, sn6, sn7, 
+         SN1, SN2, SN6, SN7, cc1tz, cc2, cn6, cn6a,ideate, plan, attempt, ch67, 
+         ch97, ch52, ch82, pt1, anx, alc, aff, ied, any, secu, strata, weight2)
 ```
 
 ```{r}
@@ -180,14 +192,14 @@ svytable(~brom3_agecohort + married, design = SuicidePart2) %>%
   round()
 ```
 
-## Cancer
+## Chronic Conditions
 
 ```{r}
-# presence of cancer
-svytable(~alfonso_cohort + cc1tz, design = SuicidePart2) %>% 
+# presence of any chronic condition
+svytable(~alfonso_cohort + any_cc, design = SuicidePart2) %>% 
   addmargins() %>%
   round()
-svytable(~brom3_agecohort + cc1tz, design = SuicidePart2) %>% 
+svytable(~brom3_agecohort + any_cc, design = SuicidePart2) %>% 
   addmargins() %>%
   round()
 ```
@@ -212,17 +224,12 @@ Sample sizes insufficient.
 No tables for DE20 (years of schooling) or FNU1 (total monthly income); both are continuous variables and frequency tables inherently don't make sense for them.
 
 ```{r}
-# financial level
-### 1 = not enough for food
-### 2 = diffcult to buy clothes/shoes
-### 3 = not enough for durables
-### 4 = can afford some expensive things
-### 5 = can afford anything
+# financial status
 
-svytable(~alfonso_cohort + fnu4, design = SuicidePart2) %>%
+svytable(~alfonso_cohort + financial_status, design = SuicidePart2) %>%
   addmargins() %>%
   round()
-svytable(~brom3_agecohort + fnu4, design = SuicidePart2) %>% 
+svytable(~brom3_agecohort + financial_status, design = SuicidePart2) %>% 
   addmargins() %>%
   round()
 ```
