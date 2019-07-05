@@ -63,7 +63,15 @@ cididata_pt2 <-
          attempt = as.factor(ifelse(attempt == 1, 1, 0))) %>%
   # married
   mutate(married = as.factor(ifelse(sc3 == 8|sc3 == 9, NA, 
-                                    ifelse(sc3 == 1, 1, 0)))) %>%
+                                    ifelse(sc3 == 1, 1, 0))),
+         divorced = as.factor(ifelse(married == 0 & mr22 == 2|mr23 == 1, 1, 0)),
+         single = as.factor(ifelse(married == 0 & mr16 == 5, 1, 0)),
+         widowed = as.factor(ifelse(married == 0 & mr22 == 3|mr23 == 2, 1, 0)),
+         marital_status = derivedFactor("married" = married == 1,
+                                        "divorced" = divorced == 1,
+                                        "widowed" = widowed == 1,
+                                        "single" = single == 1,
+                                        .method = "first")) %>%
   # chernobyl
   mutate(live_chernobyl = as.factor(ifelse(de40 == 1, 1, 
                                            ifelse(pt6a == 1 & !is.na(pt6a), 1,
@@ -140,8 +148,8 @@ cididata_pt2 <-
   select(sampleid, brom3_agecohort, alfonso_cohort, SEX, io16, 
          de20, fnu1, fnu4, financial_status, de32_1, de32_2, de32_other, de32_9, 
          emp, empw, empst, emph, empr, empoth, any_cc, de34, pt6a, pt6b, de40, 
-         live_chernobyl, married, sc3, mr16, mr18, mr22, sn_scale, sn1, sn2, sn6, 
-         sn7, SN1, SN2, SN6, SN7, cn6, cn6a, ideate, plan, attempt, ch67, 
+         live_chernobyl, marital_status, sc3, mr16, mr22, mr23, sn_scale,
+         sn1, sn2, sn6, sn7, SN1, SN2, SN6, SN7, cn6, cn6a, ideate, plan, attempt, ch67, 
          ch97, ch52, ch82, pt1, anx, alc, aff, ied, any, secu, strata, weight2)
 ```
 
@@ -172,22 +180,8 @@ svytable(~brom3_agecohort + SEX, design = SuicidePart2) %>%
 ## Marriage 
 
 ```{r}
-# are you currently married?
-### 7 = living with someone
-svytable(~alfonso_cohort + sc3, design = SuicidePart2) %>%
-  addmargins() %>%
-  round()
-svytable(~brom3_agecohort + sc3, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-```{r}
-# marital status variable
-svytable(~alfonso_cohort + married, design = SuicidePart2) %>%
-  addmargins() %>%
-  round()
-svytable(~brom3_agecohort + married, design = SuicidePart2) %>% 
+# marital status
+svytable(~brom3_agecohort + marital_status, design = SuicidePart2) %>% 
   addmargins() %>%
   round()
 ```
@@ -641,22 +635,18 @@ svyglm(attempt~de34, family = quasibinomial("logit"), design = SuicidePart2) %>%
 ## Marital Status
 
 ```{r}
-svyglm(ideate~married, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(ideate~marital_status, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~married, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~marital_status, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(attempt~married, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~marital_status, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 ```
 
 ## Chronic Conditions
 
 ```{r}
-<<<<<<< HEAD
 # any chronic condition  
-=======
-# Cancer present
->>>>>>> 07cdae678707a71d12c533cb26af1e8eb4175b5b
 svyglm(ideate~any_cc, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 svyglm(plan~any_cc, family = quasibinomial("logit"), design = SuicidePart2) %>%
