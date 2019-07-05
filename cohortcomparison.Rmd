@@ -108,12 +108,12 @@ cididata_pt2 <-
                                           "inadequate" = fnu4 == 2|fnu4 == 3,
                                           "adequate" = fnu4 == 4|fnu4 == 5)) %>%
   # chronic conditions
-  mutate(any_cc = ifelse(cc1a == 1|cc1b == 1|cc1c == 1|cc1d == 1|cc1e == 1|
+  mutate(any_cc = as.factor(ifelse(cc1a == 1|cc1b == 1|cc1c == 1|cc1d == 1|cc1e == 1|
                            cc1f == 1|cc1g == 1|cc1h == 1|cc1i == 1|cc1j == 1|
                            cc1k == 1|cc1l == 1|cc1m == 1|cc1n == 1|cc1o == 1|
                            cc1p == 1|cc1q == 1|cc1r == 1|cc1s == 1|cc1t == 1|
                            cc1u == 1|cc1v == 1|cc1w == 1|cc1x == 1|cc1y == 1|
-                           cc1tz == 1, 1, 0)) %>%
+                           cc1tz == 1, 1, 0))) %>%
   # recode
   mutate(cc1tz = as.factor(ifelse(cc1tz == 8|cc1tz == 9, NA, 
                                   ifelse(cc1tz == 1, 1, 0))),
@@ -203,21 +203,6 @@ svytable(~brom3_agecohort + any_cc, design = SuicidePart2) %>%
   addmargins() %>%
   round()
 ```
-
-```{r}
-# treatment for cancer
-### 1 = treatment
-### 2 = remission
-### 3 = cured
-
-svytable(~alfonso_cohort + cc2, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-svytable(~brom3_agecohort + cc2, design = SuicidePart2) %>%
-  addmargins() %>%
-  round()
-```
-Sample sizes insufficient.
 
 ## Socio-economic status
 
@@ -667,12 +652,12 @@ svyglm(attempt~married, family = quasibinomial("logit"), design = SuicidePart2) 
 ## Cancer
 
 ```{r}
-# Cancer present
-svyglm(ideate~cc1tz, family = quasibinomial("logit"), design = SuicidePart2) %>%
+# any chronic condition  
+svyglm(ideate~any_cc, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~cc1tz, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~any_cc, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(attempt~cc1tz, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~any_cc, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 ```
 
@@ -700,11 +685,11 @@ svyglm(attempt~fnu1, family = quasibinomial("logit"), design = SuicidePart2) %>%
 
 ```{r}
 # financial status
-svyglm(ideate~fnu4, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(ideate~financial_status, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~fnu4, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~financial_status, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(attempt~fnu4, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~financial_status, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 ```
 
