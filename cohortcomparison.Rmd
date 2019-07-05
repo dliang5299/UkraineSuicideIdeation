@@ -879,17 +879,17 @@ Full Demographics
 ```{r}
 # ideate
 svyglm(ideate~brom3_agecohort+SEX+io16+de20+financial_status+de32_1+de32_2+
-         de32_other+de32_9+emp+married,
+         de32_other+de32_9+emp+marital_status,
          family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 # plan
 svyglm(ideate~brom3_agecohort+SEX+io16+de20+financial_status+de32_1+de32_2+
-         de32_other+de32_9+emp+married,
+         de32_other+de32_9+emp+marital_status,
          family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 # attempt
 svyglm(ideate~brom3_agecohort+SEX+io16+de20+financial_status+de32_1+de32_2+
-         de32_other+de32_9+emp+married,
+         de32_other+de32_9+emp+marital_status,
          family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 ```
@@ -898,17 +898,17 @@ Eliminate Employment
 ```{r}
 # ideate
 svyglm(ideate~brom3_agecohort+SEX+io16+de20+financial_status+de32_1+de32_2+
-         de32_other+de32_9+married,
+         de32_other+de32_9+marital_status,
          family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 # plan
 svyglm(ideate~brom3_agecohort+SEX+io16+de20+financial_status+de32_1+de32_2+
-         de32_other+de32_9+married,
+         de32_other+de32_9+marital_status,
          family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 # attempt
 svyglm(ideate~brom3_agecohort+SEX+io16+de20+financial_status+de32_1+de32_2+
-         de32_other+de32_9+married,
+         de32_other+de32_9+marital_status,
          family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 ```
@@ -916,15 +916,15 @@ svyglm(ideate~brom3_agecohort+SEX+io16+de20+financial_status+de32_1+de32_2+
 Eliminate Religion
 ```{r}
 # ideate
-svyglm(ideate~brom3_agecohort+SEX+io16+de20+financial_status+married,
+svyglm(ideate~brom3_agecohort+SEX+io16+de20+financial_status+marital_status,
          family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 # plan
-svyglm(ideate~brom3_agecohort+SEX+io16+de20+financial_status+married,
+svyglm(ideate~brom3_agecohort+SEX+io16+de20+financial_status+marital_status,
          family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 # attempt
-svyglm(ideate~brom3_agecohort+SEX+io16+de20+financial_status+married,
+svyglm(ideate~brom3_agecohort+SEX+io16+de20+financial_status+marital_status,
          family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 ```
@@ -932,15 +932,15 @@ svyglm(ideate~brom3_agecohort+SEX+io16+de20+financial_status+married,
 Eliminate Financial Status
 ```{r}
 # ideate
-svyglm(ideate~brom3_agecohort+SEX+io16+de20+married,
+svyglm(ideate~brom3_agecohort+SEX+io16+de20+marital_status,
          family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 # plan
-svyglm(ideate~brom3_agecohort+SEX+io16+de20+married,
+svyglm(ideate~brom3_agecohort+SEX+io16+de20+marital_status,
          family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 # attempt
-svyglm(ideate~brom3_agecohort+SEX+io16+de20+married,
+svyglm(ideate~brom3_agecohort+SEX+io16+de20+marital_status,
          family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
 ```
