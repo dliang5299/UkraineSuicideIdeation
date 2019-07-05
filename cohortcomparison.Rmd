@@ -13,7 +13,6 @@ library(tidyverse)
 library(data.table)
 library(survey)
 library(mosaic)
-library(MASS)
 ```
 
 ```{r}
@@ -878,28 +877,24 @@ svyglm(attempt~any, family = quasibinomial("logit"), design = SuicidePart2) %>%
 
 
 
-
-
-
-
-
-
-
-
 # Multi-variate Models
 
+## Demographics
+
 ```{r}
-# create full model
+# ideate
 ideate_full_model <-
   svyglm(ideate~brom3_agecohort+SEX+io16+de20+fnu1+financial_status+de32_1+de32_2+
            de32_other+de32_9+emp+any_cc+de34+live_chernobyl+married+sn_scale+SN6+
            SN7+ch52+ch82+anx+alc+aff+ied+any,
          family = quasibinomial("logit"), design = SuicidePart2)
+# plan
 plan_full_model <-
   svyglm(ideate~brom3_agecohort+SEX+io16+de20+fnu1+financial_status+de32_1+de32_2+
            de32_other+de32_9+emp+any_cc+de34+live_chernobyl+married+sn_scale+SN6+
            SN7+ch52+ch82+anx+alc+aff+ied+any,
          family = quasibinomial("logit"), design = SuicidePart2)
+# attempt
 attempt_full_model <-
   svyglm(ideate~brom3_agecohort+SEX+io16+de20+fnu1+financial_status+de32_1+de32_2+
            de32_other+de32_9+emp+any_cc+de34+live_chernobyl+married+sn_scale+SN6+
