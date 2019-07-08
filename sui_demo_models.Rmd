@@ -1,0 +1,423 @@
+---
+title: "Demographic Models"
+author: "Deric Liang"
+date: "7/8/2019"
+output: html_notebook
+---
+
+# Front Matter
+
+```{r results = "hide", include = FALSE}
+library(tidyverse)
+library(data.table)
+library(survey)
+library(mosaic)
+```
+
+```{r}
+# read in main data
+cididata_raw <-
+  fread("ukrmain_RU_061419.csv")
+```
+
+# Data Cleaning
+
+```{r}
+# subsetting data
+cididata_pt2 <-
+  cididata_raw %>%
+  # mental conditions
+  mutate(anx = ifelse(DSM_AGO == 1|DSM_SO == 1|DSM_GAD == 1|DSM_PDS == 1, 1, 0),
+         ied = ifelse(DSM_IEDH == 1, 1, 0),
+         aff = ifelse(DSM_MDE == 1|DSM_DYS == 1, 1, 0),
+         alc = ifelse(DSM_ALA == 1|DSM_ALD == 1, 1, 0),
+         any = ifelse(anx == 1|ied == 1|aff == 1|alc == 1, 1, 0)) %>%
+  # bromet age cohorts
+  mutate(### these cohorts not used due to simplicity of Bromet 3 cohort system
+         brom4_agecohort = cut(cididata_raw$AGE, breaks = c(16, 24, 34, 49, Inf),
+                                        labels = c("Youngest", "Middle Young", "Middle Age", "Eldest")),
+         brom3_agecohort = cut(cididata_raw$AGE, breaks = c(16, 37, 57, Inf),
+                                      labels = c("Youngest", "Middle", "Eldest"))) %>%
+  # alfonso age cohorts
+  ### these cohorts ditched; determined not to have a real advantage over Bromet 3 cohort system
+  mutate(alfonso_cohort = cut(cididata_raw$AGE, breaks = c(16, 37, 49, 64, Inf),
+                              labels = c("Youngest", "Middle Young", "Middle Age", "Eldest"))) %>%
+  # select part 2 respondents
+  filter(!is.na(de20)) %>%
+  # religion
+  mutate(de32_1 = as.factor(ifelse(is.na(de32_1), 0, 1)),
+         de32_2 = as.factor(ifelse(is.na(de32_2), 0, 1)),
+         de32_9 = as.factor(ifelse(is.na(de32_9), 0, 1)),
+         de32_98 = ifelse(is.na(de32_98), 0, 1),
+         de32_99 = ifelse(is.na(de32_99), 0, 1),
+         de32_other = ifelse(de32_3 == 1|de32_4 == 1|de32_5 == 1|de32_6 == 1|de32_7 == 1|de32_8 == 1, 1, 0),
+         de32_other = as.factor(ifelse(is.na(de32_other), 0, 1)),
+         de34 = as.factor(ifelse(de34 == 8|de34 == 9, NA, de34))) %>%
+  # suicidality
+  mutate(ideate = ifelse(!is.na(sd2), sd2, sd15),
+         plan = ifelse(!is.na(sd4), sd4, sd17),
+         attempt = ifelse(!is.na(sd6), sd6, sd19),
+         plan = ifelse(is.na(plan), 5, plan),
+         attempt = ifelse(is.na(attempt), 5, attempt),
+         ideate = as.factor(ifelse(ideate == 1, 1, 0)),
+         plan = as.factor(ifelse(plan == 1, 1, 0)),
+         attempt = as.factor(ifelse(attempt == 1, 1, 0))) %>%
+  # married
+  mutate(married = as.factor(ifelse(sc3 == 8|sc3 == 9, NA, 
+                                    ifelse(sc3 == 1, 1, 0))),
+         divorced = as.factor(ifelse(married == 0 & mr22 == 2|mr23 == 1, 1, 0)),
+         single = as.factor(ifelse(married == 0 & mr16 == 5, 1, 0)),
+         widowed = as.factor(ifelse(married == 0 & mr22 == 3|mr23 == 2, 1, 0)),
+         marital_status = derivedFactor("married" = married == 1,
+                                        "divorced" = divorced == 1,
+                                        "widowed" = widowed == 1,
+                                        "single" = single == 1,
+                                        .method = "first")) %>%
+  # chernobyl
+  mutate(live_chernobyl = as.factor(ifelse(de40 == 1, 1, 
+                                           ifelse(pt6a == 1 & !is.na(pt6a), 1,
+                                                  ifelse(pt6b == 1 & !is.na(pt6b), 1, 0))))) %>%
+  # social network
+  mutate(SN1 = derivedVariable(`0` = sn1 == 6,
+                               `1` = sn1 == 5,
+                               `2` = sn1 == 4,
+                               `3` = sn1 == 3,
+                               `4` = sn1 == 2,
+                               `5` = sn1 == 1,
+                               `7` = sn1 == 7,
+                               `8` = sn1 == 8,
+                               `9` = sn1 == 9),
+         SN2 = derivedVariable(`0` = sn2 == 6,
+                               `1` = sn2 == 5,
+                               `2` = sn2 == 4,
+                               `3` = sn2 == 3,
+                               `4` = sn2 == 2,
+                               `5` = sn2 == 1,
+                               `7` = sn2 == 7,
+                               `8` = sn2 == 8,
+                               `9` = sn2 == 9),
+         SN6 = derivedVariable("1" = sn6 == 4,
+                               "2" = sn6 == 3,
+                               "3" = sn6 == 2,
+                               "4" = sn6 == 1,
+                               "2.5" = sn6 == 8|sn6 == 9),
+         SN7 = derivedVariable("1" = sn7 == 4,
+                               "2" = sn7 == 3,
+                               "3" = sn7 == 2,
+                               "4" = sn7 == 1,
+                               "2.5" = sn7 == 8|sn7 == 9),
+         SN1 = as.numeric(ifelse(SN1 == 7|SN1 == 8|SN1 == 9, NA, SN1)),
+         SN2 = as.numeric(ifelse(SN2 == 7|SN2 == 8|SN2 == 9, NA, SN2)),
+         SN6 = as.numeric(SN6),
+         SN7 = as.numeric(SN7),
+         sn_scale = (SN1 + SN2 -2)/8) %>%
+  # financial status variable
+  mutate(fnu4 = ifelse(fnu4 == 8|fnu4 == 9, NA, fnu4),
+         financial_status = derivedFactor("very_inadequate" = fnu4 == 1,
+                                          "inadequate" = fnu4 == 2|fnu4 == 3,
+                                          "adequate" = fnu4 == 4|fnu4 == 5)) %>%
+  # chronic conditions
+  mutate(any_cc = as.factor(ifelse(cc1a == 1|cc1b == 1|cc1c == 1|cc1d == 1|cc1e == 1|
+                           cc1f == 1|cc1g == 1|cc1h == 1|cc1i == 1|cc1j == 1|
+                           cc1k == 1|cc1l == 1|cc1m == 1|cc1n == 1|cc1o == 1|
+                           cc1p == 1|cc1q == 1|cc1r == 1|cc1s == 1|cc1t == 1|
+                           cc1u == 1|cc1v == 1|cc1w == 1|cc1x == 1|cc1y == 1|
+                           cc1tz == 1, 1, 0))) %>%
+  # recode
+  mutate(cc1tz = as.factor(ifelse(cc1tz == 8|cc1tz == 9, NA, 
+                                  ifelse(cc1tz == 1, 1, 0))),
+         cc2 = as.factor(ifelse(cc2 == 8|cc2 == 9, NA, cc2)),
+         cn6 = as.factor(ifelse(cn6 == 8|cn6 == 9, NA,
+                                ifelse(cn6 == 1, 1, 0))),
+         cn6a = ifelse(cn6a == 98|cn6a == 99, NA, cn6a),
+         ch67 = as.factor(ifelse(ch67 == 8|ch67 == 9, NA,
+                                ifelse(ch67 == 1, 1, 0))),
+         ch97 = as.factor(ifelse(ch97 == 8|ch97 == 9, NA,
+                                ifelse(ch97 == 1, 1, 0))),
+         ch52 = as.factor(ifelse(ch52 == 8|ch52 == 9, NA,
+                                ifelse(ch52 == 1, 1, 0))),
+         ch82 = as.factor(ifelse(ch82 == 8|ch82 == 9, NA,
+                                ifelse(ch82 == 1, 1, 0))),
+         fnu1 = ifelse(fnu1 == 8|fnu1 == 9, NA, fnu1),
+         fnu4 = as.factor(ifelse(fnu4 == 8|fnu4 == 9, NA, fnu4)),
+         pt1 = as.factor(ifelse(pt1 == 8|pt1 == 9, NA,
+                                ifelse(pt1 == 1, 1, 0))),
+         SEX = as.factor(SEX),
+         emp = as.factor(emp),
+         io16 = as.factor(io16)) %>%
+  # select relevant variable
+  select(sampleid, brom3_agecohort, alfonso_cohort, SEX, io16, 
+         de20, fnu1, fnu4, financial_status, de32_1, de32_2, de32_other, de32_9, 
+         emp, empw, empst, emph, empr, empoth, any_cc, de34, pt6a, pt6b, de40, 
+         live_chernobyl, marital_status, sc3, mr16, mr22, mr23, sn_scale,
+         sn1, sn2, sn6, sn7, SN1, SN2, SN6, SN7, cn6, cn6a, ideate, plan, attempt, ch67, 
+         ch97, ch52, ch82, pt1, anx, alc, aff, ied, any, secu, strata, weight2)
+```
+
+```{r}
+# Dataset with Part 2 weights on
+SuicidePart2 <-
+  svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, 
+            data = subset(cididata_pt2, cididata_pt2$weight2>0))
+options(survey.lonely.psu = "adjust")
+```
+
+# Multi-variate Models
+
+## Demographics
+
+### Ideate
+
+Based on significant univariate models
+
+```{r}
+# ideate
+svyglm(ideate~SEX+io16+marital_status,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+
+Full Demographics
+
+```{r}
+# ideate
+svyglm(ideate~brom3_agecohort+SEX+io16+financial_status+de32_1+de32_2+
+         de32_other+de32_9+emp+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate Employment
+
+```{r}
+# ideate
+svyglm(ideate~brom3_agecohort+SEX+io16+financial_status+de32_1+de32_2+
+         de32_other+de32_9+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate Uniate
+
+```{r}
+# ideate
+svyglm(ideate~brom3_agecohort+SEX+io16+financial_status+de32_1+
+         de32_other+de32_9+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate Uniate
+
+```{r}
+# ideate
+svyglm(ideate~brom3_agecohort+SEX+io16+financial_status+de32_other+
+         de32_9+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate Other
+
+```{r}
+# ideate
+svyglm(ideate~brom3_agecohort+SEX+io16+financial_status+de32_9+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate No Religion
+
+```{r}
+# ideate
+svyglm(ideate~brom3_agecohort+SEX+io16+financial_status+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate Financial Status
+
+```{r}
+# ideate
+svyglm(ideate~brom3_agecohort+SEX+io16+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+### Plan
+
+Based on significant univariate models
+
+```{r}
+# plan
+svyglm(plan~brom3_agecohort+SEX+de32_other+marital_status+financial_status,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Refine
+
+```{r}
+# plan
+svyglm(plan~brom3_agecohort+de32_other+marital_status+financial_status,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Full Demographics
+
+```{r}
+# plan
+svyglm(plan~brom3_agecohort+SEX+io16+financial_status+de32_1+de32_2+
+         de32_other+de32_9+emp+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate Urbanicity
+
+```{r}
+# plan
+svyglm(plan~brom3_agecohort+SEX+financial_status+de32_1+de32_2+
+         de32_other+de32_9+emp+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate Employment
+
+```{r}
+# plan
+svyglm(plan~brom3_agecohort+SEX+financial_status+de32_1+de32_2+
+         de32_other+de32_9+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate Uniate
+
+```{r}
+# plan
+svyglm(plan~brom3_agecohort+SEX+financial_status+de32_1+
+         de32_other+de32_9+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate Years of Education
+
+```{r}
+# plan
+svyglm(plan~brom3_agecohort+SEX+financial_status+de32_1+
+         de32_other+de32_9+marital_status,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate Orthodox
+
+```{r}
+# plan
+svyglm(plan~brom3_agecohort+SEX+financial_status+de32_other+
+         de32_9+marital_status,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate No Religion
+
+```{r}
+# plan
+svyglm(plan~brom3_agecohort+SEX+financial_status+de32_other+marital_status,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate Sex
+
+```{r}
+# plan
+svyglm(plan~brom3_agecohort+financial_status+de32_other+marital_status,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+### Attempt
+
+Based off univariate models
+
+```{r}
+# attempt
+svyglm(attempt~brom3_agecohort+SEX+de32_2+marital_status+emp,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Refining
+
+```{r}
+# attempt
+svyglm(attempt~brom3_agecohort+SEX+de32_2+marital_status,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Full Demographics
+
+```{r}
+# attempt
+svyglm(attempt~brom3_agecohort+SEX+io16+financial_status+de32_1+de32_2+
+         de32_other+de32_9+emp+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate Financial Status
+
+```{r}
+# attempt
+svyglm(attempt~brom3_agecohort+SEX+io16+de32_1+de32_2+
+         de32_other+de32_9+emp+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate Employment
+
+```{r}
+# attempt
+svyglm(attempt~brom3_agecohort+SEX+io16+de32_1+de32_2+
+         de32_other+de32_9+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate No Religion
+
+```{r}
+# attempt
+svyglm(attempt~brom3_agecohort+SEX+io16+de32_1+de32_2+
+         de32_other+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate Urbanicity
+
+```{r}
+# attempt
+svyglm(attempt~brom3_agecohort+SEX+de32_1+de32_2+
+         de32_other+de32_9+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
+
+Eliminate No Religion
+
+```{r}
+# attempt
+svyglm(attempt~brom3_agecohort+SEX+de32_1+de32_2+marital_status+de20,
+         family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+```
