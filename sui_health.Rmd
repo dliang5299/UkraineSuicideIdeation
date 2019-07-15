@@ -1,10 +1,6 @@
 ---
-title: "Frequency Tables"
-author: "Deric Liang"
-date: "7/8/2019"
-output:
-  pdf_document: default
-  html_notebook: default
+title: "R Notebook"
+output: html_notebook
 ---
 
 # Front Matter
@@ -179,294 +175,47 @@ SuicidePart2 <-
 options(survey.lonely.psu = "adjust")
 ```
 
-# Frequency Tables
-
-## Sex
-
 ```{r}
-### 0 = female
-### 1 = male
-svytable(~brom3_agecohort + SEX, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-
-## Marriage 
-
-```{r}
-# marital status
-svytable(~brom3_agecohort + marital_status, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-## Chronic Conditions
-
-```{r}
-# presence of any chronic condition
-svytable(~brom3_agecohort + any_cc, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-## Socio-economic status
-
-No tables for DE20 (years of schooling), it is continuous variable and frequency tables inherently doesn't make sense for it.
-
-```{r}
-# financial status
-svytable(~brom3_agecohort + financial_status, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-```{r}
-# employment status
-### 1 = working
-### 2 = student
-### 3 = homemaker
-### 4 = retired
-### 5 = other
-svytable(~brom3_agecohort + emp, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-```{r}
-# bls employment status
-svytable(~brom3_agecohort + blsemp, design = SuicidePart2) %>%
-  addmargins() %>%
-  round()
-```
-
-
-## Urbanicity
-
-```{r}
-### 1 = rural
-### 2 = township
-### 3 = city up to 200,000 inhabitants
-### 4 = city between 200,000 and 500,000 inhabitants
-### 5 = city with more than 500,000 inhabitants
-svytable(~brom3_agecohort +io16, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-## Proximity to Chernobyl
-
-```{r}
-svytable(~brom3_agecohort + live_chernobyl, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-## Adverse Childhood Experiences
-
-```{r}
-# Interpersonal loss
-svytable(~brom3_agecohort + IPloss, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-```{r}
-# Maladjustment
-svytable(~brom3_agecohort + Malad, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-```{r}
-# Maltreatment
-svytable(~brom3_agecohort + Maltreat, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-```{r}
-# Childhood Illness
-svytable(~brom3_agecohort + ChdIll, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-```{r}
-# mother suicidality
-svytable(~brom3_agecohort + ch67, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-```{r}
-# father suicidality
-svytable(~brom3_agecohort + ch97, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-## Abortions
-
-```{r}
-# had an abortion
-svytable(~brom3_agecohort + cn6, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-```{r}
-# number of abortions
-### continuous variable so frequency table less intuitive; just wanted to know
-svytable(~brom3_agecohort + cn6a, design = SuicidePart2) %>%
-  addmargins() %>%
-  round()
-```
-
-## Social Network
-
-All continuous scales; frequency tables meaningless.
-
-## Mental Disorders
-
-```{r}
-# affective
-svytable(~brom3_agecohort + aff, design = SuicidePart2) %>% 
-  addmargins() %>% 
-  round()
-```
-
-```{r}
-# alcohol
-svytable(~brom3_agecohort + alc, design = SuicidePart2) %>% 
-  addmargins() %>% 
-  round()
-```
-
-```{r}
-# ied
-svytable(~brom3_agecohort + ied, design = SuicidePart2) %>% 
-  addmargins() %>% 
-  round()
-```
-
-```{r}
-# anxiety
-svytable(~brom3_agecohort + aff, design = SuicidePart2) %>%
-  addmargins() %>% 
-  round()
-```
-
-```{r}
-# any
-svytable(~brom3_agecohort + any, design = SuicidePart2) %>% 
-  addmargins() %>% 
-  round()
-```
-
-## Suicidality
-
-```{r}
-# ideate
-svytable(~brom3_agecohort + ideate, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-```{r}
-# plan
-svytable(~brom3_agecohort + plan, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-```{r}
-# attempt
-svytable(~brom3_agecohort + attempt, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
-```
-
-```{r}
-# attempt without planning
-attemptnoplan <-
+# ideation only
+ideatesample <-
   cididata_pt2 %>%
-  filter(attempt == 1 & plan == 0)
-svyattemptnoplan <-
+  filter(ideate == 1)
+```
+
+```{r include = FALSE}
+# ideate only data with Part 2 weights on
+ideatedesign <-
   svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, 
-            data = subset(attemptnoplan, attemptnoplan$weight2>0))
+            data = subset(ideatesample, ideatesample$weight2>0))
 options(survey.lonely.psu = "adjust")
-svytable(~brom3_agecohort, design = svyattemptnoplan) %>% 
-  addmargins() %>%
-  round()
 ```
+
+# Mental and Physical Health
+
+## Ideate
 
 ```{r}
-# ideate without planning or attempting
-ideate_only <-
-  cididata_pt2 %>%
-  filter(ideate == 1 & plan == 0 & attempt == 0)
-svyideate <-
-  svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, 
-            data = subset(ideate_only, ideate_only$weight2>0))
-options(survey.lonely.psu = "adjust")
-svytable(~brom3_agecohort, design = svyideate)  %>% 
-  addmargins() %>%
-  round()
+ideate_hth_glm <-
+  svyglm(ideate~alc+aff+anx+ied+any_cc,
+         family = quasibinomial("logit"), design = SuicidePart2)
+summary(ideate_hth_glm)
 ```
+
+## Plan
 
 ```{r}
-# ideate, plan, and attempt by cohort
-all3 <-
-  cididata_pt2 %>%
-  filter(ideate == 1 & plan == 1 & attempt == 1)
-svyall3 <-
-  svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, 
-            data = subset(all3, all3$weight2>0))
-options(survey.lonely.psu = "adjust")
-svytable(~brom3_agecohort, design = svyall3) %>% 
-  addmargins() %>%
-  round()
+plan_hth_glm <-
+  svyglm(plan~alc+aff+anx+ied+any_cc,
+         family = quasibinomial("logit"), design = ideatedesign)
+summary(plan_hth_glm)
 ```
 
-## Religion
 
-### Practiced Religion
+## Attempt
 
 ```{r}
-# orthodox counts by cohort
-svytable(~brom3_agecohort + de32_1, design = SuicidePart2) %>% 
-  addmargins() %>%
-  round()
+attempt_hth_glm <-
+  svyglm(attempt~alc+aff+anx+ied+any_cc,
+         family = quasibinomial("logit"), design = ideatedesign)
+summary(attempt_hth_glm)
 ```
-
-```{r}
-# uniate counts by cohort
-svytable(~brom3_agecohort + de32_2, design = SuicidePart2) %>%
-  addmargins() %>%
-  round()
-```
-
-```{r}
-# other religion counts by cohort
-svytable(~brom3_agecohort + de32_other, design = SuicidePart2) %>%
-  addmargins() %>%
-  round()
-```
-
-```{r}
-# no religion counts by cohort
-svytable(~brom3_agecohort + de32_9, design = SuicidePart2) %>%
-  addmargins() %>%
-  round()
-```
-
-### Religiosity
-
-```{r}
-# religiosity counts
-svytable(~brom3_agecohort + de34, design = SuicidePart2) %>%
-  addmargins() %>%
-  round()
-```
-

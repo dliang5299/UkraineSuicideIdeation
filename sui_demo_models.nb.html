@@ -255,154 +255,9 @@ cididata_raw &lt;-
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-</div>
-<div id="data-cleaning" class="section level1">
-<h1>Data Cleaning</h1>
 <!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzdWJzZXR0aW5nIGRhdGFcbmNpZGlkYXRhX3B0MiA8LVxuICBjaWRpZGF0YV9yYXcgJT4lXG4gICMgbWVudGFsIGNvbmRpdGlvbnNcbiAgbXV0YXRlKGFueCA9IGlmZWxzZShEU01fQUdPID09IDF8RFNNX1NPID09IDF8RFNNX0dBRCA9PSAxfERTTV9QRFMgPT0gMSwgMSwgMCksXG4gICAgICAgICBpZWQgPSBpZmVsc2UoRFNNX0lFREggPT0gMSwgMSwgMCksXG4gICAgICAgICBhZmYgPSBpZmVsc2UoRFNNX01ERSA9PSAxfERTTV9EWVMgPT0gMSwgMSwgMCksXG4gICAgICAgICBhbGMgPSBpZmVsc2UoRFNNX0FMQSA9PSAxfERTTV9BTEQgPT0gMSwgMSwgMCksXG4gICAgICAgICBhbnkgPSBpZmVsc2UoYW54ID09IDF8aWVkID09IDF8YWZmID09IDF8YWxjID09IDEsIDEsIDApKSAlPiVcbiAgIyBicm9tZXQgYWdlIGNvaG9ydHNcbiAgbXV0YXRlKCMjIyB0aGVzZSBjb2hvcnRzIG5vdCB1c2VkIGR1ZSB0byBzaW1wbGljaXR5IG9mIEJyb21ldCAzIGNvaG9ydCBzeXN0ZW1cbiAgICAgICAgIGJyb200X2FnZWNvaG9ydCA9IGN1dChjaWRpZGF0YV9yYXckQUdFLCBicmVha3MgPSBjKDE2LCAyNCwgMzQsIDQ5LCBJbmYpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVscyA9IGMoXCJZb3VuZ2VzdFwiLCBcIk1pZGRsZSBZb3VuZ1wiLCBcIk1pZGRsZSBBZ2VcIiwgXCJFbGRlc3RcIikpLFxuICAgICAgICAgYnJvbTNfYWdlY29ob3J0ID0gY3V0KGNpZGlkYXRhX3JhdyRBR0UsIGJyZWFrcyA9IGMoMTYsIDM3LCA1NywgSW5mKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWxzID0gYyhcIllvdW5nZXN0XCIsIFwiTWlkZGxlXCIsIFwiRWxkZXN0XCIpKSkgJT4lXG4gICMgYWxmb25zbyBhZ2UgY29ob3J0c1xuICAjIyMgdGhlc2UgY29ob3J0cyBkaXRjaGVkOyBkZXRlcm1pbmVkIG5vdCB0byBoYXZlIGEgcmVhbCBhZHZhbnRhZ2Ugb3ZlciBCcm9tZXQgMyBjb2hvcnQgc3lzdGVtXG4gIG11dGF0ZShhbGZvbnNvX2NvaG9ydCA9IGN1dChjaWRpZGF0YV9yYXckQUdFLCBicmVha3MgPSBjKDE2LCAzNywgNDksIDY0LCBJbmYpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWxzID0gYyhcIllvdW5nZXN0XCIsIFwiTWlkZGxlIFlvdW5nXCIsIFwiTWlkZGxlIEFnZVwiLCBcIkVsZGVzdFwiKSkpICU+JVxuICAjIHNlbGVjdCBwYXJ0IDIgcmVzcG9uZGVudHNcbiAgZmlsdGVyKCFpcy5uYShkZTIwKSkgJT4lXG4gICMgcmVsaWdpb25cbiAgbXV0YXRlKGRlMzJfMSA9IGFzLmZhY3RvcihpZmVsc2UoaXMubmEoZGUzMl8xKSwgMCwgMSkpLFxuICAgICAgICAgZGUzMl8yID0gYXMuZmFjdG9yKGlmZWxzZShpcy5uYShkZTMyXzIpLCAwLCAxKSksXG4gICAgICAgICBkZTMyXzkgPSBhcy5mYWN0b3IoaWZlbHNlKGlzLm5hKGRlMzJfOSksIDAsIDEpKSxcbiAgICAgICAgIGRlMzJfOTggPSBpZmVsc2UoaXMubmEoZGUzMl85OCksIDAsIDEpLFxuICAgICAgICAgZGUzMl85OSA9IGlmZWxzZShpcy5uYShkZTMyXzk5KSwgMCwgMSksXG4gICAgICAgICBkZTMyX290aGVyID0gaWZlbHNlKGRlMzJfMyA9PSAxfGRlMzJfNCA9PSAxfGRlMzJfNSA9PSAxfGRlMzJfNiA9PSAxfGRlMzJfNyA9PSAxfGRlMzJfOCA9PSAxLCAxLCAwKSxcbiAgICAgICAgIGRlMzJfb3RoZXIgPSBhcy5mYWN0b3IoaWZlbHNlKGlzLm5hKGRlMzJfb3RoZXIpLCAwLCAxKSksXG4gICAgICAgICBkZTM0ID0gYXMuZmFjdG9yKGlmZWxzZShkZTM0ID09IDh8ZGUzNCA9PSA5LCBOQSwgZGUzNCkpKSAlPiVcbiAgIyBzdWljaWRhbGl0eVxuICBtdXRhdGUoaWRlYXRlID0gaWZlbHNlKCFpcy5uYShzZDIpLCBzZDIsIHNkMTUpLFxuICAgICAgICAgcGxhbiA9IGlmZWxzZSghaXMubmEoc2Q0KSwgc2Q0LCBzZDE3KSxcbiAgICAgICAgIGF0dGVtcHQgPSBpZmVsc2UoIWlzLm5hKHNkNiksIHNkNiwgc2QxOSksXG4gICAgICAgICBwbGFuID0gaWZlbHNlKGlzLm5hKHBsYW4pLCA1LCBwbGFuKSxcbiAgICAgICAgIGF0dGVtcHQgPSBpZmVsc2UoaXMubmEoYXR0ZW1wdCksIDUsIGF0dGVtcHQpLFxuICAgICAgICAgaWRlYXRlID0gYXMuZmFjdG9yKGlmZWxzZShpZGVhdGUgPT0gMSwgMSwgMCkpLFxuICAgICAgICAgcGxhbiA9IGFzLmZhY3RvcihpZmVsc2UocGxhbiA9PSAxLCAxLCAwKSksXG4gICAgICAgICBhdHRlbXB0ID0gYXMuZmFjdG9yKGlmZWxzZShhdHRlbXB0ID09IDEsIDEsIDApKSkgJT4lXG4gICMgbWFycmllZFxuICBtdXRhdGUobWFycmllZCA9IGFzLmZhY3RvcihpZmVsc2Uoc2MzID09IDh8c2MzID09IDksIE5BLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShzYzMgPT0gMSwgMSwgMCkpKSxcbiAgICAgICAgIGRpdm9yY2VkID0gYXMuZmFjdG9yKGlmZWxzZShtYXJyaWVkID09IDAgJiBtcjIyID09IDJ8bXIyMyA9PSAxLCAxLCAwKSksXG4gICAgICAgICBzaW5nbGUgPSBhcy5mYWN0b3IoaWZlbHNlKG1hcnJpZWQgPT0gMCAmIG1yMTYgPT0gNSwgMSwgMCkpLFxuICAgICAgICAgd2lkb3dlZCA9IGFzLmZhY3RvcihpZmVsc2UobWFycmllZCA9PSAwICYgbXIyMiA9PSAzfG1yMjMgPT0gMiwgMSwgMCkpLFxuICAgICAgICAgbWFyaXRhbF9zdGF0dXMgPSBkZXJpdmVkRmFjdG9yKFwibWFycmllZFwiID0gbWFycmllZCA9PSAxLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiZGl2b3JjZWRcIiA9IGRpdm9yY2VkID09IDEsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJ3aWRvd2VkXCIgPSB3aWRvd2VkID09IDEsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJzaW5nbGVcIiA9IHNpbmdsZSA9PSAxLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC5tZXRob2QgPSBcImZpcnN0XCIpKSAlPiVcbiAgIyBjaGVybm9ieWxcbiAgbXV0YXRlKGxpdmVfY2hlcm5vYnlsID0gYXMuZmFjdG9yKGlmZWxzZShkZTQwID09IDEsIDEsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShwdDZhID09IDEgJiAhaXMubmEocHQ2YSksIDEsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShwdDZiID09IDEgJiAhaXMubmEocHQ2YiksIDEsIDApKSkpKSAlPiVcbiAgIyBzb2NpYWwgbmV0d29ya1xuICBtdXRhdGUoU04xID0gZGVyaXZlZFZhcmlhYmxlKGAwYCA9IHNuMSA9PSA2LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAxYCA9IHNuMSA9PSA1LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAyYCA9IHNuMSA9PSA0LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAzYCA9IHNuMSA9PSAzLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA0YCA9IHNuMSA9PSAyLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA1YCA9IHNuMSA9PSAxLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA3YCA9IHNuMSA9PSA3LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA4YCA9IHNuMSA9PSA4LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA5YCA9IHNuMSA9PSA5KSxcbiAgICAgICAgIFNOMiA9IGRlcml2ZWRWYXJpYWJsZShgMGAgPSBzbjIgPT0gNixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgMWAgPSBzbjIgPT0gNSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgMmAgPSBzbjIgPT0gNCxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgM2AgPSBzbjIgPT0gMyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgNGAgPSBzbjIgPT0gMixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgNWAgPSBzbjIgPT0gMSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgN2AgPSBzbjIgPT0gNyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgOGAgPSBzbjIgPT0gOCxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgOWAgPSBzbjIgPT0gOSksXG4gICAgICAgICBTTjYgPSBkZXJpdmVkVmFyaWFibGUoXCIxXCIgPSBzbjYgPT0gNCxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIjJcIiA9IHNuNiA9PSAzLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiM1wiID0gc242ID09IDIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCI0XCIgPSBzbjYgPT0gMSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIjIuNVwiID0gc242ID09IDh8c242ID09IDkpLFxuICAgICAgICAgU043ID0gZGVyaXZlZFZhcmlhYmxlKFwiMVwiID0gc243ID09IDQsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCIyXCIgPSBzbjcgPT0gMyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcIjNcIiA9IHNuNyA9PSAyLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiNFwiID0gc243ID09IDEsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCIyLjVcIiA9IHNuNyA9PSA4fHNuNyA9PSA5KSxcbiAgICAgICAgIFNOMSA9IGFzLm51bWVyaWMoaWZlbHNlKFNOMSA9PSA3fFNOMSA9PSA4fFNOMSA9PSA5LCBOQSwgU04xKSksXG4gICAgICAgICBTTjIgPSBhcy5udW1lcmljKGlmZWxzZShTTjIgPT0gN3xTTjIgPT0gOHxTTjIgPT0gOSwgTkEsIFNOMikpLFxuICAgICAgICAgU042ID0gYXMubnVtZXJpYyhTTjYpLFxuICAgICAgICAgU043ID0gYXMubnVtZXJpYyhTTjcpLFxuICAgICAgICAgc25fc2NhbGUgPSAoU04xICsgU04yIC0yKS84KSAlPiVcbiAgIyBmaW5hbmNpYWwgc3RhdHVzIHZhcmlhYmxlXG4gIG11dGF0ZShmbnU0ID0gaWZlbHNlKGZudTQgPT0gOHxmbnU0ID09IDksIE5BLCBmbnU0KSxcbiAgICAgICAgIGZpbmFuY2lhbF9zdGF0dXMgPSBkZXJpdmVkRmFjdG9yKFwidmVyeV9pbmFkZXF1YXRlXCIgPSBmbnU0ID09IDEsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcImluYWRlcXVhdGVcIiA9IGZudTQgPT0gMnxmbnU0ID09IDMsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcImFkZXF1YXRlXCIgPSBmbnU0ID09IDR8Zm51NCA9PSA1KSkgJT4lXG4gICMgY2hyb25pYyBjb25kaXRpb25zXG4gIG11dGF0ZShhbnlfY2MgPSBhcy5mYWN0b3IoaWZlbHNlKGNjMWEgPT0gMXxjYzFiID09IDF8Y2MxYyA9PSAxfGNjMWQgPT0gMXxjYzFlID09IDF8XG4gICAgICAgICAgICAgICAgICAgICAgICAgICBjYzFmID09IDF8Y2MxZyA9PSAxfGNjMWggPT0gMXxjYzFpID09IDF8Y2MxaiA9PSAxfFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgY2MxayA9PSAxfGNjMWwgPT0gMXxjYzFtID09IDF8Y2MxbiA9PSAxfGNjMW8gPT0gMXxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgIGNjMXAgPT0gMXxjYzFxID09IDF8Y2MxciA9PSAxfGNjMXMgPT0gMXxjYzF0ID09IDF8XG4gICAgICAgICAgICAgICAgICAgICAgICAgICBjYzF1ID09IDF8Y2MxdiA9PSAxfGNjMXcgPT0gMXxjYzF4ID09IDF8Y2MxeSA9PSAxfFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgY2MxdHogPT0gMSwgMSwgMCkpKSAlPiVcbiAgIyByZWNvZGVcbiAgbXV0YXRlKGNjMXR6ID0gYXMuZmFjdG9yKGlmZWxzZShjYzF0eiA9PSA4fGNjMXR6ID09IDksIE5BLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UoY2MxdHogPT0gMSwgMSwgMCkpKSxcbiAgICAgICAgIGNjMiA9IGFzLmZhY3RvcihpZmVsc2UoY2MyID09IDh8Y2MyID09IDksIE5BLCBjYzIpKSxcbiAgICAgICAgIGNuNiA9IGFzLmZhY3RvcihpZmVsc2UoY242ID09IDh8Y242ID09IDksIE5BLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UoY242ID09IDEsIDEsIDApKSksXG4gICAgICAgICBjbjZhID0gaWZlbHNlKGNuNmEgPT0gOTh8Y242YSA9PSA5OSwgTkEsIGNuNmEpLFxuICAgICAgICAgY2g2NyA9IGFzLmZhY3RvcihpZmVsc2UoY2g2NyA9PSA4fGNoNjcgPT0gOSwgTkEsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjaDY3ID09IDEsIDEsIDApKSksXG4gICAgICAgICBjaDk3ID0gYXMuZmFjdG9yKGlmZWxzZShjaDk3ID09IDh8Y2g5NyA9PSA5LCBOQSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKGNoOTcgPT0gMSwgMSwgMCkpKSxcbiAgICAgICAgIGNoNTIgPSBhcy5mYWN0b3IoaWZlbHNlKGNoNTIgPT0gOHxjaDUyID09IDksIE5BLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UoY2g1MiA9PSAxLCAxLCAwKSkpLFxuICAgICAgICAgY2g4MiA9IGFzLmZhY3RvcihpZmVsc2UoY2g4MiA9PSA4fGNoODIgPT0gOSwgTkEsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjaDgyID09IDEsIDEsIDApKSksXG4gICAgICAgICBmbnUxID0gaWZlbHNlKGZudTEgPT0gOHxmbnUxID09IDksIE5BLCBmbnUxKSxcbiAgICAgICAgIGZudTQgPSBhcy5mYWN0b3IoaWZlbHNlKGZudTQgPT0gOHxmbnU0ID09IDksIE5BLCBmbnU0KSksXG4gICAgICAgICBwdDEgPSBhcy5mYWN0b3IoaWZlbHNlKHB0MSA9PSA4fHB0MSA9PSA5LCBOQSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKHB0MSA9PSAxLCAxLCAwKSkpLFxuICAgICAgICAgU0VYID0gYXMuZmFjdG9yKFNFWCksXG4gICAgICAgICBlbXAgPSBhcy5mYWN0b3IoZW1wKSxcbiAgICAgICAgIGlvMTYgPSBhcy5mYWN0b3IoaW8xNikpICU+JVxuICAjIHNlbGVjdCByZWxldmFudCB2YXJpYWJsZVxuICBzZWxlY3Qoc2FtcGxlaWQsIGJyb20zX2FnZWNvaG9ydCwgYWxmb25zb19jb2hvcnQsIFNFWCwgaW8xNiwgXG4gICAgICAgICBkZTIwLCBmbnUxLCBmbnU0LCBmaW5hbmNpYWxfc3RhdHVzLCBkZTMyXzEsIGRlMzJfMiwgZGUzMl9vdGhlciwgZGUzMl85LCBcbiAgICAgICAgIGVtcCwgZW1wdywgZW1wc3QsIGVtcGgsIGVtcHIsIGVtcG90aCwgYW55X2NjLCBkZTM0LCBwdDZhLCBwdDZiLCBkZTQwLCBcbiAgICAgICAgIGxpdmVfY2hlcm5vYnlsLCBtYXJpdGFsX3N0YXR1cywgc2MzLCBtcjE2LCBtcjIyLCBtcjIzLCBzbl9zY2FsZSxcbiAgICAgICAgIHNuMSwgc24yLCBzbjYsIHNuNywgU04xLCBTTjIsIFNONiwgU043LCBjbjYsIGNuNmEsIGlkZWF0ZSwgcGxhbiwgYXR0ZW1wdCwgY2g2NywgXG4gICAgICAgICBjaDk3LCBjaDUyLCBjaDgyLCBwdDEsIGFueCwgYWxjLCBhZmYsIGllZCwgYW55LCBzZWN1LCBzdHJhdGEsIHdlaWdodDIpXG5gYGAifQ== -->
-<pre class="r"><code># subsetting data
-cididata_pt2 &lt;-
-  cididata_raw %&gt;%
-  # mental conditions
-  mutate(anx = ifelse(DSM_AGO == 1|DSM_SO == 1|DSM_GAD == 1|DSM_PDS == 1, 1, 0),
-         ied = ifelse(DSM_IEDH == 1, 1, 0),
-         aff = ifelse(DSM_MDE == 1|DSM_DYS == 1, 1, 0),
-         alc = ifelse(DSM_ALA == 1|DSM_ALD == 1, 1, 0),
-         any = ifelse(anx == 1|ied == 1|aff == 1|alc == 1, 1, 0)) %&gt;%
-  # bromet age cohorts
-  mutate(### these cohorts not used due to simplicity of Bromet 3 cohort system
-         brom4_agecohort = cut(cididata_raw$AGE, breaks = c(16, 24, 34, 49, Inf),
-                                        labels = c(&quot;Youngest&quot;, &quot;Middle Young&quot;, &quot;Middle Age&quot;, &quot;Eldest&quot;)),
-         brom3_agecohort = cut(cididata_raw$AGE, breaks = c(16, 37, 57, Inf),
-                                      labels = c(&quot;Youngest&quot;, &quot;Middle&quot;, &quot;Eldest&quot;))) %&gt;%
-  # alfonso age cohorts
-  ### these cohorts ditched; determined not to have a real advantage over Bromet 3 cohort system
-  mutate(alfonso_cohort = cut(cididata_raw$AGE, breaks = c(16, 37, 49, 64, Inf),
-                              labels = c(&quot;Youngest&quot;, &quot;Middle Young&quot;, &quot;Middle Age&quot;, &quot;Eldest&quot;))) %&gt;%
-  # select part 2 respondents
-  filter(!is.na(de20)) %&gt;%
-  # religion
-  mutate(de32_1 = as.factor(ifelse(is.na(de32_1), 0, 1)),
-         de32_2 = as.factor(ifelse(is.na(de32_2), 0, 1)),
-         de32_9 = as.factor(ifelse(is.na(de32_9), 0, 1)),
-         de32_98 = ifelse(is.na(de32_98), 0, 1),
-         de32_99 = ifelse(is.na(de32_99), 0, 1),
-         de32_other = ifelse(de32_3 == 1|de32_4 == 1|de32_5 == 1|de32_6 == 1|de32_7 == 1|de32_8 == 1, 1, 0),
-         de32_other = as.factor(ifelse(is.na(de32_other), 0, 1)),
-         de34 = as.factor(ifelse(de34 == 8|de34 == 9, NA, de34))) %&gt;%
-  # suicidality
-  mutate(ideate = ifelse(!is.na(sd2), sd2, sd15),
-         plan = ifelse(!is.na(sd4), sd4, sd17),
-         attempt = ifelse(!is.na(sd6), sd6, sd19),
-         plan = ifelse(is.na(plan), 5, plan),
-         attempt = ifelse(is.na(attempt), 5, attempt),
-         ideate = as.factor(ifelse(ideate == 1, 1, 0)),
-         plan = as.factor(ifelse(plan == 1, 1, 0)),
-         attempt = as.factor(ifelse(attempt == 1, 1, 0))) %&gt;%
-  # married
-  mutate(married = as.factor(ifelse(sc3 == 8|sc3 == 9, NA, 
-                                    ifelse(sc3 == 1, 1, 0))),
-         divorced = as.factor(ifelse(married == 0 &amp; mr22 == 2|mr23 == 1, 1, 0)),
-         single = as.factor(ifelse(married == 0 &amp; mr16 == 5, 1, 0)),
-         widowed = as.factor(ifelse(married == 0 &amp; mr22 == 3|mr23 == 2, 1, 0)),
-         marital_status = derivedFactor(&quot;married&quot; = married == 1,
-                                        &quot;divorced&quot; = divorced == 1,
-                                        &quot;widowed&quot; = widowed == 1,
-                                        &quot;single&quot; = single == 1,
-                                        .method = &quot;first&quot;)) %&gt;%
-  # chernobyl
-  mutate(live_chernobyl = as.factor(ifelse(de40 == 1, 1, 
-                                           ifelse(pt6a == 1 &amp; !is.na(pt6a), 1,
-                                                  ifelse(pt6b == 1 &amp; !is.na(pt6b), 1, 0))))) %&gt;%
-  # social network
-  mutate(SN1 = derivedVariable(`0` = sn1 == 6,
-                               `1` = sn1 == 5,
-                               `2` = sn1 == 4,
-                               `3` = sn1 == 3,
-                               `4` = sn1 == 2,
-                               `5` = sn1 == 1,
-                               `7` = sn1 == 7,
-                               `8` = sn1 == 8,
-                               `9` = sn1 == 9),
-         SN2 = derivedVariable(`0` = sn2 == 6,
-                               `1` = sn2 == 5,
-                               `2` = sn2 == 4,
-                               `3` = sn2 == 3,
-                               `4` = sn2 == 2,
-                               `5` = sn2 == 1,
-                               `7` = sn2 == 7,
-                               `8` = sn2 == 8,
-                               `9` = sn2 == 9),
-         SN6 = derivedVariable(&quot;1&quot; = sn6 == 4,
-                               &quot;2&quot; = sn6 == 3,
-                               &quot;3&quot; = sn6 == 2,
-                               &quot;4&quot; = sn6 == 1,
-                               &quot;2.5&quot; = sn6 == 8|sn6 == 9),
-         SN7 = derivedVariable(&quot;1&quot; = sn7 == 4,
-                               &quot;2&quot; = sn7 == 3,
-                               &quot;3&quot; = sn7 == 2,
-                               &quot;4&quot; = sn7 == 1,
-                               &quot;2.5&quot; = sn7 == 8|sn7 == 9),
-         SN1 = as.numeric(ifelse(SN1 == 7|SN1 == 8|SN1 == 9, NA, SN1)),
-         SN2 = as.numeric(ifelse(SN2 == 7|SN2 == 8|SN2 == 9, NA, SN2)),
-         SN6 = as.numeric(SN6),
-         SN7 = as.numeric(SN7),
-         sn_scale = (SN1 + SN2 -2)/8) %&gt;%
-  # financial status variable
-  mutate(fnu4 = ifelse(fnu4 == 8|fnu4 == 9, NA, fnu4),
-         financial_status = derivedFactor(&quot;very_inadequate&quot; = fnu4 == 1,
-                                          &quot;inadequate&quot; = fnu4 == 2|fnu4 == 3,
-                                          &quot;adequate&quot; = fnu4 == 4|fnu4 == 5)) %&gt;%
-  # chronic conditions
-  mutate(any_cc = as.factor(ifelse(cc1a == 1|cc1b == 1|cc1c == 1|cc1d == 1|cc1e == 1|
-                           cc1f == 1|cc1g == 1|cc1h == 1|cc1i == 1|cc1j == 1|
-                           cc1k == 1|cc1l == 1|cc1m == 1|cc1n == 1|cc1o == 1|
-                           cc1p == 1|cc1q == 1|cc1r == 1|cc1s == 1|cc1t == 1|
-                           cc1u == 1|cc1v == 1|cc1w == 1|cc1x == 1|cc1y == 1|
-                           cc1tz == 1, 1, 0))) %&gt;%
-  # recode
-  mutate(cc1tz = as.factor(ifelse(cc1tz == 8|cc1tz == 9, NA, 
-                                  ifelse(cc1tz == 1, 1, 0))),
-         cc2 = as.factor(ifelse(cc2 == 8|cc2 == 9, NA, cc2)),
-         cn6 = as.factor(ifelse(cn6 == 8|cn6 == 9, NA,
-                                ifelse(cn6 == 1, 1, 0))),
-         cn6a = ifelse(cn6a == 98|cn6a == 99, NA, cn6a),
-         ch67 = as.factor(ifelse(ch67 == 8|ch67 == 9, NA,
-                                ifelse(ch67 == 1, 1, 0))),
-         ch97 = as.factor(ifelse(ch97 == 8|ch97 == 9, NA,
-                                ifelse(ch97 == 1, 1, 0))),
-         ch52 = as.factor(ifelse(ch52 == 8|ch52 == 9, NA,
-                                ifelse(ch52 == 1, 1, 0))),
-         ch82 = as.factor(ifelse(ch82 == 8|ch82 == 9, NA,
-                                ifelse(ch82 == 1, 1, 0))),
-         fnu1 = ifelse(fnu1 == 8|fnu1 == 9, NA, fnu1),
-         fnu4 = as.factor(ifelse(fnu4 == 8|fnu4 == 9, NA, fnu4)),
-         pt1 = as.factor(ifelse(pt1 == 8|pt1 == 9, NA,
-                                ifelse(pt1 == 1, 1, 0))),
-         SEX = as.factor(SEX),
-         emp = as.factor(emp),
-         io16 = as.factor(io16)) %&gt;%
-  # select relevant variable
-  select(sampleid, brom3_agecohort, alfonso_cohort, SEX, io16, 
-         de20, fnu1, fnu4, financial_status, de32_1, de32_2, de32_other, de32_9, 
-         emp, empw, empst, emph, empr, empoth, any_cc, de34, pt6a, pt6b, de40, 
-         live_chernobyl, marital_status, sc3, mr16, mr22, mr23, sn_scale,
-         sn1, sn2, sn6, sn7, SN1, SN2, SN6, SN7, cn6, cn6a, ideate, plan, attempt, ch67, 
-         ch97, ch52, ch82, pt1, anx, alc, aff, ied, any, secu, strata, weight2)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBEYXRhc2V0IHdpdGggUGFydCAyIHdlaWdodHMgb25cblN1aWNpZGVQYXJ0MiA8LVxuICBzdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgbmVzdCA9IFQsIFxuICAgICAgICAgICAgZGF0YSA9IHN1YnNldChjaWRpZGF0YV9wdDIsIGNpZGlkYXRhX3B0MiR3ZWlnaHQyPjApKVxub3B0aW9ucyhzdXJ2ZXkubG9uZWx5LnBzdSA9IFwiYWRqdXN0XCIpXG5gYGAifQ== -->
-<pre class="r"><code># Dataset with Part 2 weights on
-SuicidePart2 &lt;-
-  svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, 
-            data = subset(cididata_pt2, cididata_pt2$weight2&gt;0))
-options(survey.lonely.psu = &quot;adjust&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
 <div id="multi-variate-models" class="section level1">
@@ -420,6 +275,35 @@ svyglm(ideate~SEX+io16+marital_status,
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBpZGVhdGUgfiBTRVggKyBpbzE2ICsgbWFyaXRhbF9zdGF0dXMsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MiwgXG4gICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpKVxuXG5TdXJ2ZXkgZGVzaWduOlxuc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIFxuICAgIG5lc3QgPSBULCBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDIgPiBcbiAgICAgICAgMCkpXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB0IHZhbHVlIFByKD58dHwpICAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAtMi4yODIzOCAgICAwLjI1NDYzICAtOC45NjQgNS40OWUtMTAgKioqXG5TRVgxICAgICAgICAgICAgICAgICAgIC0wLjc1ODIwICAgIDAuMjE5NTIgIC0zLjQ1NCAgMC4wMDE2NyAqKiBcbmlvMTYyICAgICAgICAgICAgICAgICAgLTAuOTk1MjEgICAgMC4zNjgyNSAgLTIuNzAzICAwLjAxMTIyICogIFxuaW8xNjMgICAgICAgICAgICAgICAgICAgMC4xMDYxMSAgICAwLjI3OTU3ICAgMC4zODAgIDAuNzA2OTUgICAgXG5pbzE2NCAgICAgICAgICAgICAgICAgIC0wLjM4NDQ1ICAgIDAuMzA0NDYgIC0xLjI2MyAgMC4yMTY0MiAgICBcbmlvMTY1ICAgICAgICAgICAgICAgICAgLTAuMDY5MTQgICAgMC4yNzkzMCAgLTAuMjQ4ICAwLjgwNjE2ICAgIFxubWFyaXRhbF9zdGF0dXNkaXZvcmNlZCAgMC43NTE3NyAgICAwLjI3MzM0ICAgMi43NTAgIDAuMDA5OTkgKiogXG5tYXJpdGFsX3N0YXR1c3dpZG93ZWQgICAwLjUyMDEzICAgIDAuMjQxNzIgICAyLjE1MiAgMC4wMzk1OCAqICBcbm1hcml0YWxfc3RhdHVzc2luZ2xlICAgIDAuOTU0OTEgICAgMC4yNzM4MCAgIDMuNDg4ICAwLjAwMTUzICoqIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgcXVhc2liaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMC45OTgxODc0KVxuXG5OdW1iZXIgb2YgRmlzaGVyIFNjb3JpbmcgaXRlcmF0aW9uczogNVxuIn0= -->
+<pre><code>
+Call:
+svyglm(formula = ideate ~ SEX + io16 + marital_status, design = SuicidePart2, 
+    family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                       Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            -2.28238    0.25463  -8.964 5.49e-10 ***
+SEX1                   -0.75820    0.21952  -3.454  0.00167 ** 
+io162                  -0.99521    0.36825  -2.703  0.01122 *  
+io163                   0.10611    0.27957   0.380  0.70695    
+io164                  -0.38445    0.30446  -1.263  0.21642    
+io165                  -0.06914    0.27930  -0.248  0.80616    
+marital_statusdivorced  0.75177    0.27334   2.750  0.00999 ** 
+marital_statuswidowed   0.52013    0.24172   2.152  0.03958 *  
+marital_statussingle    0.95491    0.27380   3.488  0.00153 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 0.9981874)
+
+Number of Fisher Scoring iterations: 5</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Full Demographics</p>
@@ -432,6 +316,49 @@ svyglm(ideate~brom3_agecohort+SEX+io16+financial_status+de32_1+de32_2+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBpZGVhdGUgfiBicm9tM19hZ2Vjb2hvcnQgKyBTRVggKyBpbzE2ICsgZmluYW5jaWFsX3N0YXR1cyArIFxuICAgIGRlMzJfMSArIGRlMzJfMiArIGRlMzJfb3RoZXIgKyBkZTMyXzkgKyBlbXAgKyBtYXJpdGFsX3N0YXR1cyArIFxuICAgIGRlMjAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpKVxuXG5TdXJ2ZXkgZGVzaWduOlxuc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIFxuICAgIG5lc3QgPSBULCBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDIgPiBcbiAgICAgICAgMCkpXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBFc3RpbWF0ZSBTdGQuIEVycm9yIHQgdmFsdWUgUHIoPnx0fCkgICBcbihJbnRlcmNlcHQpICAgICAgICAgICAgICAgIC0xLjMyNzk1NSAgIDAuNzAyODg3ICAtMS44ODkgIDAuMDc2MDMgLiBcbmJyb20zX2FnZWNvaG9ydE1pZGRsZSAgICAgIC0wLjEzOTYxNiAgIDAuMjY3MTIyICAtMC41MjMgIDAuNjA3OTUgICBcbmJyb20zX2FnZWNvaG9ydEVsZGVzdCAgICAgIC0wLjc5MDg2MiAgIDAuNDEzMjU2ICAtMS45MTQgIDAuMDcyNjQgLiBcblNFWDEgICAgICAgICAgICAgICAgICAgICAgIC0wLjgwMTI1NiAgIDAuMjM1MDAxICAtMy40MTAgIDAuMDAzMzQgKipcbmlvMTYyICAgICAgICAgICAgICAgICAgICAgIC0xLjAyODc4MyAgIDAuMzU2NjE4ICAtMi44ODUgIDAuMDEwMjkgKiBcbmlvMTYzICAgICAgICAgICAgICAgICAgICAgICAwLjExMzUxOCAgIDAuMjg0ODk5ICAgMC4zOTggIDAuNjk1MjYgICBcbmlvMTY0ICAgICAgICAgICAgICAgICAgICAgIC0wLjM0MjQ1OCAgIDAuMzIyNjAxICAtMS4wNjIgIDAuMzAzMjkgICBcbmlvMTY1ICAgICAgICAgICAgICAgICAgICAgIC0wLjAwNjc2NCAgIDAuMjY5NTkwICAtMC4wMjUgIDAuOTgwMjggICBcbmZpbmFuY2lhbF9zdGF0dXNpbmFkZXF1YXRlIC0wLjExODAwNCAgIDAuMTgwNTQxICAtMC42NTQgIDAuNTIyMTAgICBcbmZpbmFuY2lhbF9zdGF0dXNhZGVxdWF0ZSAgIC0wLjI4NzU0MiAgIDAuNDQyOTMyICAtMC42NDkgIDAuNTI0OTAgICBcbmRlMzJfMTEgICAgICAgICAgICAgICAgICAgICAwLjE0MDE1OCAgIDAuNTYxMDMxICAgMC4yNTAgIDAuODA1NzIgICBcbmRlMzJfMjEgICAgICAgICAgICAgICAgICAgIC0wLjE1NjQ1NyAgIDAuNjcxNjU5ICAtMC4yMzMgIDAuODE4NTkgICBcbmRlMzJfb3RoZXIxICAgICAgICAgICAgICAgICAwLjE4MDUzNiAgIDAuNTA5MTM2ICAgMC4zNTUgIDAuNzI3MjUgICBcbmRlMzJfOTEgICAgICAgICAgICAgICAgICAgICAwLjI1ODM3MCAgIDAuNTM2Nzc0ICAgMC40ODEgIDAuNjM2NDEgICBcbmVtcDIgICAgICAgICAgICAgICAgICAgICAgICAwLjEwOTA0MCAgIDAuNzA4OTk5ICAgMC4xNTQgIDAuODc5NTggICBcbmVtcDMgICAgICAgICAgICAgICAgICAgICAgIC0wLjI4MDI5MSAgIDAuNDc4MTY4ICAtMC41ODYgIDAuNTY1NDYgICBcbmVtcDQgICAgICAgICAgICAgICAgICAgICAgICAwLjAxNDEwNSAgIDAuMzY0ODUyICAgMC4wMzkgIDAuOTY5NjEgICBcbmVtcDUgICAgICAgICAgICAgICAgICAgICAgIC0wLjE0MTUzMyAgIDAuMjk5NDg4ICAtMC40NzMgIDAuNjQyNTIgICBcbm1hcml0YWxfc3RhdHVzZGl2b3JjZWQgICAgICAwLjc2MDI3NyAgIDAuMjcyMzk1ICAgMi43OTEgIDAuMDEyNTQgKiBcbm1hcml0YWxfc3RhdHVzd2lkb3dlZCAgICAgICAwLjc4MjUwMCAgIDAuMzA1OTkwICAgMi41NTcgIDAuMDIwNDAgKiBcbm1hcml0YWxfc3RhdHVzc2luZ2xlICAgICAgICAwLjc5MDc1OCAgIDAuMzA3NzAyICAgMi41NzAgIDAuMDE5ODggKiBcbmRlMjAgICAgICAgICAgICAgICAgICAgICAgIC0wLjA2NDY3MyAgIDAuMDMwMzQ1ICAtMi4xMzEgIDAuMDQ3OTYgKiBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIHF1YXNpYmlub21pYWwgZmFtaWx5IHRha2VuIHRvIGJlIDEuMDc0Mzg0KVxuXG5OdW1iZXIgb2YgRmlzaGVyIFNjb3JpbmcgaXRlcmF0aW9uczogNVxuIn0= -->
+<pre><code>
+Call:
+svyglm(formula = ideate ~ brom3_agecohort + SEX + io16 + financial_status + 
+    de32_1 + de32_2 + de32_other + de32_9 + emp + marital_status + 
+    de20, design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                            Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)                -1.327955   0.702887  -1.889  0.07603 . 
+brom3_agecohortMiddle      -0.139616   0.267122  -0.523  0.60795   
+brom3_agecohortEldest      -0.790862   0.413256  -1.914  0.07264 . 
+SEX1                       -0.801256   0.235001  -3.410  0.00334 **
+io162                      -1.028783   0.356618  -2.885  0.01029 * 
+io163                       0.113518   0.284899   0.398  0.69526   
+io164                      -0.342458   0.322601  -1.062  0.30329   
+io165                      -0.006764   0.269590  -0.025  0.98028   
+financial_statusinadequate -0.118004   0.180541  -0.654  0.52210   
+financial_statusadequate   -0.287542   0.442932  -0.649  0.52490   
+de32_11                     0.140158   0.561031   0.250  0.80572   
+de32_21                    -0.156457   0.671659  -0.233  0.81859   
+de32_other1                 0.180536   0.509136   0.355  0.72725   
+de32_91                     0.258370   0.536774   0.481  0.63641   
+emp2                        0.109040   0.708999   0.154  0.87958   
+emp3                       -0.280291   0.478168  -0.586  0.56546   
+emp4                        0.014105   0.364852   0.039  0.96961   
+emp5                       -0.141533   0.299488  -0.473  0.64252   
+marital_statusdivorced      0.760277   0.272395   2.791  0.01254 * 
+marital_statuswidowed       0.782500   0.305990   2.557  0.02040 * 
+marital_statussingle        0.790758   0.307702   2.570  0.01988 * 
+de20                       -0.064673   0.030345  -2.131  0.04796 * 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.074384)
+
+Number of Fisher Scoring iterations: 5</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate Employment</p>
@@ -444,6 +371,45 @@ svyglm(ideate~brom3_agecohort+SEX+io16+financial_status+de32_1+de32_2+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBpZGVhdGUgfiBicm9tM19hZ2Vjb2hvcnQgKyBTRVggKyBpbzE2ICsgZmluYW5jaWFsX3N0YXR1cyArIFxuICAgIGRlMzJfMSArIGRlMzJfMiArIGRlMzJfb3RoZXIgKyBkZTMyXzkgKyBtYXJpdGFsX3N0YXR1cyArIFxuICAgIGRlMjAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpKVxuXG5TdXJ2ZXkgZGVzaWduOlxuc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIFxuICAgIG5lc3QgPSBULCBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDIgPiBcbiAgICAgICAgMCkpXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgdCB2YWx1ZSBQcig+fHR8KSAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAgICAgLTEuMzg0NTUgICAgMC42NDM3NyAgLTIuMTUxICAwLjA0MzMwICogXG5icm9tM19hZ2Vjb2hvcnRNaWRkbGUgICAgICAtMC4xNDg1MiAgICAwLjI2NDY1ICAtMC41NjEgIDAuNTgwNTkgICBcbmJyb20zX2FnZWNvaG9ydEVsZGVzdCAgICAgIC0wLjc1MTYwICAgIDAuMjk5MTMgIC0yLjUxMyAgMC4wMjAyMiAqIFxuU0VYMSAgICAgICAgICAgICAgICAgICAgICAgLTAuNzg1MDkgICAgMC4yMjcyMCAgLTMuNDU1ICAwLjAwMjM3ICoqXG5pbzE2MiAgICAgICAgICAgICAgICAgICAgICAtMS4wNDc0MyAgICAwLjM1NTgwICAtMi45NDQgIDAuMDA3NzUgKipcbmlvMTYzICAgICAgICAgICAgICAgICAgICAgICAwLjEyMjExICAgIDAuMjgwNTMgICAwLjQzNSAgMC42Njc3OSAgIFxuaW8xNjQgICAgICAgICAgICAgICAgICAgICAgLTAuMzI3OTUgICAgMC4zMDkxOSAgLTEuMDYxICAwLjMwMDg5ICAgXG5pbzE2NSAgICAgICAgICAgICAgICAgICAgICAgMC4wMTExMiAgICAwLjI2ODIzICAgMC4wNDEgIDAuOTY3MzEgICBcbmZpbmFuY2lhbF9zdGF0dXNpbmFkZXF1YXRlIC0wLjEwNTcwICAgIDAuMTc0NTIgIC0wLjYwNiAgMC41NTEyMyAgIFxuZmluYW5jaWFsX3N0YXR1c2FkZXF1YXRlICAgLTAuMjk1NzIgICAgMC40Mzg5MyAgLTAuNjc0ICAwLjUwNzgzICAgXG5kZTMyXzExICAgICAgICAgICAgICAgICAgICAgMC4xMzY5MCAgICAwLjU1MzAwICAgMC4yNDggIDAuODA2ODcgICBcbmRlMzJfMjEgICAgICAgICAgICAgICAgICAgIC0wLjE1Nzc1ICAgIDAuNjcyMjUgIC0wLjIzNSAgMC44MTY3NSAgIFxuZGUzMl9vdGhlcjEgICAgICAgICAgICAgICAgIDAuMTc5NDAgICAgMC41MTEzMyAgIDAuMzUxICAwLjcyOTE5ICAgXG5kZTMyXzkxICAgICAgICAgICAgICAgICAgICAgMC4yNjA1NCAgICAwLjUxNDEwICAgMC41MDcgIDAuNjE3NTkgICBcbm1hcml0YWxfc3RhdHVzZGl2b3JjZWQgICAgICAwLjc3OTU1ICAgIDAuMjc2MjMgICAyLjgyMiAgMC4wMTAyMSAqIFxubWFyaXRhbF9zdGF0dXN3aWRvd2VkICAgICAgIDAuNzkzMjcgICAgMC4zMDY5NyAgIDIuNTg0ICAwLjAxNzMwICogXG5tYXJpdGFsX3N0YXR1c3NpbmdsZSAgICAgICAgMC44MTg0MCAgICAwLjI2OTc0ICAgMy4wMzQgIDAuMDA2MzEgKipcbmRlMjAgICAgICAgICAgICAgICAgICAgICAgIC0wLjA2NDE2ICAgIDAuMDI5NzcgIC0yLjE1NSAgMC4wNDI5MSAqIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgcXVhc2liaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMS4wNjk5MTkpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA1XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = ideate ~ brom3_agecohort + SEX + io16 + financial_status + 
+    de32_1 + de32_2 + de32_other + de32_9 + marital_status + 
+    de20, design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)                -1.38455    0.64377  -2.151  0.04330 * 
+brom3_agecohortMiddle      -0.14852    0.26465  -0.561  0.58059   
+brom3_agecohortEldest      -0.75160    0.29913  -2.513  0.02022 * 
+SEX1                       -0.78509    0.22720  -3.455  0.00237 **
+io162                      -1.04743    0.35580  -2.944  0.00775 **
+io163                       0.12211    0.28053   0.435  0.66779   
+io164                      -0.32795    0.30919  -1.061  0.30089   
+io165                       0.01112    0.26823   0.041  0.96731   
+financial_statusinadequate -0.10570    0.17452  -0.606  0.55123   
+financial_statusadequate   -0.29572    0.43893  -0.674  0.50783   
+de32_11                     0.13690    0.55300   0.248  0.80687   
+de32_21                    -0.15775    0.67225  -0.235  0.81675   
+de32_other1                 0.17940    0.51133   0.351  0.72919   
+de32_91                     0.26054    0.51410   0.507  0.61759   
+marital_statusdivorced      0.77955    0.27623   2.822  0.01021 * 
+marital_statuswidowed       0.79327    0.30697   2.584  0.01730 * 
+marital_statussingle        0.81840    0.26974   3.034  0.00631 **
+de20                       -0.06416    0.02977  -2.155  0.04291 * 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.069919)
+
+Number of Fisher Scoring iterations: 5</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate Uniate</p>
@@ -456,6 +422,44 @@ svyglm(ideate~brom3_agecohort+SEX+io16+financial_status+de32_1+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBpZGVhdGUgfiBicm9tM19hZ2Vjb2hvcnQgKyBTRVggKyBpbzE2ICsgZmluYW5jaWFsX3N0YXR1cyArIFxuICAgIGRlMzJfMSArIGRlMzJfb3RoZXIgKyBkZTMyXzkgKyBtYXJpdGFsX3N0YXR1cyArIGRlMjAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MiwgXG4gICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpKVxuXG5TdXJ2ZXkgZGVzaWduOlxuc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIFxuICAgIG5lc3QgPSBULCBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDIgPiBcbiAgICAgICAgMCkpXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgdCB2YWx1ZSBQcig+fHR8KSAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAgICAgLTEuNDkyNDEgICAgMC41NDU4MSAgLTIuNzM0ICAwLjAxMjExICogXG5icm9tM19hZ2Vjb2hvcnRNaWRkbGUgICAgICAtMC4xNDkyMiAgICAwLjI2NTIyICAtMC41NjMgIDAuNTc5MzggICBcbmJyb20zX2FnZWNvaG9ydEVsZGVzdCAgICAgIC0wLjc1NDA4ICAgIDAuMjk4ODMgIC0yLjUyMyAgMC4wMTkzNSAqIFxuU0VYMSAgICAgICAgICAgICAgICAgICAgICAgLTAuNzgyNDcgICAgMC4yMjY3NSAgLTMuNDUxICAwLjAwMjI4ICoqXG5pbzE2MiAgICAgICAgICAgICAgICAgICAgICAtMS4wMzQ3NCAgICAwLjM2NjAxICAtMi44MjcgIDAuMDA5ODEgKipcbmlvMTYzICAgICAgICAgICAgICAgICAgICAgICAwLjEyNzA4ICAgIDAuMjc2OTggICAwLjQ1OSAgMC42NTA4NyAgIFxuaW8xNjQgICAgICAgICAgICAgICAgICAgICAgLTAuMzE3NjQgICAgMC4zMTI5NCAgLTEuMDE1ICAwLjMyMTEyICAgXG5pbzE2NSAgICAgICAgICAgICAgICAgICAgICAgMC4wMTcxOSAgICAwLjI2ODgxICAgMC4wNjQgIDAuOTQ5NTkgICBcbmZpbmFuY2lhbF9zdGF0dXNpbmFkZXF1YXRlIC0wLjEwNzU1ICAgIDAuMTczNDcgIC0wLjYyMCAgMC41NDE2MSAgIFxuZmluYW5jaWFsX3N0YXR1c2FkZXF1YXRlICAgLTAuMjk3NjIgICAgMC40Mzg4MiAgLTAuNjc4ICAwLjUwNDcxICAgXG5kZTMyXzExICAgICAgICAgICAgICAgICAgICAgMC4yNDYxNiAgICAwLjM5OTU3ICAgMC42MTYgIDAuNTQ0MTggICBcbmRlMzJfb3RoZXIxICAgICAgICAgICAgICAgICAwLjI4NzEzICAgIDAuMzkwMTEgICAwLjczNiAgMC40Njk1MCAgIFxuZGUzMl85MSAgICAgICAgICAgICAgICAgICAgIDAuMzY4ODEgICAgMC40NDU0NiAgIDAuODI4ICAwLjQxNjYwICAgXG5tYXJpdGFsX3N0YXR1c2Rpdm9yY2VkICAgICAgMC43ODA5OCAgICAwLjI3NzU3ICAgMi44MTQgIDAuMDEwMTIgKiBcbm1hcml0YWxfc3RhdHVzd2lkb3dlZCAgICAgICAwLjc5NDE0ICAgIDAuMzA3NDQgICAyLjU4MyAgMC4wMTY5NyAqIFxubWFyaXRhbF9zdGF0dXNzaW5nbGUgICAgICAgIDAuODE4OTkgICAgMC4yNjk4NCAgIDMuMDM1ICAwLjAwNjA4ICoqXG5kZTIwICAgICAgICAgICAgICAgICAgICAgICAtMC4wNjQ2MiAgICAwLjAyOTkzICAtMi4xNTkgIDAuMDQyMDIgKiBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIHF1YXNpYmlub21pYWwgZmFtaWx5IHRha2VuIHRvIGJlIDEuMDcwNjQ4KVxuXG5OdW1iZXIgb2YgRmlzaGVyIFNjb3JpbmcgaXRlcmF0aW9uczogNVxuIn0= -->
+<pre><code>
+Call:
+svyglm(formula = ideate ~ brom3_agecohort + SEX + io16 + financial_status + 
+    de32_1 + de32_other + de32_9 + marital_status + de20, design = SuicidePart2, 
+    family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)                -1.49241    0.54581  -2.734  0.01211 * 
+brom3_agecohortMiddle      -0.14922    0.26522  -0.563  0.57938   
+brom3_agecohortEldest      -0.75408    0.29883  -2.523  0.01935 * 
+SEX1                       -0.78247    0.22675  -3.451  0.00228 **
+io162                      -1.03474    0.36601  -2.827  0.00981 **
+io163                       0.12708    0.27698   0.459  0.65087   
+io164                      -0.31764    0.31294  -1.015  0.32112   
+io165                       0.01719    0.26881   0.064  0.94959   
+financial_statusinadequate -0.10755    0.17347  -0.620  0.54161   
+financial_statusadequate   -0.29762    0.43882  -0.678  0.50471   
+de32_11                     0.24616    0.39957   0.616  0.54418   
+de32_other1                 0.28713    0.39011   0.736  0.46950   
+de32_91                     0.36881    0.44546   0.828  0.41660   
+marital_statusdivorced      0.78098    0.27757   2.814  0.01012 * 
+marital_statuswidowed       0.79414    0.30744   2.583  0.01697 * 
+marital_statussingle        0.81899    0.26984   3.035  0.00608 **
+de20                       -0.06462    0.02993  -2.159  0.04202 * 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.070648)
+
+Number of Fisher Scoring iterations: 5</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate Uniate</p>
@@ -468,6 +472,43 @@ svyglm(ideate~brom3_agecohort+SEX+io16+financial_status+de32_other+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBpZGVhdGUgfiBicm9tM19hZ2Vjb2hvcnQgKyBTRVggKyBpbzE2ICsgZmluYW5jaWFsX3N0YXR1cyArIFxuICAgIGRlMzJfb3RoZXIgKyBkZTMyXzkgKyBtYXJpdGFsX3N0YXR1cyArIGRlMjAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MiwgXG4gICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpKVxuXG5TdXJ2ZXkgZGVzaWduOlxuc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIFxuICAgIG5lc3QgPSBULCBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDIgPiBcbiAgICAgICAgMCkpXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgdCB2YWx1ZSBQcig+fHR8KSAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAgICAgLTEuMjgwMDYgICAgMC40NzI4OCAgLTIuNzA3ICAwLjAxMjU4ICogXG5icm9tM19hZ2Vjb2hvcnRNaWRkbGUgICAgICAtMC4xNDU2MCAgICAwLjI2NTE0ICAtMC41NDkgIDAuNTg4MTkgICBcbmJyb20zX2FnZWNvaG9ydEVsZGVzdCAgICAgIC0wLjc1NjUxICAgIDAuMjk5MjIgIC0yLjUyOCAgMC4wMTg3OCAqIFxuU0VYMSAgICAgICAgICAgICAgICAgICAgICAgLTAuNzc2OTUgICAgMC4yMjc0MSAgLTMuNDE2ICAwLjAwMjM2ICoqXG5pbzE2MiAgICAgICAgICAgICAgICAgICAgICAtMS4wNDY5OSAgICAwLjM3MjIxICAtMi44MTMgIDAuMDA5ODcgKipcbmlvMTYzICAgICAgICAgICAgICAgICAgICAgICAwLjEzNzc5ICAgIDAuMjc1MjIgICAwLjUwMSAgMC42MjEzNyAgIFxuaW8xNjQgICAgICAgICAgICAgICAgICAgICAgLTAuMzA0MTggICAgMC4zMTM0MyAgLTAuOTcwICAwLjM0MTkxICAgXG5pbzE2NSAgICAgICAgICAgICAgICAgICAgICAgMC4wMzA4NiAgICAwLjI2NTkyICAgMC4xMTYgIDAuOTA4NjIgICBcbmZpbmFuY2lhbF9zdGF0dXNpbmFkZXF1YXRlIC0wLjEwOTc5ICAgIDAuMTcxNjEgIC0wLjY0MCAgMC41Mjg2NSAgIFxuZmluYW5jaWFsX3N0YXR1c2FkZXF1YXRlICAgLTAuMjgyNzcgICAgMC40NDEzOCAgLTAuNjQxICAwLjUyODA4ICAgXG5kZTMyX290aGVyMSAgICAgICAgICAgICAgICAgMC4wNzI3MyAgICAwLjIyOTg1ICAgMC4zMTYgIDAuNzU0NTQgICBcbmRlMzJfOTEgICAgICAgICAgICAgICAgICAgICAwLjE1MTQyICAgIDAuMzQxNDIgICAwLjQ0MyAgMC42NjE1NiAgIFxubWFyaXRhbF9zdGF0dXNkaXZvcmNlZCAgICAgIDAuNzg2MzkgICAgMC4yNzM5OCAgIDIuODcwICAwLjAwODY1ICoqXG5tYXJpdGFsX3N0YXR1c3dpZG93ZWQgICAgICAgMC43NzY0OSAgICAwLjMxMzAwICAgMi40ODEgIDAuMDIwODYgKiBcbm1hcml0YWxfc3RhdHVzc2luZ2xlICAgICAgICAwLjgwMDA1ICAgIDAuMjcwODkgICAyLjk1MyAgMC4wMDcxMyAqKlxuZGUyMCAgICAgICAgICAgICAgICAgICAgICAgLTAuMDY0NjIgICAgMC4wMzAwMyAgLTIuMTUyICAwLjA0MjEzICogXG4tLS1cblNpZ25pZi4gY29kZXM6ICAwIOKAmCoqKuKAmSAwLjAwMSDigJgqKuKAmSAwLjAxIOKAmCrigJkgMC4wNSDigJgu4oCZIDAuMSDigJgg4oCZIDFcblxuKERpc3BlcnNpb24gcGFyYW1ldGVyIGZvciBxdWFzaWJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxLjA2NzA5NClcblxuTnVtYmVyIG9mIEZpc2hlciBTY29yaW5nIGl0ZXJhdGlvbnM6IDVcbiJ9 -->
+<pre><code>
+Call:
+svyglm(formula = ideate ~ brom3_agecohort + SEX + io16 + financial_status + 
+    de32_other + de32_9 + marital_status + de20, design = SuicidePart2, 
+    family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)                -1.28006    0.47288  -2.707  0.01258 * 
+brom3_agecohortMiddle      -0.14560    0.26514  -0.549  0.58819   
+brom3_agecohortEldest      -0.75651    0.29922  -2.528  0.01878 * 
+SEX1                       -0.77695    0.22741  -3.416  0.00236 **
+io162                      -1.04699    0.37221  -2.813  0.00987 **
+io163                       0.13779    0.27522   0.501  0.62137   
+io164                      -0.30418    0.31343  -0.970  0.34191   
+io165                       0.03086    0.26592   0.116  0.90862   
+financial_statusinadequate -0.10979    0.17161  -0.640  0.52865   
+financial_statusadequate   -0.28277    0.44138  -0.641  0.52808   
+de32_other1                 0.07273    0.22985   0.316  0.75454   
+de32_91                     0.15142    0.34142   0.443  0.66156   
+marital_statusdivorced      0.78639    0.27398   2.870  0.00865 **
+marital_statuswidowed       0.77649    0.31300   2.481  0.02086 * 
+marital_statussingle        0.80005    0.27089   2.953  0.00713 **
+de20                       -0.06462    0.03003  -2.152  0.04213 * 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.067094)
+
+Number of Fisher Scoring iterations: 5</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate Other</p>
@@ -479,6 +520,41 @@ svyglm(ideate~brom3_agecohort+SEX+io16+financial_status+de32_9+marital_status+de
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBpZGVhdGUgfiBicm9tM19hZ2Vjb2hvcnQgKyBTRVggKyBpbzE2ICsgZmluYW5jaWFsX3N0YXR1cyArIFxuICAgIGRlMzJfOSArIG1hcml0YWxfc3RhdHVzICsgZGUyMCwgZGVzaWduID0gU3VpY2lkZVBhcnQyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIikpXG5cblN1cnZleSBkZXNpZ246XG5zdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgXG4gICAgbmVzdCA9IFQsIGRhdGEgPSBzdWJzZXQoY2lkaWRhdGFfcHQyLCBjaWRpZGF0YV9wdDIkd2VpZ2h0MiA+IFxuICAgICAgICAwKSlcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB0IHZhbHVlIFByKD58dHwpICAgXG4oSW50ZXJjZXB0KSAgICAgICAgICAgICAgICAtMS4yNzA3MyAgICAwLjQ3NjMyICAtMi42NjggIDAuMDEzNDYgKiBcbmJyb20zX2FnZWNvaG9ydE1pZGRsZSAgICAgIC0wLjEzOTUyICAgIDAuMjY2OTMgIC0wLjUyMyAgMC42MDU5OSAgIFxuYnJvbTNfYWdlY29ob3J0RWxkZXN0ICAgICAgLTAuNzU2NjYgICAgMC4zMDA0OSAgLTIuNTE4ICAwLjAxODg4ICogXG5TRVgxICAgICAgICAgICAgICAgICAgICAgICAtMC43NzY4OCAgICAwLjIyNzA2ICAtMy40MjEgIDAuMDAyMjQgKipcbmlvMTYyICAgICAgICAgICAgICAgICAgICAgIC0xLjA0Mjg5ICAgIDAuMzczNTkgIC0yLjc5MiAgMC4wMTAxMyAqIFxuaW8xNjMgICAgICAgICAgICAgICAgICAgICAgIDAuMTQyODcgICAgMC4yNzE4NyAgIDAuNTI1ICAwLjYwNDA2ICAgXG5pbzE2NCAgICAgICAgICAgICAgICAgICAgICAtMC4zMDAyMyAgICAwLjMxMTc4ICAtMC45NjMgIDAuMzQ1MTcgICBcbmlvMTY1ICAgICAgICAgICAgICAgICAgICAgICAwLjAzNzkwICAgIDAuMjY2NjQgICAwLjE0MiAgMC44ODgxNyAgIFxuZmluYW5jaWFsX3N0YXR1c2luYWRlcXVhdGUgLTAuMTA4NTAgICAgMC4xNzE1NiAgLTAuNjMyICAwLjUzMzEwICAgXG5maW5hbmNpYWxfc3RhdHVzYWRlcXVhdGUgICAtMC4yNzg1NyAgICAwLjQzODMzICAtMC42MzYgIDAuNTMxMTAgICBcbmRlMzJfOTEgICAgICAgICAgICAgICAgICAgICAwLjEzNTQ1ICAgIDAuMzQzNjMgICAwLjM5NCAgMC42OTY5MyAgIFxubWFyaXRhbF9zdGF0dXNkaXZvcmNlZCAgICAgIDAuNzg4NjEgICAgMC4yNzQwOSAgIDIuODc3ICAwLjAwODI5ICoqXG5tYXJpdGFsX3N0YXR1c3dpZG93ZWQgICAgICAgMC43NzQ1MSAgICAwLjMxMjgzICAgMi40NzYgIDAuMDIwNzQgKiBcbm1hcml0YWxfc3RhdHVzc2luZ2xlICAgICAgICAwLjgwNDA5ICAgIDAuMjcwNzIgICAyLjk3MCAgMC4wMDY2NiAqKlxuZGUyMCAgICAgICAgICAgICAgICAgICAgICAgLTAuMDY0ODUgICAgMC4wMzAxNyAgLTIuMTQ5ICAwLjA0MTkxICogXG4tLS1cblNpZ25pZi4gY29kZXM6ICAwIOKAmCoqKuKAmSAwLjAwMSDigJgqKuKAmSAwLjAxIOKAmCrigJkgMC4wNSDigJgu4oCZIDAuMSDigJgg4oCZIDFcblxuKERpc3BlcnNpb24gcGFyYW1ldGVyIGZvciBxdWFzaWJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxLjA2NzM0OSlcblxuTnVtYmVyIG9mIEZpc2hlciBTY29yaW5nIGl0ZXJhdGlvbnM6IDVcbiJ9 -->
+<pre><code>
+Call:
+svyglm(formula = ideate ~ brom3_agecohort + SEX + io16 + financial_status + 
+    de32_9 + marital_status + de20, design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)                -1.27073    0.47632  -2.668  0.01346 * 
+brom3_agecohortMiddle      -0.13952    0.26693  -0.523  0.60599   
+brom3_agecohortEldest      -0.75666    0.30049  -2.518  0.01888 * 
+SEX1                       -0.77688    0.22706  -3.421  0.00224 **
+io162                      -1.04289    0.37359  -2.792  0.01013 * 
+io163                       0.14287    0.27187   0.525  0.60406   
+io164                      -0.30023    0.31178  -0.963  0.34517   
+io165                       0.03790    0.26664   0.142  0.88817   
+financial_statusinadequate -0.10850    0.17156  -0.632  0.53310   
+financial_statusadequate   -0.27857    0.43833  -0.636  0.53110   
+de32_91                     0.13545    0.34363   0.394  0.69693   
+marital_statusdivorced      0.78861    0.27409   2.877  0.00829 **
+marital_statuswidowed       0.77451    0.31283   2.476  0.02074 * 
+marital_statussingle        0.80409    0.27072   2.970  0.00666 **
+de20                       -0.06485    0.03017  -2.149  0.04191 * 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.067349)
+
+Number of Fisher Scoring iterations: 5</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate No Religion</p>
@@ -490,6 +566,40 @@ svyglm(ideate~brom3_agecohort+SEX+io16+financial_status+marital_status+de20,
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBpZGVhdGUgfiBicm9tM19hZ2Vjb2hvcnQgKyBTRVggKyBpbzE2ICsgZmluYW5jaWFsX3N0YXR1cyArIFxuICAgIG1hcml0YWxfc3RhdHVzICsgZGUyMCwgZGVzaWduID0gU3VpY2lkZVBhcnQyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIikpXG5cblN1cnZleSBkZXNpZ246XG5zdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgXG4gICAgbmVzdCA9IFQsIGRhdGEgPSBzdWJzZXQoY2lkaWRhdGFfcHQyLCBjaWRpZGF0YV9wdDIkd2VpZ2h0MiA+IFxuICAgICAgICAwKSlcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB0IHZhbHVlIFByKD58dHwpICAgXG4oSW50ZXJjZXB0KSAgICAgICAgICAgICAgICAtMS4yNjE5MCAgICAwLjQ3MzI1ICAtMi42NjYgIDAuMDEzMjQgKiBcbmJyb20zX2FnZWNvaG9ydE1pZGRsZSAgICAgIC0wLjEzMjk5ICAgIDAuMjY2OTkgIC0wLjQ5OCAgMC42MjI3NSAgIFxuYnJvbTNfYWdlY29ob3J0RWxkZXN0ICAgICAgLTAuNzU2MzYgICAgMC4yOTk1NyAgLTIuNTI1ICAwLjAxODI5ICogXG5TRVgxICAgICAgICAgICAgICAgICAgICAgICAtMC43NjMxNCAgICAwLjIyNjk3ICAtMy4zNjIgIDAuMDAyNDkgKipcbmlvMTYyICAgICAgICAgICAgICAgICAgICAgIC0xLjA0MTgyICAgIDAuMzc0NjYgIC0yLjc4MSAgMC4wMTAxNiAqIFxuaW8xNjMgICAgICAgICAgICAgICAgICAgICAgIDAuMTU4MzMgICAgMC4yNzU0OSAgIDAuNTc1ICAwLjU3MDYxICAgXG5pbzE2NCAgICAgICAgICAgICAgICAgICAgICAtMC4yOTMwNyAgICAwLjMxMjc3ICAtMC45MzcgIDAuMzU3NzEgICBcbmlvMTY1ICAgICAgICAgICAgICAgICAgICAgICAwLjA0NTgwICAgIDAuMjczMzggICAwLjE2OCAgMC44NjgzMSAgIFxuZmluYW5jaWFsX3N0YXR1c2luYWRlcXVhdGUgLTAuMTExNzQgICAgMC4xNjkzMCAgLTAuNjYwICAwLjUxNTI2ICAgXG5maW5hbmNpYWxfc3RhdHVzYWRlcXVhdGUgICAtMC4yNzM1OSAgICAwLjQzMTI3ICAtMC42MzQgIDAuNTMxNTkgICBcbm1hcml0YWxfc3RhdHVzZGl2b3JjZWQgICAgICAwLjc5MDM1ICAgIDAuMjc0MTMgICAyLjg4MyAgMC4wMDc5OCAqKlxubWFyaXRhbF9zdGF0dXN3aWRvd2VkICAgICAgIDAuNzc1NjcgICAgMC4zMTIyNiAgIDIuNDg0ICAwLjAyMDA1ICogXG5tYXJpdGFsX3N0YXR1c3NpbmdsZSAgICAgICAgMC44MTE4OSAgICAwLjI3NzM3ICAgMi45MjcgIDAuMDA3MTkgKipcbmRlMjAgICAgICAgICAgICAgICAgICAgICAgIC0wLjA2NTIyICAgIDAuMDMwNDEgIC0yLjE0NSAgMC4wNDE5MCAqIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgcXVhc2liaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMS4wNjM5MDMpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA1XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = ideate ~ brom3_agecohort + SEX + io16 + financial_status + 
+    marital_status + de20, design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)                -1.26190    0.47325  -2.666  0.01324 * 
+brom3_agecohortMiddle      -0.13299    0.26699  -0.498  0.62275   
+brom3_agecohortEldest      -0.75636    0.29957  -2.525  0.01829 * 
+SEX1                       -0.76314    0.22697  -3.362  0.00249 **
+io162                      -1.04182    0.37466  -2.781  0.01016 * 
+io163                       0.15833    0.27549   0.575  0.57061   
+io164                      -0.29307    0.31277  -0.937  0.35771   
+io165                       0.04580    0.27338   0.168  0.86831   
+financial_statusinadequate -0.11174    0.16930  -0.660  0.51526   
+financial_statusadequate   -0.27359    0.43127  -0.634  0.53159   
+marital_statusdivorced      0.79035    0.27413   2.883  0.00798 **
+marital_statuswidowed       0.77567    0.31226   2.484  0.02005 * 
+marital_statussingle        0.81189    0.27737   2.927  0.00719 **
+de20                       -0.06522    0.03041  -2.145  0.04190 * 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.063903)
+
+Number of Fisher Scoring iterations: 5</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate Financial Status</p>
@@ -501,6 +611,38 @@ svyglm(ideate~brom3_agecohort+SEX+io16+marital_status+de20,
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBpZGVhdGUgfiBicm9tM19hZ2Vjb2hvcnQgKyBTRVggKyBpbzE2ICsgbWFyaXRhbF9zdGF0dXMgKyBcbiAgICBkZTIwLCBkZXNpZ24gPSBTdWljaWRlUGFydDIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSlcblxuU3VydmV5IGRlc2lnbjpcbnN2eWRlc2lnbihpZHMgPSB+c2VjdSwgc3RyYXRhID0gfnN0cmF0YSwgd2VpZ2h0cyA9IH53ZWlnaHQyLCBcbiAgICBuZXN0ID0gVCwgZGF0YSA9IHN1YnNldChjaWRpZGF0YV9wdDIsIGNpZGlkYXRhX3B0MiR3ZWlnaHQyID4gXG4gICAgICAgIDApKVxuXG5Db2VmZmljaWVudHM6XG4gICAgICAgICAgICAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgdCB2YWx1ZSBQcig+fHR8KSAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAtMS4zMzI5NSAgICAwLjQ3NTUyICAtMi44MDMgIDAuMDA5MjYgKipcbmJyb20zX2FnZWNvaG9ydE1pZGRsZSAgLTAuMTA2MjcgICAgMC4yNjc4OSAgLTAuMzk3ICAwLjY5NDcwICAgXG5icm9tM19hZ2Vjb2hvcnRFbGRlc3QgIC0wLjcxODA5ICAgIDAuMzAwMTggIC0yLjM5MiAgMC4wMjM5OCAqIFxuU0VYMSAgICAgICAgICAgICAgICAgICAtMC43NzMwOCAgICAwLjIyNTcyICAtMy40MjUgIDAuMDAxOTggKipcbmlvMTYyICAgICAgICAgICAgICAgICAgLTEuMDM1OTggICAgMC4zODA1NSAgLTIuNzIyICAwLjAxMTIxICogXG5pbzE2MyAgICAgICAgICAgICAgICAgICAwLjE2NTYzICAgIDAuMjc0ODMgICAwLjYwMyAgMC41NTE3NiAgIFxuaW8xNjQgICAgICAgICAgICAgICAgICAtMC4zMzAxMyAgICAwLjMwMzgyICAtMS4wODcgIDAuMjg2ODIgICBcbmlvMTY1ICAgICAgICAgICAgICAgICAgIDAuMDMyMzEgICAgMC4yNzI2NSAgIDAuMTE5ICAwLjkwNjU0ICAgXG5tYXJpdGFsX3N0YXR1c2Rpdm9yY2VkICAwLjc5NDg0ICAgIDAuMjcxNDAgICAyLjkyOSAgMC4wMDY4NCAqKlxubWFyaXRhbF9zdGF0dXN3aWRvd2VkICAgMC43NzU0NSAgICAwLjMwOTk4ICAgMi41MDIgIDAuMDE4NzMgKiBcbm1hcml0YWxfc3RhdHVzc2luZ2xlICAgIDAuODMxMzMgICAgMC4yNzYwNSAgIDMuMDEyICAwLjAwNTU5ICoqXG5kZTIwICAgICAgICAgICAgICAgICAgIC0wLjA2Nzk2ICAgIDAuMDI5OTggIC0yLjI2NyAgMC4wMzE2MiAqIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgcXVhc2liaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMS4wNjE0OTUpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA1XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = ideate ~ brom3_agecohort + SEX + io16 + marital_status + 
+    de20, design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                       Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)            -1.33295    0.47552  -2.803  0.00926 **
+brom3_agecohortMiddle  -0.10627    0.26789  -0.397  0.69470   
+brom3_agecohortEldest  -0.71809    0.30018  -2.392  0.02398 * 
+SEX1                   -0.77308    0.22572  -3.425  0.00198 **
+io162                  -1.03598    0.38055  -2.722  0.01121 * 
+io163                   0.16563    0.27483   0.603  0.55176   
+io164                  -0.33013    0.30382  -1.087  0.28682   
+io165                   0.03231    0.27265   0.119  0.90654   
+marital_statusdivorced  0.79484    0.27140   2.929  0.00684 **
+marital_statuswidowed   0.77545    0.30998   2.502  0.01873 * 
+marital_statussingle    0.83133    0.27605   3.012  0.00559 **
+de20                   -0.06796    0.02998  -2.267  0.03162 * 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.061495)
+
+Number of Fisher Scoring iterations: 5</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -515,6 +657,37 @@ svyglm(plan~brom3_agecohort+SEX+de32_other+marital_status+financial_status,
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBwbGFuIH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgZGUzMl9vdGhlciArIFxuICAgIG1hcml0YWxfc3RhdHVzICsgZmluYW5jaWFsX3N0YXR1cywgZGVzaWduID0gU3VpY2lkZVBhcnQyLCBcbiAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIikpXG5cblN1cnZleSBkZXNpZ246XG5zdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgXG4gICAgbmVzdCA9IFQsIGRhdGEgPSBzdWJzZXQoY2lkaWRhdGFfcHQyLCBjaWRpZGF0YV9wdDIkd2VpZ2h0MiA+IFxuICAgICAgICAwKSlcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB0IHZhbHVlIFByKD58dHwpICAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAgICAgIC0zLjMxMTEgICAgIDAuMjkzNSAtMTEuMjgxIDQuMDBlLTEyICoqKlxuYnJvbTNfYWdlY29ob3J0TWlkZGxlICAgICAgIC0wLjY0NDcgICAgIDAuMjY4NCAgLTIuNDAzICAgMC4wMjI5ICogIFxuYnJvbTNfYWdlY29ob3J0RWxkZXN0ICAgICAgIC0wLjQxMzcgICAgIDAuMzQyNSAgLTEuMjA4ICAgMC4yMzY4ICAgIFxuU0VYMSAgICAgICAgICAgICAgICAgICAgICAgIC0wLjM2MTYgICAgIDAuMjc0MSAgLTEuMzE5ICAgMC4xOTc0ICAgIFxuZGUzMl9vdGhlcjEgICAgICAgICAgICAgICAgICAwLjUyMjkgICAgIDAuMjM4NCAgIDIuMTkzICAgMC4wMzY1ICogIFxubWFyaXRhbF9zdGF0dXNkaXZvcmNlZCAgICAgICAxLjMxOTUgICAgIDAuMjg3NSAgIDQuNTg5IDcuOTRlLTA1ICoqKlxubWFyaXRhbF9zdGF0dXN3aWRvd2VkICAgICAgICAwLjgzNjMgICAgIDAuNDkwOSAgIDEuNzA0ICAgMC4wOTkyIC4gIFxubWFyaXRhbF9zdGF0dXNzaW5nbGUgICAgICAgICAwLjU1MjkgICAgIDAuNDYxNiAgIDEuMTk4ICAgMC4yNDA3ICAgIFxuZmluYW5jaWFsX3N0YXR1c2luYWRlcXVhdGUgIC0wLjQ4ODkgICAgIDAuMjA0MCAgLTIuMzk2ICAgMC4wMjMyICogIFxuZmluYW5jaWFsX3N0YXR1c2FkZXF1YXRlICAgIC0wLjIwMjcgICAgIDAuNTE0OCAgLTAuMzk0ICAgMC42OTY2ICAgIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgcXVhc2liaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMS4wMDk2MjgpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA2XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = plan ~ brom3_agecohort + SEX + de32_other + 
+    marital_status + financial_status, design = SuicidePart2, 
+    family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 -3.3111     0.2935 -11.281 4.00e-12 ***
+brom3_agecohortMiddle       -0.6447     0.2684  -2.403   0.0229 *  
+brom3_agecohortEldest       -0.4137     0.3425  -1.208   0.2368    
+SEX1                        -0.3616     0.2741  -1.319   0.1974    
+de32_other1                  0.5229     0.2384   2.193   0.0365 *  
+marital_statusdivorced       1.3195     0.2875   4.589 7.94e-05 ***
+marital_statuswidowed        0.8363     0.4909   1.704   0.0992 .  
+marital_statussingle         0.5529     0.4616   1.198   0.2407    
+financial_statusinadequate  -0.4889     0.2040  -2.396   0.0232 *  
+financial_statusadequate    -0.2027     0.5148  -0.394   0.6966    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.009628)
+
+Number of Fisher Scoring iterations: 6</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Refine</p>
@@ -526,6 +699,35 @@ svyglm(plan~brom3_agecohort+de32_other+marital_status+financial_status,
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBwbGFuIH4gYnJvbTNfYWdlY29ob3J0ICsgZGUzMl9vdGhlciArIG1hcml0YWxfc3RhdHVzICsgXG4gICAgZmluYW5jaWFsX3N0YXR1cywgZGVzaWduID0gU3VpY2lkZVBhcnQyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIikpXG5cblN1cnZleSBkZXNpZ246XG5zdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgXG4gICAgbmVzdCA9IFQsIGRhdGEgPSBzdWJzZXQoY2lkaWRhdGFfcHQyLCBjaWRpZGF0YV9wdDIkd2VpZ2h0MiA+IFxuICAgICAgICAwKSlcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB0IHZhbHVlIFByKD58dHwpICAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAgICAgIC0zLjQ2MzYgICAgIDAuMjQ0NyAtMTQuMTU0IDguMTFlLTE1ICoqKlxuYnJvbTNfYWdlY29ob3J0TWlkZGxlICAgICAgIC0wLjY2MDUgICAgIDAuMjc1MCAgLTIuNDAyICAgMC4wMjI3ICogIFxuYnJvbTNfYWdlY29ob3J0RWxkZXN0ICAgICAgIC0wLjQwMzMgICAgIDAuMzM2MSAgLTEuMjAwICAgMC4yMzk1ICAgIFxuZGUzMl9vdGhlcjEgICAgICAgICAgICAgICAgICAwLjUzMTggICAgIDAuMjM5NCAgIDIuMjIxICAgMC4wMzQwICogIFxubWFyaXRhbF9zdGF0dXNkaXZvcmNlZCAgICAgICAxLjM4MzAgICAgIDAuMjc5NSAgIDQuOTQ5IDIuNjllLTA1ICoqKlxubWFyaXRhbF9zdGF0dXN3aWRvd2VkICAgICAgICAwLjkzNzEgICAgIDAuNDY2OCAgIDIuMDA3ICAgMC4wNTM4IC4gIFxubWFyaXRhbF9zdGF0dXNzaW5nbGUgICAgICAgICAwLjUxMDUgICAgIDAuNDg3MSAgIDEuMDQ4ICAgMC4zMDMwICAgIFxuZmluYW5jaWFsX3N0YXR1c2luYWRlcXVhdGUgIC0wLjQ5NDggICAgIDAuMjAwNCAgLTIuNDY5ICAgMC4wMTk1ICogIFxuZmluYW5jaWFsX3N0YXR1c2FkZXF1YXRlICAgIC0wLjMwMTkgICAgIDAuNTA3OCAgLTAuNTk0ICAgMC41NTY3ICAgIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgcXVhc2liaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMS4wMjg1MjEpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA2XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = plan ~ brom3_agecohort + de32_other + marital_status + 
+    financial_status, design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 -3.4636     0.2447 -14.154 8.11e-15 ***
+brom3_agecohortMiddle       -0.6605     0.2750  -2.402   0.0227 *  
+brom3_agecohortEldest       -0.4033     0.3361  -1.200   0.2395    
+de32_other1                  0.5318     0.2394   2.221   0.0340 *  
+marital_statusdivorced       1.3830     0.2795   4.949 2.69e-05 ***
+marital_statuswidowed        0.9371     0.4668   2.007   0.0538 .  
+marital_statussingle         0.5105     0.4871   1.048   0.3030    
+financial_statusinadequate  -0.4948     0.2004  -2.469   0.0195 *  
+financial_statusadequate    -0.3019     0.5078  -0.594   0.5567    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.028521)
+
+Number of Fisher Scoring iterations: 6</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Full Demographics</p>
@@ -538,6 +740,49 @@ svyglm(plan~brom3_agecohort+SEX+io16+financial_status+de32_1+de32_2+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBwbGFuIH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgaW8xNiArIGZpbmFuY2lhbF9zdGF0dXMgKyBcbiAgICBkZTMyXzEgKyBkZTMyXzIgKyBkZTMyX290aGVyICsgZGUzMl85ICsgZW1wICsgbWFyaXRhbF9zdGF0dXMgKyBcbiAgICBkZTIwLCBkZXNpZ24gPSBTdWljaWRlUGFydDIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSlcblxuU3VydmV5IGRlc2lnbjpcbnN2eWRlc2lnbihpZHMgPSB+c2VjdSwgc3RyYXRhID0gfnN0cmF0YSwgd2VpZ2h0cyA9IH53ZWlnaHQyLCBcbiAgICBuZXN0ID0gVCwgZGF0YSA9IHN1YnNldChjaWRpZGF0YV9wdDIsIGNpZGlkYXRhX3B0MiR3ZWlnaHQyID4gXG4gICAgICAgIDApKVxuXG5Db2VmZmljaWVudHM6XG4gICAgICAgICAgICAgICAgICAgICAgICAgICBFc3RpbWF0ZSBTdGQuIEVycm9yIHQgdmFsdWUgUHIoPnx0fCkgICAgXG4oSW50ZXJjZXB0KSAgICAgICAgICAgICAgICAtMy4xNTg1MiAgICAxLjA0NTU2ICAtMy4wMjEgMC4wMDc3MDQgKiogXG5icm9tM19hZ2Vjb2hvcnRNaWRkbGUgICAgICAtMC43NzYzOCAgICAwLjI5MDcyICAtMi42NzEgMC4wMTYxMzcgKiAgXG5icm9tM19hZ2Vjb2hvcnRFbGRlc3QgICAgICAtMC42NzgwNSAgICAwLjUxNzc5ICAtMS4zMDkgMC4yMDc3ODggICAgXG5TRVgxICAgICAgICAgICAgICAgICAgICAgICAtMC40MzE0NiAgICAwLjI5MTM4ICAtMS40ODEgMC4xNTY5NjggICAgXG5pbzE2MiAgICAgICAgICAgICAgICAgICAgICAtMC4zODE5NCAgICAwLjQ1ODM1ICAtMC44MzMgMC40MTYyNDMgICAgXG5pbzE2MyAgICAgICAgICAgICAgICAgICAgICAgMC4wNTY4NyAgICAwLjMwNzM3ICAgMC4xODUgMC44NTUzOTMgICAgXG5pbzE2NCAgICAgICAgICAgICAgICAgICAgICAtMC4yOTQwNyAgICAwLjMyNzQ1ICAtMC44OTggMC4zODE3MDIgICAgXG5pbzE2NSAgICAgICAgICAgICAgICAgICAgICAgMC4xMTI2OCAgICAwLjM3OTQyICAgMC4yOTcgMC43NzAwNzIgICAgXG5maW5hbmNpYWxfc3RhdHVzaW5hZGVxdWF0ZSAtMC4zOTYxNiAgICAwLjE5Njc2ICAtMi4wMTMgMC4wNjAxODMgLiAgXG5maW5hbmNpYWxfc3RhdHVzYWRlcXVhdGUgICAtMC4yMDg5MCAgICAwLjUxMTg4ICAtMC40MDggMC42ODgyOTAgICAgXG5kZTMyXzExICAgICAgICAgICAgICAgICAgICAgMC4yNDQwMCAgICAwLjgyMTcyICAgMC4yOTcgMC43NzAxMTYgICAgXG5kZTMyXzIxICAgICAgICAgICAgICAgICAgICAtMC42MzI2NCAgICAxLjEyNjQ3ICAtMC41NjIgMC41ODE3MTAgICAgXG5kZTMyX290aGVyMSAgICAgICAgICAgICAgICAgMC43OTQ5NyAgICAwLjgzMTIzICAgMC45NTYgMC4zNTIyODQgICAgXG5kZTMyXzkxICAgICAgICAgICAgICAgICAgICAgMC42MzE4NyAgICAwLjkyNDI5ICAgMC42ODQgMC41MDM0MTkgICAgXG5lbXAyICAgICAgICAgICAgICAgICAgICAgICAtMC43NDM1NSAgICAwLjYxOTY2ICAtMS4yMDAgMC4yNDY2MjcgICAgXG5lbXAzICAgICAgICAgICAgICAgICAgICAgICAgMC4xOTY2OSAgICAwLjQ0NTAwICAgMC40NDIgMC42NjQwNjYgICAgXG5lbXA0ICAgICAgICAgICAgICAgICAgICAgICAgMC4xODA2OSAgICAwLjQwOTYzICAgMC40NDEgMC42NjQ2ODggICAgXG5lbXA1ICAgICAgICAgICAgICAgICAgICAgICAgMC4zOTM2MyAgICAwLjQxNjI3ICAgMC45NDYgMC4zNTc2MDIgICAgXG5tYXJpdGFsX3N0YXR1c2Rpdm9yY2VkICAgICAgMS4zMDA0NSAgICAwLjI5Nzg2ICAgNC4zNjYgMC4wMDA0MjEgKioqXG5tYXJpdGFsX3N0YXR1c3dpZG93ZWQgICAgICAgMC44NTkxNiAgICAwLjQ4MTg0ICAgMS43ODMgMC4wOTI0NDAgLiAgXG5tYXJpdGFsX3N0YXR1c3NpbmdsZSAgICAgICAgMC41OTQ3MCAgICAwLjQ1MTgwICAgMS4zMTYgMC4yMDU1NTIgICAgXG5kZTIwICAgICAgICAgICAgICAgICAgICAgICAtMC4wMzMzNiAgICAwLjA1MDIxICAtMC42NjUgMC41MTUyODIgICAgXG4tLS1cblNpZ25pZi4gY29kZXM6ICAwIOKAmCoqKuKAmSAwLjAwMSDigJgqKuKAmSAwLjAxIOKAmCrigJkgMC4wNSDigJgu4oCZIDAuMSDigJgg4oCZIDFcblxuKERpc3BlcnNpb24gcGFyYW1ldGVyIGZvciBxdWFzaWJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxLjA5NzQ3NylcblxuTnVtYmVyIG9mIEZpc2hlciBTY29yaW5nIGl0ZXJhdGlvbnM6IDdcbiJ9 -->
+<pre><code>
+Call:
+svyglm(formula = plan ~ brom3_agecohort + SEX + io16 + financial_status + 
+    de32_1 + de32_2 + de32_other + de32_9 + emp + marital_status + 
+    de20, design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                -3.15852    1.04556  -3.021 0.007704 ** 
+brom3_agecohortMiddle      -0.77638    0.29072  -2.671 0.016137 *  
+brom3_agecohortEldest      -0.67805    0.51779  -1.309 0.207788    
+SEX1                       -0.43146    0.29138  -1.481 0.156968    
+io162                      -0.38194    0.45835  -0.833 0.416243    
+io163                       0.05687    0.30737   0.185 0.855393    
+io164                      -0.29407    0.32745  -0.898 0.381702    
+io165                       0.11268    0.37942   0.297 0.770072    
+financial_statusinadequate -0.39616    0.19676  -2.013 0.060183 .  
+financial_statusadequate   -0.20890    0.51188  -0.408 0.688290    
+de32_11                     0.24400    0.82172   0.297 0.770116    
+de32_21                    -0.63264    1.12647  -0.562 0.581710    
+de32_other1                 0.79497    0.83123   0.956 0.352284    
+de32_91                     0.63187    0.92429   0.684 0.503419    
+emp2                       -0.74355    0.61966  -1.200 0.246627    
+emp3                        0.19669    0.44500   0.442 0.664066    
+emp4                        0.18069    0.40963   0.441 0.664688    
+emp5                        0.39363    0.41627   0.946 0.357602    
+marital_statusdivorced      1.30045    0.29786   4.366 0.000421 ***
+marital_statuswidowed       0.85916    0.48184   1.783 0.092440 .  
+marital_statussingle        0.59470    0.45180   1.316 0.205552    
+de20                       -0.03336    0.05021  -0.665 0.515282    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.097477)
+
+Number of Fisher Scoring iterations: 7</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate Urbanicity</p>
@@ -550,6 +795,45 @@ svyglm(plan~brom3_agecohort+SEX+financial_status+de32_1+de32_2+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBwbGFuIH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgZmluYW5jaWFsX3N0YXR1cyArIFxuICAgIGRlMzJfMSArIGRlMzJfMiArIGRlMzJfb3RoZXIgKyBkZTMyXzkgKyBlbXAgKyBtYXJpdGFsX3N0YXR1cyArIFxuICAgIGRlMjAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpKVxuXG5TdXJ2ZXkgZGVzaWduOlxuc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIFxuICAgIG5lc3QgPSBULCBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDIgPiBcbiAgICAgICAgMCkpXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgdCB2YWx1ZSBQcig+fHR8KSAgICBcbihJbnRlcmNlcHQpICAgICAgICAgICAgICAgIC0zLjM4NzM0ICAgIDEuMDU1MDQgIC0zLjIxMSAwLjAwNDE5OSAqKiBcbmJyb20zX2FnZWNvaG9ydE1pZGRsZSAgICAgIC0wLjczNjg2ICAgIDAuMjc5NzIgIC0yLjYzNCAwLjAxNTUwNCAqICBcbmJyb20zX2FnZWNvaG9ydEVsZGVzdCAgICAgIC0wLjYzMTE5ICAgIDAuNTEwMjkgIC0xLjIzNyAwLjIyOTc3MSAgICBcblNFWDEgICAgICAgICAgICAgICAgICAgICAgIC0wLjQxMjY2ICAgIDAuMjg0MjMgIC0xLjQ1MiAwLjE2MTMyOCAgICBcbmZpbmFuY2lhbF9zdGF0dXNpbmFkZXF1YXRlIC0wLjQwNTExICAgIDAuMTkzOTcgIC0yLjA4OSAwLjA0OTEwNiAqICBcbmZpbmFuY2lhbF9zdGF0dXNhZGVxdWF0ZSAgIC0wLjE5MjM4ICAgIDAuNTA3MTggIC0wLjM3OSAwLjcwODI2NiAgICBcbmRlMzJfMTEgICAgICAgICAgICAgICAgICAgICAwLjM2NDA4ICAgIDAuODUxNDIgICAwLjQyOCAwLjY3MzI4NiAgICBcbmRlMzJfMjEgICAgICAgICAgICAgICAgICAgIC0wLjUwMTQ4ICAgIDEuMTMzMjcgIC0wLjQ0MyAwLjY2MjY0OCAgICBcbmRlMzJfb3RoZXIxICAgICAgICAgICAgICAgICAwLjkxMDg3ICAgIDAuODQ5ODggICAxLjA3MiAwLjI5NTk4OSAgICBcbmRlMzJfOTEgICAgICAgICAgICAgICAgICAgICAwLjc2ODU1ICAgIDAuOTU1MjEgICAwLjgwNSAwLjQzMDA3NSAgICBcbmVtcDIgICAgICAgICAgICAgICAgICAgICAgIC0wLjY4NTM3ICAgIDAuNjI5NDIgIC0xLjA4OSAwLjI4ODUzNyAgICBcbmVtcDMgICAgICAgICAgICAgICAgICAgICAgICAwLjExNzcyICAgIDAuNDA1MTYgICAwLjI5MSAwLjc3NDIzNSAgICBcbmVtcDQgICAgICAgICAgICAgICAgICAgICAgICAwLjE4NDQ1ICAgIDAuNDA3MzUgICAwLjQ1MyAwLjY1NTMzMiAgICBcbmVtcDUgICAgICAgICAgICAgICAgICAgICAgICAwLjM4MzI0ICAgIDAuNDE1MzEgICAwLjkyMyAwLjM2NjU5NyAgICBcbm1hcml0YWxfc3RhdHVzZGl2b3JjZWQgICAgICAxLjMyMjAxICAgIDAuMjg4MzQgICA0LjU4NSAwLjAwMDE2MSAqKipcbm1hcml0YWxfc3RhdHVzd2lkb3dlZCAgICAgICAwLjg4MDY3ICAgIDAuNDgxOTMgICAxLjgyNyAwLjA4MTg5MiAuICBcbm1hcml0YWxfc3RhdHVzc2luZ2xlICAgICAgICAwLjY0NjQ5ICAgIDAuNDczMTYgICAxLjM2NiAwLjE4NjI5MyAgICBcbmRlMjAgICAgICAgICAgICAgICAgICAgICAgIC0wLjAzMDExICAgIDAuMDQ4NjMgIC0wLjYxOSAwLjU0MjQzNiAgICBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIHF1YXNpYmlub21pYWwgZmFtaWx5IHRha2VuIHRvIGJlIDEuMTA0NzI4KVxuXG5OdW1iZXIgb2YgRmlzaGVyIFNjb3JpbmcgaXRlcmF0aW9uczogNlxuIn0= -->
+<pre><code>
+Call:
+svyglm(formula = plan ~ brom3_agecohort + SEX + financial_status + 
+    de32_1 + de32_2 + de32_other + de32_9 + emp + marital_status + 
+    de20, design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                -3.38734    1.05504  -3.211 0.004199 ** 
+brom3_agecohortMiddle      -0.73686    0.27972  -2.634 0.015504 *  
+brom3_agecohortEldest      -0.63119    0.51029  -1.237 0.229771    
+SEX1                       -0.41266    0.28423  -1.452 0.161328    
+financial_statusinadequate -0.40511    0.19397  -2.089 0.049106 *  
+financial_statusadequate   -0.19238    0.50718  -0.379 0.708266    
+de32_11                     0.36408    0.85142   0.428 0.673286    
+de32_21                    -0.50148    1.13327  -0.443 0.662648    
+de32_other1                 0.91087    0.84988   1.072 0.295989    
+de32_91                     0.76855    0.95521   0.805 0.430075    
+emp2                       -0.68537    0.62942  -1.089 0.288537    
+emp3                        0.11772    0.40516   0.291 0.774235    
+emp4                        0.18445    0.40735   0.453 0.655332    
+emp5                        0.38324    0.41531   0.923 0.366597    
+marital_statusdivorced      1.32201    0.28834   4.585 0.000161 ***
+marital_statuswidowed       0.88067    0.48193   1.827 0.081892 .  
+marital_statussingle        0.64649    0.47316   1.366 0.186293    
+de20                       -0.03011    0.04863  -0.619 0.542436    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.104728)
+
+Number of Fisher Scoring iterations: 6</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate Employment</p>
@@ -562,6 +846,41 @@ svyglm(plan~brom3_agecohort+SEX+financial_status+de32_1+de32_2+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBwbGFuIH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgZmluYW5jaWFsX3N0YXR1cyArIFxuICAgIGRlMzJfMSArIGRlMzJfMiArIGRlMzJfb3RoZXIgKyBkZTMyXzkgKyBtYXJpdGFsX3N0YXR1cyArIFxuICAgIGRlMjAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpKVxuXG5TdXJ2ZXkgZGVzaWduOlxuc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIFxuICAgIG5lc3QgPSBULCBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDIgPiBcbiAgICAgICAgMCkpXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgdCB2YWx1ZSBQcig+fHR8KSAgICBcbihJbnRlcmNlcHQpICAgICAgICAgICAgICAgIC0zLjI3MzYzICAgIDEuMDA5NzYgIC0zLjI0MiAwLjAwMzM1MiAqKiBcbmJyb20zX2FnZWNvaG9ydE1pZGRsZSAgICAgIC0wLjY2NTc3ICAgIDAuMjY2ODggIC0yLjQ5NSAwLjAxOTU3NSAqICBcbmJyb20zX2FnZWNvaG9ydEVsZGVzdCAgICAgIC0wLjUwNTg4ICAgIDAuNDMzMDcgIC0xLjE2OCAwLjI1Mzc3OCAgICBcblNFWDEgICAgICAgICAgICAgICAgICAgICAgIC0wLjQxNDExICAgIDAuMjc1ODkgIC0xLjUwMSAwLjE0NTg4MSAgICBcbmZpbmFuY2lhbF9zdGF0dXNpbmFkZXF1YXRlIC0wLjQ1MzE0ICAgIDAuMjA3MDEgIC0yLjE4OSAwLjAzODE1NiAqICBcbmZpbmFuY2lhbF9zdGF0dXNhZGVxdWF0ZSAgIC0wLjIwNzUwICAgIDAuNTE3OTMgIC0wLjQwMSAwLjY5MjA5MyAgICBcbmRlMzJfMTEgICAgICAgICAgICAgICAgICAgICAwLjM3MzY3ICAgIDAuODQwMDcgICAwLjQ0NSAwLjY2MDI4NCAgICBcbmRlMzJfMjEgICAgICAgICAgICAgICAgICAgIC0wLjQ2MTQ0ICAgIDEuMTIxMTUgIC0wLjQxMiAwLjY4NDE1OSAgICBcbmRlMzJfb3RoZXIxICAgICAgICAgICAgICAgICAwLjkwODAwICAgIDAuODUyNTggICAxLjA2NSAwLjI5NzA1NSAgICBcbmRlMzJfOTEgICAgICAgICAgICAgICAgICAgICAwLjc2NTI2ICAgIDAuOTM4MjkgICAwLjgxNiAwLjQyMjQ0MSAgICBcbm1hcml0YWxfc3RhdHVzZGl2b3JjZWQgICAgICAxLjMwNDYwICAgIDAuMjkyNTAgICA0LjQ2MCAwLjAwMDE1MSAqKipcbm1hcml0YWxfc3RhdHVzd2lkb3dlZCAgICAgICAwLjg2NTcxICAgIDAuNDc1NDMgICAxLjgyMSAwLjA4MDYxMCAuICBcbm1hcml0YWxfc3RhdHVzc2luZ2xlICAgICAgICAwLjU1MTAzICAgIDAuNDUxNjEgICAxLjIyMCAwLjIzMzc5OCAgICBcbmRlMjAgICAgICAgICAgICAgICAgICAgICAgIC0wLjAzNDU4ICAgIDAuMDQ4NzAgIC0wLjcxMCAwLjQ4NDIwMyAgICBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIHF1YXNpYmlub21pYWwgZmFtaWx5IHRha2VuIHRvIGJlIDEuMDk4MDQpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA2XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = plan ~ brom3_agecohort + SEX + financial_status + 
+    de32_1 + de32_2 + de32_other + de32_9 + marital_status + 
+    de20, design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                -3.27363    1.00976  -3.242 0.003352 ** 
+brom3_agecohortMiddle      -0.66577    0.26688  -2.495 0.019575 *  
+brom3_agecohortEldest      -0.50588    0.43307  -1.168 0.253778    
+SEX1                       -0.41411    0.27589  -1.501 0.145881    
+financial_statusinadequate -0.45314    0.20701  -2.189 0.038156 *  
+financial_statusadequate   -0.20750    0.51793  -0.401 0.692093    
+de32_11                     0.37367    0.84007   0.445 0.660284    
+de32_21                    -0.46144    1.12115  -0.412 0.684159    
+de32_other1                 0.90800    0.85258   1.065 0.297055    
+de32_91                     0.76526    0.93829   0.816 0.422441    
+marital_statusdivorced      1.30460    0.29250   4.460 0.000151 ***
+marital_statuswidowed       0.86571    0.47543   1.821 0.080610 .  
+marital_statussingle        0.55103    0.45161   1.220 0.233798    
+de20                       -0.03458    0.04870  -0.710 0.484203    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.09804)
+
+Number of Fisher Scoring iterations: 6</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate Uniate</p>
@@ -574,6 +893,40 @@ svyglm(plan~brom3_agecohort+SEX+financial_status+de32_1+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBwbGFuIH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgZmluYW5jaWFsX3N0YXR1cyArIFxuICAgIGRlMzJfMSArIGRlMzJfb3RoZXIgKyBkZTMyXzkgKyBtYXJpdGFsX3N0YXR1cyArIGRlMjAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MiwgXG4gICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpKVxuXG5TdXJ2ZXkgZGVzaWduOlxuc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIFxuICAgIG5lc3QgPSBULCBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDIgPiBcbiAgICAgICAgMCkpXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgdCB2YWx1ZSBQcig+fHR8KSAgICBcbihJbnRlcmNlcHQpICAgICAgICAgICAgICAgIC0zLjUzMzE4ICAgIDAuNzI5NzYgIC00Ljg0MiA1LjExZS0wNSAqKipcbmJyb20zX2FnZWNvaG9ydE1pZGRsZSAgICAgIC0wLjY2ODE1ICAgIDAuMjY2ODIgIC0yLjUwNCAwLjAxODg4MCAqICBcbmJyb20zX2FnZWNvaG9ydEVsZGVzdCAgICAgIC0wLjUxMTA1ICAgIDAuNDM0ODUgIC0xLjE3NSAwLjI1MDU1MCAgICBcblNFWDEgICAgICAgICAgICAgICAgICAgICAgIC0wLjQxMjgwICAgIDAuMjc2MTUgIC0xLjQ5NSAwLjE0Njk5NSAgICBcbmZpbmFuY2lhbF9zdGF0dXNpbmFkZXF1YXRlIC0wLjQ1NTA2ICAgIDAuMjA3NTYgIC0yLjE5MiAwLjAzNzQ5MyAqICBcbmZpbmFuY2lhbF9zdGF0dXNhZGVxdWF0ZSAgIC0wLjIwOTMyICAgIDAuNTE3NDkgIC0wLjQwNCAwLjY4OTE1NyAgICBcbmRlMzJfMTEgICAgICAgICAgICAgICAgICAgICAwLjY0MjY5ICAgIDAuNTcxMDEgICAxLjEyNiAwLjI3MDY0OSAgICBcbmRlMzJfb3RoZXIxICAgICAgICAgICAgICAgICAxLjE3NTA2ICAgIDAuNjAzOTAgICAxLjk0NiAwLjA2MjU2NiAuICBcbmRlMzJfOTEgICAgICAgICAgICAgICAgICAgICAxLjAzNTIyICAgIDAuNjg1NzUgICAxLjUxMCAwLjE0MzE5NiAgICBcbm1hcml0YWxfc3RhdHVzZGl2b3JjZWQgICAgICAxLjMwNjMwICAgIDAuMjkzMDIgICA0LjQ1OCAwLjAwMDE0MSAqKipcbm1hcml0YWxfc3RhdHVzd2lkb3dlZCAgICAgICAwLjg2NTE3ICAgIDAuNDc1NTQgICAxLjgxOSAwLjA4MDM5NCAuICBcbm1hcml0YWxfc3RhdHVzc2luZ2xlICAgICAgICAwLjU1MjcwICAgIDAuNDUxOTUgICAxLjIyMyAwLjIzMjMzNCAgICBcbmRlMjAgICAgICAgICAgICAgICAgICAgICAgIC0wLjAzNTM0ICAgIDAuMDQ5MDMgIC0wLjcyMSAwLjQ3NzQ3OSAgICBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIHF1YXNpYmlub21pYWwgZmFtaWx5IHRha2VuIHRvIGJlIDEuMDg2MzQ1KVxuXG5OdW1iZXIgb2YgRmlzaGVyIFNjb3JpbmcgaXRlcmF0aW9uczogNlxuIn0= -->
+<pre><code>
+Call:
+svyglm(formula = plan ~ brom3_agecohort + SEX + financial_status + 
+    de32_1 + de32_other + de32_9 + marital_status + de20, design = SuicidePart2, 
+    family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                -3.53318    0.72976  -4.842 5.11e-05 ***
+brom3_agecohortMiddle      -0.66815    0.26682  -2.504 0.018880 *  
+brom3_agecohortEldest      -0.51105    0.43485  -1.175 0.250550    
+SEX1                       -0.41280    0.27615  -1.495 0.146995    
+financial_statusinadequate -0.45506    0.20756  -2.192 0.037493 *  
+financial_statusadequate   -0.20932    0.51749  -0.404 0.689157    
+de32_11                     0.64269    0.57101   1.126 0.270649    
+de32_other1                 1.17506    0.60390   1.946 0.062566 .  
+de32_91                     1.03522    0.68575   1.510 0.143196    
+marital_statusdivorced      1.30630    0.29302   4.458 0.000141 ***
+marital_statuswidowed       0.86517    0.47554   1.819 0.080394 .  
+marital_statussingle        0.55270    0.45195   1.223 0.232334    
+de20                       -0.03534    0.04903  -0.721 0.477479    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.086345)
+
+Number of Fisher Scoring iterations: 6</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate Years of Education</p>
@@ -586,6 +939,39 @@ svyglm(plan~brom3_agecohort+SEX+financial_status+de32_1+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBwbGFuIH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgZmluYW5jaWFsX3N0YXR1cyArIFxuICAgIGRlMzJfMSArIGRlMzJfb3RoZXIgKyBkZTMyXzkgKyBtYXJpdGFsX3N0YXR1cywgZGVzaWduID0gU3VpY2lkZVBhcnQyLCBcbiAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIikpXG5cblN1cnZleSBkZXNpZ246XG5zdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgXG4gICAgbmVzdCA9IFQsIGRhdGEgPSBzdWJzZXQoY2lkaWRhdGFfcHQyLCBjaWRpZGF0YV9wdDIkd2VpZ2h0MiA+IFxuICAgICAgICAwKSlcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB0IHZhbHVlIFByKD58dHwpICAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAgICAgIC0zLjkyODAgICAgIDAuNTg5MyAgLTYuNjY1IDMuNzRlLTA3ICoqKlxuYnJvbTNfYWdlY29ob3J0TWlkZGxlICAgICAgIC0wLjY5MzMgICAgIDAuMjY3MSAgLTIuNTk2IDAuMDE1MDg5ICogIFxuYnJvbTNfYWdlY29ob3J0RWxkZXN0ICAgICAgIC0wLjQyNDQgICAgIDAuMzUyNCAgLTEuMjA0IDAuMjM4ODc4ICAgIFxuU0VYMSAgICAgICAgICAgICAgICAgICAgICAgIC0wLjQxODUgICAgIDAuMjc3MCAgLTEuNTExIDAuMTQyMzUwICAgIFxuZmluYW5jaWFsX3N0YXR1c2luYWRlcXVhdGUgIC0wLjQ3ODAgICAgIDAuMjAzMiAgLTIuMzUyIDAuMDI2MTk0ICogIFxuZmluYW5jaWFsX3N0YXR1c2FkZXF1YXRlICAgIC0wLjIzNzAgICAgIDAuNTE0NSAgLTAuNDYxIDAuNjQ4NzE2ICAgIFxuZGUzMl8xMSAgICAgICAgICAgICAgICAgICAgICAwLjYzMDEgICAgIDAuNTczNCAgIDEuMDk5IDAuMjgxNTY5ICAgIFxuZGUzMl9vdGhlcjEgICAgICAgICAgICAgICAgICAxLjE2ODcgICAgIDAuNjA3MSAgIDEuOTI1IDAuMDY0NzkyIC4gIFxuZGUzMl85MSAgICAgICAgICAgICAgICAgICAgICAxLjAyNTEgICAgIDAuNjg1MyAgIDEuNDk2IDAuMTQ2Mjg2ICAgIFxubWFyaXRhbF9zdGF0dXNkaXZvcmNlZCAgICAgICAxLjI5NzcgICAgIDAuMjk1NCAgIDQuMzkyIDAuMDAwMTU2ICoqKlxubWFyaXRhbF9zdGF0dXN3aWRvd2VkICAgICAgICAwLjg4NzMgICAgIDAuNDkzNyAgIDEuNzk3IDAuMDgzNTA3IC4gIFxubWFyaXRhbF9zdGF0dXNzaW5nbGUgICAgICAgICAwLjU1NDkgICAgIDAuNDUyMCAgIDEuMjI4IDAuMjMwMjAxICAgIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgcXVhc2liaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMS4wNDEyMjcpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA2XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = plan ~ brom3_agecohort + SEX + financial_status + 
+    de32_1 + de32_other + de32_9 + marital_status, design = SuicidePart2, 
+    family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 -3.9280     0.5893  -6.665 3.74e-07 ***
+brom3_agecohortMiddle       -0.6933     0.2671  -2.596 0.015089 *  
+brom3_agecohortEldest       -0.4244     0.3524  -1.204 0.238878    
+SEX1                        -0.4185     0.2770  -1.511 0.142350    
+financial_statusinadequate  -0.4780     0.2032  -2.352 0.026194 *  
+financial_statusadequate    -0.2370     0.5145  -0.461 0.648716    
+de32_11                      0.6301     0.5734   1.099 0.281569    
+de32_other1                  1.1687     0.6071   1.925 0.064792 .  
+de32_91                      1.0251     0.6853   1.496 0.146286    
+marital_statusdivorced       1.2977     0.2954   4.392 0.000156 ***
+marital_statuswidowed        0.8873     0.4937   1.797 0.083507 .  
+marital_statussingle         0.5549     0.4520   1.228 0.230201    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.041227)
+
+Number of Fisher Scoring iterations: 6</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate Orthodox</p>
@@ -598,6 +984,38 @@ svyglm(plan~brom3_agecohort+SEX+financial_status+de32_other+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBwbGFuIH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgZmluYW5jaWFsX3N0YXR1cyArIFxuICAgIGRlMzJfb3RoZXIgKyBkZTMyXzkgKyBtYXJpdGFsX3N0YXR1cywgZGVzaWduID0gU3VpY2lkZVBhcnQyLCBcbiAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIikpXG5cblN1cnZleSBkZXNpZ246XG5zdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgXG4gICAgbmVzdCA9IFQsIGRhdGEgPSBzdWJzZXQoY2lkaWRhdGFfcHQyLCBjaWRpZGF0YV9wdDIkd2VpZ2h0MiA+IFxuICAgICAgICAwKSlcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB0IHZhbHVlIFByKD58dHwpICAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAgICAgIC0zLjM2MzQgICAgIDAuMzA3MCAtMTAuOTU2IDEuMjRlLTExICoqKlxuYnJvbTNfYWdlY29ob3J0TWlkZGxlICAgICAgIC0wLjY4NzkgICAgIDAuMjY2OCAgLTIuNTc5IDAuMDE1NDY0ICogIFxuYnJvbTNfYWdlY29ob3J0RWxkZXN0ICAgICAgIC0wLjQyNjcgICAgIDAuMzUyMyAgLTEuMjExIDAuMjM1OTcxICAgIFxuU0VYMSAgICAgICAgICAgICAgICAgICAgICAgIC0wLjQwMzIgICAgIDAuMjc1NiAgLTEuNDYzIDAuMTU0NjAxICAgIFxuZmluYW5jaWFsX3N0YXR1c2luYWRlcXVhdGUgIC0wLjQ4MDUgICAgIDAuMjAzNSAgLTIuMzYxIDAuMDI1NDA3ICogIFxuZmluYW5jaWFsX3N0YXR1c2FkZXF1YXRlICAgIC0wLjIwODAgICAgIDAuNTE1NSAgLTAuNDAzIDAuNjg5NjgzICAgIFxuZGUzMl9vdGhlcjEgICAgICAgICAgICAgICAgICAwLjYwODkgICAgIDAuMjM3NyAgIDIuNTYxIDAuMDE2MTA4ICogIFxuZGUzMl85MSAgICAgICAgICAgICAgICAgICAgICAwLjQ2MDUgICAgIDAuMzQ4NSAgIDEuMzIyIDAuMTk3MDEyICAgIFxubWFyaXRhbF9zdGF0dXNkaXZvcmNlZCAgICAgICAxLjMxNjggICAgIDAuMjkyNyAgIDQuNDk5IDAuMDAwMTA5ICoqKlxubWFyaXRhbF9zdGF0dXN3aWRvd2VkICAgICAgICAwLjg0NzcgICAgIDAuNDk2OSAgIDEuNzA2IDAuMDk5MDgzIC4gIFxubWFyaXRhbF9zdGF0dXNzaW5nbGUgICAgICAgICAwLjUyMDYgICAgIDAuNDQ3NSAgIDEuMTY0IDAuMjU0NDMyICAgIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgcXVhc2liaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMS4wMTc0NjIpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA2XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = plan ~ brom3_agecohort + SEX + financial_status + 
+    de32_other + de32_9 + marital_status, design = SuicidePart2, 
+    family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 -3.3634     0.3070 -10.956 1.24e-11 ***
+brom3_agecohortMiddle       -0.6879     0.2668  -2.579 0.015464 *  
+brom3_agecohortEldest       -0.4267     0.3523  -1.211 0.235971    
+SEX1                        -0.4032     0.2756  -1.463 0.154601    
+financial_statusinadequate  -0.4805     0.2035  -2.361 0.025407 *  
+financial_statusadequate    -0.2080     0.5155  -0.403 0.689683    
+de32_other1                  0.6089     0.2377   2.561 0.016108 *  
+de32_91                      0.4605     0.3485   1.322 0.197012    
+marital_statusdivorced       1.3168     0.2927   4.499 0.000109 ***
+marital_statuswidowed        0.8477     0.4969   1.706 0.099083 .  
+marital_statussingle         0.5206     0.4475   1.164 0.254432    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.017462)
+
+Number of Fisher Scoring iterations: 6</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate No Religion</p>
@@ -609,6 +1027,36 @@ svyglm(plan~brom3_agecohort+SEX+financial_status+de32_other+marital_status,
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBwbGFuIH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgZmluYW5jaWFsX3N0YXR1cyArIFxuICAgIGRlMzJfb3RoZXIgKyBtYXJpdGFsX3N0YXR1cywgZGVzaWduID0gU3VpY2lkZVBhcnQyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIikpXG5cblN1cnZleSBkZXNpZ246XG5zdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgXG4gICAgbmVzdCA9IFQsIGRhdGEgPSBzdWJzZXQoY2lkaWRhdGFfcHQyLCBjaWRpZGF0YV9wdDIkd2VpZ2h0MiA+IFxuICAgICAgICAwKSlcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB0IHZhbHVlIFByKD58dHwpICAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAgICAgIC0zLjMxMTEgICAgIDAuMjkzNSAtMTEuMjgxIDQuMDBlLTEyICoqKlxuYnJvbTNfYWdlY29ob3J0TWlkZGxlICAgICAgIC0wLjY0NDcgICAgIDAuMjY4NCAgLTIuNDAzICAgMC4wMjI5ICogIFxuYnJvbTNfYWdlY29ob3J0RWxkZXN0ICAgICAgIC0wLjQxMzcgICAgIDAuMzQyNSAgLTEuMjA4ICAgMC4yMzY4ICAgIFxuU0VYMSAgICAgICAgICAgICAgICAgICAgICAgIC0wLjM2MTYgICAgIDAuMjc0MSAgLTEuMzE5ICAgMC4xOTc0ICAgIFxuZmluYW5jaWFsX3N0YXR1c2luYWRlcXVhdGUgIC0wLjQ4ODkgICAgIDAuMjA0MCAgLTIuMzk2ICAgMC4wMjMyICogIFxuZmluYW5jaWFsX3N0YXR1c2FkZXF1YXRlICAgIC0wLjIwMjcgICAgIDAuNTE0OCAgLTAuMzk0ICAgMC42OTY2ICAgIFxuZGUzMl9vdGhlcjEgICAgICAgICAgICAgICAgICAwLjUyMjkgICAgIDAuMjM4NCAgIDIuMTkzICAgMC4wMzY1ICogIFxubWFyaXRhbF9zdGF0dXNkaXZvcmNlZCAgICAgICAxLjMxOTUgICAgIDAuMjg3NSAgIDQuNTg5IDcuOTRlLTA1ICoqKlxubWFyaXRhbF9zdGF0dXN3aWRvd2VkICAgICAgICAwLjgzNjMgICAgIDAuNDkwOSAgIDEuNzA0ICAgMC4wOTkyIC4gIFxubWFyaXRhbF9zdGF0dXNzaW5nbGUgICAgICAgICAwLjU1MjkgICAgIDAuNDYxNiAgIDEuMTk4ICAgMC4yNDA3ICAgIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgcXVhc2liaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMS4wMDk2MjgpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA2XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = plan ~ brom3_agecohort + SEX + financial_status + 
+    de32_other + marital_status, design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 -3.3111     0.2935 -11.281 4.00e-12 ***
+brom3_agecohortMiddle       -0.6447     0.2684  -2.403   0.0229 *  
+brom3_agecohortEldest       -0.4137     0.3425  -1.208   0.2368    
+SEX1                        -0.3616     0.2741  -1.319   0.1974    
+financial_statusinadequate  -0.4889     0.2040  -2.396   0.0232 *  
+financial_statusadequate    -0.2027     0.5148  -0.394   0.6966    
+de32_other1                  0.5229     0.2384   2.193   0.0365 *  
+marital_statusdivorced       1.3195     0.2875   4.589 7.94e-05 ***
+marital_statuswidowed        0.8363     0.4909   1.704   0.0992 .  
+marital_statussingle         0.5529     0.4616   1.198   0.2407    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.009628)
+
+Number of Fisher Scoring iterations: 6</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate Sex</p>
@@ -620,6 +1068,35 @@ svyglm(plan~brom3_agecohort+financial_status+de32_other+marital_status,
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBwbGFuIH4gYnJvbTNfYWdlY29ob3J0ICsgZmluYW5jaWFsX3N0YXR1cyArIFxuICAgIGRlMzJfb3RoZXIgKyBtYXJpdGFsX3N0YXR1cywgZGVzaWduID0gU3VpY2lkZVBhcnQyLCBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIikpXG5cblN1cnZleSBkZXNpZ246XG5zdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgXG4gICAgbmVzdCA9IFQsIGRhdGEgPSBzdWJzZXQoY2lkaWRhdGFfcHQyLCBjaWRpZGF0YV9wdDIkd2VpZ2h0MiA+IFxuICAgICAgICAwKSlcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB0IHZhbHVlIFByKD58dHwpICAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAgICAgIC0zLjQ2MzYgICAgIDAuMjQ0NyAtMTQuMTU0IDguMTFlLTE1ICoqKlxuYnJvbTNfYWdlY29ob3J0TWlkZGxlICAgICAgIC0wLjY2MDUgICAgIDAuMjc1MCAgLTIuNDAyICAgMC4wMjI3ICogIFxuYnJvbTNfYWdlY29ob3J0RWxkZXN0ICAgICAgIC0wLjQwMzMgICAgIDAuMzM2MSAgLTEuMjAwICAgMC4yMzk1ICAgIFxuZmluYW5jaWFsX3N0YXR1c2luYWRlcXVhdGUgIC0wLjQ5NDggICAgIDAuMjAwNCAgLTIuNDY5ICAgMC4wMTk1ICogIFxuZmluYW5jaWFsX3N0YXR1c2FkZXF1YXRlICAgIC0wLjMwMTkgICAgIDAuNTA3OCAgLTAuNTk0ICAgMC41NTY3ICAgIFxuZGUzMl9vdGhlcjEgICAgICAgICAgICAgICAgICAwLjUzMTggICAgIDAuMjM5NCAgIDIuMjIxICAgMC4wMzQwICogIFxubWFyaXRhbF9zdGF0dXNkaXZvcmNlZCAgICAgICAxLjM4MzAgICAgIDAuMjc5NSAgIDQuOTQ5IDIuNjllLTA1ICoqKlxubWFyaXRhbF9zdGF0dXN3aWRvd2VkICAgICAgICAwLjkzNzEgICAgIDAuNDY2OCAgIDIuMDA3ICAgMC4wNTM4IC4gIFxubWFyaXRhbF9zdGF0dXNzaW5nbGUgICAgICAgICAwLjUxMDUgICAgIDAuNDg3MSAgIDEuMDQ4ICAgMC4zMDMwICAgIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgcXVhc2liaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMS4wMjg1MjEpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA2XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = plan ~ brom3_agecohort + financial_status + 
+    de32_other + marital_status, design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 -3.4636     0.2447 -14.154 8.11e-15 ***
+brom3_agecohortMiddle       -0.6605     0.2750  -2.402   0.0227 *  
+brom3_agecohortEldest       -0.4033     0.3361  -1.200   0.2395    
+financial_statusinadequate  -0.4948     0.2004  -2.469   0.0195 *  
+financial_statusadequate    -0.3019     0.5078  -0.594   0.5567    
+de32_other1                  0.5318     0.2394   2.221   0.0340 *  
+marital_statusdivorced       1.3830     0.2795   4.949 2.69e-05 ***
+marital_statuswidowed        0.9371     0.4668   2.007   0.0538 .  
+marital_statussingle         0.5105     0.4871   1.048   0.3030    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.028521)
+
+Number of Fisher Scoring iterations: 6</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -634,6 +1111,38 @@ svyglm(attempt~brom3_agecohort+SEX+de32_2+marital_status+emp,
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBhdHRlbXB0IH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgZGUzMl8yICsgbWFyaXRhbF9zdGF0dXMgKyBcbiAgICBlbXAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpKVxuXG5TdXJ2ZXkgZGVzaWduOlxuc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIFxuICAgIG5lc3QgPSBULCBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDIgPiBcbiAgICAgICAgMCkpXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB0IHZhbHVlIFByKD58dHwpICAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAtMy43MzI1NCAgICAwLjI0MzI3IC0xNS4zNDMgNy40NGUtMTUgKioqXG5icm9tM19hZ2Vjb2hvcnRNaWRkbGUgIC0xLjA2MDMwICAgIDAuNDEzNTQgIC0yLjU2NCAwLjAxNjIzMiAqICBcbmJyb20zX2FnZWNvaG9ydEVsZGVzdCAgLTEuOTg0NzcgICAgMC42MTI2NyAgLTMuMjQwIDAuMDAzMTY5ICoqIFxuU0VYMSAgICAgICAgICAgICAgICAgICAtMC41NjcxMyAgICAwLjI5OTI2ICAtMS44OTUgMC4wNjg4MzcgLiAgXG5kZTMyXzIxICAgICAgICAgICAgICAgIC0xLjExODQ0ICAgIDAuNTIyMjkgIC0yLjE0MSAwLjA0MTQyMCAqICBcbm1hcml0YWxfc3RhdHVzZGl2b3JjZWQgIDEuNTU5OTMgICAgMC4zMTczMiAgIDQuOTE2IDMuODJlLTA1ICoqKlxubWFyaXRhbF9zdGF0dXN3aWRvd2VkICAgMS44OTEwNSAgICAwLjQ3MTE0ICAgNC4wMTQgMC4wMDA0MjcgKioqXG5tYXJpdGFsX3N0YXR1c3NpbmdsZSAgICAwLjg1NTYyICAgIDAuNDYwOTUgICAxLjg1NiAwLjA3NDM2NyAuICBcbmVtcDIgICAgICAgICAgICAgICAgICAgLTAuODY1MzcgICAgMC42MzI4NyAgLTEuMzY3IDAuMTgyNzg0ICAgIFxuZW1wMyAgICAgICAgICAgICAgICAgICAgMC4wNTc3OCAgICAwLjU3NjI5ICAgMC4xMDAgMC45MjA4ODIgICAgXG5lbXA0ICAgICAgICAgICAgICAgICAgICAwLjIwMzQyICAgIDAuNDY5MzkgICAwLjQzMyAwLjY2ODE5MCAgICBcbmVtcDUgICAgICAgICAgICAgICAgICAgIDAuMTQ0MTUgICAgMC40NDk5MSAgIDAuMzIwIDAuNzUxMTM3ICAgIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgcXVhc2liaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMS4wNDQ5MzgpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA3XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = attempt ~ brom3_agecohort + SEX + de32_2 + marital_status + 
+    emp, design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                       Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            -3.73254    0.24327 -15.343 7.44e-15 ***
+brom3_agecohortMiddle  -1.06030    0.41354  -2.564 0.016232 *  
+brom3_agecohortEldest  -1.98477    0.61267  -3.240 0.003169 ** 
+SEX1                   -0.56713    0.29926  -1.895 0.068837 .  
+de32_21                -1.11844    0.52229  -2.141 0.041420 *  
+marital_statusdivorced  1.55993    0.31732   4.916 3.82e-05 ***
+marital_statuswidowed   1.89105    0.47114   4.014 0.000427 ***
+marital_statussingle    0.85562    0.46095   1.856 0.074367 .  
+emp2                   -0.86537    0.63287  -1.367 0.182784    
+emp3                    0.05778    0.57629   0.100 0.920882    
+emp4                    0.20342    0.46939   0.433 0.668190    
+emp5                    0.14415    0.44991   0.320 0.751137    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.044938)
+
+Number of Fisher Scoring iterations: 7</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Refining</p>
@@ -645,6 +1154,34 @@ svyglm(attempt~brom3_agecohort+SEX+de32_2+marital_status,
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBhdHRlbXB0IH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgZGUzMl8yICsgbWFyaXRhbF9zdGF0dXMsIFxuICAgIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpKVxuXG5TdXJ2ZXkgZGVzaWduOlxuc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIFxuICAgIG5lc3QgPSBULCBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDIgPiBcbiAgICAgICAgMCkpXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB0IHZhbHVlIFByKD58dHwpICAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAgLTMuNzE2MyAgICAgMC4yNjA1IC0xNC4yNjcgMy42MmUtMTUgKioqXG5icm9tM19hZ2Vjb2hvcnRNaWRkbGUgICAtMS4wMDk4ICAgICAwLjM5NDcgIC0yLjU1OSAwLjAxNTYxMiAqICBcbmJyb20zX2FnZWNvaG9ydEVsZGVzdCAgIC0xLjgwOTQgICAgIDAuNDIzOCAgLTQuMjY5IDAuMDAwMTcyICoqKlxuU0VYMSAgICAgICAgICAgICAgICAgICAgLTAuNTc1OCAgICAgMC4yODUwICAtMi4wMjEgMC4wNTIwMjYgLiAgXG5kZTMyXzIxICAgICAgICAgICAgICAgICAtMS4wOTAzICAgICAwLjUxMzggIC0yLjEyMiAwLjA0MTkyMCAqICBcbm1hcml0YWxfc3RhdHVzZGl2b3JjZWQgICAxLjU0MzggICAgIDAuMzExMCAgIDQuOTY0IDIuMzhlLTA1ICoqKlxubWFyaXRhbF9zdGF0dXN3aWRvd2VkICAgIDEuODg3NSAgICAgMC40NjIwICAgNC4wODUgMC4wMDAyODggKioqXG5tYXJpdGFsX3N0YXR1c3NpbmdsZSAgICAgMC43MDk2ICAgICAwLjQ4ODAgICAxLjQ1NCAwLjE1NTk1OCAgICBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIHF1YXNpYmlub21pYWwgZmFtaWx5IHRha2VuIHRvIGJlIDEuMDQ3NzczKVxuXG5OdW1iZXIgb2YgRmlzaGVyIFNjb3JpbmcgaXRlcmF0aW9uczogN1xuIn0= -->
+<pre><code>
+Call:
+svyglm(formula = attempt ~ brom3_agecohort + SEX + de32_2 + marital_status, 
+    design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                       Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)             -3.7163     0.2605 -14.267 3.62e-15 ***
+brom3_agecohortMiddle   -1.0098     0.3947  -2.559 0.015612 *  
+brom3_agecohortEldest   -1.8094     0.4238  -4.269 0.000172 ***
+SEX1                    -0.5758     0.2850  -2.021 0.052026 .  
+de32_21                 -1.0903     0.5138  -2.122 0.041920 *  
+marital_statusdivorced   1.5438     0.3110   4.964 2.38e-05 ***
+marital_statuswidowed    1.8875     0.4620   4.085 0.000288 ***
+marital_statussingle     0.7096     0.4880   1.454 0.155958    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.047773)
+
+Number of Fisher Scoring iterations: 7</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Full Demographics</p>
@@ -657,6 +1194,49 @@ svyglm(attempt~brom3_agecohort+SEX+io16+financial_status+de32_1+de32_2+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBhdHRlbXB0IH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgaW8xNiArIGZpbmFuY2lhbF9zdGF0dXMgKyBcbiAgICBkZTMyXzEgKyBkZTMyXzIgKyBkZTMyX290aGVyICsgZGUzMl85ICsgZW1wICsgbWFyaXRhbF9zdGF0dXMgKyBcbiAgICBkZTIwLCBkZXNpZ24gPSBTdWljaWRlUGFydDIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSlcblxuU3VydmV5IGRlc2lnbjpcbnN2eWRlc2lnbihpZHMgPSB+c2VjdSwgc3RyYXRhID0gfnN0cmF0YSwgd2VpZ2h0cyA9IH53ZWlnaHQyLCBcbiAgICBuZXN0ID0gVCwgZGF0YSA9IHN1YnNldChjaWRpZGF0YV9wdDIsIGNpZGlkYXRhX3B0MiR3ZWlnaHQyID4gXG4gICAgICAgIDApKVxuXG5Db2VmZmljaWVudHM6XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgdCB2YWx1ZSBQcig+fHR8KSAgICBcbihJbnRlcmNlcHQpICAgICAgICAgICAgICAgIC0yLjIyMjkzNDIgIDAuODQwMTcyNSAgLTIuNjQ2IDAuMDE2OTg4ICogIFxuYnJvbTNfYWdlY29ob3J0TWlkZGxlICAgICAgLTEuMTUwMTgzMCAgMC4zOTEyNjgzICAtMi45NDAgMC4wMDkxNTkgKiogXG5icm9tM19hZ2Vjb2hvcnRFbGRlc3QgICAgICAtMi4zMDAzMDUxICAwLjY5MDI3NjAgIC0zLjMzMiAwLjAwMzk0NCAqKiBcblNFWDEgICAgICAgICAgICAgICAgICAgICAgIC0wLjU1MjkwNjIgIDAuMjg3NTk3MSAgLTEuOTIzIDAuMDcxNDYyIC4gIFxuaW8xNjIgICAgICAgICAgICAgICAgICAgICAgLTAuNTgwMTE4MCAgMC41MDYyODg2ICAtMS4xNDYgMC4yNjc3NDIgICAgXG5pbzE2MyAgICAgICAgICAgICAgICAgICAgICAgMC4xNTE1MDI3ICAwLjQ5OTQ1MjIgICAwLjMwMyAwLjc2NTMxMyAgICBcbmlvMTY0ICAgICAgICAgICAgICAgICAgICAgICAwLjQ2NDQ2MjMgIDAuNDU1Mzg2NCAgIDEuMDIwIDAuMzIyMDU4ICAgIFxuaW8xNjUgICAgICAgICAgICAgICAgICAgICAgIDAuMzA5NjE1OSAgMC42MDA5ODcxICAgMC41MTUgMC42MTMwNjIgICAgXG5maW5hbmNpYWxfc3RhdHVzaW5hZGVxdWF0ZSAtMC4wMDA1MTI3ICAwLjI0OTE5NDIgIC0wLjAwMiAwLjk5ODM4MiAgICBcbmZpbmFuY2lhbF9zdGF0dXNhZGVxdWF0ZSAgIC0wLjYxNjQ3NzkgIDEuMDcwNjQwOSAgLTAuNTc2IDAuNTcyMjkzICAgIFxuZGUzMl8xMSAgICAgICAgICAgICAgICAgICAgLTAuMzMyODg5NSAgMC42NjY3MTk3ICAtMC40OTkgMC42MjM5NzIgICAgXG5kZTMyXzIxICAgICAgICAgICAgICAgICAgICAtMS4xMzE1MDA1ICAwLjgxNjU1NTkgIC0xLjM4NiAwLjE4Mzc1MCAgICBcbmRlMzJfb3RoZXIxICAgICAgICAgICAgICAgICAwLjM3NTk5NTAgIDAuNjExNDQ1MCAgIDAuNjE1IDAuNTQ2NzQ2ICAgIFxuZGUzMl85MSAgICAgICAgICAgICAgICAgICAgIDAuMTA4NTE3MSAgMC44ODQ2ODU0ICAgMC4xMjMgMC45MDM4MTMgICAgXG5lbXAyICAgICAgICAgICAgICAgICAgICAgICAtMS4wNTYwMzUwICAwLjYyMTgxMTEgIC0xLjY5OCAwLjEwNzY3NCAgICBcbmVtcDMgICAgICAgICAgICAgICAgICAgICAgICAwLjA2MTI0NjggIDAuNTQzNjg3NiAgIDAuMTEzIDAuOTExNjI3ICAgIFxuZW1wNCAgICAgICAgICAgICAgICAgICAgICAgLTAuMDM0MTE0MiAgMC41MTM1MDUwICAtMC4wNjYgMC45NDc4MDcgICAgXG5lbXA1ICAgICAgICAgICAgICAgICAgICAgICAgMC4xNzA2MjI3ICAwLjQ0NDM1MzggICAwLjM4NCAwLjcwNTc1NCAgICBcbm1hcml0YWxfc3RhdHVzZGl2b3JjZWQgICAgICAxLjU1OTY3MDIgIDAuMzQ1Nzk1NSAgIDQuNTEwIDAuMDAwMzA5ICoqKlxubWFyaXRhbF9zdGF0dXN3aWRvd2VkICAgICAgIDEuODkwODA2MCAgMC40NjYzMzUwICAgNC4wNTUgMC4wMDA4MjQgKioqXG5tYXJpdGFsX3N0YXR1c3NpbmdsZSAgICAgICAgMC43MDIyOTU0ICAwLjQyODYyOTkgICAxLjYzOCAwLjExOTY5OSAgICBcbmRlMjAgICAgICAgICAgICAgICAgICAgICAgIC0wLjExNjgyNTMgIDAuMDUxOTc3MiAgLTIuMjQ4IDAuMDM4MTYyICogIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgcXVhc2liaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMS4xNTQ4NzkpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA3XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = attempt ~ brom3_agecohort + SEX + io16 + financial_status + 
+    de32_1 + de32_2 + de32_other + de32_9 + emp + marital_status + 
+    de20, design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                -2.2229342  0.8401725  -2.646 0.016988 *  
+brom3_agecohortMiddle      -1.1501830  0.3912683  -2.940 0.009159 ** 
+brom3_agecohortEldest      -2.3003051  0.6902760  -3.332 0.003944 ** 
+SEX1                       -0.5529062  0.2875971  -1.923 0.071462 .  
+io162                      -0.5801180  0.5062886  -1.146 0.267742    
+io163                       0.1515027  0.4994522   0.303 0.765313    
+io164                       0.4644623  0.4553864   1.020 0.322058    
+io165                       0.3096159  0.6009871   0.515 0.613062    
+financial_statusinadequate -0.0005127  0.2491942  -0.002 0.998382    
+financial_statusadequate   -0.6164779  1.0706409  -0.576 0.572293    
+de32_11                    -0.3328895  0.6667197  -0.499 0.623972    
+de32_21                    -1.1315005  0.8165559  -1.386 0.183750    
+de32_other1                 0.3759950  0.6114450   0.615 0.546746    
+de32_91                     0.1085171  0.8846854   0.123 0.903813    
+emp2                       -1.0560350  0.6218111  -1.698 0.107674    
+emp3                        0.0612468  0.5436876   0.113 0.911627    
+emp4                       -0.0341142  0.5135050  -0.066 0.947807    
+emp5                        0.1706227  0.4443538   0.384 0.705754    
+marital_statusdivorced      1.5596702  0.3457955   4.510 0.000309 ***
+marital_statuswidowed       1.8908060  0.4663350   4.055 0.000824 ***
+marital_statussingle        0.7022954  0.4286299   1.638 0.119699    
+de20                       -0.1168253  0.0519772  -2.248 0.038162 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.154879)
+
+Number of Fisher Scoring iterations: 7</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate Financial Status</p>
@@ -669,6 +1249,47 @@ svyglm(attempt~brom3_agecohort+SEX+io16+de32_1+de32_2+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBhdHRlbXB0IH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgaW8xNiArIGRlMzJfMSArIFxuICAgIGRlMzJfMiArIGRlMzJfb3RoZXIgKyBkZTMyXzkgKyBlbXAgKyBtYXJpdGFsX3N0YXR1cyArIGRlMjAsIFxuICAgIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MiwgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpKVxuXG5TdXJ2ZXkgZGVzaWduOlxuc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIFxuICAgIG5lc3QgPSBULCBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDIgPiBcbiAgICAgICAgMCkpXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgdCB2YWx1ZSBQcig+fHR8KSAgICBcbihJbnRlcmNlcHQpICAgICAgICAgICAgLTIuMjIxMDQ3ICAgMC44MTc2NTMgIC0yLjcxNiAwLjAxMzY5NyAqICBcbmJyb20zX2FnZWNvaG9ydE1pZGRsZSAgLTEuMTA2ODE2ICAgMC40MDA2MDIgIC0yLjc2MyAwLjAxMjM4NCAqICBcbmJyb20zX2FnZWNvaG9ydEVsZGVzdCAgLTIuMjU1NDY4ICAgMC42ODk2NDkgIC0zLjI3MCAwLjAwNDAyNCAqKiBcblNFWDEgICAgICAgICAgICAgICAgICAgLTAuNTc5NTc3ICAgMC4yODU3NzQgIC0yLjAyOCAwLjA1NjgwNyAuICBcbmlvMTYyICAgICAgICAgICAgICAgICAgLTAuNTQyNzcwICAgMC41MjE5MDUgIC0xLjA0MCAwLjMxMTQwNCAgICBcbmlvMTYzICAgICAgICAgICAgICAgICAgIDAuMTY1MTEzICAgMC41MDAzOTMgICAwLjMzMCAwLjc0NTAzNiAgICBcbmlvMTY0ICAgICAgICAgICAgICAgICAgIDAuNDMzMTI3ICAgMC40NDM4NjMgICAwLjk3NiAwLjM0MTQxOSAgICBcbmlvMTY1ICAgICAgICAgICAgICAgICAgIDAuMjk0MjI1ICAgMC41ODAzNTAgICAwLjUwNyAwLjYxODAwNCAgICBcbmRlMzJfMTEgICAgICAgICAgICAgICAgLTAuMzYzMTcyICAgMC42NzQ4NjMgIC0wLjUzOCAwLjU5NjcyNyAgICBcbmRlMzJfMjEgICAgICAgICAgICAgICAgLTEuMTM1MjY1ICAgMC44MjI4NjYgIC0xLjM4MCAwLjE4MzcxNyAgICBcbmRlMzJfb3RoZXIxICAgICAgICAgICAgIDAuMzU3MTMyICAgMC42MjUyMTIgICAwLjU3MSAwLjU3NDU0NyAgICBcbmRlMzJfOTEgICAgICAgICAgICAgICAgIDAuMDcwODE5ICAgMC44ODI5NzkgICAwLjA4MCAwLjkzNjkxMyAgICBcbmVtcDIgICAgICAgICAgICAgICAgICAgLTEuMDE4MzQ2ICAgMC42NDYyNzAgIC0xLjU3NiAwLjEzMTU5MyAgICBcbmVtcDMgICAgICAgICAgICAgICAgICAgIDAuMDAzNzczICAgMC41NTI3NzIgICAwLjAwNyAwLjk5NDYyNiAgICBcbmVtcDQgICAgICAgICAgICAgICAgICAgLTAuMDIyODI4ICAgMC40OTk3MTEgIC0wLjA0NiAwLjk2NDA0MCAgICBcbmVtcDUgICAgICAgICAgICAgICAgICAgIDAuMTQzNjUxICAgMC40Mzc5NTYgICAwLjMyOCAwLjc0NjQ5NiAgICBcbm1hcml0YWxfc3RhdHVzZGl2b3JjZWQgIDEuNTUxNDQ1ICAgMC4zNDY3NjEgICA0LjQ3NCAwLjAwMDI2MCAqKipcbm1hcml0YWxfc3RhdHVzd2lkb3dlZCAgIDEuODYyOTI1ICAgMC40NjI0NjcgICA0LjAyOCAwLjAwMDcxOCAqKipcbm1hcml0YWxfc3RhdHVzc2luZ2xlICAgIDAuNzA2NTgwICAgMC40MTczNDcgICAxLjY5MyAwLjEwNjc4MyAgICBcbmRlMjAgICAgICAgICAgICAgICAgICAgLTAuMTE4MTAwICAgMC4wNTIwNTcgIC0yLjI2OSAwLjAzNTEzNCAqICBcbi0tLVxuU2lnbmlmLiBjb2RlczogIDAg4oCYKioq4oCZIDAuMDAxIOKAmCoq4oCZIDAuMDEg4oCYKuKAmSAwLjA1IOKAmC7igJkgMC4xIOKAmCDigJkgMVxuXG4oRGlzcGVyc2lvbiBwYXJhbWV0ZXIgZm9yIHF1YXNpYmlub21pYWwgZmFtaWx5IHRha2VuIHRvIGJlIDEuMTYwNTEpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA3XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = attempt ~ brom3_agecohort + SEX + io16 + de32_1 + 
+    de32_2 + de32_other + de32_9 + emp + marital_status + de20, 
+    design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                        Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            -2.221047   0.817653  -2.716 0.013697 *  
+brom3_agecohortMiddle  -1.106816   0.400602  -2.763 0.012384 *  
+brom3_agecohortEldest  -2.255468   0.689649  -3.270 0.004024 ** 
+SEX1                   -0.579577   0.285774  -2.028 0.056807 .  
+io162                  -0.542770   0.521905  -1.040 0.311404    
+io163                   0.165113   0.500393   0.330 0.745036    
+io164                   0.433127   0.443863   0.976 0.341419    
+io165                   0.294225   0.580350   0.507 0.618004    
+de32_11                -0.363172   0.674863  -0.538 0.596727    
+de32_21                -1.135265   0.822866  -1.380 0.183717    
+de32_other1             0.357132   0.625212   0.571 0.574547    
+de32_91                 0.070819   0.882979   0.080 0.936913    
+emp2                   -1.018346   0.646270  -1.576 0.131593    
+emp3                    0.003773   0.552772   0.007 0.994626    
+emp4                   -0.022828   0.499711  -0.046 0.964040    
+emp5                    0.143651   0.437956   0.328 0.746496    
+marital_statusdivorced  1.551445   0.346761   4.474 0.000260 ***
+marital_statuswidowed   1.862925   0.462467   4.028 0.000718 ***
+marital_statussingle    0.706580   0.417347   1.693 0.106783    
+de20                   -0.118100   0.052057  -2.269 0.035134 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.16051)
+
+Number of Fisher Scoring iterations: 7</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate Employment</p>
@@ -681,6 +1302,43 @@ svyglm(attempt~brom3_agecohort+SEX+io16+de32_1+de32_2+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBhdHRlbXB0IH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgaW8xNiArIGRlMzJfMSArIFxuICAgIGRlMzJfMiArIGRlMzJfb3RoZXIgKyBkZTMyXzkgKyBtYXJpdGFsX3N0YXR1cyArIGRlMjAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MiwgXG4gICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpKVxuXG5TdXJ2ZXkgZGVzaWduOlxuc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIFxuICAgIG5lc3QgPSBULCBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDIgPiBcbiAgICAgICAgMCkpXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB0IHZhbHVlIFByKD58dHwpICAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAtMi4xNzUyMiAgICAwLjg2MTY4ICAtMi41MjQgMC4wMTg5NDQgKiAgXG5icm9tM19hZ2Vjb2hvcnRNaWRkbGUgIC0xLjA3MTA3ICAgIDAuMzkyMTEgIC0yLjczMiAwLjAxMTg5NCAqICBcbmJyb20zX2FnZWNvaG9ydEVsZGVzdCAgLTIuMjc4NjcgICAgMC41NjQ1NiAgLTQuMDM2IDAuMDAwNTE0ICoqKlxuU0VYMSAgICAgICAgICAgICAgICAgICAtMC42MTM4OCAgICAwLjI4NTMwICAtMi4xNTIgMC4wNDIxNTMgKiAgXG5pbzE2MiAgICAgICAgICAgICAgICAgIC0wLjUxMzkyICAgIDAuNTAyMjQgIC0xLjAyMyAwLjMxNjgzMiAgICBcbmlvMTYzICAgICAgICAgICAgICAgICAgIDAuMTQxNjQgICAgMC41MDM0MCAgIDAuMjgxIDAuNzgwOTUyICAgIFxuaW8xNjQgICAgICAgICAgICAgICAgICAgMC40MDk0MiAgICAwLjQzMzM0ICAgMC45NDUgMC4zNTQ1NzUgICAgXG5pbzE2NSAgICAgICAgICAgICAgICAgICAwLjI1Nzg2ICAgIDAuNjAzNTAgICAwLjQyNyAwLjY3MzE1NSAgICBcbmRlMzJfMTEgICAgICAgICAgICAgICAgLTAuMzI3MjQgICAgMC42NjM4NCAgLTAuNDkzIDAuNjI2NzIzICAgIFxuZGUzMl8yMSAgICAgICAgICAgICAgICAtMS4wODEwOSAgICAwLjgwOTU0ICAtMS4zMzUgMC4xOTQ4MDAgICAgXG5kZTMyX290aGVyMSAgICAgICAgICAgICAwLjM1ODExICAgIDAuNjI1NDggICAwLjU3MyAwLjU3MjUxNCAgICBcbmRlMzJfOTEgICAgICAgICAgICAgICAgIDAuMTE3ODAgICAgMC44NjkyNyAgIDAuMTM2IDAuODkzMzg1ICAgIFxubWFyaXRhbF9zdGF0dXNkaXZvcmNlZCAgMS41NDc3OSAgICAwLjMzOTAyICAgNC41NjUgMC4wMDAxMzcgKioqXG5tYXJpdGFsX3N0YXR1c3dpZG93ZWQgICAxLjg0MDIyICAgIDAuNDU2NjcgICA0LjAzMCAwLjAwMDUyMyAqKipcbm1hcml0YWxfc3RhdHVzc2luZ2xlICAgIDAuNTQzNzQgICAgMC40NDI5MyAgIDEuMjI4IDAuMjMyMDE1ICAgIFxuZGUyMCAgICAgICAgICAgICAgICAgICAtMC4xMjIyNyAgICAwLjA1Mjg2ICAtMi4zMTMgMC4wMzAwMDMgKiAgXG4tLS1cblNpZ25pZi4gY29kZXM6ICAwIOKAmCoqKuKAmSAwLjAwMSDigJgqKuKAmSAwLjAxIOKAmCrigJkgMC4wNSDigJgu4oCZIDAuMSDigJgg4oCZIDFcblxuKERpc3BlcnNpb24gcGFyYW1ldGVyIGZvciBxdWFzaWJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxLjE1NTU2MylcblxuTnVtYmVyIG9mIEZpc2hlciBTY29yaW5nIGl0ZXJhdGlvbnM6IDdcbiJ9 -->
+<pre><code>
+Call:
+svyglm(formula = attempt ~ brom3_agecohort + SEX + io16 + de32_1 + 
+    de32_2 + de32_other + de32_9 + marital_status + de20, design = SuicidePart2, 
+    family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                       Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            -2.17522    0.86168  -2.524 0.018944 *  
+brom3_agecohortMiddle  -1.07107    0.39211  -2.732 0.011894 *  
+brom3_agecohortEldest  -2.27867    0.56456  -4.036 0.000514 ***
+SEX1                   -0.61388    0.28530  -2.152 0.042153 *  
+io162                  -0.51392    0.50224  -1.023 0.316832    
+io163                   0.14164    0.50340   0.281 0.780952    
+io164                   0.40942    0.43334   0.945 0.354575    
+io165                   0.25786    0.60350   0.427 0.673155    
+de32_11                -0.32724    0.66384  -0.493 0.626723    
+de32_21                -1.08109    0.80954  -1.335 0.194800    
+de32_other1             0.35811    0.62548   0.573 0.572514    
+de32_91                 0.11780    0.86927   0.136 0.893385    
+marital_statusdivorced  1.54779    0.33902   4.565 0.000137 ***
+marital_statuswidowed   1.84022    0.45667   4.030 0.000523 ***
+marital_statussingle    0.54374    0.44293   1.228 0.232015    
+de20                   -0.12227    0.05286  -2.313 0.030003 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.155563)
+
+Number of Fisher Scoring iterations: 7</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate No Religion</p>
@@ -693,6 +1351,42 @@ svyglm(attempt~brom3_agecohort+SEX+io16+de32_1+de32_2+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBhdHRlbXB0IH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgaW8xNiArIGRlMzJfMSArIFxuICAgIGRlMzJfMiArIGRlMzJfb3RoZXIgKyBtYXJpdGFsX3N0YXR1cyArIGRlMjAsIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MiwgXG4gICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbChcImxvZ2l0XCIpKVxuXG5TdXJ2ZXkgZGVzaWduOlxuc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIFxuICAgIG5lc3QgPSBULCBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDIgPiBcbiAgICAgICAgMCkpXG5cbkNvZWZmaWNpZW50czpcbiAgICAgICAgICAgICAgICAgICAgICAgRXN0aW1hdGUgU3RkLiBFcnJvciB0IHZhbHVlIFByKD58dHwpICAgIFxuKEludGVyY2VwdCkgICAgICAgICAgICAtMi4wODYxOSAgICAwLjkxOTc3ICAtMi4yNjggMC4wMzI2MDAgKiAgXG5icm9tM19hZ2Vjb2hvcnRNaWRkbGUgIC0xLjA2OTQyICAgIDAuMzkwMTYgIC0yLjc0MSAwLjAxMTM4MyAqICBcbmJyb20zX2FnZWNvaG9ydEVsZGVzdCAgLTIuMjc4NzMgICAgMC41NjU1OCAgLTQuMDI5IDAuMDAwNDkwICoqKlxuU0VYMSAgICAgICAgICAgICAgICAgICAtMC42MTAzOSAgICAwLjI4MjM3ICAtMi4xNjIgMC4wNDA4MzggKiAgXG5pbzE2MiAgICAgICAgICAgICAgICAgIC0wLjUyNDQ3ICAgIDAuNTE4NTYgIC0xLjAxMSAwLjMyMTkxMCAgICBcbmlvMTYzICAgICAgICAgICAgICAgICAgIDAuMTQ1MzcgICAgMC40OTA5NyAgIDAuMjk2IDAuNzY5NzEwICAgIFxuaW8xNjQgICAgICAgICAgICAgICAgICAgMC40MDM4OSAgICAwLjQ0MDg2ICAgMC45MTYgMC4zNjg3MDggICAgXG5pbzE2NSAgICAgICAgICAgICAgICAgICAwLjI1ODEzICAgIDAuNjA0MDQgICAwLjQyNyAwLjY3MjkzOCAgICBcbmRlMzJfMTEgICAgICAgICAgICAgICAgLTAuNDE4NjcgICAgMC40MDExNSAgLTEuMDQ0IDAuMzA3MDM2ICAgIFxuZGUzMl8yMSAgICAgICAgICAgICAgICAtMS4xNzIxMiAgICAwLjY5NDc1ICAtMS42ODcgMC4xMDQ1MzggICAgXG5kZTMyX290aGVyMSAgICAgICAgICAgICAwLjI2Njk5ICAgIDAuNDczODggICAwLjU2MyAwLjU3ODM4NyAgICBcbm1hcml0YWxfc3RhdHVzZGl2b3JjZWQgIDEuNTQ2NzYgICAgMC4zMzc4NSAgIDQuNTc4IDAuMDAwMTIxICoqKlxubWFyaXRhbF9zdGF0dXN3aWRvd2VkICAgMS44Mzc0NyAgICAwLjQ1MjEyICAgNC4wNjQgMC4wMDA0NDggKioqXG5tYXJpdGFsX3N0YXR1c3NpbmdsZSAgICAwLjUzOTg1ICAgIDAuNDM4OTAgICAxLjIzMCAwLjIzMDYyMCAgICBcbmRlMjAgICAgICAgICAgICAgICAgICAgLTAuMTIxOTQgICAgMC4wNTIzMSAgLTIuMzMxIDAuMDI4NDc4ICogIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgcXVhc2liaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMS4xNTk0NDgpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA3XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = attempt ~ brom3_agecohort + SEX + io16 + de32_1 + 
+    de32_2 + de32_other + marital_status + de20, design = SuicidePart2, 
+    family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                       Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            -2.08619    0.91977  -2.268 0.032600 *  
+brom3_agecohortMiddle  -1.06942    0.39016  -2.741 0.011383 *  
+brom3_agecohortEldest  -2.27873    0.56558  -4.029 0.000490 ***
+SEX1                   -0.61039    0.28237  -2.162 0.040838 *  
+io162                  -0.52447    0.51856  -1.011 0.321910    
+io163                   0.14537    0.49097   0.296 0.769710    
+io164                   0.40389    0.44086   0.916 0.368708    
+io165                   0.25813    0.60404   0.427 0.672938    
+de32_11                -0.41867    0.40115  -1.044 0.307036    
+de32_21                -1.17212    0.69475  -1.687 0.104538    
+de32_other1             0.26699    0.47388   0.563 0.578387    
+marital_statusdivorced  1.54676    0.33785   4.578 0.000121 ***
+marital_statuswidowed   1.83747    0.45212   4.064 0.000448 ***
+marital_statussingle    0.53985    0.43890   1.230 0.230620    
+de20                   -0.12194    0.05231  -2.331 0.028478 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.159448)
+
+Number of Fisher Scoring iterations: 7</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate Urbanicity</p>
@@ -705,6 +1399,39 @@ svyglm(attempt~brom3_agecohort+SEX+de32_1+de32_2+
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBhdHRlbXB0IH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgZGUzMl8xICsgZGUzMl8yICsgXG4gICAgZGUzMl9vdGhlciArIGRlMzJfOSArIG1hcml0YWxfc3RhdHVzICsgZGUyMCwgZGVzaWduID0gU3VpY2lkZVBhcnQyLCBcbiAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKFwibG9naXRcIikpXG5cblN1cnZleSBkZXNpZ246XG5zdnlkZXNpZ24oaWRzID0gfnNlY3UsIHN0cmF0YSA9IH5zdHJhdGEsIHdlaWdodHMgPSB+d2VpZ2h0MiwgXG4gICAgbmVzdCA9IFQsIGRhdGEgPSBzdWJzZXQoY2lkaWRhdGFfcHQyLCBjaWRpZGF0YV9wdDIkd2VpZ2h0MiA+IFxuICAgICAgICAwKSlcblxuQ29lZmZpY2llbnRzOlxuICAgICAgICAgICAgICAgICAgICAgICBFc3RpbWF0ZSBTdGQuIEVycm9yIHQgdmFsdWUgUHIoPnx0fCkgICAgXG4oSW50ZXJjZXB0KSAgICAgICAgICAgIC0yLjM1NzU5ICAgIDAuODc4ODggIC0yLjY4MyAwLjAxMjMxOCAqICBcbmJyb20zX2FnZWNvaG9ydE1pZGRsZSAgLTEuMDIzNjQgICAgMC4zODU1NSAgLTIuNjU1IDAuMDEzMTM4ICogIFxuYnJvbTNfYWdlY29ob3J0RWxkZXN0ICAtMi4xODM1MCAgICAwLjU1Mzg5ICAtMy45NDIgMC4wMDA1MTYgKioqXG5TRVgxICAgICAgICAgICAgICAgICAgIC0wLjYwNDQ3ICAgIDAuMjg0NzcgIC0yLjEyMyAwLjA0MzA5OSAqICBcbmRlMzJfMTEgICAgICAgICAgICAgICAgLTAuMjM3ODUgICAgMC43NTQ1MSAgLTAuMzE1IDAuNzU1MDA4ICAgIFxuZGUzMl8yMSAgICAgICAgICAgICAgICAtMS4wODA4NiAgICAwLjg3ODMxICAtMS4yMzEgMC4yMjkwODMgICAgXG5kZTMyX290aGVyMSAgICAgICAgICAgICAwLjQ1NjAwICAgIDAuNzMyMjUgICAwLjYyMyAwLjUzODY4MSAgICBcbmRlMzJfOTEgICAgICAgICAgICAgICAgIDAuMjMwNTkgICAgMC45MTY1NCAgIDAuMjUyIDAuODAzMjYwICAgIFxubWFyaXRhbF9zdGF0dXNkaXZvcmNlZCAgMS41NzQzOCAgICAwLjMxNDYzICAgNS4wMDQgMy4wMWUtMDUgKioqXG5tYXJpdGFsX3N0YXR1c3dpZG93ZWQgICAxLjg0NTE3ICAgIDAuNDYwMTcgICA0LjAxMCAwLjAwMDQzMSAqKipcbm1hcml0YWxfc3RhdHVzc2luZ2xlICAgIDAuNjMyNDggICAgMC40Nzk2NyAgIDEuMzE5IDAuMTk4Mzg1ICAgIFxuZGUyMCAgICAgICAgICAgICAgICAgICAtMC4xMTAwOCAgICAwLjA0OTI0ICAtMi4yMzUgMC4wMzM4NjEgKiAgXG4tLS1cblNpZ25pZi4gY29kZXM6ICAwIOKAmCoqKuKAmSAwLjAwMSDigJgqKuKAmSAwLjAxIOKAmCrigJkgMC4wNSDigJgu4oCZIDAuMSDigJgg4oCZIDFcblxuKERpc3BlcnNpb24gcGFyYW1ldGVyIGZvciBxdWFzaWJpbm9taWFsIGZhbWlseSB0YWtlbiB0byBiZSAxLjEyNzUyNilcblxuTnVtYmVyIG9mIEZpc2hlciBTY29yaW5nIGl0ZXJhdGlvbnM6IDdcbiJ9 -->
+<pre><code>
+Call:
+svyglm(formula = attempt ~ brom3_agecohort + SEX + de32_1 + de32_2 + 
+    de32_other + de32_9 + marital_status + de20, design = SuicidePart2, 
+    family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                       Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            -2.35759    0.87888  -2.683 0.012318 *  
+brom3_agecohortMiddle  -1.02364    0.38555  -2.655 0.013138 *  
+brom3_agecohortEldest  -2.18350    0.55389  -3.942 0.000516 ***
+SEX1                   -0.60447    0.28477  -2.123 0.043099 *  
+de32_11                -0.23785    0.75451  -0.315 0.755008    
+de32_21                -1.08086    0.87831  -1.231 0.229083    
+de32_other1             0.45600    0.73225   0.623 0.538681    
+de32_91                 0.23059    0.91654   0.252 0.803260    
+marital_statusdivorced  1.57438    0.31463   5.004 3.01e-05 ***
+marital_statuswidowed   1.84517    0.46017   4.010 0.000431 ***
+marital_statussingle    0.63248    0.47967   1.319 0.198385    
+de20                   -0.11008    0.04924  -2.235 0.033861 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.127526)
+
+Number of Fisher Scoring iterations: 7</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Eliminate No Religion</p>
@@ -716,12 +1443,42 @@ svyglm(attempt~brom3_agecohort+SEX+de32_1+de32_2+marital_status+de20,
          family = quasibinomial(&quot;logit&quot;), design = SuicidePart2) %&gt;%
   summary()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxuc3Z5Z2xtKGZvcm11bGEgPSBhdHRlbXB0IH4gYnJvbTNfYWdlY29ob3J0ICsgU0VYICsgZGUzMl8xICsgZGUzMl8yICsgXG4gICAgbWFyaXRhbF9zdGF0dXMgKyBkZTIwLCBkZXNpZ24gPSBTdWljaWRlUGFydDIsIGZhbWlseSA9IHF1YXNpYmlub21pYWwoXCJsb2dpdFwiKSlcblxuU3VydmV5IGRlc2lnbjpcbnN2eWRlc2lnbihpZHMgPSB+c2VjdSwgc3RyYXRhID0gfnN0cmF0YSwgd2VpZ2h0cyA9IH53ZWlnaHQyLCBcbiAgICBuZXN0ID0gVCwgZGF0YSA9IHN1YnNldChjaWRpZGF0YV9wdDIsIGNpZGlkYXRhX3B0MiR3ZWlnaHQyID4gXG4gICAgICAgIDApKVxuXG5Db2VmZmljaWVudHM6XG4gICAgICAgICAgICAgICAgICAgICAgIEVzdGltYXRlIFN0ZC4gRXJyb3IgdCB2YWx1ZSBQcig+fHR8KSAgICBcbihJbnRlcmNlcHQpICAgICAgICAgICAgLTIuMDMzODAgICAgMC42Njk5MCAgLTMuMDM2IDAuMDA1MDI2ICoqIFxuYnJvbTNfYWdlY29ob3J0TWlkZGxlICAtMS4wMjAzMiAgICAwLjM4NjQ3ICAtMi42NDAgMC4wMTMyMDMgKiAgXG5icm9tM19hZ2Vjb2hvcnRFbGRlc3QgIC0yLjE5MjcxICAgIDAuNTUwMzIgIC0zLjk4NCAwLjAwMDQxNyAqKipcblNFWDEgICAgICAgICAgICAgICAgICAgLTAuNjE0MDUgICAgMC4yODMwMSAgLTIuMTcwIDAuMDM4MzY1ICogIFxuZGUzMl8xMSAgICAgICAgICAgICAgICAtMC41Njk3MSAgICAwLjI1NzI3ICAtMi4yMTQgMC4wMzQ4MTEgKiAgXG5kZTMyXzIxICAgICAgICAgICAgICAgIC0xLjQwNzM3ICAgIDAuNTIwNzUgIC0yLjcwMyAwLjAxMTM4MCAqICBcbm1hcml0YWxfc3RhdHVzZGl2b3JjZWQgIDEuNTgwOTAgICAgMC4zMTUyOSAgIDUuMDE0IDIuNDRlLTA1ICoqKlxubWFyaXRhbF9zdGF0dXN3aWRvd2VkICAgMS44MzQ0NCAgICAwLjQ2MTIxICAgMy45NzcgMC4wMDA0MjUgKioqXG5tYXJpdGFsX3N0YXR1c3NpbmdsZSAgICAwLjYxMTE3ICAgIDAuNDcwOTIgICAxLjI5OCAwLjIwNDU3MiAgICBcbmRlMjAgICAgICAgICAgICAgICAgICAgLTAuMTA4NjEgICAgMC4wNDgxOSAgLTIuMjU0IDAuMDMxOTM0ICogIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG5cbihEaXNwZXJzaW9uIHBhcmFtZXRlciBmb3IgcXVhc2liaW5vbWlhbCBmYW1pbHkgdGFrZW4gdG8gYmUgMS4xMTQzNjgpXG5cbk51bWJlciBvZiBGaXNoZXIgU2NvcmluZyBpdGVyYXRpb25zOiA3XG4ifQ== -->
+<pre><code>
+Call:
+svyglm(formula = attempt ~ brom3_agecohort + SEX + de32_1 + de32_2 + 
+    marital_status + de20, design = SuicidePart2, family = quasibinomial(&quot;logit&quot;))
+
+Survey design:
+svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, 
+    nest = T, data = subset(cididata_pt2, cididata_pt2$weight2 &gt; 
+        0))
+
+Coefficients:
+                       Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            -2.03380    0.66990  -3.036 0.005026 ** 
+brom3_agecohortMiddle  -1.02032    0.38647  -2.640 0.013203 *  
+brom3_agecohortEldest  -2.19271    0.55032  -3.984 0.000417 ***
+SEX1                   -0.61405    0.28301  -2.170 0.038365 *  
+de32_11                -0.56971    0.25727  -2.214 0.034811 *  
+de32_21                -1.40737    0.52075  -2.703 0.011380 *  
+marital_statusdivorced  1.58090    0.31529   5.014 2.44e-05 ***
+marital_statuswidowed   1.83444    0.46121   3.977 0.000425 ***
+marital_statussingle    0.61117    0.47092   1.298 0.204572    
+de20                   -0.10861    0.04819  -2.254 0.031934 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasibinomial family taken to be 1.114368)
+
+Number of Fisher Scoring iterations: 7</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 </div>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkRlbW9ncmFwaGljIE1vZGVscyINCmF1dGhvcjogIkRlcmljIExpYW5nIg0KZGF0ZTogIjcvOC8yMDE5Ig0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KIyBGcm9udCBNYXR0ZXINCg0KYGBge3IgcmVzdWx0cyA9ICJoaWRlIiwgaW5jbHVkZSA9IEZBTFNFfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQpsaWJyYXJ5KGRhdGEudGFibGUpDQpsaWJyYXJ5KHN1cnZleSkNCmxpYnJhcnkobW9zYWljKQ0KYGBgDQoNCmBgYHtyfQ0KIyByZWFkIGluIG1haW4gZGF0YQ0KY2lkaWRhdGFfcmF3IDwtDQogIGZyZWFkKCJ1a3JtYWluX1JVXzA2MTQxOS5jc3YiKQ0KYGBgDQoNCiMgRGF0YSBDbGVhbmluZw0KDQpgYGB7cn0NCiMgc3Vic2V0dGluZyBkYXRhDQpjaWRpZGF0YV9wdDIgPC0NCiAgY2lkaWRhdGFfcmF3ICU+JQ0KICAjIG1lbnRhbCBjb25kaXRpb25zDQogIG11dGF0ZShhbnggPSBpZmVsc2UoRFNNX0FHTyA9PSAxfERTTV9TTyA9PSAxfERTTV9HQUQgPT0gMXxEU01fUERTID09IDEsIDEsIDApLA0KICAgICAgICAgaWVkID0gaWZlbHNlKERTTV9JRURIID09IDEsIDEsIDApLA0KICAgICAgICAgYWZmID0gaWZlbHNlKERTTV9NREUgPT0gMXxEU01fRFlTID09IDEsIDEsIDApLA0KICAgICAgICAgYWxjID0gaWZlbHNlKERTTV9BTEEgPT0gMXxEU01fQUxEID09IDEsIDEsIDApLA0KICAgICAgICAgYW55ID0gaWZlbHNlKGFueCA9PSAxfGllZCA9PSAxfGFmZiA9PSAxfGFsYyA9PSAxLCAxLCAwKSkgJT4lDQogICMgYnJvbWV0IGFnZSBjb2hvcnRzDQogIG11dGF0ZSgjIyMgdGhlc2UgY29ob3J0cyBub3QgdXNlZCBkdWUgdG8gc2ltcGxpY2l0eSBvZiBCcm9tZXQgMyBjb2hvcnQgc3lzdGVtDQogICAgICAgICBicm9tNF9hZ2Vjb2hvcnQgPSBjdXQoY2lkaWRhdGFfcmF3JEFHRSwgYnJlYWtzID0gYygxNiwgMjQsIDM0LCA0OSwgSW5mKSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbHMgPSBjKCJZb3VuZ2VzdCIsICJNaWRkbGUgWW91bmciLCAiTWlkZGxlIEFnZSIsICJFbGRlc3QiKSksDQogICAgICAgICBicm9tM19hZ2Vjb2hvcnQgPSBjdXQoY2lkaWRhdGFfcmF3JEFHRSwgYnJlYWtzID0gYygxNiwgMzcsIDU3LCBJbmYpLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbHMgPSBjKCJZb3VuZ2VzdCIsICJNaWRkbGUiLCAiRWxkZXN0IikpKSAlPiUNCiAgIyBhbGZvbnNvIGFnZSBjb2hvcnRzDQogICMjIyB0aGVzZSBjb2hvcnRzIGRpdGNoZWQ7IGRldGVybWluZWQgbm90IHRvIGhhdmUgYSByZWFsIGFkdmFudGFnZSBvdmVyIEJyb21ldCAzIGNvaG9ydCBzeXN0ZW0NCiAgbXV0YXRlKGFsZm9uc29fY29ob3J0ID0gY3V0KGNpZGlkYXRhX3JhdyRBR0UsIGJyZWFrcyA9IGMoMTYsIDM3LCA0OSwgNjQsIEluZiksDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbHMgPSBjKCJZb3VuZ2VzdCIsICJNaWRkbGUgWW91bmciLCAiTWlkZGxlIEFnZSIsICJFbGRlc3QiKSkpICU+JQ0KICAjIHNlbGVjdCBwYXJ0IDIgcmVzcG9uZGVudHMNCiAgZmlsdGVyKCFpcy5uYShkZTIwKSkgJT4lDQogICMgcmVsaWdpb24NCiAgbXV0YXRlKGRlMzJfMSA9IGFzLmZhY3RvcihpZmVsc2UoaXMubmEoZGUzMl8xKSwgMCwgMSkpLA0KICAgICAgICAgZGUzMl8yID0gYXMuZmFjdG9yKGlmZWxzZShpcy5uYShkZTMyXzIpLCAwLCAxKSksDQogICAgICAgICBkZTMyXzkgPSBhcy5mYWN0b3IoaWZlbHNlKGlzLm5hKGRlMzJfOSksIDAsIDEpKSwNCiAgICAgICAgIGRlMzJfOTggPSBpZmVsc2UoaXMubmEoZGUzMl85OCksIDAsIDEpLA0KICAgICAgICAgZGUzMl85OSA9IGlmZWxzZShpcy5uYShkZTMyXzk5KSwgMCwgMSksDQogICAgICAgICBkZTMyX290aGVyID0gaWZlbHNlKGRlMzJfMyA9PSAxfGRlMzJfNCA9PSAxfGRlMzJfNSA9PSAxfGRlMzJfNiA9PSAxfGRlMzJfNyA9PSAxfGRlMzJfOCA9PSAxLCAxLCAwKSwNCiAgICAgICAgIGRlMzJfb3RoZXIgPSBhcy5mYWN0b3IoaWZlbHNlKGlzLm5hKGRlMzJfb3RoZXIpLCAwLCAxKSksDQogICAgICAgICBkZTM0ID0gYXMuZmFjdG9yKGlmZWxzZShkZTM0ID09IDh8ZGUzNCA9PSA5LCBOQSwgZGUzNCkpKSAlPiUNCiAgIyBzdWljaWRhbGl0eQ0KICBtdXRhdGUoaWRlYXRlID0gaWZlbHNlKCFpcy5uYShzZDIpLCBzZDIsIHNkMTUpLA0KICAgICAgICAgcGxhbiA9IGlmZWxzZSghaXMubmEoc2Q0KSwgc2Q0LCBzZDE3KSwNCiAgICAgICAgIGF0dGVtcHQgPSBpZmVsc2UoIWlzLm5hKHNkNiksIHNkNiwgc2QxOSksDQogICAgICAgICBwbGFuID0gaWZlbHNlKGlzLm5hKHBsYW4pLCA1LCBwbGFuKSwNCiAgICAgICAgIGF0dGVtcHQgPSBpZmVsc2UoaXMubmEoYXR0ZW1wdCksIDUsIGF0dGVtcHQpLA0KICAgICAgICAgaWRlYXRlID0gYXMuZmFjdG9yKGlmZWxzZShpZGVhdGUgPT0gMSwgMSwgMCkpLA0KICAgICAgICAgcGxhbiA9IGFzLmZhY3RvcihpZmVsc2UocGxhbiA9PSAxLCAxLCAwKSksDQogICAgICAgICBhdHRlbXB0ID0gYXMuZmFjdG9yKGlmZWxzZShhdHRlbXB0ID09IDEsIDEsIDApKSkgJT4lDQogICMgbWFycmllZA0KICBtdXRhdGUobWFycmllZCA9IGFzLmZhY3RvcihpZmVsc2Uoc2MzID09IDh8c2MzID09IDksIE5BLCANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShzYzMgPT0gMSwgMSwgMCkpKSwNCiAgICAgICAgIGRpdm9yY2VkID0gYXMuZmFjdG9yKGlmZWxzZShtYXJyaWVkID09IDAgJiBtcjIyID09IDJ8bXIyMyA9PSAxLCAxLCAwKSksDQogICAgICAgICBzaW5nbGUgPSBhcy5mYWN0b3IoaWZlbHNlKG1hcnJpZWQgPT0gMCAmIG1yMTYgPT0gNSwgMSwgMCkpLA0KICAgICAgICAgd2lkb3dlZCA9IGFzLmZhY3RvcihpZmVsc2UobWFycmllZCA9PSAwICYgbXIyMiA9PSAzfG1yMjMgPT0gMiwgMSwgMCkpLA0KICAgICAgICAgbWFyaXRhbF9zdGF0dXMgPSBkZXJpdmVkRmFjdG9yKCJtYXJyaWVkIiA9IG1hcnJpZWQgPT0gMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZGl2b3JjZWQiID0gZGl2b3JjZWQgPT0gMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAid2lkb3dlZCIgPSB3aWRvd2VkID09IDEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInNpbmdsZSIgPSBzaW5nbGUgPT0gMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAubWV0aG9kID0gImZpcnN0IikpICU+JQ0KICAjIGNoZXJub2J5bA0KICBtdXRhdGUobGl2ZV9jaGVybm9ieWwgPSBhcy5mYWN0b3IoaWZlbHNlKGRlNDAgPT0gMSwgMSwgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKHB0NmEgPT0gMSAmICFpcy5uYShwdDZhKSwgMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKHB0NmIgPT0gMSAmICFpcy5uYShwdDZiKSwgMSwgMCkpKSkpICU+JQ0KICAjIHNvY2lhbCBuZXR3b3JrDQogIG11dGF0ZShTTjEgPSBkZXJpdmVkVmFyaWFibGUoYDBgID0gc24xID09IDYsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDFgID0gc24xID09IDUsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDJgID0gc24xID09IDQsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDNgID0gc24xID09IDMsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDRgID0gc24xID09IDIsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDVgID0gc24xID09IDEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDdgID0gc24xID09IDcsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDhgID0gc24xID09IDgsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDlgID0gc24xID09IDkpLA0KICAgICAgICAgU04yID0gZGVyaXZlZFZhcmlhYmxlKGAwYCA9IHNuMiA9PSA2LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAxYCA9IHNuMiA9PSA1LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAyYCA9IHNuMiA9PSA0LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAzYCA9IHNuMiA9PSAzLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA0YCA9IHNuMiA9PSAyLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA1YCA9IHNuMiA9PSAxLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA3YCA9IHNuMiA9PSA3LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA4YCA9IHNuMiA9PSA4LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA5YCA9IHNuMiA9PSA5KSwNCiAgICAgICAgIFNONiA9IGRlcml2ZWRWYXJpYWJsZSgiMSIgPSBzbjYgPT0gNCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiMiIgPSBzbjYgPT0gMywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiMyIgPSBzbjYgPT0gMiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiNCIgPSBzbjYgPT0gMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiMi41IiA9IHNuNiA9PSA4fHNuNiA9PSA5KSwNCiAgICAgICAgIFNONyA9IGRlcml2ZWRWYXJpYWJsZSgiMSIgPSBzbjcgPT0gNCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiMiIgPSBzbjcgPT0gMywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiMyIgPSBzbjcgPT0gMiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiNCIgPSBzbjcgPT0gMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiMi41IiA9IHNuNyA9PSA4fHNuNyA9PSA5KSwNCiAgICAgICAgIFNOMSA9IGFzLm51bWVyaWMoaWZlbHNlKFNOMSA9PSA3fFNOMSA9PSA4fFNOMSA9PSA5LCBOQSwgU04xKSksDQogICAgICAgICBTTjIgPSBhcy5udW1lcmljKGlmZWxzZShTTjIgPT0gN3xTTjIgPT0gOHxTTjIgPT0gOSwgTkEsIFNOMikpLA0KICAgICAgICAgU042ID0gYXMubnVtZXJpYyhTTjYpLA0KICAgICAgICAgU043ID0gYXMubnVtZXJpYyhTTjcpLA0KICAgICAgICAgc25fc2NhbGUgPSAoU04xICsgU04yIC0yKS84KSAlPiUNCiAgIyBmaW5hbmNpYWwgc3RhdHVzIHZhcmlhYmxlDQogIG11dGF0ZShmbnU0ID0gaWZlbHNlKGZudTQgPT0gOHxmbnU0ID09IDksIE5BLCBmbnU0KSwNCiAgICAgICAgIGZpbmFuY2lhbF9zdGF0dXMgPSBkZXJpdmVkRmFjdG9yKCJ2ZXJ5X2luYWRlcXVhdGUiID0gZm51NCA9PSAxLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImluYWRlcXVhdGUiID0gZm51NCA9PSAyfGZudTQgPT0gMywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJhZGVxdWF0ZSIgPSBmbnU0ID09IDR8Zm51NCA9PSA1KSkgJT4lDQogICMgY2hyb25pYyBjb25kaXRpb25zDQogIG11dGF0ZShhbnlfY2MgPSBhcy5mYWN0b3IoaWZlbHNlKGNjMWEgPT0gMXxjYzFiID09IDF8Y2MxYyA9PSAxfGNjMWQgPT0gMXxjYzFlID09IDF8DQogICAgICAgICAgICAgICAgICAgICAgICAgICBjYzFmID09IDF8Y2MxZyA9PSAxfGNjMWggPT0gMXxjYzFpID09IDF8Y2MxaiA9PSAxfA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgY2MxayA9PSAxfGNjMWwgPT0gMXxjYzFtID09IDF8Y2MxbiA9PSAxfGNjMW8gPT0gMXwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgIGNjMXAgPT0gMXxjYzFxID09IDF8Y2MxciA9PSAxfGNjMXMgPT0gMXxjYzF0ID09IDF8DQogICAgICAgICAgICAgICAgICAgICAgICAgICBjYzF1ID09IDF8Y2MxdiA9PSAxfGNjMXcgPT0gMXxjYzF4ID09IDF8Y2MxeSA9PSAxfA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgY2MxdHogPT0gMSwgMSwgMCkpKSAlPiUNCiAgIyByZWNvZGUNCiAgbXV0YXRlKGNjMXR6ID0gYXMuZmFjdG9yKGlmZWxzZShjYzF0eiA9PSA4fGNjMXR6ID09IDksIE5BLCANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UoY2MxdHogPT0gMSwgMSwgMCkpKSwNCiAgICAgICAgIGNjMiA9IGFzLmZhY3RvcihpZmVsc2UoY2MyID09IDh8Y2MyID09IDksIE5BLCBjYzIpKSwNCiAgICAgICAgIGNuNiA9IGFzLmZhY3RvcihpZmVsc2UoY242ID09IDh8Y242ID09IDksIE5BLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UoY242ID09IDEsIDEsIDApKSksDQogICAgICAgICBjbjZhID0gaWZlbHNlKGNuNmEgPT0gOTh8Y242YSA9PSA5OSwgTkEsIGNuNmEpLA0KICAgICAgICAgY2g2NyA9IGFzLmZhY3RvcihpZmVsc2UoY2g2NyA9PSA4fGNoNjcgPT0gOSwgTkEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjaDY3ID09IDEsIDEsIDApKSksDQogICAgICAgICBjaDk3ID0gYXMuZmFjdG9yKGlmZWxzZShjaDk3ID09IDh8Y2g5NyA9PSA5LCBOQSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKGNoOTcgPT0gMSwgMSwgMCkpKSwNCiAgICAgICAgIGNoNTIgPSBhcy5mYWN0b3IoaWZlbHNlKGNoNTIgPT0gOHxjaDUyID09IDksIE5BLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UoY2g1MiA9PSAxLCAxLCAwKSkpLA0KICAgICAgICAgY2g4MiA9IGFzLmZhY3RvcihpZmVsc2UoY2g4MiA9PSA4fGNoODIgPT0gOSwgTkEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjaDgyID09IDEsIDEsIDApKSksDQogICAgICAgICBmbnUxID0gaWZlbHNlKGZudTEgPT0gOHxmbnUxID09IDksIE5BLCBmbnUxKSwNCiAgICAgICAgIGZudTQgPSBhcy5mYWN0b3IoaWZlbHNlKGZudTQgPT0gOHxmbnU0ID09IDksIE5BLCBmbnU0KSksDQogICAgICAgICBwdDEgPSBhcy5mYWN0b3IoaWZlbHNlKHB0MSA9PSA4fHB0MSA9PSA5LCBOQSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKHB0MSA9PSAxLCAxLCAwKSkpLA0KICAgICAgICAgU0VYID0gYXMuZmFjdG9yKFNFWCksDQogICAgICAgICBlbXAgPSBhcy5mYWN0b3IoZW1wKSwNCiAgICAgICAgIGlvMTYgPSBhcy5mYWN0b3IoaW8xNikpICU+JQ0KICAjIHNlbGVjdCByZWxldmFudCB2YXJpYWJsZQ0KICBzZWxlY3Qoc2FtcGxlaWQsIGJyb20zX2FnZWNvaG9ydCwgYWxmb25zb19jb2hvcnQsIFNFWCwgaW8xNiwgDQogICAgICAgICBkZTIwLCBmbnUxLCBmbnU0LCBmaW5hbmNpYWxfc3RhdHVzLCBkZTMyXzEsIGRlMzJfMiwgZGUzMl9vdGhlciwgZGUzMl85LCANCiAgICAgICAgIGVtcCwgZW1wdywgZW1wc3QsIGVtcGgsIGVtcHIsIGVtcG90aCwgYW55X2NjLCBkZTM0LCBwdDZhLCBwdDZiLCBkZTQwLCANCiAgICAgICAgIGxpdmVfY2hlcm5vYnlsLCBtYXJpdGFsX3N0YXR1cywgc2MzLCBtcjE2LCBtcjIyLCBtcjIzLCBzbl9zY2FsZSwNCiAgICAgICAgIHNuMSwgc24yLCBzbjYsIHNuNywgU04xLCBTTjIsIFNONiwgU043LCBjbjYsIGNuNmEsIGlkZWF0ZSwgcGxhbiwgYXR0ZW1wdCwgY2g2NywgDQogICAgICAgICBjaDk3LCBjaDUyLCBjaDgyLCBwdDEsIGFueCwgYWxjLCBhZmYsIGllZCwgYW55LCBzZWN1LCBzdHJhdGEsIHdlaWdodDIpDQpgYGANCg0KYGBge3J9DQojIERhdGFzZXQgd2l0aCBQYXJ0IDIgd2VpZ2h0cyBvbg0KU3VpY2lkZVBhcnQyIDwtDQogIHN2eWRlc2lnbihpZHMgPSB+c2VjdSwgc3RyYXRhID0gfnN0cmF0YSwgd2VpZ2h0cyA9IH53ZWlnaHQyLCBuZXN0ID0gVCwgDQogICAgICAgICAgICBkYXRhID0gc3Vic2V0KGNpZGlkYXRhX3B0MiwgY2lkaWRhdGFfcHQyJHdlaWdodDI+MCkpDQpvcHRpb25zKHN1cnZleS5sb25lbHkucHN1ID0gImFkanVzdCIpDQpgYGANCg0KIyBNdWx0aS12YXJpYXRlIE1vZGVscw0KDQojIyBEZW1vZ3JhcGhpY3MNCg0KIyMjIElkZWF0ZQ0KDQpCYXNlZCBvbiBzaWduaWZpY2FudCB1bml2YXJpYXRlIG1vZGVscw0KDQpgYGB7cn0NCiMgaWRlYXRlDQpzdnlnbG0oaWRlYXRlflNFWCtpbzE2K21hcml0YWxfc3RhdHVzLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KDQpGdWxsIERlbW9ncmFwaGljcw0KDQpgYGB7cn0NCiMgaWRlYXRlDQpzdnlnbG0oaWRlYXRlfmJyb20zX2FnZWNvaG9ydCtTRVgraW8xNitmaW5hbmNpYWxfc3RhdHVzK2RlMzJfMStkZTMyXzIrDQogICAgICAgICBkZTMyX290aGVyK2RlMzJfOStlbXArbWFyaXRhbF9zdGF0dXMrZGUyMCwNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCkVsaW1pbmF0ZSBFbXBsb3ltZW50DQoNCmBgYHtyfQ0KIyBpZGVhdGUNCnN2eWdsbShpZGVhdGV+YnJvbTNfYWdlY29ob3J0K1NFWCtpbzE2K2ZpbmFuY2lhbF9zdGF0dXMrZGUzMl8xK2RlMzJfMisNCiAgICAgICAgIGRlMzJfb3RoZXIrZGUzMl85K21hcml0YWxfc3RhdHVzK2RlMjAsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpFbGltaW5hdGUgVW5pYXRlDQoNCmBgYHtyfQ0KIyBpZGVhdGUNCnN2eWdsbShpZGVhdGV+YnJvbTNfYWdlY29ob3J0K1NFWCtpbzE2K2ZpbmFuY2lhbF9zdGF0dXMrZGUzMl8xKw0KICAgICAgICAgZGUzMl9vdGhlcitkZTMyXzkrbWFyaXRhbF9zdGF0dXMrZGUyMCwNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCkVsaW1pbmF0ZSBVbmlhdGUNCg0KYGBge3J9DQojIGlkZWF0ZQ0Kc3Z5Z2xtKGlkZWF0ZX5icm9tM19hZ2Vjb2hvcnQrU0VYK2lvMTYrZmluYW5jaWFsX3N0YXR1cytkZTMyX290aGVyKw0KICAgICAgICAgZGUzMl85K21hcml0YWxfc3RhdHVzK2RlMjAsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpFbGltaW5hdGUgT3RoZXINCg0KYGBge3J9DQojIGlkZWF0ZQ0Kc3Z5Z2xtKGlkZWF0ZX5icm9tM19hZ2Vjb2hvcnQrU0VYK2lvMTYrZmluYW5jaWFsX3N0YXR1cytkZTMyXzkrbWFyaXRhbF9zdGF0dXMrZGUyMCwNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCkVsaW1pbmF0ZSBObyBSZWxpZ2lvbg0KDQpgYGB7cn0NCiMgaWRlYXRlDQpzdnlnbG0oaWRlYXRlfmJyb20zX2FnZWNvaG9ydCtTRVgraW8xNitmaW5hbmNpYWxfc3RhdHVzK21hcml0YWxfc3RhdHVzK2RlMjAsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpFbGltaW5hdGUgRmluYW5jaWFsIFN0YXR1cw0KDQpgYGB7cn0NCiMgaWRlYXRlDQpzdnlnbG0oaWRlYXRlfmJyb20zX2FnZWNvaG9ydCtTRVgraW8xNittYXJpdGFsX3N0YXR1cytkZTIwLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KIyMjIFBsYW4NCg0KQmFzZWQgb24gc2lnbmlmaWNhbnQgdW5pdmFyaWF0ZSBtb2RlbHMNCg0KYGBge3J9DQojIHBsYW4NCnN2eWdsbShwbGFufmJyb20zX2FnZWNvaG9ydCtTRVgrZGUzMl9vdGhlcittYXJpdGFsX3N0YXR1cytmaW5hbmNpYWxfc3RhdHVzLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KUmVmaW5lDQoNCmBgYHtyfQ0KIyBwbGFuDQpzdnlnbG0ocGxhbn5icm9tM19hZ2Vjb2hvcnQrZGUzMl9vdGhlcittYXJpdGFsX3N0YXR1cytmaW5hbmNpYWxfc3RhdHVzLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KRnVsbCBEZW1vZ3JhcGhpY3MNCg0KYGBge3J9DQojIHBsYW4NCnN2eWdsbShwbGFufmJyb20zX2FnZWNvaG9ydCtTRVgraW8xNitmaW5hbmNpYWxfc3RhdHVzK2RlMzJfMStkZTMyXzIrDQogICAgICAgICBkZTMyX290aGVyK2RlMzJfOStlbXArbWFyaXRhbF9zdGF0dXMrZGUyMCwNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCkVsaW1pbmF0ZSBVcmJhbmljaXR5DQoNCmBgYHtyfQ0KIyBwbGFuDQpzdnlnbG0ocGxhbn5icm9tM19hZ2Vjb2hvcnQrU0VYK2ZpbmFuY2lhbF9zdGF0dXMrZGUzMl8xK2RlMzJfMisNCiAgICAgICAgIGRlMzJfb3RoZXIrZGUzMl85K2VtcCttYXJpdGFsX3N0YXR1cytkZTIwLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KRWxpbWluYXRlIEVtcGxveW1lbnQNCg0KYGBge3J9DQojIHBsYW4NCnN2eWdsbShwbGFufmJyb20zX2FnZWNvaG9ydCtTRVgrZmluYW5jaWFsX3N0YXR1cytkZTMyXzErZGUzMl8yKw0KICAgICAgICAgZGUzMl9vdGhlcitkZTMyXzkrbWFyaXRhbF9zdGF0dXMrZGUyMCwNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCkVsaW1pbmF0ZSBVbmlhdGUNCg0KYGBge3J9DQojIHBsYW4NCnN2eWdsbShwbGFufmJyb20zX2FnZWNvaG9ydCtTRVgrZmluYW5jaWFsX3N0YXR1cytkZTMyXzErDQogICAgICAgICBkZTMyX290aGVyK2RlMzJfOSttYXJpdGFsX3N0YXR1cytkZTIwLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KRWxpbWluYXRlIFllYXJzIG9mIEVkdWNhdGlvbg0KDQpgYGB7cn0NCiMgcGxhbg0Kc3Z5Z2xtKHBsYW5+YnJvbTNfYWdlY29ob3J0K1NFWCtmaW5hbmNpYWxfc3RhdHVzK2RlMzJfMSsNCiAgICAgICAgIGRlMzJfb3RoZXIrZGUzMl85K21hcml0YWxfc3RhdHVzLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KRWxpbWluYXRlIE9ydGhvZG94DQoNCmBgYHtyfQ0KIyBwbGFuDQpzdnlnbG0ocGxhbn5icm9tM19hZ2Vjb2hvcnQrU0VYK2ZpbmFuY2lhbF9zdGF0dXMrZGUzMl9vdGhlcisNCiAgICAgICAgIGRlMzJfOSttYXJpdGFsX3N0YXR1cywNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCkVsaW1pbmF0ZSBObyBSZWxpZ2lvbg0KDQpgYGB7cn0NCiMgcGxhbg0Kc3Z5Z2xtKHBsYW5+YnJvbTNfYWdlY29ob3J0K1NFWCtmaW5hbmNpYWxfc3RhdHVzK2RlMzJfb3RoZXIrbWFyaXRhbF9zdGF0dXMsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpFbGltaW5hdGUgU2V4DQoNCmBgYHtyfQ0KIyBwbGFuDQpzdnlnbG0ocGxhbn5icm9tM19hZ2Vjb2hvcnQrZmluYW5jaWFsX3N0YXR1cytkZTMyX290aGVyK21hcml0YWxfc3RhdHVzLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KIyMjIEF0dGVtcHQNCg0KQmFzZWQgb2ZmIHVuaXZhcmlhdGUgbW9kZWxzDQoNCmBgYHtyfQ0KIyBhdHRlbXB0DQpzdnlnbG0oYXR0ZW1wdH5icm9tM19hZ2Vjb2hvcnQrU0VYK2RlMzJfMittYXJpdGFsX3N0YXR1cytlbXAsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpSZWZpbmluZw0KDQpgYGB7cn0NCiMgYXR0ZW1wdA0Kc3Z5Z2xtKGF0dGVtcHR+YnJvbTNfYWdlY29ob3J0K1NFWCtkZTMyXzIrbWFyaXRhbF9zdGF0dXMsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpGdWxsIERlbW9ncmFwaGljcw0KDQpgYGB7cn0NCiMgYXR0ZW1wdA0Kc3Z5Z2xtKGF0dGVtcHR+YnJvbTNfYWdlY29ob3J0K1NFWCtpbzE2K2ZpbmFuY2lhbF9zdGF0dXMrZGUzMl8xK2RlMzJfMisNCiAgICAgICAgIGRlMzJfb3RoZXIrZGUzMl85K2VtcCttYXJpdGFsX3N0YXR1cytkZTIwLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KRWxpbWluYXRlIEZpbmFuY2lhbCBTdGF0dXMNCg0KYGBge3J9DQojIGF0dGVtcHQNCnN2eWdsbShhdHRlbXB0fmJyb20zX2FnZWNvaG9ydCtTRVgraW8xNitkZTMyXzErZGUzMl8yKw0KICAgICAgICAgZGUzMl9vdGhlcitkZTMyXzkrZW1wK21hcml0YWxfc3RhdHVzK2RlMjAsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpFbGltaW5hdGUgRW1wbG95bWVudA0KDQpgYGB7cn0NCiMgYXR0ZW1wdA0Kc3Z5Z2xtKGF0dGVtcHR+YnJvbTNfYWdlY29ob3J0K1NFWCtpbzE2K2RlMzJfMStkZTMyXzIrDQogICAgICAgICBkZTMyX290aGVyK2RlMzJfOSttYXJpdGFsX3N0YXR1cytkZTIwLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KRWxpbWluYXRlIE5vIFJlbGlnaW9uDQoNCmBgYHtyfQ0KIyBhdHRlbXB0DQpzdnlnbG0oYXR0ZW1wdH5icm9tM19hZ2Vjb2hvcnQrU0VYK2lvMTYrZGUzMl8xK2RlMzJfMisNCiAgICAgICAgIGRlMzJfb3RoZXIrbWFyaXRhbF9zdGF0dXMrZGUyMCwNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCkVsaW1pbmF0ZSBVcmJhbmljaXR5DQoNCmBgYHtyfQ0KIyBhdHRlbXB0DQpzdnlnbG0oYXR0ZW1wdH5icm9tM19hZ2Vjb2hvcnQrU0VYK2RlMzJfMStkZTMyXzIrDQogICAgICAgICBkZTMyX290aGVyK2RlMzJfOSttYXJpdGFsX3N0YXR1cytkZTIwLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KRWxpbWluYXRlIE5vIFJlbGlnaW9uDQoNCmBgYHtyfQ0KIyBhdHRlbXB0DQpzdnlnbG0oYXR0ZW1wdH5icm9tM19hZ2Vjb2hvcnQrU0VYK2RlMzJfMStkZTMyXzIrbWFyaXRhbF9zdGF0dXMrZGUyMCwNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkRlbW9ncmFwaGljIE1vZGVscyINCmF1dGhvcjogIkRlcmljIExpYW5nIg0KZGF0ZTogIjcvOC8yMDE5Ig0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KIyBGcm9udCBNYXR0ZXINCg0KYGBge3IgcmVzdWx0cyA9ICJoaWRlIiwgaW5jbHVkZSA9IEZBTFNFfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQpsaWJyYXJ5KGRhdGEudGFibGUpDQpsaWJyYXJ5KHN1cnZleSkNCmxpYnJhcnkobW9zYWljKQ0KYGBgDQoNCmBgYHtyfQ0KIyByZWFkIGluIG1haW4gZGF0YQ0KY2lkaWRhdGFfcmF3IDwtDQogIGZyZWFkKCJ1a3JtYWluX1JVXzA2MTQxOS5jc3YiKQ0KYGBgDQoNCmBgYHtyIGluY2x1ZGUgPSBGQUxTRX0NCiMgc3Vic2V0dGluZyBkYXRhDQpjaWRpZGF0YV9wdDIgPC0NCiAgY2lkaWRhdGFfcmF3ICU+JQ0KICAjIG1lbnRhbCBjb25kaXRpb25zDQogIG11dGF0ZShhbnggPSBpZmVsc2UoRFNNX0FHTyA9PSAxfERTTV9TTyA9PSAxfERTTV9HQUQgPT0gMXxEU01fUERTID09IDEsIDEsIDApLA0KICAgICAgICAgaWVkID0gaWZlbHNlKERTTV9JRURIID09IDEsIDEsIDApLA0KICAgICAgICAgYWZmID0gaWZlbHNlKERTTV9NREUgPT0gMXxEU01fRFlTID09IDEsIDEsIDApLA0KICAgICAgICAgYWxjID0gaWZlbHNlKERTTV9BTEEgPT0gMXxEU01fQUxEID09IDEsIDEsIDApLA0KICAgICAgICAgYW55ID0gaWZlbHNlKGFueCA9PSAxfGllZCA9PSAxfGFmZiA9PSAxfGFsYyA9PSAxLCAxLCAwKSkgJT4lDQogICMgYnJvbWV0IGFnZSBjb2hvcnRzDQogIG11dGF0ZSgjIyMgdGhlc2UgY29ob3J0cyBub3QgdXNlZCBkdWUgdG8gc2ltcGxpY2l0eSBvZiBCcm9tZXQgMyBjb2hvcnQgc3lzdGVtDQogICAgICAgICBicm9tNF9hZ2Vjb2hvcnQgPSBjdXQoY2lkaWRhdGFfcmF3JEFHRSwgYnJlYWtzID0gYygxNiwgMjQsIDM0LCA0OSwgSW5mKSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbHMgPSBjKCJZb3VuZ2VzdCIsICJNaWRkbGUgWW91bmciLCAiTWlkZGxlIEFnZSIsICJFbGRlc3QiKSksDQogICAgICAgICBicm9tM19hZ2Vjb2hvcnQgPSBjdXQoY2lkaWRhdGFfcmF3JEFHRSwgYnJlYWtzID0gYygxNiwgMzcsIDU3LCBJbmYpLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbHMgPSBjKCJZb3VuZ2VzdCIsICJNaWRkbGUiLCAiRWxkZXN0IikpKSAlPiUNCiAgIyBhbGZvbnNvIGFnZSBjb2hvcnRzDQogICMjIyB0aGVzZSBjb2hvcnRzIGRpdGNoZWQ7IGRldGVybWluZWQgbm90IHRvIGhhdmUgYSByZWFsIGFkdmFudGFnZSBvdmVyIEJyb21ldCAzIGNvaG9ydCBzeXN0ZW0NCiAgbXV0YXRlKGFsZm9uc29fY29ob3J0ID0gY3V0KGNpZGlkYXRhX3JhdyRBR0UsIGJyZWFrcyA9IGMoMTYsIDM3LCA0OSwgNjQsIEluZiksDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbHMgPSBjKCJZb3VuZ2VzdCIsICJNaWRkbGUgWW91bmciLCAiTWlkZGxlIEFnZSIsICJFbGRlc3QiKSkpICU+JQ0KICAjIHNlbGVjdCBwYXJ0IDIgcmVzcG9uZGVudHMNCiAgZmlsdGVyKCFpcy5uYShkZTIwKSkgJT4lDQogICMgcmVsaWdpb24NCiAgbXV0YXRlKGRlMzJfMSA9IGFzLmZhY3RvcihpZmVsc2UoaXMubmEoZGUzMl8xKSwgMCwgMSkpLA0KICAgICAgICAgZGUzMl8yID0gYXMuZmFjdG9yKGlmZWxzZShpcy5uYShkZTMyXzIpLCAwLCAxKSksDQogICAgICAgICBkZTMyXzkgPSBhcy5mYWN0b3IoaWZlbHNlKGlzLm5hKGRlMzJfOSksIDAsIDEpKSwNCiAgICAgICAgIGRlMzJfOTggPSBpZmVsc2UoaXMubmEoZGUzMl85OCksIDAsIDEpLA0KICAgICAgICAgZGUzMl85OSA9IGlmZWxzZShpcy5uYShkZTMyXzk5KSwgMCwgMSksDQogICAgICAgICBkZTMyX290aGVyID0gaWZlbHNlKGRlMzJfMyA9PSAxfGRlMzJfNCA9PSAxfGRlMzJfNSA9PSAxfGRlMzJfNiA9PSAxfGRlMzJfNyA9PSAxfGRlMzJfOCA9PSAxLCAxLCAwKSwNCiAgICAgICAgIGRlMzJfb3RoZXIgPSBhcy5mYWN0b3IoaWZlbHNlKGlzLm5hKGRlMzJfb3RoZXIpLCAwLCAxKSksDQogICAgICAgICBkZTM0ID0gYXMuZmFjdG9yKGlmZWxzZShkZTM0ID09IDh8ZGUzNCA9PSA5LCBOQSwgZGUzNCkpKSAlPiUNCiAgIyBzdWljaWRhbGl0eQ0KICBtdXRhdGUoaWRlYXRlID0gaWZlbHNlKCFpcy5uYShzZDIpLCBzZDIsIHNkMTUpLA0KICAgICAgICAgcGxhbiA9IGlmZWxzZSghaXMubmEoc2Q0KSwgc2Q0LCBzZDE3KSwNCiAgICAgICAgIGF0dGVtcHQgPSBpZmVsc2UoIWlzLm5hKHNkNiksIHNkNiwgc2QxOSksDQogICAgICAgICBwbGFuID0gaWZlbHNlKGlzLm5hKHBsYW4pLCA1LCBwbGFuKSwNCiAgICAgICAgIGF0dGVtcHQgPSBpZmVsc2UoaXMubmEoYXR0ZW1wdCksIDUsIGF0dGVtcHQpLA0KICAgICAgICAgaWRlYXRlID0gYXMuZmFjdG9yKGlmZWxzZShpZGVhdGUgPT0gMSwgMSwgMCkpLA0KICAgICAgICAgcGxhbiA9IGFzLmZhY3RvcihpZmVsc2UocGxhbiA9PSAxLCAxLCAwKSksDQogICAgICAgICBhdHRlbXB0ID0gYXMuZmFjdG9yKGlmZWxzZShhdHRlbXB0ID09IDEsIDEsIDApKSkgJT4lDQogICMgbWFycmllZA0KICBtdXRhdGUobWFycmllZCA9IGFzLmZhY3RvcihpZmVsc2Uoc2MzID09IDh8c2MzID09IDksIE5BLCANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShzYzMgPT0gMSwgMSwgMCkpKSwNCiAgICAgICAgIGRpdm9yY2VkID0gYXMuZmFjdG9yKGlmZWxzZShtYXJyaWVkID09IDAgJiBtcjIyID09IDJ8bXIyMyA9PSAxLCAxLCAwKSksDQogICAgICAgICBzaW5nbGUgPSBhcy5mYWN0b3IoaWZlbHNlKG1hcnJpZWQgPT0gMCAmIG1yMTYgPT0gNSwgMSwgMCkpLA0KICAgICAgICAgd2lkb3dlZCA9IGFzLmZhY3RvcihpZmVsc2UobWFycmllZCA9PSAwICYgbXIyMiA9PSAzfG1yMjMgPT0gMiwgMSwgMCkpLA0KICAgICAgICAgbWFyaXRhbF9zdGF0dXMgPSBkZXJpdmVkRmFjdG9yKCJtYXJyaWVkIiA9IG1hcnJpZWQgPT0gMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZGl2b3JjZWQiID0gZGl2b3JjZWQgPT0gMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAid2lkb3dlZCIgPSB3aWRvd2VkID09IDEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInNpbmdsZSIgPSBzaW5nbGUgPT0gMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAubWV0aG9kID0gImZpcnN0IikpICU+JQ0KICAjIGNoZXJub2J5bA0KICBtdXRhdGUobGl2ZV9jaGVybm9ieWwgPSBhcy5mYWN0b3IoaWZlbHNlKGRlNDAgPT0gMSwgMSwgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKHB0NmEgPT0gMSAmICFpcy5uYShwdDZhKSwgMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKHB0NmIgPT0gMSAmICFpcy5uYShwdDZiKSwgMSwgMCkpKSkpICU+JQ0KICAjIHNvY2lhbCBuZXR3b3JrDQogIG11dGF0ZShTTjEgPSBkZXJpdmVkVmFyaWFibGUoYDBgID0gc24xID09IDYsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDFgID0gc24xID09IDUsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDJgID0gc24xID09IDQsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDNgID0gc24xID09IDMsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDRgID0gc24xID09IDIsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDVgID0gc24xID09IDEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDdgID0gc24xID09IDcsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDhgID0gc24xID09IDgsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYDlgID0gc24xID09IDkpLA0KICAgICAgICAgU04yID0gZGVyaXZlZFZhcmlhYmxlKGAwYCA9IHNuMiA9PSA2LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAxYCA9IHNuMiA9PSA1LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAyYCA9IHNuMiA9PSA0LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGAzYCA9IHNuMiA9PSAzLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA0YCA9IHNuMiA9PSAyLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA1YCA9IHNuMiA9PSAxLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA3YCA9IHNuMiA9PSA3LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA4YCA9IHNuMiA9PSA4LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGA5YCA9IHNuMiA9PSA5KSwNCiAgICAgICAgIFNONiA9IGRlcml2ZWRWYXJpYWJsZSgiMSIgPSBzbjYgPT0gNCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiMiIgPSBzbjYgPT0gMywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiMyIgPSBzbjYgPT0gMiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiNCIgPSBzbjYgPT0gMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiMi41IiA9IHNuNiA9PSA4fHNuNiA9PSA5KSwNCiAgICAgICAgIFNONyA9IGRlcml2ZWRWYXJpYWJsZSgiMSIgPSBzbjcgPT0gNCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiMiIgPSBzbjcgPT0gMywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiMyIgPSBzbjcgPT0gMiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiNCIgPSBzbjcgPT0gMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiMi41IiA9IHNuNyA9PSA4fHNuNyA9PSA5KSwNCiAgICAgICAgIFNOMSA9IGFzLm51bWVyaWMoaWZlbHNlKFNOMSA9PSA3fFNOMSA9PSA4fFNOMSA9PSA5LCBOQSwgU04xKSksDQogICAgICAgICBTTjIgPSBhcy5udW1lcmljKGlmZWxzZShTTjIgPT0gN3xTTjIgPT0gOHxTTjIgPT0gOSwgTkEsIFNOMikpLA0KICAgICAgICAgU042ID0gYXMubnVtZXJpYyhTTjYpLA0KICAgICAgICAgU043ID0gYXMubnVtZXJpYyhTTjcpLA0KICAgICAgICAgc25fc2NhbGUgPSAoU04xICsgU04yIC0yKS84KSAlPiUNCiAgIyBmaW5hbmNpYWwgc3RhdHVzIHZhcmlhYmxlDQogIG11dGF0ZShmbnU0ID0gaWZlbHNlKGZudTQgPT0gOHxmbnU0ID09IDksIE5BLCBmbnU0KSwNCiAgICAgICAgIGZpbmFuY2lhbF9zdGF0dXMgPSBkZXJpdmVkRmFjdG9yKCJ2ZXJ5X2luYWRlcXVhdGUiID0gZm51NCA9PSAxLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImluYWRlcXVhdGUiID0gZm51NCA9PSAyfGZudTQgPT0gMywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJhZGVxdWF0ZSIgPSBmbnU0ID09IDR8Zm51NCA9PSA1KSkgJT4lDQogICMgYmxzIGNhdGVnb3JpemVkIGVtcGxveW1lbnQNCiAgbXV0YXRlKGJsc2VtcCA9IGRlcml2ZWRGYWN0b3IoImVtcGxveWVkIiA9IGVtcCA9PSAxLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAidW5lbXBsb3llZCIgPSBlbXAgPT0gNSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIk9PTEYiID0gZW1wID09IDJ8ZW1wID09IDN8ZW1wID09IDQpKSAlPiUNCiAgIyBjaHJvbmljIGNvbmRpdGlvbnMNCiAgbXV0YXRlKGFueV9jYyA9IGFzLmZhY3RvcihpZmVsc2UoY2MxYSA9PSAxfGNjMWIgPT0gMXxjYzFjID09IDF8Y2MxZCA9PSAxfGNjMWUgPT0gMXwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgIGNjMWYgPT0gMXxjYzFnID09IDF8Y2MxaCA9PSAxfGNjMWkgPT0gMXxjYzFqID09IDF8DQogICAgICAgICAgICAgICAgICAgICAgICAgICBjYzFrID09IDF8Y2MxbCA9PSAxfGNjMW0gPT0gMXxjYzFuID09IDF8Y2MxbyA9PSAxfA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgY2MxcCA9PSAxfGNjMXEgPT0gMXxjYzFyID09IDF8Y2MxcyA9PSAxfGNjMXQgPT0gMXwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgIGNjMXUgPT0gMXxjYzF2ID09IDF8Y2MxdyA9PSAxfGNjMXggPT0gMXxjYzF5ID09IDF8DQogICAgICAgICAgICAgICAgICAgICAgICAgICBjYzF0eiA9PSAxLCAxLCAwKSkpICU+JQ0KICAjIHJlY29kZQ0KICBtdXRhdGUoY2MxdHogPSBhcy5mYWN0b3IoaWZlbHNlKGNjMXR6ID09IDh8Y2MxdHogPT0gOSwgTkEsIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjYzF0eiA9PSAxLCAxLCAwKSkpLA0KICAgICAgICAgY2MyID0gYXMuZmFjdG9yKGlmZWxzZShjYzIgPT0gOHxjYzIgPT0gOSwgTkEsIGNjMikpLA0KICAgICAgICAgY242ID0gYXMuZmFjdG9yKGlmZWxzZShjbjYgPT0gOHxjbjYgPT0gOSwgTkEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjbjYgPT0gMSwgMSwgMCkpKSwNCiAgICAgICAgIGNuNmEgPSBpZmVsc2UoY242YSA9PSA5OHxjbjZhID09IDk5LCBOQSwgY242YSksDQogICAgICAgICBjaDY3ID0gYXMuZmFjdG9yKGlmZWxzZShjaDY3ID09IDh8Y2g2NyA9PSA5LCBOQSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKGNoNjcgPT0gMSwgMSwgMCkpKSwNCiAgICAgICAgIGNoOTcgPSBhcy5mYWN0b3IoaWZlbHNlKGNoOTcgPT0gOHxjaDk3ID09IDksIE5BLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UoY2g5NyA9PSAxLCAxLCAwKSkpLA0KICAgICAgICAgY2g1MiA9IGFzLmZhY3RvcihpZmVsc2UoY2g1MiA9PSA4fGNoNTIgPT0gOSwgTkEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmZWxzZShjaDUyID09IDEsIDEsIDApKSksDQogICAgICAgICBjaDgyID0gYXMuZmFjdG9yKGlmZWxzZShjaDgyID09IDh8Y2g4MiA9PSA5LCBOQSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKGNoODIgPT0gMSwgMSwgMCkpKSwNCiAgICAgICAgIGZudTEgPSBpZmVsc2UoZm51MSA9PSA4fGZudTEgPT0gOSwgTkEsIGZudTEpLA0KICAgICAgICAgZm51NCA9IGFzLmZhY3RvcihpZmVsc2UoZm51NCA9PSA4fGZudTQgPT0gOSwgTkEsIGZudTQpKSwNCiAgICAgICAgIHB0MSA9IGFzLmZhY3RvcihpZmVsc2UocHQxID09IDh8cHQxID09IDksIE5BLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UocHQxID09IDEsIDEsIDApKSksDQogICAgICAgICBTRVggPSBhcy5mYWN0b3IoU0VYKSwNCiAgICAgICAgIGVtcCA9IGFzLmZhY3RvcihlbXApLA0KICAgICAgICAgaW8xNiA9IGFzLmZhY3RvcihpbzE2KSkgJT4lDQogICMgc2VsZWN0IHJlbGV2YW50IHZhcmlhYmxlDQogIHNlbGVjdChzYW1wbGVpZCwgYnJvbTNfYWdlY29ob3J0LCBhbGZvbnNvX2NvaG9ydCwgU0VYLCBpbzE2LCANCiAgICAgICAgIGRlMjAsIGZudTEsIGZudTQsIGZpbmFuY2lhbF9zdGF0dXMsIGRlMzJfMSwgZGUzMl8yLCBkZTMyX290aGVyLCBkZTMyXzksIA0KICAgICAgICAgZW1wLCBibHNlbXAsIGFueV9jYywgZGUzNCwgcHQ2YSwgcHQ2YiwgZGU0MCwgDQogICAgICAgICBsaXZlX2NoZXJub2J5bCwgbWFyaXRhbF9zdGF0dXMsIHNjMywgbXIxNiwgbXIyMiwgbXIyMywgc25fc2NhbGUsDQogICAgICAgICBzbjEsIHNuMiwgc242LCBzbjcsIFNOMSwgU04yLCBTTjYsIFNONywgY242LCBjbjZhLCBpZGVhdGUsIHBsYW4sIGF0dGVtcHQsIGNoNjcsIA0KICAgICAgICAgY2g5NywgY2g1MiwgY2g4MiwgcHQxLCBhbngsIGFsYywgYWZmLCBpZWQsIGFueSwgc2VjdSwgc3RyYXRhLCB3ZWlnaHQyKQ0KYGBgDQoNCmBgYHtyIGluY2x1ZGUgPSBGQUxTRX0NCiMgRGF0YXNldCB3aXRoIFBhcnQgMiB3ZWlnaHRzIG9uDQpTdWljaWRlUGFydDIgPC0NCiAgc3Z5ZGVzaWduKGlkcyA9IH5zZWN1LCBzdHJhdGEgPSB+c3RyYXRhLCB3ZWlnaHRzID0gfndlaWdodDIsIG5lc3QgPSBULCANCiAgICAgICAgICAgIGRhdGEgPSBzdWJzZXQoY2lkaWRhdGFfcHQyLCBjaWRpZGF0YV9wdDIkd2VpZ2h0Mj4wKSkNCm9wdGlvbnMoc3VydmV5LmxvbmVseS5wc3UgPSAiYWRqdXN0IikNCmBgYA0KDQojIE11bHRpLXZhcmlhdGUgTW9kZWxzDQoNCiMjIERlbW9ncmFwaGljcw0KDQojIyMgSWRlYXRlDQoNCkJhc2VkIG9uIHNpZ25pZmljYW50IHVuaXZhcmlhdGUgbW9kZWxzDQoNCmBgYHtyfQ0KIyBpZGVhdGUNCnN2eWdsbShpZGVhdGV+U0VYK2lvMTYrbWFyaXRhbF9zdGF0dXMsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQoNCkZ1bGwgRGVtb2dyYXBoaWNzDQoNCmBgYHtyfQ0KIyBpZGVhdGUNCnN2eWdsbShpZGVhdGV+YnJvbTNfYWdlY29ob3J0K1NFWCtpbzE2K2ZpbmFuY2lhbF9zdGF0dXMrZGUzMl8xK2RlMzJfMisNCiAgICAgICAgIGRlMzJfb3RoZXIrZGUzMl85K2VtcCttYXJpdGFsX3N0YXR1cytkZTIwLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KRWxpbWluYXRlIEVtcGxveW1lbnQNCg0KYGBge3J9DQojIGlkZWF0ZQ0Kc3Z5Z2xtKGlkZWF0ZX5icm9tM19hZ2Vjb2hvcnQrU0VYK2lvMTYrZmluYW5jaWFsX3N0YXR1cytkZTMyXzErZGUzMl8yKw0KICAgICAgICAgZGUzMl9vdGhlcitkZTMyXzkrbWFyaXRhbF9zdGF0dXMrZGUyMCwNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCkVsaW1pbmF0ZSBVbmlhdGUNCg0KYGBge3J9DQojIGlkZWF0ZQ0Kc3Z5Z2xtKGlkZWF0ZX5icm9tM19hZ2Vjb2hvcnQrU0VYK2lvMTYrZmluYW5jaWFsX3N0YXR1cytkZTMyXzErDQogICAgICAgICBkZTMyX290aGVyK2RlMzJfOSttYXJpdGFsX3N0YXR1cytkZTIwLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KRWxpbWluYXRlIFVuaWF0ZQ0KDQpgYGB7cn0NCiMgaWRlYXRlDQpzdnlnbG0oaWRlYXRlfmJyb20zX2FnZWNvaG9ydCtTRVgraW8xNitmaW5hbmNpYWxfc3RhdHVzK2RlMzJfb3RoZXIrDQogICAgICAgICBkZTMyXzkrbWFyaXRhbF9zdGF0dXMrZGUyMCwNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCkVsaW1pbmF0ZSBPdGhlcg0KDQpgYGB7cn0NCiMgaWRlYXRlDQpzdnlnbG0oaWRlYXRlfmJyb20zX2FnZWNvaG9ydCtTRVgraW8xNitmaW5hbmNpYWxfc3RhdHVzK2RlMzJfOSttYXJpdGFsX3N0YXR1cytkZTIwLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KRWxpbWluYXRlIE5vIFJlbGlnaW9uDQoNCmBgYHtyfQ0KIyBpZGVhdGUNCnN2eWdsbShpZGVhdGV+YnJvbTNfYWdlY29ob3J0K1NFWCtpbzE2K2ZpbmFuY2lhbF9zdGF0dXMrbWFyaXRhbF9zdGF0dXMrZGUyMCwNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCkVsaW1pbmF0ZSBGaW5hbmNpYWwgU3RhdHVzDQoNCmBgYHtyfQ0KIyBpZGVhdGUNCnN2eWdsbShpZGVhdGV+YnJvbTNfYWdlY29ob3J0K1NFWCtpbzE2K21hcml0YWxfc3RhdHVzK2RlMjAsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQojIyMgUGxhbg0KDQpCYXNlZCBvbiBzaWduaWZpY2FudCB1bml2YXJpYXRlIG1vZGVscw0KDQpgYGB7cn0NCiMgcGxhbg0Kc3Z5Z2xtKHBsYW5+YnJvbTNfYWdlY29ob3J0K1NFWCtkZTMyX290aGVyK21hcml0YWxfc3RhdHVzK2ZpbmFuY2lhbF9zdGF0dXMsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpSZWZpbmUNCg0KYGBge3J9DQojIHBsYW4NCnN2eWdsbShwbGFufmJyb20zX2FnZWNvaG9ydCtkZTMyX290aGVyK21hcml0YWxfc3RhdHVzK2ZpbmFuY2lhbF9zdGF0dXMsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpGdWxsIERlbW9ncmFwaGljcw0KDQpgYGB7cn0NCiMgcGxhbg0Kc3Z5Z2xtKHBsYW5+YnJvbTNfYWdlY29ob3J0K1NFWCtpbzE2K2ZpbmFuY2lhbF9zdGF0dXMrZGUzMl8xK2RlMzJfMisNCiAgICAgICAgIGRlMzJfb3RoZXIrZGUzMl85K2VtcCttYXJpdGFsX3N0YXR1cytkZTIwLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KRWxpbWluYXRlIFVyYmFuaWNpdHkNCg0KYGBge3J9DQojIHBsYW4NCnN2eWdsbShwbGFufmJyb20zX2FnZWNvaG9ydCtTRVgrZmluYW5jaWFsX3N0YXR1cytkZTMyXzErZGUzMl8yKw0KICAgICAgICAgZGUzMl9vdGhlcitkZTMyXzkrZW1wK21hcml0YWxfc3RhdHVzK2RlMjAsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpFbGltaW5hdGUgRW1wbG95bWVudA0KDQpgYGB7cn0NCiMgcGxhbg0Kc3Z5Z2xtKHBsYW5+YnJvbTNfYWdlY29ob3J0K1NFWCtmaW5hbmNpYWxfc3RhdHVzK2RlMzJfMStkZTMyXzIrDQogICAgICAgICBkZTMyX290aGVyK2RlMzJfOSttYXJpdGFsX3N0YXR1cytkZTIwLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KRWxpbWluYXRlIFVuaWF0ZQ0KDQpgYGB7cn0NCiMgcGxhbg0Kc3Z5Z2xtKHBsYW5+YnJvbTNfYWdlY29ob3J0K1NFWCtmaW5hbmNpYWxfc3RhdHVzK2RlMzJfMSsNCiAgICAgICAgIGRlMzJfb3RoZXIrZGUzMl85K21hcml0YWxfc3RhdHVzK2RlMjAsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpFbGltaW5hdGUgWWVhcnMgb2YgRWR1Y2F0aW9uDQoNCmBgYHtyfQ0KIyBwbGFuDQpzdnlnbG0ocGxhbn5icm9tM19hZ2Vjb2hvcnQrU0VYK2ZpbmFuY2lhbF9zdGF0dXMrZGUzMl8xKw0KICAgICAgICAgZGUzMl9vdGhlcitkZTMyXzkrbWFyaXRhbF9zdGF0dXMsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpFbGltaW5hdGUgT3J0aG9kb3gNCg0KYGBge3J9DQojIHBsYW4NCnN2eWdsbShwbGFufmJyb20zX2FnZWNvaG9ydCtTRVgrZmluYW5jaWFsX3N0YXR1cytkZTMyX290aGVyKw0KICAgICAgICAgZGUzMl85K21hcml0YWxfc3RhdHVzLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KRWxpbWluYXRlIE5vIFJlbGlnaW9uDQoNCmBgYHtyfQ0KIyBwbGFuDQpzdnlnbG0ocGxhbn5icm9tM19hZ2Vjb2hvcnQrU0VYK2ZpbmFuY2lhbF9zdGF0dXMrZGUzMl9vdGhlcittYXJpdGFsX3N0YXR1cywNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCkVsaW1pbmF0ZSBTZXgNCg0KYGBge3J9DQojIHBsYW4NCnN2eWdsbShwbGFufmJyb20zX2FnZWNvaG9ydCtmaW5hbmNpYWxfc3RhdHVzK2RlMzJfb3RoZXIrbWFyaXRhbF9zdGF0dXMsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQojIyMgQXR0ZW1wdA0KDQpCYXNlZCBvZmYgdW5pdmFyaWF0ZSBtb2RlbHMNCg0KYGBge3J9DQojIGF0dGVtcHQNCnN2eWdsbShhdHRlbXB0fmJyb20zX2FnZWNvaG9ydCtTRVgrZGUzMl8yK21hcml0YWxfc3RhdHVzK2VtcCwNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNClJlZmluaW5nDQoNCmBgYHtyfQ0KIyBhdHRlbXB0DQpzdnlnbG0oYXR0ZW1wdH5icm9tM19hZ2Vjb2hvcnQrU0VYK2RlMzJfMittYXJpdGFsX3N0YXR1cywNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCkZ1bGwgRGVtb2dyYXBoaWNzDQoNCmBgYHtyfQ0KIyBhdHRlbXB0DQpzdnlnbG0oYXR0ZW1wdH5icm9tM19hZ2Vjb2hvcnQrU0VYK2lvMTYrZmluYW5jaWFsX3N0YXR1cytkZTMyXzErZGUzMl8yKw0KICAgICAgICAgZGUzMl9vdGhlcitkZTMyXzkrZW1wK21hcml0YWxfc3RhdHVzK2RlMjAsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpFbGltaW5hdGUgRmluYW5jaWFsIFN0YXR1cw0KDQpgYGB7cn0NCiMgYXR0ZW1wdA0Kc3Z5Z2xtKGF0dGVtcHR+YnJvbTNfYWdlY29ob3J0K1NFWCtpbzE2K2RlMzJfMStkZTMyXzIrDQogICAgICAgICBkZTMyX290aGVyK2RlMzJfOStlbXArbWFyaXRhbF9zdGF0dXMrZGUyMCwNCiAgICAgICAgIGZhbWlseSA9IHF1YXNpYmlub21pYWwoImxvZ2l0IiksIGRlc2lnbiA9IFN1aWNpZGVQYXJ0MikgJT4lDQogIHN1bW1hcnkoKQ0KYGBgDQoNCkVsaW1pbmF0ZSBFbXBsb3ltZW50DQoNCmBgYHtyfQ0KIyBhdHRlbXB0DQpzdnlnbG0oYXR0ZW1wdH5icm9tM19hZ2Vjb2hvcnQrU0VYK2lvMTYrZGUzMl8xK2RlMzJfMisNCiAgICAgICAgIGRlMzJfb3RoZXIrZGUzMl85K21hcml0YWxfc3RhdHVzK2RlMjAsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpFbGltaW5hdGUgTm8gUmVsaWdpb24NCg0KYGBge3J9DQojIGF0dGVtcHQNCnN2eWdsbShhdHRlbXB0fmJyb20zX2FnZWNvaG9ydCtTRVgraW8xNitkZTMyXzErZGUzMl8yKw0KICAgICAgICAgZGUzMl9vdGhlcittYXJpdGFsX3N0YXR1cytkZTIwLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg0KRWxpbWluYXRlIFVyYmFuaWNpdHkNCg0KYGBge3J9DQojIGF0dGVtcHQNCnN2eWdsbShhdHRlbXB0fmJyb20zX2FnZWNvaG9ydCtTRVgrZGUzMl8xK2RlMzJfMisNCiAgICAgICAgIGRlMzJfb3RoZXIrZGUzMl85K21hcml0YWxfc3RhdHVzK2RlMjAsDQogICAgICAgICBmYW1pbHkgPSBxdWFzaWJpbm9taWFsKCJsb2dpdCIpLCBkZXNpZ24gPSBTdWljaWRlUGFydDIpICU+JQ0KICBzdW1tYXJ5KCkNCmBgYA0KDQpFbGltaW5hdGUgTm8gUmVsaWdpb24NCg0KYGBge3J9DQojIGF0dGVtcHQNCnN2eWdsbShhdHRlbXB0fmJyb20zX2FnZWNvaG9ydCtTRVgrZGUzMl8xK2RlMzJfMittYXJpdGFsX3N0YXR1cytkZTIwLA0KICAgICAgICAgZmFtaWx5ID0gcXVhc2liaW5vbWlhbCgibG9naXQiKSwgZGVzaWduID0gU3VpY2lkZVBhcnQyKSAlPiUNCiAgc3VtbWFyeSgpDQpgYGANCg==</div>
 
 
 

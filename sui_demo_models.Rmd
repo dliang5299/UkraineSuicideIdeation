@@ -20,9 +20,7 @@ cididata_raw <-
   fread("ukrmain_RU_061419.csv")
 ```
 
-# Data Cleaning
-
-```{r}
+```{r include = FALSE}
 # subsetting data
 cididata_pt2 <-
   cididata_raw %>%
@@ -116,6 +114,10 @@ cididata_pt2 <-
          financial_status = derivedFactor("very_inadequate" = fnu4 == 1,
                                           "inadequate" = fnu4 == 2|fnu4 == 3,
                                           "adequate" = fnu4 == 4|fnu4 == 5)) %>%
+  # bls categorized employment
+  mutate(blsemp = derivedFactor("employed" = emp == 1,
+                                "unemployed" = emp == 5,
+                                "OOLF" = emp == 2|emp == 3|emp == 4)) %>%
   # chronic conditions
   mutate(any_cc = as.factor(ifelse(cc1a == 1|cc1b == 1|cc1c == 1|cc1d == 1|cc1e == 1|
                            cc1f == 1|cc1g == 1|cc1h == 1|cc1i == 1|cc1j == 1|
@@ -148,13 +150,13 @@ cididata_pt2 <-
   # select relevant variable
   select(sampleid, brom3_agecohort, alfonso_cohort, SEX, io16, 
          de20, fnu1, fnu4, financial_status, de32_1, de32_2, de32_other, de32_9, 
-         emp, empw, empst, emph, empr, empoth, any_cc, de34, pt6a, pt6b, de40, 
+         emp, blsemp, any_cc, de34, pt6a, pt6b, de40, 
          live_chernobyl, marital_status, sc3, mr16, mr22, mr23, sn_scale,
          sn1, sn2, sn6, sn7, SN1, SN2, SN6, SN7, cn6, cn6a, ideate, plan, attempt, ch67, 
          ch97, ch52, ch82, pt1, anx, alc, aff, ied, any, secu, strata, weight2)
 ```
 
-```{r}
+```{r include = FALSE}
 # Dataset with Part 2 weights on
 SuicidePart2 <-
   svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, 

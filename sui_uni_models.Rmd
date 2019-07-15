@@ -20,9 +20,7 @@ cididata_raw <-
   fread("ukrmain_RU_061419.csv")
 ```
 
-# Data Cleaning
-
-```{r}
+```{r include = FALSE}
 # subsetting data
 cididata_pt2 <-
   cididata_raw %>%
@@ -116,6 +114,10 @@ cididata_pt2 <-
          financial_status = derivedFactor("very_inadequate" = fnu4 == 1,
                                           "inadequate" = fnu4 == 2|fnu4 == 3,
                                           "adequate" = fnu4 == 4|fnu4 == 5)) %>%
+  # bls categorized employment
+  mutate(blsemp = derivedFactor("employed" = emp == 1,
+                                "unemployed" = emp == 5,
+                                "OOLF" = emp == 2|emp == 3|emp == 4)) %>%
   # chronic conditions
   mutate(any_cc = as.factor(ifelse(cc1a == 1|cc1b == 1|cc1c == 1|cc1d == 1|cc1e == 1|
                            cc1f == 1|cc1g == 1|cc1h == 1|cc1i == 1|cc1j == 1|
@@ -123,6 +125,19 @@ cididata_pt2 <-
                            cc1p == 1|cc1q == 1|cc1r == 1|cc1s == 1|cc1t == 1|
                            cc1u == 1|cc1v == 1|cc1w == 1|cc1x == 1|cc1y == 1|
                            cc1tz == 1, 1, 0))) %>%
+  # childhood adversities
+  mutate(IPloss = ifelse(ch2_1 == 1|ch2_2 == 1|ch2_3 == 1|ch2_5 == 1|
+                                     ch2_6 == 1|ch2_7 == 1|ch2_8 == 1, 1, 0),
+         Malad = ifelse(ch41 == 1|ch46 == 1|ch51 == 1|ch52 == 1|ch63 == 1|ch64 == 1|
+                                    ch65 == 1|ch71 == 1|ch76 == 1|ch81 == 1|
+                                    ch82 == 1|ch93 == 1|ch94 == 1|ch95 == 1, 1, 0),
+         Maltreat = ifelse((pt45 == 1 & pt45a < 18)|(pt46 == 1 & pt46a < 18)|
+                                       pt41 == 1, 1, 0),
+         ChdIll = ifelse(pt40 == 1, 1, 0),
+         IPloss = as.factor(ifelse(is.na(IPloss), 0, IPloss)),
+         Malad = as.factor(ifelse(is.na(Malad), 0, Malad)),
+         Maltreat = as.factor(ifelse(is.na(Maltreat), 0, Maltreat)),
+         ChdIll = as.factor(ifelse(is.na(ChdIll), 0, ChdIll))) %>%
   # recode
   mutate(cc1tz = as.factor(ifelse(cc1tz == 8|cc1tz == 9, NA, 
                                   ifelse(cc1tz == 1, 1, 0))),
@@ -147,18 +162,33 @@ cididata_pt2 <-
          io16 = as.factor(io16)) %>%
   # select relevant variable
   select(sampleid, brom3_agecohort, alfonso_cohort, SEX, io16, 
-         de20, fnu1, fnu4, financial_status, de32_1, de32_2, de32_other, de32_9, 
-         emp, empw, empst, emph, empr, empoth, any_cc, de34, pt6a, pt6b, de40, 
-         live_chernobyl, marital_status, sc3, mr16, mr22, mr23, sn_scale,
-         sn1, sn2, sn6, sn7, SN1, SN2, SN6, SN7, cn6, cn6a, ideate, plan, attempt, ch67, 
-         ch97, ch52, ch82, pt1, anx, alc, aff, ied, any, secu, strata, weight2)
+         de20, fnu4, financial_status, de32_1, de32_2, de32_other, de32_9, de34,
+         emp, blsemp, any_cc, pt6a, pt6b, de40, live_chernobyl, 
+         marital_status, sc3, mr16, mr22, mr23, sn_scale, SN6, SN7, cn6, cn6a, 
+         ideate, plan, attempt, IPloss, Malad, Maltreat, ChdIll,
+         ch67, ch97, pt1, anx, alc, aff, ied, any, secu, strata, weight2)
 ```
 
-```{r}
+```{r include = FALSE}
 # Dataset with Part 2 weights on
 SuicidePart2 <-
   svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, 
             data = subset(cididata_pt2, cididata_pt2$weight2>0))
+options(survey.lonely.psu = "adjust")
+```
+
+```{r}
+# ideation only
+ideatesample <-
+  cididata_pt2 %>%
+  filter(ideate == 1)
+```
+
+```{r include = FALSE}
+# ideate only data with Part 2 weights on
+ideatedesign <-
+  svydesign(ids = ~secu, strata = ~strata, weights = ~weight2, nest = T, 
+            data = subset(ideatesample, ideatesample$weight2>0))
 options(survey.lonely.psu = "adjust")
 ```
 
@@ -170,9 +200,9 @@ options(survey.lonely.psu = "adjust")
 # Bromet cohort
 svyglm(ideate~brom3_agecohort, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~brom3_agecohort, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~brom3_agecohort, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~brom3_agecohort, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~brom3_agecohort, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -181,9 +211,9 @@ svyglm(attempt~brom3_agecohort, family = quasibinomial("logit"), design = Suicid
 ```{r}
 svyglm(ideate~SEX, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~SEX, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~SEX, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~SEX, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~SEX, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -193,9 +223,9 @@ svyglm(attempt~SEX, family = quasibinomial("logit"), design = SuicidePart2) %>%
 # Orthodox
 svyglm(ideate~de32_1, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~de32_1, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~de32_1, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~de32_1, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~de32_1, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -203,9 +233,9 @@ svyglm(attempt~de32_1, family = quasibinomial("logit"), design = SuicidePart2) %
 # Uniate
 svyglm(ideate~de32_2, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~de32_2, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~de32_2, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~de32_2, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~de32_2, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -213,9 +243,9 @@ svyglm(attempt~de32_2, family = quasibinomial("logit"), design = SuicidePart2) %
 # Other
 svyglm(ideate~de32_other, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~de32_other, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~de32_other, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~de32_other, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~de32_other, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -223,9 +253,9 @@ svyglm(attempt~de32_other, family = quasibinomial("logit"), design = SuicidePart
 # None
 svyglm(ideate~de32_9, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~de32_9, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~de32_9, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~de32_9, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~de32_9, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -233,9 +263,9 @@ svyglm(attempt~de32_9, family = quasibinomial("logit"), design = SuicidePart2) %
 # importance of religion
 svyglm(ideate~de34, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~de34, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~de34, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~de34, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~de34, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -244,9 +274,9 @@ svyglm(attempt~de34, family = quasibinomial("logit"), design = SuicidePart2) %>%
 ```{r}
 svyglm(ideate~marital_status, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~marital_status, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~marital_status, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~marital_status, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~marital_status, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -256,9 +286,9 @@ svyglm(attempt~marital_status, family = quasibinomial("logit"), design = Suicide
 # any chronic condition  
 svyglm(ideate~any_cc, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~any_cc, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~any_cc, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~any_cc, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~any_cc, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -268,31 +298,29 @@ svyglm(attempt~any_cc, family = quasibinomial("logit"), design = SuicidePart2) %
 # Years of Education
 svyglm(ideate~de20, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~de20, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~de20, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~de20, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~de20, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-```
-
-```{r}
-# monthly HH income
-### not included because this doesn't take into account allocation of income
-### per person
-# svyglm(ideate~fnu1, family = quasibinomial("logit"), design = SuicidePart2) %>%
-#   summary()
-# svyglm(plan~fnu1, family = quasibinomial("logit"), design = SuicidePart2) %>%
-#   summary()
-# svyglm(attempt~fnu1, family = quasibinomial("logit"), design = SuicidePart2) %>%
-#   summary()
 ```
 
 ```{r}
 # financial status
 svyglm(ideate~financial_status, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~financial_status, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~financial_status, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~financial_status, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~financial_status, family = quasibinomial("logit"), design = ideatedesign) %>%
+  summary()
+```
+
+```{r}
+# bls employment status
+svyglm(ideate~blsemp, family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+svyglm(plan~blsemp, family = quasibinomial("logit"), design = ideatedesign) %>%
+  summary()
+svyglm(attempt~blsemp, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -300,9 +328,9 @@ svyglm(attempt~financial_status, family = quasibinomial("logit"), design = Suici
 # employment status
 svyglm(ideate~emp, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~emp, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~emp, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~emp, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~emp, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -311,9 +339,9 @@ svyglm(attempt~emp, family = quasibinomial("logit"), design = SuicidePart2) %>%
 ```{r}
 svyglm(ideate~io16, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~io16, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~io16, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~io16, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~io16, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -322,53 +350,91 @@ svyglm(attempt~io16, family = quasibinomial("logit"), design = SuicidePart2) %>%
 ```{r}
 svyglm(ideate~live_chernobyl, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~live_chernobyl, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~live_chernobyl, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~live_chernobyl, family = quasibinomial("logit"), design = SuicidePart2) %>%
-  summary()
-```
-
-## Parental Substance Use
-
-```{r}
-# mother
-svyglm(ideate~ch52, family = quasibinomial("logit"), design = SuicidePart2) %>%
-  summary()
-svyglm(plan~ch52, family = quasibinomial("logit"), design = SuicidePart2) %>%
-  summary()
-svyglm(attempt~ch52, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~live_chernobyl, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
+## Childhood Adversities
+
 ```{r}
-# father
-svyglm(ideate~ch82, family = quasibinomial("logit"), design = SuicidePart2) %>%
+# Interpersonal Loss
+svyglm(ideate~IPloss, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~ch82, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~IPloss, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~ch82, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~IPloss, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
-## Parental Suicidality
+```{r}
+# Maladjustment
+svyglm(ideate~Malad, family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+svyglm(plan~Malad, family = quasibinomial("logit"), design = ideatedesign) %>%
+  summary()
+svyglm(attempt~Malad, family = quasibinomial("logit"), design = ideatedesign) %>%
+  summary()
+```
 
 ```{r}
-# mother
+# Maltreatment
+svyglm(ideate~Maltreat, family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+svyglm(plan~Maltreat, family = quasibinomial("logit"), design = ideatedesign) %>%
+  summary()
+svyglm(attempt~Maltreat, family = quasibinomial("logit"), design = ideatedesign) %>%
+  summary()
+```
+
+```{r}
+# Childhood Illness
+svyglm(ideate~ChdIll, family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+svyglm(plan~ChdIll, family = quasibinomial("logit"), design = ideatedesign) %>%
+  summary()
+svyglm(attempt~ChdIll, family = quasibinomial("logit"), design = ideatedesign) %>%
+  summary()
+```
+
+```{r}
+# mother suicidality
 svyglm(ideate~ch67, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~ch67, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~ch67, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~ch67, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~ch67, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
 ```{r}
-# father
+# mother suicidality*Sex
+svyglm(ideate~ch67+SEX+ch67*SEX, family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+svyglm(plan~ch67+SEX+ch67*SEX, family = quasibinomial("logit"), design = ideatedesign) %>%
+  summary()
+svyglm(attempt~ch67+SEX+ch67*SEX, family = quasibinomial("logit"), design = ideatedesign) %>%
+  summary()
+```
+
+```{r}
+# father suicidality
 svyglm(ideate~ch97, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~ch97, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~ch97, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~ch97, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~ch97, family = quasibinomial("logit"), design = ideatedesign) %>%
+  summary()
+```
+
+```{r}
+# father suicidality*SEX
+svyglm(ideate~ch97+SEX+ch97*SEX, family = quasibinomial("logit"), design = SuicidePart2) %>%
+  summary()
+svyglm(plan~ch97+SEX+ch97*SEX, family = quasibinomial("logit"), design = ideatedesign) %>%
+  summary()
+svyglm(attempt~ch97+SEX+ch97*SEX, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -378,9 +444,9 @@ svyglm(attempt~ch97, family = quasibinomial("logit"), design = SuicidePart2) %>%
 # have you ever had an abortion?
 svyglm(ideate~cn6, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~cn6, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~cn6, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~cn6, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~cn6, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -388,9 +454,9 @@ svyglm(attempt~cn6, family = quasibinomial("logit"), design = SuicidePart2) %>%
 # number of abortions
 svyglm(ideate~cn6a, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~cn6a, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~cn6a, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~cn6a, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~cn6a, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -400,9 +466,9 @@ svyglm(attempt~cn6a, family = quasibinomial("logit"), design = SuicidePart2) %>%
 # social network interaction
 svyglm(ideate~sn_scale, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~sn_scale, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~sn_scale, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~sn_scale, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~sn_scale, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -410,9 +476,9 @@ svyglm(attempt~sn_scale, family = quasibinomial("logit"), design = SuicidePart2)
 # reliance
 svyglm(ideate~SN6, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~SN6, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~SN6, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~SN6, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~SN6, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -420,9 +486,9 @@ svyglm(attempt~SN6, family = quasibinomial("logit"), design = SuicidePart2) %>%
 # ability to open up
 svyglm(ideate~SN7, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~SN7, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~SN7, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~SN7, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~SN7, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -432,9 +498,9 @@ svyglm(attempt~SN7, family = quasibinomial("logit"), design = SuicidePart2) %>%
 # anxiety
 svyglm(ideate~anx, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~anx, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~anx, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~anx, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~anx, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -442,9 +508,9 @@ svyglm(attempt~anx, family = quasibinomial("logit"), design = SuicidePart2) %>%
 # affective
 svyglm(ideate~aff, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~aff, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~aff, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~aff, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~aff, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -452,9 +518,9 @@ svyglm(attempt~aff, family = quasibinomial("logit"), design = SuicidePart2) %>%
 # alc
 svyglm(ideate~alc, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~alc, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~alc, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~alc, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~alc, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -462,9 +528,9 @@ svyglm(attempt~alc, family = quasibinomial("logit"), design = SuicidePart2) %>%
 # ied
 svyglm(ideate~ied, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~ied, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~ied, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~ied, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~ied, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
 
@@ -472,8 +538,8 @@ svyglm(attempt~ied, family = quasibinomial("logit"), design = SuicidePart2) %>%
 # any
 svyglm(ideate~any, family = quasibinomial("logit"), design = SuicidePart2) %>%
   summary()
-svyglm(plan~any, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(plan~any, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
-svyglm(attempt~any, family = quasibinomial("logit"), design = SuicidePart2) %>%
+svyglm(attempt~any, family = quasibinomial("logit"), design = ideatedesign) %>%
   summary()
 ```
